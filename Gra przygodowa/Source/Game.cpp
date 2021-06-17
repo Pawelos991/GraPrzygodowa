@@ -149,7 +149,7 @@ void Game::Prepare_game(Player &p)
         p.set_NormalMode();
         p.getHit(40);
         p.hitbox.setPosition(Vector2f(400,400));
-        Actual_screen=screens[4];
+        Actual_screen=screens[0];
     }
     else if(gameMode==2)
     {
@@ -189,11 +189,11 @@ void Game::run()
 
     Sound sound;
     SoundBuffer sb;
-    /*sb.loadFromFile("Sounds/Firelink.wav");
+    sb.loadFromFile("Sounds/Firelink.wav");
     sound.setBuffer(sb);
     sound.setVolume(10);
     sound.play();
-    */
+    
     Player p;
     Items items;
     Animations menu_animations;
