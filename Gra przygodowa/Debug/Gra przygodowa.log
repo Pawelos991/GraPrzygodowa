@@ -1,0 +1,20 @@
+﻿  Game.cpp
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\Gra przygodowa\Header\Animation.h(30,33): warning C4244: "return": konwersja z "int" do "float", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\Gra przygodowa\Source\Game.cpp(292,29): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\Gra przygodowa\Source\Game.cpp(314,94): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\Gra przygodowa\Source\Game.cpp(318,91): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\Gra przygodowa\Source\Game.cpp(322,92): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\Gra przygodowa\Source\Game.cpp(140): warning C4715: "Game::inGameMenu”: niewszystkie ścieżki kodu zwracają wartość
+  Gra przygodowa.vcxproj -> C:\Wszio\Studia\Praca inżynierska\Projekt - VS\Gra przygodowa\Debug\Gra przygodowa.exe

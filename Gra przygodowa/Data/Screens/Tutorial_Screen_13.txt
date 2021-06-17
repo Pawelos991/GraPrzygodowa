@@ -1,0 +1,10 @@
+13 0 0 0 12 1
+Textures/Backgrounds/Background_Tutorial_13.png
+Wall Textures/Walls/TreeFullHor.png 0 0 1600 113
+Wall Textures/Walls/TreeFullVer.png 0 0 90 900
+Wall Textures/Walls/TreeFullVer.png 1520 0 90 900
+Wall Textures/Walls/TreeHalfHor.png 0 787 760 113
+Wall Textures/Walls/TreeHalfHor.png 840 787 760 113
+Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 430 300 56 56 1 1
+Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 730 300 56 56 1 1
+Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 1030 300 56 56 1 1

@@ -1,0 +1,11 @@
+5 6 4 0 0 2
+Textures/Backgrounds/Background_Basic.png
+Wall Textures/Walls/TreeFullHor.png 0 0 1600 113
+Wall Textures/Walls/TreeHalfVer.png 0 0 90 400
+Wall Textures/Walls/TreeHalfVer.png 0 500 90 400
+Wall Textures/Walls/TreeHalfVer.png 1520 0 90 400
+Wall Textures/Walls/TreeHalfVer.png 1520 500 90 400
+Wall Textures/Walls/TreeFullHor.png 0 787 1600 113
+Wall Textures/Walls/TreeFullVer.png 1520 0 90 900
+Enemy Minotaur 1200 420
+Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 1000 420 56 56 1 1

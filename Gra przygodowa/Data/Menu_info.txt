@@ -1,0 +1,13 @@
+Textures/Backgrounds/Background_Basic.png
+Textures/Menu/Samouczek_1.png
+Textures/Menu/Arena_1.png
+Textures/Menu/Arena_Godmode_1.png
+Textures/Menu/Exit_1.png
+Textures/Menu/Samouczek_2.png
+Textures/Menu/Arena_2.png
+Textures/Menu/Arena_Godmode_2.png
+Textures/Menu/Exit_2.png
+Textures/Menu/Resume_1.png
+Textures/Menu/Exit_to_menu_1.png
+Textures/Menu/Resume_2.png
+Textures/Menu/Exit_to_menu_2.png
