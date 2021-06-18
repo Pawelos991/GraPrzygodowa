@@ -31,6 +31,7 @@ Game::Game()
     Arena_font.loadFromFile("Fonts/Arial.ttf");
     Arena_text.setFont(Arena_font);
     Arena_text.setCharacterSize(50);
+    gameMode = 0;
 }
 
 Game::~Game()

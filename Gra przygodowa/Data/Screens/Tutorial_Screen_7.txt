@@ -6,15 +6,7 @@ Wall Textures/Walls/TreeHalfVer.png 0 0 90 400
 Wall Textures/Walls/TreeHalfVer.png 0 500 90 400
 Wall Textures/Walls/TreeHalfHor.png 0 787 760 113
 Wall Textures/Walls/TreeHalfHor.png 840 787 760 113
-Wall Textures/Walls/Stone_Wall_1.png 1329 0 271 219
-Wall Textures/Walls/Stone_Wall_2.png 1329 90 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 180 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 270 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 360 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 450 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 540 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 630 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 720 271 237
+Wall Textures/Walls/StoneWallFullVer.png 1329 0 271 900
 Wall Textures/Walls/TreeAlmFullHor.png 0 0 900 113
 Wall Textures/Walls/TreeAlmFullHor.png 0 787 900 113
 Enemy Archer 1400 200

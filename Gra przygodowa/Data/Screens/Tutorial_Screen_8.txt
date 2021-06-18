@@ -1,36 +1,10 @@
 8 0 0 0 7 1
 Textures/Backgrounds/Background_Basic.png
-Wall Textures/Walls/Stone_Wall_1.png 0 0 271 219
-Wall Textures/Walls/Stone_Wall_3.png 210 0 325 219
-Wall Textures/Walls/Stone_Wall_3.png 420 0 325 219
-Wall Textures/Walls/Stone_Wall_3.png 630 0 325 219
-Wall Textures/Walls/Stone_Wall_3.png 840 0 325 219
-Wall Textures/Walls/Stone_Wall_3.png 1050 0 325 219
-Wall Textures/Walls/Stone_Wall_3.png 1260 0 325 219
-Wall Textures/Walls/Stone_Wall_2.png 0 97 271 237
-Wall Textures/Walls/Stone_Wall_2.png 0 180 271 237
-Wall Textures/Walls/Stone_Wall_2.png 0 270 271 237
-Wall Textures/Walls/Stone_Wall_2.png 0 360 271 237
-Wall Textures/Walls/Stone_Wall_2.png 0 450 271 237
-Wall Textures/Walls/Stone_Wall_2.png 0 540 271 237
-Wall Textures/Walls/Stone_Wall_2.png 0 630 271 237
-Wall Textures/Walls/Stone_Wall_2.png 0 720 271 237
-Wall Textures/Walls/Stone_Wall_3.png 1275 0 325 219
-Wall Textures/Walls/Stone_Wall_2.png 1329 97 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 180 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 270 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 360 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 450 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 540 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 630 271 237
-Wall Textures/Walls/Stone_Wall_2.png 1329 720 271 237
-Wall Textures/Walls/Stone_Wall_3.png 262 738 325 219
-Wall Textures/Walls/Stone_Wall_3.png 395 738 325 219
-Wall Textures/Walls/Stone_Wall_4.png 1013 738 325 219
-Wall Textures/Walls/Stone_Wall_4.png 900 738 325 219
-Wall Textures/Walls/Stone_Wall_4.png 800 738 325 219
-Wall Textures/Walls/Stone_Wall_4.png 900 738 325 219
-Wall Textures/Walls/Stone_Wall_4.png 800 738 325 219
+Wall Textures/Walls/StoneWallFullHor.png 0 0 1600 219
+Wall Textures/Walls/StoneWallHalfHor.png 0 681 760 219
+Wall Textures/Walls/StoneWallHalfHor.png 840 681 760 219
+Wall Textures/Walls/StoneWallFullVerL.png 0 0 271 900
+Wall Textures/Walls/StoneWallFullVerR.png 1329 0 271 900
 Enemy Archer 1400 200
 Enemy Archer 100 200
 Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 1000 420 56 56 2 1 1
