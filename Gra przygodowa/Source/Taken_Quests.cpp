@@ -2,7 +2,6 @@
 
 Taken_Quests::Taken_Quests()
 {
-    //ctor
 }
 
 Taken_Quests::~Taken_Quests()
@@ -12,7 +11,7 @@ Taken_Quests::~Taken_Quests()
 
 void Taken_Quests::getFont()
 {
-    font.loadFromFile("Fonts/00TT.ttf");
+    font.loadFromFile("Fonts/Arial.ttf");
     text.setFont(font);
 }
 
@@ -68,4 +67,15 @@ void Taken_Quests::display_active_quests(RenderWindow &window, Vector2f position
     y+=25;
     }
 
+}
+
+void Taken_Quests::display_new_quest(RenderWindow& window)
+{
+    Text te;
+    te.setPosition(420, 450); 
+    te.setString(taken_quests[taken_quests.size()-1]->getName());
+    te.setCharacterSize(80);
+    te.setFillColor(Color::Black);
+    te.setFont(font);
+    window.draw(te);
 }

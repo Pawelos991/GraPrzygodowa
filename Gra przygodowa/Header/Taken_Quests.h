@@ -16,10 +16,10 @@ class Taken_Quests
         void remove_all_t_quests();
         void complete_quest(int id);
         void display_active_quests(RenderWindow &window, Vector2f position);
+        void display_new_quest(RenderWindow& window);
         Font font;
         Text text;
         void getFont();
-
 };
 
 #endif // TAKEN_QUESTS_H
