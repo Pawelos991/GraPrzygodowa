@@ -1,5 +1,6 @@
 7 0 6 8 9 3
 Textures/Backgrounds/Background_Basic.png
+Door Textures/Door/Door3.png 760 790 60 110 2
 Wall Textures/Walls/TreeHalfHor.png 0 0 760 113
 Wall Textures/Walls/TreeHalfHor.png 840 0 760 113
 Wall Textures/Walls/TreeHalfVer.png 0 0 90 400

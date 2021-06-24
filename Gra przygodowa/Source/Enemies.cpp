@@ -89,23 +89,23 @@ std::vector<RectangleShape*> Enemies::Maintenance(RenderWindow &window, int coun
     return Slashes;
 }
 
-int Enemies::is_everyone_dead()
+bool Enemies::is_everyone_dead()
 {
     Enemy*temp=head;
-    int is_everyone_d=1; // 0 - No, 1 - Yes
+    bool is_everyone_d=true;
     while(temp!=nullptr)
     {
         if(temp->is_enemy_dead()==0)
-            is_everyone_d=0;
+            is_everyone_d=false;
         temp=temp->getNext();
     }
     return is_everyone_d;
 }
 
-int Enemies::is_it_empty()
+bool Enemies::is_it_empty()
 {
-    if(head==nullptr)
-        return 1;
+    if (head == nullptr)
+        return true;
     else
-        return 0;
+        return false;
 }

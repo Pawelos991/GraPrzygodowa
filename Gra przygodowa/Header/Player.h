@@ -19,6 +19,7 @@ class Player : private Character
         void Check_collision_with_enviornment(RenderWindow &window, std::vector<Wall*>& walls);
         void add_item_to_Inventory(int ID, Items &all_items);
         void remove_item_from_Inventory(int ID);
+        bool is_item_in_Inventory(int ID);
         void Display_inventory(RenderWindow &window,int open);
         void Check_enemies_missiles(Missiles& enemies_missiles);
         RectangleShape getHitbox(){return hitbox;}
@@ -29,7 +30,7 @@ class Player : private Character
         void set_NormalMode();
         void Respawn(){is_dead=0;}
 
-        Missile* Maintenance(RenderWindow &window,int counter,std::vector<Wall*>& walls,int open,std::vector<RectangleShape*>Slashes,Missiles& enemies_missiles);
+        Missile* Maintenance(RenderWindow &window,int counter,std::vector<Wall*>& walls,bool open,std::vector<RectangleShape*>Slashes,Missiles& enemies_missiles);
         void Check_slashes(std::vector<RectangleShape*>Slashes);
 
         RectangleShape hitbox;
@@ -45,7 +46,7 @@ class Player : private Character
         SoundBuffer Drink_buffer;
         Sound Drink_sound;
         int colliders[4]; //0 - Right, 1 - Left, 2 - Up, 3 - Down  0-No collision, 1 - Collision
-        int is_inventory_open; //0 - No, 1 - Yes
+        bool is_inventory_open;
         RectangleShape HP_Black;
         RectangleShape MANA_Blue;
         RectangleShape MANA_Black;

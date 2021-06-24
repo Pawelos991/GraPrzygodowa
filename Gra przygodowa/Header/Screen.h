@@ -18,6 +18,7 @@ class Screen : public Background,public C_Objects,public Characters
         int getNumberOfConnections() { return howManyConnections; }
         void displayScreen(RenderWindow &window);
         Chest* check_chests(RectangleShape players_hitbox);
+        Door* check_doors(RectangleShape players_hitbox);
         Missiles player_missiles;
         Missiles enemies_missiles;
         int removed;

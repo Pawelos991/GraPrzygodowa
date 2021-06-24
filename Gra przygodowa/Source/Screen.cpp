@@ -12,7 +12,7 @@ Screen::Screen(std::string info_file)
     fp>>leftID;
     fp>>upID;
     fp>>downID;
-    fp >> howManyConnections;
+    fp>>howManyConnections;
     fp>>temp_string1;
     pic.loadFromFile(temp_string1);
     Bck.setTexture(pic);
@@ -39,6 +39,17 @@ Screen::Screen(std::string info_file)
             fp>>temp_4;
             add_wall(temp_string1,Vector2f(temp_1,temp_2),Vector2f(temp_3,temp_4));
 
+        }
+        if (temp_string1 == "Door")
+        {
+            fp >> temp_string1;
+            fp >> temp_1;
+            fp >> temp_2;
+            fp >> temp_3;
+            fp >> temp_4;
+            fp >> temp_5;
+            Wall * wall = add_wall("Textures/Walls/Blank.png", Vector2f(temp_1, temp_2), Vector2f(temp_3, temp_4));
+            add_door(temp_string1,wall, temp_5);
         }
         if(temp_string1=="Chest")
         {
@@ -100,7 +111,7 @@ void Screen::displayScreen(RenderWindow &window)
 
 Chest* Screen::check_chests(RectangleShape players_hitbox)
 {
-    if(enemies.is_everyone_dead()==1)
+    if(enemies.is_everyone_dead())
     {
         for(int i=0;i<chests.size();i++)
         {
@@ -114,4 +125,21 @@ Chest* Screen::check_chests(RectangleShape players_hitbox)
         return nullptr;
     }
 
+}
+
+Door* Screen::check_doors(RectangleShape players_hitbox)
+{
+    if (enemies.is_everyone_dead())
+    {
+        for (int i = 0; i < doors.size(); i++)
+        {
+            if (players_hitbox.getGlobalBounds().intersects(doors[i]->get_box().getGlobalBounds()))
+                return doors[i];
+        }
+        return nullptr;
+    }
+    else
+    {
+        return nullptr;
+    }
 }

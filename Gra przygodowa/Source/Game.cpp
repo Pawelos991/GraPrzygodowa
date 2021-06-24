@@ -31,8 +31,21 @@ Game::Game()
     Arena_font.loadFromFile("Fonts/Arial.ttf");
     Arena_text.setFont(Arena_font);
     Arena_text.setCharacterSize(50);
+
+    sb.loadFromFile("Sounds/Firelink.wav");
+    sound.setBuffer(sb);
+    sound.setVolume(10);
+
     gameMode = 0;
-    
+    standingByDoor = false;
+    counter = 0;
+    movementindicator = 1;
+    is_inventory_open = false;
+    are_quests_displayed = false;
+    is_muted = false;
+    is_godmode_on = false;
+    pause_game = false;
+    tryingToOpenDoor = false;
 }
 
 Game::~Game()
@@ -40,12 +53,60 @@ Game::~Game()
     //dtor
 }
 
+void Game::Arena_pick(RenderWindow& window, Animations& menu_animations)
+{
+    int counter = 0;
+    gameMode = 0;
+    int actual_choice = 1; //1 - arena normal, 2 - arena godmode
+    menu_background.setTexture(menu_textures[0]);
+    menu_background.setPosition(Vector2f(0, 0));
+    while (window.isOpen())
+    {
+        counter++;
+        if (counter == 61)
+        {
+            counter = 0;
+        }
+        window.clear(Color::White);
+        window.draw(menu_background);
+        menu_sprite.setPosition(Vector2f(557, 291));
+        for (int i = 1; i < 3; i++)
+        {
+            if (actual_choice == i)
+                menu_sprite.setTexture(menu_textures[i + 14]);
+            else
+                menu_sprite.setTexture(menu_textures[i + 12]);
+            window.draw(menu_sprite);
+            menu_sprite.move(0, 191);
+        }
+        menu_animations.find_animation(1)->Display_animation(window, Vector2f(50, 125), counter);
+        menu_animations.find_animation(2)->Display_animation(window, Vector2f(1000, 50), counter);
+        Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == Event::Closed)
+                window.close();
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up && actual_choice > 1)
+                actual_choice--;
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Down && actual_choice < 2)
+                actual_choice++;
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter)
+            {
+                gameMode = actual_choice + 2;
+
+                return;
+            }
+        }
+        window.display();
+    }
+}
+
 void Game::Game_menu(RenderWindow &window,Animations &menu_animations)
 {
 
     int counter=0;
     gameMode=0;
-    int actual_choice=1; //1 - tutorial, 2 - arena, 3- arena godmode, 4- exit
+    int actual_choice=1; //1 - tutorial, 2 - new adventure, 3- arena, 4- exit
     menu_background.setTexture(menu_textures[0]);
     menu_background.setPosition(Vector2f(0,0));
     while(window.isOpen())
@@ -87,46 +148,7 @@ void Game::Game_menu(RenderWindow &window,Animations &menu_animations)
 
                     if (gameMode == 3)
                     {
-                        actual_choice = 1;
-                        while (window.isOpen())
-                        {
-                            counter++;
-                            if (counter == 61)
-                            {
-                                counter = 0;
-                            }
-                            window.clear(Color::White);
-                            window.draw(menu_background);
-                            menu_sprite.setPosition(Vector2f(557, 291));
-                            for (int i = 1; i < 3; i++)
-                            {
-                                if (actual_choice == i)
-                                    menu_sprite.setTexture(menu_textures[i + 14]);
-                                else
-                                    menu_sprite.setTexture(menu_textures[i + 12]);
-                                window.draw(menu_sprite);
-                                menu_sprite.move(0, 191);
-                            }
-                            menu_animations.find_animation(1)->Display_animation(window, Vector2f(50, 125), counter);
-                            menu_animations.find_animation(2)->Display_animation(window, Vector2f(1000, 50), counter);
-                            Event event;
-                            while (window.pollEvent(event))
-                            {
-                                if (event.type == Event::Closed)
-                                    window.close();
-                                if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up && actual_choice > 1)
-                                    actual_choice--;
-                                if (event.type == Event::KeyPressed && event.key.code == Keyboard::Down && actual_choice < 2)
-                                    actual_choice++;
-                                if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter)
-                                {
-                                    gameMode = actual_choice + 2;
-
-                                    return;
-                                }
-                            }
-                            window.display();
-                        }
+                        Arena_pick(window, menu_animations);
                     }
 
                     if (gameMode == 5)
@@ -242,9 +264,26 @@ void Game::ArenaMode(RenderWindow &window)
     Arena_text.setString(std::to_string(kills));
     Arena_text.move(170,0);
     window.draw(Arena_text);
+
+    if (Actual_screen->enemies.is_everyone_dead())
+    {
+        kills++;
+        if (counter % 3 == 0)
+        {
+            Actual_screen->enemies.add_enemy("Minotaur", Vector2f((counter % 12) * 100 + 100, 700));
+        }
+        if (counter % 3 == 1)
+        {
+            Actual_screen->enemies.add_enemy("Dwarf", Vector2f((counter % 12) * 100 + 100, 700));
+        }
+        if (counter % 3 == 2)
+        {
+            Actual_screen->enemies.add_enemy("Archer", Vector2f((counter % 12) * 100 + 100, 700));
+        }
+    }
 }
 
-void Game::GetKeyEvent(RenderWindow& window, int &is_inventory_open, int &are_quests_displayed, Animations &menu_animations, Player &p, int &is_muted, int &pause_game,Sound &sound)
+void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player &p)
 {
     Event event;
     while (window.pollEvent(event))
@@ -255,17 +294,17 @@ void Game::GetKeyEvent(RenderWindow& window, int &is_inventory_open, int &are_qu
             p.heal();
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::I)
         {
-            if (is_inventory_open == 0)
-                is_inventory_open = 1;
+            if (!is_inventory_open)
+                is_inventory_open = true;
             else
-                is_inventory_open = 0;
+                is_inventory_open = false;
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::Q)
         {
-            if (are_quests_displayed == 0)
-                are_quests_displayed = 1;
+            if (are_quests_displayed == false)
+                are_quests_displayed = true;
             else
-                are_quests_displayed = 0;
+                are_quests_displayed = false;
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
         {
@@ -277,45 +316,75 @@ void Game::GetKeyEvent(RenderWindow& window, int &is_inventory_open, int &are_qu
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::M)
         {
-            if (is_muted == 0)
+            if (is_muted == false)
             {
-                is_muted = 1;
+                is_muted = true;
                 sound.pause();
             }
             else
             {
-                is_muted = 0;
+                is_muted = false;
                 sound.play();
             }
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::Space)
         {
-            if (pause_game == 0)
-                pause_game = 1;
+            if (pause_game == false)
+                pause_game = true;
             else
-                pause_game = 0;
+                pause_game = false;
+        }
+        if (event.type == Event::KeyPressed && event.key.code == Keyboard::O)
+        {
+            if (standingByDoor)
+            {
+                tryingToOpenDoor = true;
+            }
         }
     }
 }
 
-void Game::addQuest(RenderWindow& window, int id)
+void Game::MaintainChests(Items &items, Player &p)
 {
-    Texture tex;
-    Sprite sp;
-    tex.loadFromFile("Textures/Quests/New_quest.png");
-    sp.setTexture(tex);
-    sp.setPosition(400, 250);
-    Sound sound;
-    SoundBuffer sb;
-    sb.loadFromFile("Sounds/New_Quest.wav");
-    sound.setBuffer(sb);
-    sound.setVolume(10);
-    sound.play();
-    for (int i = 0; i < 120; i++)
+    Chest* a = Actual_screen->check_chests(p.getHitbox());
+
+    if (a != nullptr)
     {
-        window.draw(sp);
-        Taken_Quests::display_new_quest(window);
-        window.display();
+        a->OpenChest();
+        for (int i = 0; i < a->Items_IDs.size(); i++)
+            p.add_item_to_Inventory(a->Items_IDs[i], items);
+    }
+}
+
+void Game::MaintainDoors(RenderWindow &window,Player& p)
+{
+    Door* d = Actual_screen->check_doors(p.getHitbox());
+    if (d != nullptr)
+        standingByDoor = true;
+    else
+        standingByDoor = false;
+
+    if (standingByDoor)
+    {
+        if (p.is_item_in_Inventory(d->get_key_ID()))
+        {
+            if (tryingToOpenDoor)
+            {
+                p.remove_item_from_Inventory(d->get_key_ID());
+                open_door(d);
+            }
+            else
+            {
+                door_menu_sp.setTexture(door_menu_tex[1]);
+                window.draw(door_menu_sp);
+            }
+            
+        }
+        else
+        {
+            door_menu_sp.setTexture(door_menu_tex[0]);
+            window.draw(door_menu_sp);
+        }
     }
 }
 
@@ -325,47 +394,26 @@ void Game::run()
     RenderWindow window(VideoMode(1600,900),"Game");
     window.setFramerateLimit(60);
 
-    Sound sound;
-    SoundBuffer sb;
-    sb.loadFromFile("Sounds/Firelink.wav");
-    sound.setBuffer(sb);
-    sound.setVolume(10);
     sound.play();
-    
+
     Player p;
     Items items;
     Animations menu_animations;
-
+    menu_animations.LoadAnimationsFromFile("Data/Menu_Animations.txt");
     items.LoadItemsFromFile();
     loadScreens();
     prepare_quests();
-    menu_animations.LoadAnimationsFromFile("Data/Menu_Animations.txt");
-
+    
     Game_menu(window,menu_animations);
     Prepare_game(p);
-
-    int counter=0; //FPS counter
-    int movementindicator=1; // 1-right 2-left
-    int is_inventory_open=0; //1-Yes, 0-No
-    int are_quests_displayed=0; //1-Yes, 0-No
-    int is_muted=0; //0-No 1-Yes
-
-    int is_godmode_on=0;//0-No,1-Yes
-
-    int pause_game=0;//0-No, 1-Yes
+    if (gameMode == 2)
+        p.add_item_to_Inventory(2, items);
 
     while(window.isOpen())
     {    
-        GetKeyEvent(window, is_inventory_open, are_quests_displayed, menu_animations, p, is_muted, pause_game,sound);
-        
-        if (pause_game == 1)
-        {
-            addQuest(window, 1);
-            pause_game = 0;
-        }
-        
+        GetKeyEvent(window,menu_animations, p);
 
-        if(pause_game==0)
+        if(pause_game==false)
         {
             counter++;
             if(counter==61)
@@ -378,16 +426,6 @@ void Game::run()
             Check_screen(p.hitbox);
             Display_Screens(window);
 
-
-            Chest* a=Actual_screen->check_chests(p.getHitbox());
-
-            if(a!=nullptr)
-            {
-               a->OpenChest();
-               for(int i=0;i<a->Items_IDs.size();i++)
-                p.add_item_to_Inventory(a->Items_IDs[i],items);
-            }
-
             Actual_screen->npcs.Maintance(window,counter,p.getHitbox());
             Missile *m = p.Maintenance(window, counter,Actual_screen->walls,is_inventory_open,
             Actual_screen->enemies.Maintenance(window,counter,p.getHitbox(),p.is_player_dead(),Actual_screen->player_missiles,Actual_screen->enemies_missiles),Actual_screen->enemies_missiles);
@@ -395,28 +433,15 @@ void Game::run()
             Actual_screen->player_missiles.maintenance(window, counter);
             Actual_screen->enemies_missiles.maintenance(window,counter);
 
-            if(gameMode==2 || gameMode==3)
+            if(gameMode==3 || gameMode==4)
             {
-                ArenaMode(window);
-                if (Actual_screen->enemies.is_everyone_dead() == 1)
-                {
-                    kills++;
-                    if (counter % 3 == 0)
-                    {
-                        Actual_screen->enemies.add_enemy("Minotaur", Vector2f((counter % 12) * 100 + 100, 700));
-                    }
-                    if (counter % 3 == 1)
-                    {
-                        Actual_screen->enemies.add_enemy("Dwarf", Vector2f((counter % 12) * 100 + 100, 700));
-                    }
-                    if (counter % 3 == 2)
-                    {
-                        Actual_screen->enemies.add_enemy("Archer", Vector2f((counter % 12) * 100 + 100, 700));
-                    }
-                }
+                ArenaMode(window);  
             }
+
+            MaintainChests(items, p);
+            MaintainDoors(window, p);
         }
-        if(are_quests_displayed==1)
+        if(are_quests_displayed)
             Display_quests(window);
 
         window.display();

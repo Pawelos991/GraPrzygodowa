@@ -14,7 +14,7 @@ Player::Player()
     colliders[2]=0;
     colliders[3]=0;
     is_attacking=0;
-    is_inventory_open=0;
+    is_inventory_open=false;
     is_dead=0;
     death_counter=0;
     speed_of_movement=4;
@@ -53,11 +53,7 @@ Player::Player()
 
 void Player::movement(RenderWindow &window, int counter)
 {
-    /*Speed=2;
-    if(Keyboard::isKeyPressed(Keyboard::LShift))
-        Speed+=2;
-    if(!Keyboard::isKeyPressed(Keyboard::LShift)&&Speed!=2)
-        Speed-=2;*/
+    
     if(is_attacking==1)
         Speed=0;
     else
@@ -176,7 +172,7 @@ void Player::Check_collision_with_enviornment(RenderWindow &window, std::vector<
     colliders[3]=collision_down;
 }
 
-Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>& walls,int open,std::vector <RectangleShape*>Slashes,Missiles& enemies_missiles)
+Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>& walls,bool open,std::vector <RectangleShape*>Slashes,Missiles& enemies_missiles)
 {
     Missile *m=nullptr;
     if(HP<=0)
@@ -215,16 +211,16 @@ Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>
 
 void Player::Display_inventory(RenderWindow &window,int open)
 {
-    if(open==1 && is_inventory_open==0)
+    if(open && is_inventory_open==false)
     {
-        is_inventory_open=1;
+        is_inventory_open=true;
         inventory.Display_Inventory(window);
     }
-    else if(is_inventory_open==1&&open!=0)
+    else if(is_inventory_open&&open!=false)
         inventory.Display_Inventory(window);
     else
     {
-        is_inventory_open=0;
+        is_inventory_open=false;
     }
 }
 
@@ -249,6 +245,11 @@ void Player::add_item_to_Inventory(int ID, Items &all_items)
 void Player::remove_item_from_Inventory(int ID)
 {
     inventory.delete_item_from_inventory(ID);
+}
+
+bool Player::is_item_in_Inventory(int ID)
+{
+    return inventory.Is_there_an_item(ID);
 }
 
 Missile* Player::attack(RenderWindow &window, int counter)

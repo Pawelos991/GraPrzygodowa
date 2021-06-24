@@ -27,12 +27,20 @@ void Screens::loadScreens()
     }
     fp.close();
     Actual_screen=screens[0];
+
+    //Loading door_menu textures
+    door_menu_tex[0].loadFromFile("Textures/Door/Menu/1.png");
+    door_menu_tex[1].loadFromFile("Textures/Door/Menu/2.png");
+    door_menu_sp.setTexture(door_menu_tex[0]);
+    door_menu_sp.setPosition(Vector2f(452,342));
+    door_sb.loadFromFile("Sounds/Door_Open.wav");
+    door_sound.setBuffer(door_sb);
 }
 
 void Screens::Display_Screens(RenderWindow &window)
 {
     Actual_screen->displayScreen(window);
-    if(Actual_screen->removed!=0 && Actual_screen->enemies.is_it_empty()==0 && Actual_screen->enemies.is_everyone_dead()==1)
+    if(Actual_screen->removed!=0 && Actual_screen->enemies.is_it_empty()==0 && Actual_screen->enemies.is_everyone_dead())
     {
         for(int i=0;i<Actual_screen->getNumberOfConnections()-1;i++)
             Actual_screen->walls.pop_back();
@@ -85,4 +93,10 @@ void Screens::delete_all_screens()
         screens[i]->clear_space();
         delete screens[i];
     }
+}
+
+void Screens::open_door(Door* d)
+{
+    door_sound.play();
+    Actual_screen->open_door(d);
 }

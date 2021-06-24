@@ -1,5 +1,5 @@
 8 0 0 0 7 1
-Textures/Backgrounds/Background_Basic.png
+Textures/Backgrounds/Stones_2.png
 Wall Textures/Walls/StoneWallFullHor.png 0 0 1600 219
 Wall Textures/Walls/StoneWallHalfHor.png 0 681 760 219
 Wall Textures/Walls/StoneWallHalfHor.png 840 681 760 219
@@ -7,4 +7,4 @@ Wall Textures/Walls/StoneWallFullVerL.png 0 0 271 900
 Wall Textures/Walls/StoneWallFullVerR.png 1329 0 271 900
 Enemy Archer 1400 200
 Enemy Archer 100 200
-Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 1000 420 56 56 2 1 1
+Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 1000 420 56 56 3 1 1 2

@@ -13,20 +13,32 @@ class Game : private Screens, private Quests
         void run();
     private:
         void Game_menu(RenderWindow &window,Animations &menu_animations);
-        //void Arena_pick(RenderWindow& window, Animations& menu_animations);
+        void Arena_pick(RenderWindow& window, Animations& menu_animations);
         void Prepare_game(Player &p);
         int inGameMenu(RenderWindow &window,Animations &menu_animations); //1 - resume, 2 - go to menu
         void ArenaMode(RenderWindow& window);
-        void GetKeyEvent(RenderWindow& window, int& is_inventory_open, int& are_quests_displayed, Animations& menu_animations, Player& p, int& is_muted, int& pause_game, Sound& sound);
-        void addQuest(RenderWindow &window, int id);
+        void GetKeyEvent(RenderWindow& window, Animations& menu_animations, Player& p);
+        void MaintainChests(Items& items, Player& p);
+        void MaintainDoors(RenderWindow& window, Player& p);
 
-        int gameMode; //0 - not chosen, 1 - Tutorial, 2 - New adventure, 3 - Arena normal, 4 - Arena godmode, 5 - Exit
-        int kills;
         Texture menu_textures[17];
         Sprite menu_sprite;
         Sprite menu_background;
         Font Arena_font;
         Text Arena_text;
+        Sound sound;
+        SoundBuffer sb;
+        int gameMode; //0 - not chosen, 1 - Tutorial, 2 - New adventure, 3 - Arena normal, 4 - Arena godmode, 5 - Exit
+        int counter; //FPS counter
+        int kills; //Kills counter (arena)
+        int movementindicator; // 1-right 2-left
+        bool is_inventory_open; 
+        bool are_quests_displayed; 
+        bool is_muted; 
+        bool is_godmode_on;
+        bool pause_game;
+        bool standingByDoor;
+        bool tryingToOpenDoor;
 
 };
 

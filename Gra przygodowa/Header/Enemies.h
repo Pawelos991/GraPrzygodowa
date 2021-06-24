@@ -11,8 +11,8 @@ class Enemies
         void add_enemy(std::string Type,Vector2f position);
         void delete_enemy(Enemy* deleted);
         void delete_all_enemies();
-        int is_everyone_dead(); // 0 - No  1 - Yes
-        int is_it_empty(); // 0 - No 1 - Yes
+        bool is_everyone_dead();
+        bool is_it_empty();
 
         std::vector<RectangleShape*> Maintenance(RenderWindow &window, int counter, RectangleShape players_hitbox, int is_player_dead,Missiles& player_missiles, Missiles& enemies_missiles);
 

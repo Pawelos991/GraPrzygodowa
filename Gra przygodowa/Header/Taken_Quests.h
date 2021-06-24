@@ -16,10 +16,19 @@ class Taken_Quests
         void remove_all_t_quests();
         void complete_quest(int id);
         void display_active_quests(RenderWindow &window, Vector2f position);
-        void display_new_quest(RenderWindow& window);
+        void display_quest(RenderWindow& window, int id);
+        void add_t_quest_display(RenderWindow& window, int id, std::vector<Quest*>& not_taken_quests);
         Font font;
         Text text;
         void getFont();
+    private:
+        Texture new_tex;
+        Sprite new_sp;
+        Texture end_tex;
+        Sprite end_sp;
+        Sound sound;
+        SoundBuffer sb;
+        Text te;
 };
 
 #endif // TAKEN_QUESTS_H

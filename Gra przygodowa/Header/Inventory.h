@@ -13,7 +13,7 @@ class Inventory
         void delete_item_from_inventory(int ID);
         void LoadBackground();
         void Display_Inventory(RenderWindow &window);
-        int Is_there_an_item(int ID);
+        bool Is_there_an_item(int ID);
 
     private:
         Texture texture;

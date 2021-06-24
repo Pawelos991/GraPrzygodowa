@@ -40,11 +40,11 @@ void Inventory::Display_Inventory(RenderWindow &window)
     }
 }
 
-int Inventory::Is_there_an_item(int ID)
+bool Inventory::Is_there_an_item(int ID)
 {
     Item* temp=items.find_item(ID);
     if(temp!=nullptr)
-        return 1;
+        return true;
     else
-        return 0;
+        return false;
 }

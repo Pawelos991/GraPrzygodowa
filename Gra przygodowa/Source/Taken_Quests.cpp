@@ -2,6 +2,13 @@
 
 Taken_Quests::Taken_Quests()
 {
+    te.setPosition(420, 450);
+    new_tex.loadFromFile("Textures/Quests/New_quest.png");
+    new_sp.setTexture(new_tex);
+    new_sp.setPosition(400, 250);
+    sb.loadFromFile("Sounds/New_Quest.wav");
+    sound.setBuffer(sb);
+    sound.setVolume(10);
 }
 
 Taken_Quests::~Taken_Quests()
@@ -69,13 +76,26 @@ void Taken_Quests::display_active_quests(RenderWindow &window, Vector2f position
 
 }
 
-void Taken_Quests::display_new_quest(RenderWindow& window)
+void Taken_Quests::display_quest(RenderWindow& window,int id)
 {
-    Text te;
-    te.setPosition(420, 450); 
-    te.setString(taken_quests[taken_quests.size()-1]->getName());
+    int i = 0;
+    while (taken_quests[i]->getID() != id)
+        i++;
+    te.setString(taken_quests[i]->getName());
     te.setCharacterSize(80);
     te.setFillColor(Color::Black);
     te.setFont(font);
     window.draw(te);
+}
+
+void Taken_Quests::add_t_quest_display(RenderWindow &window, int id, std::vector<Quest*>& not_taken_quests)
+{
+    add_t_quest(id, not_taken_quests);
+    sound.play();
+    for (int i = 0; i < 120; i++)
+    {
+        window.draw(new_sp);
+        Taken_Quests::display_quest(window, id);
+        window.display();
+    }
 }
