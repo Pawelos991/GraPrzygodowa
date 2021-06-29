@@ -46,6 +46,14 @@ Game::Game()
     is_godmode_on = false;
     pause_game = false;
     tryingToOpenDoor = false;
+    for (int i = 0; i < 5; i++)
+    {
+        shadows[i].setFillColor(Color(249, 215, 28, 10));
+        shadows[i].setRadius((5-i)*100);
+        shadows[i].setOutlineColor(Color(0, 0, 0, 150 + (5-i)*10));
+        shadows[i].setOutlineThickness(2000-shadows[i].getRadius());
+    }
+    
 }
 
 Game::~Game()
@@ -430,8 +438,21 @@ void Game::run()
             Missile *m = p.Maintenance(window, counter,Actual_screen->walls,is_inventory_open,
             Actual_screen->enemies.Maintenance(window,counter,p.getHitbox(),p.is_player_dead(),Actual_screen->player_missiles,Actual_screen->enemies_missiles),Actual_screen->enemies_missiles);
             Actual_screen->player_missiles.add_missile(m);
+
+            if (are_quests_displayed)
+                Display_quests(window);
+
+            for (int i = 0; i < 5; i++)
+            {
+                shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 73 - ((4-i)*100), p.getHitbox().getPosition().y - 66 - ((4 - i) * 100)));
+                window.draw(shadows[i]);
+            }
+            
+
             Actual_screen->player_missiles.maintenance(window, counter);
             Actual_screen->enemies_missiles.maintenance(window,counter);
+
+            
 
             if(gameMode==3 || gameMode==4)
             {
@@ -441,9 +462,8 @@ void Game::run()
             MaintainChests(items, p);
             MaintainDoors(window, p);
         }
-        if(are_quests_displayed)
-            Display_quests(window);
-
+        
+        
         window.display();
     }
     remove_all_nt_quests();

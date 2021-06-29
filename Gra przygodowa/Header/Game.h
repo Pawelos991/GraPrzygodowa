@@ -28,6 +28,7 @@ class Game : private Screens, private Quests
         Text Arena_text;
         Sound sound;
         SoundBuffer sb;
+        CircleShape shadows[5];
         int gameMode; //0 - not chosen, 1 - Tutorial, 2 - New adventure, 3 - Arena normal, 4 - Arena godmode, 5 - Exit
         int counter; //FPS counter
         int kills; //Kills counter (arena)
