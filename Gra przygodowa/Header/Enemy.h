@@ -18,6 +18,7 @@ class Enemy : private Character
         void Follow_player(RectangleShape players_hitbox, int counter, RenderWindow& window);
         Enemy* getNext(){return next;}
         void setNext(Enemy *pnext){next=pnext;}
+        void Check_Swing(RectangleShape players_hitbox, int is_player_dead);
         RectangleShape* Swing(RectangleShape players_hitbox,int is_player_dead);
         void Range_Attack(RectangleShape players_hitbox,int is_player_dead);
         void getHit(int damage){HP-=damage;}
@@ -31,6 +32,7 @@ class Enemy : private Character
         int Swing_width;
         int Attack_counter;
         int Attack_counter_max;
+        int Attack_frame;
         int Attack_left;
         int Attack_up;
         int range; //0 - Melee  1 - Range

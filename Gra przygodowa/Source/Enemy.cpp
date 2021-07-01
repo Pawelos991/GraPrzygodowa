@@ -4,7 +4,7 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
 {
     std::ifstream fp;
     std::string Name,animation_location,death_s,attack_s,attack_hit_s;
-    int Range,maxhp,width,height,swing_frames,swing_w,attack_shift_left,attack_shift_up,Missile_Width,Missile_Height,dmg;
+    int Range,maxhp,width,height,swing_frames,swing_w,attack_shift_left,attack_shift_up,Missile_Width,Missile_Height,dmg,attack_frame;
     try
     {
         fp.open("Data/Enemy_Data.txt");
@@ -30,6 +30,7 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
         fp>>width;
         fp>>height;
         fp>>swing_frames;
+        fp>>attack_frame;
         fp>>swing_w;
         fp>>attack_shift_left;
         fp>>attack_shift_up;
@@ -59,6 +60,7 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
     Attack_counter=0;
     movement_indicator=2;
     Attack_counter_max=swing_frames;
+    Attack_frame = attack_frame;
     Swing_width=swing_w;
     Attack_left=attack_shift_left;
     Attack_up=attack_shift_up;
@@ -92,7 +94,7 @@ void Enemy::Maintance_Range(RenderWindow &window, int counter, RectangleShape pl
     {
         if(Attack_counter<Attack_counter_max)
         {
-            if(Attack_counter==Attack_counter_max/2)
+            if(Attack_counter==Attack_frame)
             {
                 if(movement_indicator==1)
                     M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(12),10,missile_width,missile_height,Attack_hit);
@@ -158,6 +160,10 @@ RectangleShape* Enemy::Maintance_Melee(RenderWindow &window, int counter, Rectan
             Attack_Sound.play();
         if(Attack_counter<Attack_counter_max)
         {
+            if (Attack_counter == Attack_frame)
+            {
+                Hitp = Swing(players_hitbox, is_player_dead);
+            }
             Attack_counter++;
             if(movement_indicator==1)
                 animations.find_animation(7)->Display_animation(window,Vector2f(hitbox.getPosition().x,hitbox.getPosition().y-Attack_up),Attack_counter);
@@ -172,10 +178,10 @@ RectangleShape* Enemy::Maintance_Melee(RenderWindow &window, int counter, Rectan
     }
     else
     {
-    Hitp=Swing(players_hitbox,is_player_dead);
-    Follow_player(players_hitbox,counter, window);
-    }
-    Display_HP(window);
+        Check_Swing(players_hitbox,is_player_dead);
+        Follow_player(players_hitbox,counter, window);
+        }
+        Display_HP(window);
     }
     else if(is_dead==1 && death_counter<=60)
     {
@@ -297,8 +303,6 @@ RectangleShape* Enemy::Swing(RectangleShape players_hitbox,int is_player_dead) /
     Hitp->setPosition(hitbox.getPosition().x+hitbox.getGlobalBounds().width,hitbox.getPosition().y);
     if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead==0)
     {
-        is_attacking=1;
-        Attack_counter=0;
         return Hitp;
     }
     else
@@ -306,8 +310,6 @@ RectangleShape* Enemy::Swing(RectangleShape players_hitbox,int is_player_dead) /
         Hitp->setPosition(hitbox.getPosition().x-Swing_width,hitbox.getPosition().y);
         if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead==0)
         {
-            is_attacking=1;
-            Attack_counter=0;
             return Hitp;
         }
     }
@@ -315,6 +317,26 @@ RectangleShape* Enemy::Swing(RectangleShape players_hitbox,int is_player_dead) /
     Hitp=nullptr;
     return Hitp;
 
+}
+
+void Enemy::Check_Swing(RectangleShape players_hitbox, int is_player_dead)
+{
+    RectangleShape* Hitp = new RectangleShape(Vector2f(3 * Swing_width, hitbox.getGlobalBounds().height));
+    Hitp->setPosition(hitbox.getPosition().x + hitbox.getGlobalBounds().width, hitbox.getPosition().y);
+    if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead == 0)
+    {
+        is_attacking = 1;
+        Attack_counter = 0;
+    }
+    else
+    {
+        Hitp->setPosition(hitbox.getPosition().x - Swing_width, hitbox.getPosition().y);
+        if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead == 0)
+        {
+            is_attacking = 1;
+            Attack_counter = 0;
+        }
+    }
 }
 
 void Enemy::Range_Attack(RectangleShape players_hitbox,int is_player_dead)

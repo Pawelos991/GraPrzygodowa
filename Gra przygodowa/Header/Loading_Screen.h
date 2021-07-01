@@ -9,12 +9,14 @@ public:
     Loading_Screen();
     virtual ~Loading_Screen();
     void start_loading(RenderWindow &window);
-    void set_loading(RenderWindow &window,float perc);
+    void set_loading(RenderWindow& window, float perc, std::string message);
 
 private:
     Texture background_texture;
     Sprite background_sprite;
     RectangleShape loading_bar;
+    Font font;
+    Text text;
 };
 
 #endif // LOADING_SCREEN_H

@@ -17,6 +17,7 @@ void Screens::load_tutorial_Screens(RenderWindow &window)
             std::cout<<"Brak pliku lub niepoprawny plik Data/Screens.txt"<<std::endl;
     }
     int i = 0;
+    loading_screen->set_loading(window, float(float(i) / 13), "Wczytywanie danych z plików");
     while(true)
     {
         if(fp.good());
@@ -25,7 +26,7 @@ void Screens::load_tutorial_Screens(RenderWindow &window)
         fp>>temp;
         tutorial_screens.push_back(new Screen(temp));
         i++;
-        loading_screen->set_loading(window, float(float(i)/13));
+        loading_screen->set_loading(window, float(float(i)/13),"Wczytywanie danych z plików");
     }
     fp.close();
     Actual_screen= tutorial_screens[0];
