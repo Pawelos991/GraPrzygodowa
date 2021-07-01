@@ -220,7 +220,7 @@ int Game::inGameMenu(RenderWindow &window,Animations &menu_animations)
     }
 }
 
-void Game::Prepare_game(Player &p)
+void Game::Prepare_game(Player &p,RenderWindow &window)
 {
     if(gameMode==1) //Tutorial
     {
@@ -230,7 +230,11 @@ void Game::Prepare_game(Player &p)
         p.set_NormalMode();
         p.getHit(40);
         p.hitbox.setPosition(Vector2f(400,400));
-        Actual_screen=screens[0];
+        Screen* sc = get_tutorial_screen_by_ID(1);
+        if(sc==nullptr)
+            load_tutorial_Screens(window);
+        sc = get_tutorial_screen_by_ID(1);
+        Actual_screen = sc;
     }
 
     else if (gameMode == 2) //New adventure
@@ -241,7 +245,11 @@ void Game::Prepare_game(Player &p)
         p.set_NormalMode();
         p.getHit(40);
         p.hitbox.setPosition(Vector2f(400, 400));
-        Actual_screen = screens[0];
+        Screen* sc = get_tutorial_screen_by_ID(7);
+        if (sc == nullptr)
+            load_tutorial_Screens(window);
+        sc = get_tutorial_screen_by_ID(7);
+        Actual_screen = sc;
     }
 
     else if(gameMode==3) //Arena normal
@@ -251,7 +259,11 @@ void Game::Prepare_game(Player &p)
         add_t_quest(2);
         p.set_NormalMode();
         p.hitbox.setPosition(Vector2f(750,420));
-        Actual_screen=screens[9];
+
+        delete_all_tutorial_screens();
+        if (arena_screen == nullptr)
+            load_arena_Screen();
+        Actual_screen = arena_screen;
     }
     else if(gameMode==4) //Arena godmode
     {
@@ -260,7 +272,11 @@ void Game::Prepare_game(Player &p)
         add_t_quest(2);
         p.set_GodMode();
         p.hitbox.setPosition(Vector2f(750,420));
-        Actual_screen=screens[9];
+
+        delete_all_tutorial_screens();
+        if (arena_screen == nullptr)
+            load_arena_Screen();
+        Actual_screen = arena_screen;
     }
 }
 
@@ -319,7 +335,7 @@ void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player 
             if (inGameMenu(window, menu_animations) == 2)
             {
                 Game_menu(window, menu_animations);
-                Prepare_game(p);
+                Prepare_game(p,window);
             }
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::M)
@@ -401,6 +417,17 @@ void Game::run()
 
     RenderWindow window(VideoMode(1600,900),"Game");
     window.setFramerateLimit(60);
+    load_loading_screen();
+
+    /*RectangleShape rec;
+    rec.setFillColor(Color::Blue);
+    rec.setPosition(Vector2f(0, 0));
+    rec.setSize(Vector2f(1600, 900));
+    window.draw(rec);
+    window.display();*/
+
+    /*loading_screen->start_loading(window);
+    loading_screen->set_loading(window, 0.5);*/
 
     sound.play();
 
@@ -409,13 +436,11 @@ void Game::run()
     Animations menu_animations;
     menu_animations.LoadAnimationsFromFile("Data/Menu_Animations.txt");
     items.LoadItemsFromFile();
-    loadScreens();
+    load_door_data();
     prepare_quests();
     
     Game_menu(window,menu_animations);
-    Prepare_game(p);
-    if (gameMode == 2)
-        p.add_item_to_Inventory(2, items);
+    Prepare_game(p,window);
 
     while(window.isOpen())
     {    
@@ -434,19 +459,26 @@ void Game::run()
             Check_screen(p.hitbox);
             Display_Screens(window);
 
+
+
             Actual_screen->npcs.Maintance(window,counter,p.getHitbox());
+
+            /*for (int i = 0; i < 5; i++)
+            {
+                shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 73 - ((4 - i) * 100), p.getHitbox().getPosition().y - 66 - ((4 - i) * 100)));
+                window.draw(shadows[i]);
+            }*/
+
             Missile *m = p.Maintenance(window, counter,Actual_screen->walls,is_inventory_open,
             Actual_screen->enemies.Maintenance(window,counter,p.getHitbox(),p.is_player_dead(),Actual_screen->player_missiles,Actual_screen->enemies_missiles),Actual_screen->enemies_missiles);
             Actual_screen->player_missiles.add_missile(m);
 
+            
+
+            
+
             if (are_quests_displayed)
                 Display_quests(window);
-
-            for (int i = 0; i < 5; i++)
-            {
-                shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 73 - ((4-i)*100), p.getHitbox().getPosition().y - 66 - ((4 - i) * 100)));
-                window.draw(shadows[i]);
-            }
             
 
             Actual_screen->player_missiles.maintenance(window, counter);

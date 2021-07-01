@@ -163,6 +163,7 @@
     <ClCompile Include="Source\Inventory.cpp" />
     <ClCompile Include="Source\Item.cpp" />
     <ClCompile Include="Source\Items.cpp" />
+    <ClCompile Include="Source\Loading_Screen.cpp" />
     <ClCompile Include="Source\Missile.cpp" />
     <ClCompile Include="Source\Missiles.cpp" />
     <ClCompile Include="Source\NC_Object.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Header\Inventory.h" />
     <ClInclude Include="Header\Item.h" />
     <ClInclude Include="Header\Items.h" />
+    <ClInclude Include="Header\Loading_Screen.h" />
     <ClInclude Include="Header\Missile.h" />
     <ClInclude Include="Header\Missiles.h" />
     <ClInclude Include="Header\NC_Object.h" />

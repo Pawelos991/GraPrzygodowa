@@ -17,15 +17,19 @@ class Screen : public Background,public C_Objects,public Characters
         int goDown(){return downID;}
         int getNumberOfConnections() { return howManyConnections; }
         void displayScreen(RenderWindow &window);
+
         Chest* check_chests(RectangleShape players_hitbox);
         Door* check_doors(RectangleShape players_hitbox);
         Missiles player_missiles;
         Missiles enemies_missiles;
-        int removed;
+        int is_removed() { return removed;}
+        bool set_removed(bool rm) { removed = rm; return true; }
         void clear_space();
 
+
+
     private:
-        int ID,leftID,rightID,upID,downID,howManyConnections;
+        int ID,leftID,rightID,upID,downID,howManyConnections,removed;
 };
 
 #endif // SCREEN_H

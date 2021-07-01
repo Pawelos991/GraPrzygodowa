@@ -85,7 +85,7 @@ Screen::Screen(std::string info_file)
         }
     }
     fp.close();
-    removed=1;
+    removed=false;
 }
 
 Screen::~Screen()
