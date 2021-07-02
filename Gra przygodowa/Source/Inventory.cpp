@@ -20,19 +20,20 @@ void Inventory::LoadBackground()
 
 void Inventory::Display_Inventory(RenderWindow &window)
 {
-    sp.setPosition(Vector2f(window.getSize().x-sp.getGlobalBounds().width-30,window.getSize().y-sp.getGlobalBounds().height-30));
+    //sp.setPosition(Vector2f(window.getSize().x-sp.getGlobalBounds().width-30,window.getSize().y-sp.getGlobalBounds().height-30));
+    sp.setPosition(Vector2f(890,470));
     int x,y;
-    x=sp.getPosition().x+12;
-    y=sp.getPosition().y+72;
+    x=902;
+    y=542;
     window.draw(sp);
     Item *temp=items.get_head();
     while(temp!=nullptr)
     {
         temp->displayItem(window,Vector2f(x,y));
         x+=70;
-        if(x>window.getSize().x-70)
+        if(x>1530)
         {
-            x=sp.getPosition().x+12;
+            x=902;
             y+=70;
         }
 

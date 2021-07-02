@@ -441,7 +441,7 @@ void Game::MaintainDoors(RenderWindow &window,Player& p)
 void Game::run()
 {
 
-    RenderWindow window(VideoMode(1600,900),"Game");
+    RenderWindow window(VideoMode(1600,900),"Gra przygodowa - Pawel Mika");
     window.setFramerateLimit(60);
     load_loading_screen();
 

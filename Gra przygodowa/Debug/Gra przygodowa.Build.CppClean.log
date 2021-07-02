@@ -1,6 +1,5 @@
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\vc142.pdb
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\vc142.idb
-c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\missiles.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\missile.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\loading_screen.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\items.obj
@@ -20,6 +19,7 @@ c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\deb
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\animation.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\adventure_creator.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\main.obj
+c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\map.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\wall.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\taken_quests.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\screens.obj
@@ -31,7 +31,7 @@ c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\deb
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\npc.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\not_taken_quests.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\nc_object.obj
-c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\map.obj
+c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\missiles.obj
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\gra przygodowa.exe
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\gra przygodowa.ilk
 c:\wszio\studia\praca inżynierska\projekt - vs\graprzygodowa\gra przygodowa\debug\gra przygodowa.pdb
