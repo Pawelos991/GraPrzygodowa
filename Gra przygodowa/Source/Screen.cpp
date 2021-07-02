@@ -1,5 +1,12 @@
 #include "Screen.h"
 
+Screen::Screen(int id)
+{
+    ID = id;
+    Vector2f pos = Vector2f(0, 0);
+    position = pos;
+}
+
 Screen::Screen(std::string info_file)
 {
     std::ifstream fp;
@@ -86,6 +93,8 @@ Screen::Screen(std::string info_file)
     }
     fp.close();
     removed=false;
+    Vector2f pos = Vector2f(0, 0);
+    position = pos;
 }
 
 Screen::~Screen()

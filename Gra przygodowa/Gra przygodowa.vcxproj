@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Source\Adventure_Creator.cpp" />
     <ClCompile Include="Source\Animation.cpp" />
     <ClCompile Include="Source\Animations.cpp" />
     <ClCompile Include="Source\Background.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Source\Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Adventure_Creator.h" />
     <ClInclude Include="Header\Animation.h" />
     <ClInclude Include="Header\Animations.h" />
     <ClInclude Include="Header\Background.h" />

@@ -65,7 +65,7 @@ void Screens::Display_Screens(RenderWindow &window)
     }
 }
 
-void Screens::Check_screen(RectangleShape &player_hitbox)
+void Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
 {
     Screen *temp=nullptr;
     int i=0;
@@ -99,6 +99,44 @@ void Screens::Check_screen(RectangleShape &player_hitbox)
             i++;
         Actual_screen= tutorial_screens[i];
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x,900));
+        return;
+    }
+}
+
+void Screens::Check_adventure_screen(RectangleShape& player_hitbox)
+{
+    Screen* temp = nullptr;
+    int i = 0;
+    if (player_hitbox.getPosition().x >= 1600)
+    {
+        while (adventure_screens[i]->getID() != Actual_screen->goRight())
+            i++;
+        Actual_screen = adventure_screens[i];
+        player_hitbox.setPosition(Vector2f(-54, player_hitbox.getPosition().y));
+        return;
+    }
+    else if (player_hitbox.getPosition().x < 0 - player_hitbox.getGlobalBounds().width)
+    {
+        while (adventure_screens[i]->getID() != Actual_screen->goLeft())
+            i++;
+        Actual_screen = adventure_screens[i];
+        player_hitbox.setPosition(Vector2f(1600, player_hitbox.getPosition().y));
+        return;
+    }
+    else if (player_hitbox.getPosition().y > 900)
+    {
+        while (adventure_screens[i]->getID() != Actual_screen->goDown())
+            i++;
+        Actual_screen = adventure_screens[i];
+        player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, -68));
+        return;
+    }
+    else if (player_hitbox.getPosition().y < 0 - player_hitbox.getGlobalBounds().height)
+    {
+        while (adventure_screens[i]->getID() != Actual_screen->goUp())
+            i++;
+        Actual_screen = adventure_screens[i];
+        player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, 900));
         return;
     }
 }

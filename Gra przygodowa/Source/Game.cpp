@@ -220,7 +220,7 @@ int Game::inGameMenu(RenderWindow &window,Animations &menu_animations)
     }
 }
 
-void Game::Prepare_game(Player &p,RenderWindow &window)
+void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &adventure_creator)
 {
     if(gameMode==1) //Tutorial
     {
@@ -230,11 +230,10 @@ void Game::Prepare_game(Player &p,RenderWindow &window)
         p.set_NormalMode();
         p.getHit(40);
         p.hitbox.setPosition(Vector2f(400,400));
-        Screen* sc = get_tutorial_screen_by_ID(1);
-        if(sc==nullptr)
-            load_tutorial_Screens(window);
-        sc = get_tutorial_screen_by_ID(1);
-        Actual_screen = sc;
+        
+        delete_all_tutorial_screens();
+        load_tutorial_Screens(window);
+        Actual_screen = get_tutorial_screen_by_ID(1);;
     }
 
     else if (gameMode == 2) //New adventure
@@ -245,11 +244,11 @@ void Game::Prepare_game(Player &p,RenderWindow &window)
         p.set_NormalMode();
         p.getHit(40);
         p.hitbox.setPosition(Vector2f(400, 400));
-        Screen* sc = get_tutorial_screen_by_ID(7);
-        if (sc == nullptr)
-            load_tutorial_Screens(window);
-        sc = get_tutorial_screen_by_ID(7);
-        Actual_screen = sc;
+        
+        delete_all_adventure_screens();
+        adventure_screens = adventure_creator.generate_adventure();
+
+        Actual_screen = adventure_screens[0];
     }
 
     else if(gameMode==3) //Arena normal
@@ -307,7 +306,7 @@ void Game::ArenaMode(RenderWindow &window)
     }
 }
 
-void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player &p)
+void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player &p, Adventure_Creator &adventure_creator)
 {
     Event event;
     while (window.pollEvent(event))
@@ -335,7 +334,7 @@ void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player 
             if (inGameMenu(window, menu_animations) == 2)
             {
                 Game_menu(window, menu_animations);
-                Prepare_game(p,window);
+                Prepare_game(p,window,adventure_creator);
             }
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::M)
@@ -419,15 +418,14 @@ void Game::run()
     window.setFramerateLimit(60);
     load_loading_screen();
 
+    Adventure_Creator adventure_creator = Adventure_Creator(loading_screen);
+
     /*RectangleShape rec;
     rec.setFillColor(Color::Blue);
     rec.setPosition(Vector2f(0, 0));
     rec.setSize(Vector2f(1600, 900));
     window.draw(rec);
     window.display();*/
-
-    /*loading_screen->start_loading(window);
-    loading_screen->set_loading(window, 0.5);*/
 
     sound.play();
 
@@ -440,11 +438,11 @@ void Game::run()
     prepare_quests();
     
     Game_menu(window,menu_animations);
-    Prepare_game(p,window);
+    Prepare_game(p,window,adventure_creator);
 
     while(window.isOpen())
     {    
-        GetKeyEvent(window,menu_animations, p);
+        GetKeyEvent(window,menu_animations, p,adventure_creator);
 
         if(pause_game==false)
         {
@@ -456,7 +454,10 @@ void Game::run()
 
             window.clear(Color::White);
 
-            Check_screen(p.hitbox);
+            if (gameMode == 1)
+                Check_tutorial_screen(p.hitbox);
+            else if (gameMode == 2)
+                Check_adventure_screen(p.hitbox);
             Display_Screens(window);
 
 
@@ -472,9 +473,6 @@ void Game::run()
             Missile *m = p.Maintenance(window, counter,Actual_screen->walls,is_inventory_open,
             Actual_screen->enemies.Maintenance(window,counter,p.getHitbox(),p.is_player_dead(),Actual_screen->player_missiles,Actual_screen->enemies_missiles),Actual_screen->enemies_missiles);
             Actual_screen->player_missiles.add_missile(m);
-
-            
-
             
 
             if (are_quests_displayed)

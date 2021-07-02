@@ -3,7 +3,7 @@
 
 #include "Quests.h"
 #include "Screens.h"
-#include "Characters.h"
+#include "Adventure_Creator.h"
 
 class Game : private Screens, private Quests
 {
@@ -14,10 +14,10 @@ class Game : private Screens, private Quests
     private:
         void Game_menu(RenderWindow &window,Animations &menu_animations);
         void Arena_pick(RenderWindow& window, Animations& menu_animations);
-        void Prepare_game(Player &p, RenderWindow& window);
+        void Prepare_game(Player &p, RenderWindow& window, Adventure_Creator& adventure_creator);
         int inGameMenu(RenderWindow &window,Animations &menu_animations); //1 - resume, 2 - go to menu
         void ArenaMode(RenderWindow& window);
-        void GetKeyEvent(RenderWindow& window, Animations& menu_animations, Player& p);
+        void GetKeyEvent(RenderWindow& window, Animations& menu_animations, Player& p, Adventure_Creator& adventure_creator);
         void MaintainChests(Items& items, Player& p);
         void MaintainDoors(RenderWindow& window, Player& p);
 
