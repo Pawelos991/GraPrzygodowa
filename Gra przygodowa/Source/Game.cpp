@@ -48,7 +48,7 @@ Game::Game()
     tryingToOpenDoor = false;
     displaySmallMap = false;
     displayBigMap = false;
-    finishedTutorial = false;
+    finishedTutorial = true; //Change later
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));

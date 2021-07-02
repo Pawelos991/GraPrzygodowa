@@ -17,8 +17,8 @@ class Map
 		Texture bigMapTex;
 		Sprite smallMapSprite;
 		Sprite bigMapSprite;
-		RectangleShape smallMapPieces[20];
-		RectangleShape bigMapPieces[20];
+		RectangleShape smallMapPieces[100];
+		RectangleShape bigMapPieces[100];
 };
 
 

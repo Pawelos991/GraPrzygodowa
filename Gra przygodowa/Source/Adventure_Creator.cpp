@@ -23,7 +23,7 @@ std::vector<Screen*> Adventure_Creator::generate_adventure(RenderWindow& window)
 
 void Adventure_Creator::generate_screens(std::vector<Screen*>& screens)
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 50; i++)
 		screens.push_back(new Screen(i+1));
 }
 
