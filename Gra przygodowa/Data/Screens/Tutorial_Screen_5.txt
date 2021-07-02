@@ -1,4 +1,4 @@
-5 6 4 0 0 2
+5 6 4 0 0 2 1 0
 Textures/Backgrounds/Background_Basic.png
 Wall Textures/Walls/TreeFullHor.png 0 0 1600 113
 Wall Textures/Walls/TreeHalfVer.png 0 0 90 400

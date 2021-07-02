@@ -1,17 +1,22 @@
 #include "Adventure_Creator.h"
 
-Adventure_Creator::Adventure_Creator(Loading_Screen* loading_screen) { this->loading_screen = loading_screen; }
+Adventure_Creator::Adventure_Creator(Loading_Screen* loading_screen) { this->loading_screen = loading_screen; adventure_phase = 1; }
 
 Adventure_Creator::~Adventure_Creator(){}
 
-std::vector<Screen*> Adventure_Creator::generate_adventure()
+std::vector<Screen*> Adventure_Creator::generate_adventure(RenderWindow& window)
 {
 	std::vector<Screen*> adventure_screens;
 
+	loading_screen->set_loading(window, float(0), "Generowanie przygody");
 	generate_screens(adventure_screens);
+	loading_screen->set_loading(window, float(float(1)/float(4)), "Generowanie przygody");
 	place_screens(adventure_screens);
+	loading_screen->set_loading(window, float(float(2)/float(4)), "Generowanie przygody");
 	generate_connections(adventure_screens);
+	loading_screen->set_loading(window, float(float(3) / float(4)), "Generowanie przygody");
 	generate_walls_castle(adventure_screens);
+	loading_screen->set_loading(window, float(1), "Generacja zakonczona");
 
 	return adventure_screens;
 }
@@ -26,14 +31,14 @@ void Adventure_Creator::place_screens(std::vector<Screen*>& screens)
 {
 	screens[0]->setPosition(Vector2f(0, 0));
 	srand(time(NULL));
-	for (int i = 0; i < screens.size(); i++)
+	for (int i = 1; i < screens.size(); i++)
 	{
 		bool next = false;
 		while (next != true)
 		{
 			int x, y;
-			x = rand() % 11 - 5;
-			y = rand() % 11 - 5;
+			x = rand() % 10 - 5;
+			y = rand() % 10 - 5;
 			Vector2f pos = Vector2f(x, y);
 			if (find_screen_by_position(pos, screens) == nullptr)
 			{
@@ -51,9 +56,9 @@ bool Adventure_Creator::any_neighbour(Vector2f pos, std::vector<Screen*>& screen
 {
 	for (int i = 0; i < screens.size(); i++)
 	{
-		if (pos.x == screens[i]->getPosition().x && (pos.y == screens[i]->getPosition().y + 1 || pos.y == screens[i]->getPosition().y - 1)) //Neighbour higher or lower
+		if (pos.x == screens[i]->getPosition().x && (pos.y == (screens[i]->getPosition().y + 1) || pos.y == (screens[i]->getPosition().y - 1))) //Neighbour higher or lower
 			return true;
-		else if (pos.y == screens[i]->getPosition().y && (pos.x == screens[i]->getPosition().x + 1 || pos.x == screens[i]->getPosition().x - 1)) //Neighbour right or left
+		else if (pos.y == screens[i]->getPosition().y && (pos.x == (screens[i]->getPosition().x + 1) || pos.x == (screens[i]->getPosition().x - 1))) //Neighbour right or left
 			return true;
 	}
 	return false;

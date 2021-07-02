@@ -3,8 +3,15 @@
 Screen::Screen(int id)
 {
     ID = id;
+    rightID = 0;
+    leftID = 0;
+    upID = 0;
+    downID = 0;
+    howManyConnections = 0;
     Vector2f pos = Vector2f(0, 0);
     position = pos;
+    removed = false;
+    visited = false;
 }
 
 Screen::Screen(std::string info_file)
@@ -20,6 +27,9 @@ Screen::Screen(std::string info_file)
     fp>>upID;
     fp>>downID;
     fp>>howManyConnections;
+    fp >> temp_1;
+    fp >> temp_2;
+    position = Vector2f(temp_1, temp_2);
     fp>>temp_string1;
     pic.loadFromFile(temp_string1);
     Bck.setTexture(pic);
@@ -93,8 +103,7 @@ Screen::Screen(std::string info_file)
     }
     fp.close();
     removed=false;
-    Vector2f pos = Vector2f(0, 0);
-    position = pos;
+    visited = false;
 }
 
 Screen::~Screen()

@@ -4,6 +4,7 @@
 #include "Quests.h"
 #include "Screens.h"
 #include "Adventure_Creator.h"
+#include "Map.h"
 
 class Game : private Screens, private Quests
 {
@@ -14,10 +15,10 @@ class Game : private Screens, private Quests
     private:
         void Game_menu(RenderWindow &window,Animations &menu_animations);
         void Arena_pick(RenderWindow& window, Animations& menu_animations);
-        void Prepare_game(Player &p, RenderWindow& window, Adventure_Creator& adventure_creator);
+        void Prepare_game(Player &p, RenderWindow& window, Adventure_Creator& adventure_creator,Map& map);
         int inGameMenu(RenderWindow &window,Animations &menu_animations); //1 - resume, 2 - go to menu
         void ArenaMode(RenderWindow& window);
-        void GetKeyEvent(RenderWindow& window, Animations& menu_animations, Player& p, Adventure_Creator& adventure_creator);
+        void GetKeyEvent(RenderWindow& window, Animations& menu_animations, Player& p, Adventure_Creator& adventure_creator, Map& map);
         void MaintainChests(Items& items, Player& p);
         void MaintainDoors(RenderWindow& window, Player& p);
 
@@ -40,6 +41,8 @@ class Game : private Screens, private Quests
         bool pause_game;
         bool standingByDoor;
         bool tryingToOpenDoor;
+        bool displaySmallMap;
+        bool displayBigMap;
 
 };
 

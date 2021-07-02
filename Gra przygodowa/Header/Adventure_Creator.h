@@ -9,7 +9,7 @@ class Adventure_Creator
 		Adventure_Creator(Loading_Screen *loading_screen);
 		~Adventure_Creator();
 		int get_adventure_phase() { return adventure_phase; }
-		std::vector<Screen*> generate_adventure();
+		std::vector<Screen*> generate_adventure(RenderWindow &window);
 
 	private:
 		Loading_Screen* loading_screen;

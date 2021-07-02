@@ -66,8 +66,12 @@ class Screen : public Background,public C_Objects,public Characters
         Vector2f getPosition() { return position; }
         void setPosition(Vector2f pos) { position = pos; }
 
+        bool isVisited() { return visited; }
+        void setVisited(bool v) { visited = v; }
+
     private:
         int ID,leftID,rightID,upID,downID,howManyConnections,removed;
+        bool visited;
         Vector2f position;
 };
 

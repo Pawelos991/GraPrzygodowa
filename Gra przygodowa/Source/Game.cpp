@@ -46,6 +46,8 @@ Game::Game()
     is_godmode_on = false;
     pause_game = false;
     tryingToOpenDoor = false;
+    displaySmallMap = false;
+    displayBigMap = false;
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));
@@ -220,7 +222,7 @@ int Game::inGameMenu(RenderWindow &window,Animations &menu_animations)
     }
 }
 
-void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &adventure_creator)
+void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &adventure_creator, Map& map)
 {
     if(gameMode==1) //Tutorial
     {
@@ -233,7 +235,9 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         
         delete_all_tutorial_screens();
         load_tutorial_Screens(window);
-        Actual_screen = get_tutorial_screen_by_ID(1);;
+        map.prepareMap(tutorial_screens);
+        Actual_screen = get_tutorial_screen_by_ID(1);
+        Actual_screen->setVisited(true);     
     }
 
     else if (gameMode == 2) //New adventure
@@ -243,12 +247,13 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         add_t_quest(1);
         p.set_NormalMode();
         p.getHit(40);
-        p.hitbox.setPosition(Vector2f(400, 400));
+        p.hitbox.setPosition(Vector2f(773, 416));
         
         delete_all_adventure_screens();
-        adventure_screens = adventure_creator.generate_adventure();
-
+        adventure_screens = adventure_creator.generate_adventure(window);
+        map.prepareMap(adventure_screens);
         Actual_screen = adventure_screens[0];
+        Actual_screen->setVisited(true);
     }
 
     else if(gameMode==3) //Arena normal
@@ -306,7 +311,7 @@ void Game::ArenaMode(RenderWindow &window)
     }
 }
 
-void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player &p, Adventure_Creator &adventure_creator)
+void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player &p, Adventure_Creator &adventure_creator, Map& map)
 {
     Event event;
     while (window.pollEvent(event))
@@ -334,10 +339,10 @@ void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player 
             if (inGameMenu(window, menu_animations) == 2)
             {
                 Game_menu(window, menu_animations);
-                Prepare_game(p,window,adventure_creator);
+                Prepare_game(p,window,adventure_creator,map);
             }
         }
-        if (event.type == Event::KeyPressed && event.key.code == Keyboard::M)
+        if (event.type == Event::KeyPressed && event.key.code == Keyboard::X)
         {
             if (is_muted == false)
             {
@@ -348,6 +353,28 @@ void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player 
             {
                 is_muted = false;
                 sound.play();
+            }
+        }
+        if (event.type == Event::KeyPressed && event.key.code == Keyboard::M)
+        {
+            if (displayBigMap == false)
+            {
+                displayBigMap = true;
+            }
+            else
+            {
+                displayBigMap = false;;
+            }
+        }
+        if (event.type == Event::KeyPressed && event.key.code == Keyboard::N)
+        {
+            if (displaySmallMap == false)
+            {
+                displaySmallMap = true;
+            }
+            else
+            {
+                displaySmallMap = false;;
             }
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::Space)
@@ -419,6 +446,7 @@ void Game::run()
     load_loading_screen();
 
     Adventure_Creator adventure_creator = Adventure_Creator(loading_screen);
+    Map map = Map();
 
     /*RectangleShape rec;
     rec.setFillColor(Color::Blue);
@@ -438,11 +466,11 @@ void Game::run()
     prepare_quests();
     
     Game_menu(window,menu_animations);
-    Prepare_game(p,window,adventure_creator);
+    Prepare_game(p,window,adventure_creator,map);
 
     while(window.isOpen())
     {    
-        GetKeyEvent(window,menu_animations, p,adventure_creator);
+        GetKeyEvent(window,menu_animations, p,adventure_creator,map);
 
         if(pause_game==false)
         {
@@ -491,6 +519,14 @@ void Game::run()
 
             MaintainChests(items, p);
             MaintainDoors(window, p);
+            if(gameMode==1 && displaySmallMap)
+                map.displaySmallMap(tutorial_screens, window, Actual_screen->getID());
+            else if(gameMode==2 && displaySmallMap)
+                map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
+            if (gameMode==1 && displayBigMap)
+                map.displayBigMap(tutorial_screens, window, Actual_screen->getID());
+            else if (gameMode == 2 && displayBigMap)
+                map.displayBigMap(adventure_screens, window, Actual_screen->getID());
         }
         
         

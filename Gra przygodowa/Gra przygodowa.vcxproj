@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Header\Map.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Source\Adventure_Creator.cpp" />
     <ClCompile Include="Source\Animation.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Header\Item.h" />
     <ClInclude Include="Header\Items.h" />
     <ClInclude Include="Header\Loading_Screen.h" />
+    <ClInclude Include="Header\Map.h" />
     <ClInclude Include="Header\Missile.h" />
     <ClInclude Include="Header\Missiles.h" />
     <ClInclude Include="Header\NC_Object.h" />
