@@ -22,8 +22,8 @@ class Screens
         void load_loading_screen();
         void load_door_data();
         void Display_Screens(RenderWindow &window);
-        void Check_tutorial_screen(RectangleShape &player_hitbox);
-        void Check_adventure_screen(RectangleShape& player_hitbox);
+        bool Check_tutorial_screen(RectangleShape &player_hitbox);
+        bool Check_adventure_screen(RectangleShape& player_hitbox);
         void delete_all_screens();
         void delete_all_tutorial_screens();
         void delete_all_adventure_screens();

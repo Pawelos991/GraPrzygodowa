@@ -15,3 +15,4 @@ Textures/Menu/Arena_Normal_1.png
 Textures/Menu/Arena_Godmode_1.png
 Textures/Menu/Arena_Normal_2.png
 Textures/Menu/Arena_Godmode_2.png
+Textures/Menu/New_adventure_3.png

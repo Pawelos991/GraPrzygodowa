@@ -65,7 +65,7 @@ void Screens::Display_Screens(RenderWindow &window)
     }
 }
 
-void Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
+bool Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
 {
     Screen *temp=nullptr;
     int i=0;
@@ -76,7 +76,6 @@ void Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
         Actual_screen= tutorial_screens[i];
         tutorial_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(-54,player_hitbox.getPosition().y));
-        return;
     }
     else if(player_hitbox.getPosition().x<0-player_hitbox.getGlobalBounds().width)
     {
@@ -85,7 +84,6 @@ void Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
         Actual_screen= tutorial_screens[i];
         tutorial_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(1600,player_hitbox.getPosition().y));
-        return;
     }
     else if(player_hitbox.getPosition().y>900)
     {
@@ -94,7 +92,6 @@ void Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
         Actual_screen= tutorial_screens[i];
         tutorial_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x,-68));
-        return;
     }
     else if(player_hitbox.getPosition().y<0-player_hitbox.getGlobalBounds().height)
     {
@@ -103,11 +100,14 @@ void Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
         Actual_screen= tutorial_screens[i];
         tutorial_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x,900));
-        return;
     }
+    if (Actual_screen->getID() == 9)
+        return true;
+    else
+        return false;
 }
 
-void Screens::Check_adventure_screen(RectangleShape& player_hitbox)
+bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
 {
     Screen* temp = nullptr;
     int i = 0;
@@ -118,7 +118,6 @@ void Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         Actual_screen = adventure_screens[i];
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(-54, player_hitbox.getPosition().y));
-        return;
     }
     else if (player_hitbox.getPosition().x < 0 - player_hitbox.getGlobalBounds().width)
     {
@@ -127,7 +126,6 @@ void Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         Actual_screen = adventure_screens[i];
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(1600, player_hitbox.getPosition().y));
-        return;
     }
     else if (player_hitbox.getPosition().y > 900)
     {
@@ -136,7 +134,6 @@ void Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         Actual_screen = adventure_screens[i];
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, -68));
-        return;
     }
     else if (player_hitbox.getPosition().y < 0 - player_hitbox.getGlobalBounds().height)
     {
@@ -145,8 +142,9 @@ void Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         Actual_screen = adventure_screens[i];
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, 900));
-        return;
     }
+    //if(Actual_screen->)
+    return false;
 }
 
 void Screens::delete_all_screens()

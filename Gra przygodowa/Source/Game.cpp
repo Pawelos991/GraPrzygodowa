@@ -48,6 +48,7 @@ Game::Game()
     tryingToOpenDoor = false;
     displaySmallMap = false;
     displayBigMap = false;
+    finishedTutorial = false;
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));
@@ -134,7 +135,13 @@ void Game::Game_menu(RenderWindow &window,Animations &menu_animations)
         if(actual_choice==i)
             menu_sprite.setTexture(menu_textures[i+4]);
         else
-            menu_sprite.setTexture(menu_textures[i]);
+        {
+            if(i==2 && finishedTutorial==false)
+                menu_sprite.setTexture(menu_textures[17]);
+            else
+                menu_sprite.setTexture(menu_textures[i]);
+        }
+            
         window.draw(menu_sprite);
         menu_sprite.move(0,191);
     }
@@ -145,9 +152,13 @@ void Game::Game_menu(RenderWindow &window,Animations &menu_animations)
         {
             if(event.type==Event::Closed)
                 window.close();
-            if(event.type==Event::KeyPressed && event.key.code==Keyboard::Up &&actual_choice>1)
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up && actual_choice == 3 && finishedTutorial == false)
+                actual_choice -= 2;
+            else if(event.type==Event::KeyPressed && event.key.code==Keyboard::Up &&actual_choice>1)
                 actual_choice--;
-            if(event.type==Event::KeyPressed && event.key.code==Keyboard::Down &&actual_choice<4)
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Down && actual_choice == 1 && finishedTutorial == false)
+                actual_choice += 2;
+            else if(event.type==Event::KeyPressed && event.key.code==Keyboard::Down &&actual_choice<4)
                 actual_choice++;
             if(event.type==Event::KeyPressed && event.key.code==Keyboard::Enter)
                 {
@@ -438,6 +449,92 @@ void Game::MaintainDoors(RenderWindow &window,Player& p)
     }
 }
 
+void Game::Tutorial(RenderWindow &window,Player &p,Items &items,Map &map)
+{
+    window.clear(Color::White);
+    bool tutorial_finish = Check_tutorial_screen(p.hitbox);
+    if (tutorial_finish)
+        finishedTutorial = true;
+
+    Display_Screens(window);
+
+    Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
+
+    Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
+        Actual_screen->enemies.Maintenance(window, counter, p.getHitbox(), p.is_player_dead(), Actual_screen->player_missiles, Actual_screen->enemies_missiles), Actual_screen->enemies_missiles);
+    Actual_screen->player_missiles.add_missile(m);
+
+    Actual_screen->player_missiles.maintenance(window, counter);
+    Actual_screen->enemies_missiles.maintenance(window, counter);
+
+    if (are_quests_displayed)
+        Display_quests(window);
+
+    MaintainChests(items, p);
+    MaintainDoors(window, p);
+    //DisplayShadows(window, p);
+    if(displayBigMap)
+        map.displayBigMap(tutorial_screens, window, Actual_screen->getID());
+    else if(displaySmallMap)
+        map.displaySmallMap(tutorial_screens, window, Actual_screen->getID());
+}
+
+void Game::Arena(RenderWindow& window, Player& p)
+{
+    window.clear(Color::White);
+    Check_adventure_screen(p.hitbox);
+
+    Display_Screens(window);
+
+    ArenaMode(window);
+
+    Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
+        Actual_screen->enemies.Maintenance(window, counter, p.getHitbox(), p.is_player_dead(), Actual_screen->player_missiles, Actual_screen->enemies_missiles), Actual_screen->enemies_missiles);
+    Actual_screen->player_missiles.add_missile(m);
+
+    Actual_screen->player_missiles.maintenance(window, counter);
+    Actual_screen->enemies_missiles.maintenance(window, counter);
+
+    if (are_quests_displayed)
+        Display_quests(window);
+}
+
+void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map)
+{
+    window.clear(Color::White);
+    Check_adventure_screen(p.hitbox);
+
+    Display_Screens(window);
+
+    Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
+
+    Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
+        Actual_screen->enemies.Maintenance(window, counter, p.getHitbox(), p.is_player_dead(), Actual_screen->player_missiles, Actual_screen->enemies_missiles), Actual_screen->enemies_missiles);
+    Actual_screen->player_missiles.add_missile(m);
+
+    Actual_screen->player_missiles.maintenance(window, counter);
+    Actual_screen->enemies_missiles.maintenance(window, counter);
+
+    if (are_quests_displayed)
+        Display_quests(window);
+
+    MaintainChests(items, p);
+    MaintainDoors(window, p);
+    if (displayBigMap)
+        map.displayBigMap(adventure_screens, window, Actual_screen->getID());
+    else if (displaySmallMap)
+        map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
+}
+
+void Game::DisplayShadows(RenderWindow& window, Player& p)
+{
+    for (int i = 0; i < 5; i++)
+    {
+        shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 73 - ((4 - i) * 100), p.getHitbox().getPosition().y - 66 - ((4 - i) * 100)));
+        window.draw(shadows[i]);
+    }
+}
+
 void Game::run()
 {
 
@@ -447,13 +544,6 @@ void Game::run()
 
     Adventure_Creator adventure_creator = Adventure_Creator(loading_screen);
     Map map = Map();
-
-    /*RectangleShape rec;
-    rec.setFillColor(Color::Blue);
-    rec.setPosition(Vector2f(0, 0));
-    rec.setSize(Vector2f(1600, 900));
-    window.draw(rec);
-    window.display();*/
 
     sound.play();
 
@@ -480,56 +570,13 @@ void Game::run()
                 counter=0;
             }
 
-            window.clear(Color::White);
-
             if (gameMode == 1)
-                Check_tutorial_screen(p.hitbox);
+                Tutorial(window, p, items, map);
             else if (gameMode == 2)
-                Check_adventure_screen(p.hitbox);
-            Display_Screens(window);
-
-
-
-            Actual_screen->npcs.Maintance(window,counter,p.getHitbox());
-
-            /*for (int i = 0; i < 5; i++)
-            {
-                shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 73 - ((4 - i) * 100), p.getHitbox().getPosition().y - 66 - ((4 - i) * 100)));
-                window.draw(shadows[i]);
-            }*/
-
-            Missile *m = p.Maintenance(window, counter,Actual_screen->walls,is_inventory_open,
-            Actual_screen->enemies.Maintenance(window,counter,p.getHitbox(),p.is_player_dead(),Actual_screen->player_missiles,Actual_screen->enemies_missiles),Actual_screen->enemies_missiles);
-            Actual_screen->player_missiles.add_missile(m);
-            
-
-            if (are_quests_displayed)
-                Display_quests(window);
-            
-
-            Actual_screen->player_missiles.maintenance(window, counter);
-            Actual_screen->enemies_missiles.maintenance(window,counter);
-
-            
-
-            if(gameMode==3 || gameMode==4)
-            {
-                ArenaMode(window);  
-            }
-
-            MaintainChests(items, p);
-            MaintainDoors(window, p);
-            if(gameMode==1 && displaySmallMap)
-                map.displaySmallMap(tutorial_screens, window, Actual_screen->getID());
-            else if(gameMode==2 && displaySmallMap)
-                map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
-            if (gameMode==1 && displayBigMap)
-                map.displayBigMap(tutorial_screens, window, Actual_screen->getID());
-            else if (gameMode == 2 && displayBigMap)
-                map.displayBigMap(adventure_screens, window, Actual_screen->getID());
-        }
-        
-        
+                Adventure(window, p, items, map);
+            else if (gameMode == 3 || gameMode == 4)
+                Arena(window, p);
+        }   
         window.display();
     }
     remove_all_nt_quests();

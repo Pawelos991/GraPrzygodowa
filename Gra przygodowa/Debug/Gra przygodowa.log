@@ -108,23 +108,23 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
           ]
   Game.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Header\Animation.h(30,33): warning C4244: "return": konwersja z "int" do "float", możliwa utrata danych
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(54,35): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(301,88): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(55,35): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(312,88): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(305,85): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(316,85): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(309,86): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(320,86): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(404,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(415,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Inventory.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Inventory.cpp(32,45): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
@@ -165,7 +165,7 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
           ]
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Missile.cpp(11,119): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
   Generowanie kodu...
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(223): warning C4715: "Game::inGameMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(234): warning C4715: "Game::inGameMenu”: niewszystkie ścieżki kodu zwracają wartość
   Trwa kompilowanie...
   Missiles.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Header\Animation.h(30,33): warning C4244: "return": konwersja z "int" do "float", możliwa utrata danych
@@ -303,9 +303,9 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
   Screens.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Header\Animation.h(30,33): warning C4244: "return": konwersja z "int" do "float", możliwa utrata danych
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Screens.cpp(60,37): warning C4805: "!=": niebezpieczne połączenie typu "int" oraz typu "bool" w operacji
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Screens.cpp(167,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Screens.cpp(177,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Screens.cpp(193,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Screens.cpp(165,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Screens.cpp(175,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Screens.cpp(191,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Taken_Quests.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Taken_Quests.cpp(59,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Wall.cpp

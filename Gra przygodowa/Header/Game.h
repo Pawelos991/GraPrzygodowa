@@ -21,8 +21,13 @@ class Game : private Screens, private Quests
         void GetKeyEvent(RenderWindow& window, Animations& menu_animations, Player& p, Adventure_Creator& adventure_creator, Map& map);
         void MaintainChests(Items& items, Player& p);
         void MaintainDoors(RenderWindow& window, Player& p);
+        void DisplayShadows(RenderWindow& window, Player& p);
 
-        Texture menu_textures[17];
+        void Tutorial(RenderWindow& window, Player& p, Items& items, Map& map);
+        void Arena(RenderWindow& window, Player& p);
+        void Adventure(RenderWindow& window, Player& p, Items& items, Map& map);
+
+        Texture menu_textures[18];
         Sprite menu_sprite;
         Sprite menu_background;
         Font Arena_font;
@@ -43,6 +48,7 @@ class Game : private Screens, private Quests
         bool tryingToOpenDoor;
         bool displaySmallMap;
         bool displayBigMap;
+        bool finishedTutorial;
 
 };
 
