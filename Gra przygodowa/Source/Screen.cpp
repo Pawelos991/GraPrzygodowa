@@ -10,7 +10,7 @@ Screen::Screen(int id)
     howManyConnections = 0;
     Vector2f pos = Vector2f(0, 0);
     position = pos;
-    removed = false;
+    removed = true;
     visited = false;
 }
 

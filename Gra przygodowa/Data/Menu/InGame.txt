@@ -1,0 +1,4 @@
+Textures/Menu/InGame/Resume_1.png
+Textures/Menu/InGame/Exit_to_menu_1.png
+Textures/Menu/InGame/Resume_2.png
+Textures/Menu/InGame/Exit_to_menu_2.png

@@ -13,28 +13,12 @@ using namespace sf;
 
 Game::Game()
 {
-    std::ifstream fp;
-    fp.open("Data/Menu_info.txt");
-    std::string location;
-    int i=0;
-    while(true)
-    {
-        if(fp.good());
-        else
-            break;
-        fp>>location;
-        menu_textures[i].loadFromFile(location);
-        i++;
-    }
-    fp.close();
     kills=-1;
     Arena_font.loadFromFile("Fonts/Arial.ttf");
     Arena_text.setFont(Arena_font);
     Arena_text.setCharacterSize(50);
 
-    sb.loadFromFile("Sounds/Firelink.wav");
-    sound.setBuffer(sb);
-    sound.setVolume(10);
+    
 
     gameMode = 0;
     standingByDoor = false;
@@ -62,175 +46,6 @@ Game::Game()
 Game::~Game()
 {
     //dtor
-}
-
-void Game::Arena_pick(RenderWindow& window, Animations& menu_animations)
-{
-    int counter = 0;
-    gameMode = 0;
-    int actual_choice = 1; //1 - arena normal, 2 - arena godmode
-    menu_background.setTexture(menu_textures[0]);
-    menu_background.setPosition(Vector2f(0, 0));
-    while (window.isOpen())
-    {
-        counter++;
-        if (counter == 61)
-        {
-            counter = 0;
-        }
-        window.clear(Color::White);
-        window.draw(menu_background);
-        menu_sprite.setPosition(Vector2f(557, 291));
-        for (int i = 1; i < 3; i++)
-        {
-            if (actual_choice == i)
-                menu_sprite.setTexture(menu_textures[i + 14]);
-            else
-                menu_sprite.setTexture(menu_textures[i + 12]);
-            window.draw(menu_sprite);
-            menu_sprite.move(0, 191);
-        }
-        menu_animations.find_animation(1)->Display_animation(window, Vector2f(50, 125), counter);
-        menu_animations.find_animation(2)->Display_animation(window, Vector2f(1000, 50), counter);
-        Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == Event::Closed)
-                window.close();
-            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up && actual_choice > 1)
-                actual_choice--;
-            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Down && actual_choice < 2)
-                actual_choice++;
-            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter)
-            {
-                gameMode = actual_choice + 2;
-
-                return;
-            }
-        }
-        window.display();
-    }
-}
-
-void Game::Game_menu(RenderWindow &window,Animations &menu_animations)
-{
-
-    int counter=0;
-    gameMode=0;
-    int actual_choice=1; //1 - tutorial, 2 - new adventure, 3- arena, 4- exit
-    menu_background.setTexture(menu_textures[0]);
-    menu_background.setPosition(Vector2f(0,0));
-    while(window.isOpen())
-    {
-        counter++;
-        if(counter==61)
-        {
-            counter=0;
-        }
-    window.clear(Color::White);
-    window.draw(menu_background);
-    menu_sprite.setPosition(Vector2f(557,100));
-    for(int i=1;i<5;i++)
-    {
-        if(actual_choice==i)
-            menu_sprite.setTexture(menu_textures[i+4]);
-        else
-        {
-            if(i==2 && finishedTutorial==false)
-                menu_sprite.setTexture(menu_textures[17]);
-            else
-                menu_sprite.setTexture(menu_textures[i]);
-        }
-            
-        window.draw(menu_sprite);
-        menu_sprite.move(0,191);
-    }
-    menu_animations.find_animation(1)->Display_animation(window,Vector2f(50,125),counter);
-    menu_animations.find_animation(2)->Display_animation(window,Vector2f(1000,50),counter);
-    Event event;
-        while(window.pollEvent(event))
-        {
-            if(event.type==Event::Closed)
-                window.close();
-            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up && actual_choice == 3 && finishedTutorial == false)
-                actual_choice -= 2;
-            else if(event.type==Event::KeyPressed && event.key.code==Keyboard::Up &&actual_choice>1)
-                actual_choice--;
-            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Down && actual_choice == 1 && finishedTutorial == false)
-                actual_choice += 2;
-            else if(event.type==Event::KeyPressed && event.key.code==Keyboard::Down &&actual_choice<4)
-                actual_choice++;
-            if(event.type==Event::KeyPressed && event.key.code==Keyboard::Enter)
-                {
-                if (actual_choice == 4)
-                    gameMode = 5;
-                else
-                    gameMode = actual_choice;
-
-                    if (gameMode == 3)
-                    {
-                        Arena_pick(window, menu_animations);
-                    }
-
-                    if (gameMode == 5)
-                    {
-                        window.close();
-                    }
-                    
-
-                    return;
-                }
-        }
-    window.display();
-    }
-
-}
-
-int Game::inGameMenu(RenderWindow &window,Animations &menu_animations)
-{
-    int counter=0;
-    int actual_choice=1; //1 - resume, 2 - exit to menu
-    menu_background.setTexture(menu_textures[0]);
-    menu_background.setPosition(Vector2f(0,0));
-    while(window.isOpen())
-    {
-        counter++;
-        if(counter==61)
-        {
-            counter=0;
-        }
-    window.clear(Color::White);
-    window.draw(menu_background);
-    menu_sprite.setPosition(Vector2f(557,200));
-    for(int i=9;i<11;i++)
-    {
-        if(actual_choice==(i-8))
-            menu_sprite.setTexture(menu_textures[i+2]);
-        else
-            menu_sprite.setTexture(menu_textures[i]);
-        window.draw(menu_sprite);
-        menu_sprite.move(0,191);
-    }
-    menu_animations.find_animation(1)->Display_animation(window,Vector2f(50,125),counter);
-    menu_animations.find_animation(2)->Display_animation(window,Vector2f(1000,50),counter);
-     Event event;
-        while(window.pollEvent(event))
-        {
-            if(event.type==Event::Closed)
-                window.close();
-            if(event.type==Event::KeyPressed && event.key.code==Keyboard::Up &&actual_choice>1)
-                actual_choice--;
-            if(event.type==Event::KeyPressed && event.key.code==Keyboard::Down &&actual_choice<2)
-                actual_choice++;
-            if(event.type==Event::KeyPressed && event.key.code==Keyboard::Escape)
-                return 1;
-            if(event.type==Event::KeyPressed && event.key.code==Keyboard::Enter)
-                {
-                    return actual_choice;
-                }
-        }
-    window.display();
-    }
 }
 
 void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &adventure_creator, Map& map)
@@ -322,7 +137,7 @@ void Game::ArenaMode(RenderWindow &window)
     }
 }
 
-void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player &p, Adventure_Creator &adventure_creator, Map& map)
+void Game::GetKeyEvent(RenderWindow& window,Player &p, Adventure_Creator &adventure_creator, Map& map)
 {
     Event event;
     while (window.pollEvent(event))
@@ -347,23 +162,10 @@ void Game::GetKeyEvent(RenderWindow& window,Animations &menu_animations, Player 
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
         {
-            if (inGameMenu(window, menu_animations) == 2)
+            if (inGameMenu(window) == 2)
             {
-                Game_menu(window, menu_animations);
+                gameMode=mainMenu(window,finishedTutorial);
                 Prepare_game(p,window,adventure_creator,map);
-            }
-        }
-        if (event.type == Event::KeyPressed && event.key.code == Keyboard::X)
-        {
-            if (is_muted == false)
-            {
-                is_muted = true;
-                sound.pause();
-            }
-            else
-            {
-                is_muted = false;
-                sound.play();
             }
         }
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::M)
@@ -537,30 +339,35 @@ void Game::DisplayShadows(RenderWindow& window, Player& p)
 
 void Game::run()
 {
-
-    RenderWindow window(VideoMode(1600,900),"Gra przygodowa - Pawel Mika");
+    RenderWindow window(VideoMode(1600, 900), "Gra przygodowa - Pawel Mika");// , Style::None/*,Style::Fullscreen*/);
     window.setFramerateLimit(60);
-    load_loading_screen();
+    Image img;
+    img.loadFromFile("Textures/Menu/Icon.png");
+    window.setIcon(img.getSize().x,img.getSize().y,img.getPixelsPtr());
+    window.setSize(Vector2u(1600, 900));
+    window.setPosition(Vector2i(0, 0));
 
     Adventure_Creator adventure_creator = Adventure_Creator(loading_screen);
     Map map = Map();
 
-    sound.play();
+    load_loading_screen();
 
     Player p;
     Items items;
-    Animations menu_animations;
-    menu_animations.LoadAnimationsFromFile("Data/Menu_Animations.txt");
     items.LoadItemsFromFile();
     load_door_data();
     prepare_quests();
     
-    Game_menu(window,menu_animations);
+    prepareMenu();
+
+    gameMode = mainMenu(window, finishedTutorial);
+    
+
     Prepare_game(p,window,adventure_creator,map);
 
     while(window.isOpen())
     {    
-        GetKeyEvent(window,menu_animations, p,adventure_creator,map);
+        GetKeyEvent(window,p,adventure_creator,map);
 
         if(pause_game==false)
         {

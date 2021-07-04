@@ -15,7 +15,8 @@ std::vector<Screen*> Adventure_Creator::generate_adventure(RenderWindow& window)
 	loading_screen->set_loading(window, float(float(2)/float(4)), "Generowanie przygody");
 	generate_connections(adventure_screens);
 	loading_screen->set_loading(window, float(float(3) / float(4)), "Generowanie przygody");
-	generate_walls_castle(adventure_screens);
+	//generate_walls_castle(adventure_screens);
+	generate_walls_valley(adventure_screens);
 	loading_screen->set_loading(window, float(1), "Generacja zakonczona");
 
 	return adventure_screens;
@@ -23,7 +24,7 @@ std::vector<Screen*> Adventure_Creator::generate_adventure(RenderWindow& window)
 
 void Adventure_Creator::generate_screens(std::vector<Screen*>& screens)
 {
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 10; i++)
 		screens.push_back(new Screen(i+1));
 }
 
@@ -198,8 +199,50 @@ void Adventure_Creator::generate_walls_castle(std::vector<Screen*>& screens)
 
 void Adventure_Creator::generate_walls_valley(std::vector<Screen*>& screens)
 {
+	std::string pathToBck = "Textures/Backgrounds/Grass.png";
+	std::string pathToFullHor = "Textures/Walls/TreeFullHor.png";
+	std::string pathToHalfHor = "Textures/Walls/TreeHalfHor.png";
+	std::string pathToFullVer = "Textures/Walls/TreeFullVer.png";
+	std::string pathToHalfVer = "Textures/Walls/TreeHalfVer.png";
+
 	for (int i = 0; i < screens.size(); i++)
 	{
+		screens[i]->setBck(pathToBck);
 
+		std::vector<Wall*> walls;
+
+		if (screens[i]->goUp() != 0) //There is a way up
+		{
+			walls.push_back(new Wall(pathToHalfHor, Vector2f(0, 0), Vector2f(760, 113)));
+			walls.push_back(new Wall(pathToHalfHor, Vector2f(840, 0), Vector2f(760, 113)));
+		}
+		else //No way up
+			walls.push_back(new Wall(pathToFullHor, Vector2f(0, 0), Vector2f(1600, 113)));
+
+		if (screens[i]->goRight() != 0) //There is a way to right
+		{
+			walls.push_back(new Wall(pathToHalfVer, Vector2f(1510, 0), Vector2f(90, 400)));
+			walls.push_back(new Wall(pathToHalfVer, Vector2f(1510, 500), Vector2f(90, 400)));
+		}
+		else //No way to right
+			walls.push_back(new Wall(pathToFullVer, Vector2f(1510, 0), Vector2f(90, 900)));
+
+		if (screens[i]->goLeft() != 0) //There is a way to left
+		{
+			walls.push_back(new Wall(pathToHalfVer, Vector2f(0, 0), Vector2f(90, 400)));
+			walls.push_back(new Wall(pathToHalfVer, Vector2f(0, 500), Vector2f(90, 400)));
+		}
+		else //No way to left
+			walls.push_back(new Wall(pathToFullVer, Vector2f(0, 0), Vector2f(90, 900)));
+
+		if (screens[i]->goDown() != 0) //There is a way down
+		{
+			walls.push_back(new Wall(pathToHalfHor, Vector2f(0, 787), Vector2f(760, 113)));
+			walls.push_back(new Wall(pathToHalfHor, Vector2f(840, 787), Vector2f(760, 113)));
+		}
+		else //No way down
+			walls.push_back(new Wall(pathToFullHor, Vector2f(0, 787), Vector2f(1600, 113)));
+
+		screens[i]->setWalls(walls);
 	}
 }

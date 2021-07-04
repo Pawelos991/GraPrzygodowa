@@ -72,7 +72,12 @@ void Missiles::Update_all_missiles(RenderWindow &window)
         }
         Missile *temp2;
         temp2=temp->getNext();
-        if(temp->GetPosition().x<0-temp->getHitbox().getSize().x||temp->GetPosition().x>window.getSize().x+temp->getHitbox().getSize().x||temp->GetPosition().y<0-temp->getHitbox().getSize().y||temp->GetPosition().y>window.getSize().y+temp->getHitbox().getSize().y)
+        /*if(temp->GetPosition().x<0-temp->getHitbox().getSize().x||temp->GetPosition().x>window.getSize().x+temp->getHitbox().getSize().x||temp->GetPosition().y<0-temp->getHitbox().getSize().y||temp->GetPosition().y>window.getSize().y+temp->getHitbox().getSize().y)
+        {
+            delete_missile(temp);
+        }*/
+
+        if (temp->GetPosition().x < 0 - temp->getHitbox().getSize().x || temp->GetPosition().x>1600 || temp->GetPosition().y < 0 - temp->getHitbox().getSize().y || temp->GetPosition().y>900)
         {
             delete_missile(temp);
         }
