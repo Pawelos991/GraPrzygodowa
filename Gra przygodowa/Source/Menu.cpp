@@ -4,7 +4,7 @@ void Menu::prepareMenu()
 {
     counter = 0;
     resolution = Vector2u(1600, 900);
-    isFullscreen = false;
+    isFullscreen = false; //To change later
     background_texture.loadFromFile("Textures/Backgrounds/Grass.png");
     menu_background.setTexture(background_texture);
     menu_background.setPosition(Vector2f(0, 0));
@@ -17,6 +17,7 @@ void Menu::prepareMenu()
     loadResolutionMenuTextures();
     loadGameModeMenuTextures();
     loadConfirmMenuTextures();
+    loadAdventureMenuTextures();
 
     musicBuffer.loadFromFile("Sounds/Firelink.wav");
     music.setBuffer(musicBuffer);
@@ -151,7 +152,25 @@ void Menu::loadConfirmMenuTextures()
     fp.close();
 }
 
-int Menu::mainMenu(RenderWindow& window,bool finishedTutorial)
+void Menu::loadAdventureMenuTextures()
+{
+    std::ifstream fp;
+    fp.open("Data/Menu/Adventure.txt");
+    std::string location;
+    int i = 0;
+    while (true)
+    {
+        if (fp.good());
+        else
+            break;
+        fp >> location;
+        adventure_menu_textures[i].loadFromFile(location);
+        i++;
+    }
+    fp.close();
+}
+
+int Menu::mainMenu(RenderWindow& window,bool finishedTutorial, bool adventureStarted)
 {
     int actual_choice = 1; //1 - Play, 2 - Options, 3- Exit
     bool ready=false;
@@ -192,7 +211,7 @@ int Menu::mainMenu(RenderWindow& window,bool finishedTutorial)
                 {
                     if (actual_choice == 1)
                     {
-                        actual_choice = gameModeMenu(window, finishedTutorial);
+                        actual_choice = gameModeMenu(window, finishedTutorial,adventureStarted);
                         if (actual_choice != 0)
                             return actual_choice;
                         else
@@ -217,7 +236,7 @@ int Menu::mainMenu(RenderWindow& window,bool finishedTutorial)
     }
 }
 
-int Menu::gameModeMenu(RenderWindow& window, bool finishedTutorial)
+int Menu::gameModeMenu(RenderWindow& window, bool finishedTutorial, bool adventureStarted)
 {
     int actual_choice = 1; //1 - Tutorial, 2 - New adventure, 3 - Arena, 4 - Go Back
     bool ready = false;
@@ -265,9 +284,17 @@ int Menu::gameModeMenu(RenderWindow& window, bool finishedTutorial)
                     actual_choice++;
                 if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter)
                 {
-                    if (actual_choice < 3)
+                    if (actual_choice == 1)
+                        return 1;
+                    else if (actual_choice == 2)
                     {
-                        ready = true;
+                        actual_choice = adventureMenu(window, adventureStarted);
+                        if (actual_choice == 1)
+                            return 2;
+                        else if (actual_choice == 2)
+                            return 3;
+                        else
+                            actual_choice = 1;
                     }
                     else if (actual_choice == 3)
                     {
@@ -275,7 +302,7 @@ int Menu::gameModeMenu(RenderWindow& window, bool finishedTutorial)
                         if (actual_choice != 3)
                         {
                             ready = true;
-                            actual_choice += 2;
+                            actual_choice += 3;
                         }
                         else
                             actual_choice = 1;
@@ -403,7 +430,6 @@ void Menu::optionsMenu(RenderWindow& window)
 int Menu::arenaMenu(RenderWindow& window)
 {
     int actual_choice = 1; //1 - Arena(normal), 2 - Arena(Godmode), 3- Go Back
-    bool ready = false;
     while (window.isOpen())
     {
         counter++;
@@ -592,5 +618,54 @@ void Menu::resolutionMenu(RenderWindow& window)
             }
             window.display();
         }
+    }
+}
+
+int Menu::adventureMenu(RenderWindow& window, bool adventureStarted)
+{
+    int actual_choice = 2; //1 - Continue, 2 - New Adventure, 3- Go Back
+    if (adventureStarted)
+        actual_choice = 1;
+    while (window.isOpen())
+    {
+        counter++;
+        if (counter == 61)
+        {
+            counter = 0;
+        }
+        window.clear(Color::White);
+        window.draw(menu_background);
+        menu_sprite.setPosition(Vector2f(557, 177));
+        for (int i = 1; i < 4; i++)
+        {
+            if (actual_choice == i)
+                menu_sprite.setTexture(adventure_menu_textures[i + 2]);
+            else if(i==1 && adventureStarted==false)
+                menu_sprite.setTexture(adventure_menu_textures[6]);
+            else
+                menu_sprite.setTexture(adventure_menu_textures[i - 1]);
+
+            window.draw(menu_sprite);
+            menu_sprite.move(0, 191);
+        }
+        menu_animations.find_animation(1)->Display_animation(window, Vector2f(50, 125), counter);
+        menu_animations.find_animation(2)->Display_animation(window, Vector2f(1000, 50), counter);
+        Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == Event::Closed)
+                window.close();
+            else if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up && actual_choice == 2 && adventureStarted==true)
+                actual_choice--;
+            else if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up && actual_choice > 2)
+                actual_choice--;
+            else if (event.type == Event::KeyPressed && event.key.code == Keyboard::Down && actual_choice < 3)
+                actual_choice++;
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter)
+            {
+                return actual_choice;
+            }
+        }
+        window.display();
     }
 }

@@ -33,6 +33,7 @@ Game::Game()
     displaySmallMap = false;
     displayBigMap = false;
     finishedTutorial = true; //Change later
+    adventureStarted = false; //Change later
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));
@@ -66,7 +67,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         Actual_screen->setVisited(true);     
     }
 
-    else if (gameMode == 2) //New adventure
+    else if (gameMode == 2) //Continue adventure
     {
         p.Respawn();
         remove_all_t_quests();
@@ -82,7 +83,24 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         Actual_screen->setVisited(true);
     }
 
-    else if(gameMode==3) //Arena normal
+    else if (gameMode == 3) //New adventure 
+    {
+        p.Respawn();
+        remove_all_t_quests();
+        add_t_quest(1);
+        p.set_NormalMode();
+        p.getHit(40);
+        p.hitbox.setPosition(Vector2f(773, 416));
+
+        delete_all_adventure_screens();
+        adventure_screens = adventure_creator.generate_adventure(window);
+        map.prepareMap(adventure_screens);
+        Actual_screen = adventure_screens[0];
+        Actual_screen->setVisited(true);
+        adventureStarted = true;
+    }
+
+    else if(gameMode==4) //Arena normal
     {
         p.Respawn();
         remove_all_t_quests();
@@ -95,7 +113,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
             load_arena_Screen();
         Actual_screen = arena_screen;
     }
-    else if(gameMode==4) //Arena godmode
+    else if(gameMode==5) //Arena godmode
     {
         p.Respawn();
         remove_all_t_quests();
@@ -164,7 +182,7 @@ void Game::GetKeyEvent(RenderWindow& window,Player &p, Adventure_Creator &advent
         {
             if (inGameMenu(window) == 2)
             {
-                gameMode=mainMenu(window,finishedTutorial);
+                gameMode=mainMenu(window,finishedTutorial,adventureStarted);
                 Prepare_game(p,window,adventure_creator,map);
             }
         }
@@ -339,19 +357,16 @@ void Game::DisplayShadows(RenderWindow& window, Player& p)
 
 void Game::run()
 {
-    RenderWindow window(VideoMode(1600, 900), "Gra przygodowa - Pawel Mika");// , Style::None/*,Style::Fullscreen*/);
+    RenderWindow window(VideoMode(1600, 900), "Gra przygodowa - Pawel Mika");
     window.setFramerateLimit(60);
     Image img;
     img.loadFromFile("Textures/Menu/Icon.png");
     window.setIcon(img.getSize().x,img.getSize().y,img.getPixelsPtr());
-    window.setSize(Vector2u(1600, 900));
     window.setPosition(Vector2i(0, 0));
 
+    load_loading_screen();
     Adventure_Creator adventure_creator = Adventure_Creator(loading_screen);
     Map map = Map();
-
-    load_loading_screen();
-
     Player p;
     Items items;
     items.LoadItemsFromFile();
@@ -360,7 +375,7 @@ void Game::run()
     
     prepareMenu();
 
-    gameMode = mainMenu(window, finishedTutorial);
+    gameMode = mainMenu(window, finishedTutorial,adventureStarted);
     
 
     Prepare_game(p,window,adventure_creator,map);
@@ -379,9 +394,9 @@ void Game::run()
 
             if (gameMode == 1)
                 Tutorial(window, p, items, map);
-            else if (gameMode == 2)
+            else if (gameMode == 2 || gameMode == 3)
                 Adventure(window, p, items, map);
-            else if (gameMode == 3 || gameMode == 4)
+            else if (gameMode == 4 || gameMode == 5)
                 Arena(window, p);
         }   
         window.display();

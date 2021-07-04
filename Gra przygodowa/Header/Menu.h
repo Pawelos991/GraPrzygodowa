@@ -15,14 +15,16 @@ class Menu
 		void loadOptionsMenuTextures();
 		void loadResolutionMenuTextures();
 		void loadConfirmMenuTextures();
+		void loadAdventureMenuTextures();
 
-		int mainMenu(RenderWindow& window, bool finishedTutorial);
-		int gameModeMenu(RenderWindow& window, bool finishedTutorial);
+		int mainMenu(RenderWindow& window, bool finishedTutorial, bool adventureStarted);
+		int gameModeMenu(RenderWindow& window, bool finishedTutorial, bool adventureStarted);
 		void optionsMenu(RenderWindow& window);
 		int confirmMenu(RenderWindow& window);
 		void resolutionMenu(RenderWindow& window);
 		int arenaMenu(RenderWindow& window);
 		int inGameMenu(RenderWindow& window);
+		int adventureMenu(RenderWindow& window, bool adventureStarted);
 
 
 
@@ -37,6 +39,7 @@ class Menu
 		Texture options_menu_textures[9];
 		Texture resolution_menu_textures[8];
 		Texture confirm_menu_textures[6];
+		Texture adventure_menu_textures[7];
 
 		Sprite menu_sprite;
 		Sprite menu_background;

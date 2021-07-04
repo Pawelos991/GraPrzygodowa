@@ -42,6 +42,7 @@ class Game : private Screens, private Quests, private Menu
         bool displaySmallMap;
         bool displayBigMap;
         bool finishedTutorial;
+        bool adventureStarted;
 
 };
 
