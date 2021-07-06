@@ -238,7 +238,7 @@ int Menu::mainMenu(RenderWindow& window,bool finishedTutorial, bool adventureSta
 
 int Menu::gameModeMenu(RenderWindow& window, bool finishedTutorial, bool adventureStarted)
 {
-    int actual_choice = 1; //1 - Tutorial, 2 - New adventure, 3 - Arena, 4 - Go Back
+    int actual_choice = 1; //1 - Tutorial, 2 - Adventure, 3 - Arena, 4 - Go Back
     bool ready = false;
     while (window.isOpen())
     {

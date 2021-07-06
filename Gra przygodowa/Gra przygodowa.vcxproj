@@ -174,6 +174,7 @@
     <ClCompile Include="Source\NPC.cpp" />
     <ClCompile Include="Source\NPCs.cpp" />
     <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\Portal.cpp" />
     <ClCompile Include="Source\Quest.cpp" />
     <ClCompile Include="Source\Quests.cpp" />
     <ClCompile Include="Source\Screen.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="Header\NPC.h" />
     <ClInclude Include="Header\NPCs.h" />
     <ClInclude Include="Header\Player.h" />
+    <ClInclude Include="Header\Portal.h" />
     <ClInclude Include="Header\Quest.h" />
     <ClInclude Include="Header\Quests.h" />
     <ClInclude Include="Header\Screen.h" />

@@ -116,6 +116,7 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         while (adventure_screens[i]->getID() != Actual_screen->goRight())
             i++;
         Actual_screen = adventure_screens[i];
+        Actual_adventure_screen = Actual_screen;
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(-54, player_hitbox.getPosition().y));
     }
@@ -124,6 +125,7 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         while (adventure_screens[i]->getID() != Actual_screen->goLeft())
             i++;
         Actual_screen = adventure_screens[i];
+        Actual_adventure_screen = Actual_screen;
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(1600, player_hitbox.getPosition().y));
     }
@@ -132,6 +134,7 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         while (adventure_screens[i]->getID() != Actual_screen->goDown())
             i++;
         Actual_screen = adventure_screens[i];
+        Actual_adventure_screen = Actual_screen;
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, -68));
     }
@@ -140,10 +143,10 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         while (adventure_screens[i]->getID() != Actual_screen->goUp())
             i++;
         Actual_screen = adventure_screens[i];
+        Actual_adventure_screen = Actual_screen;
         adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, 900));
     }
-    //if(Actual_screen->)
     return false;
 }
 

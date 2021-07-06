@@ -19,7 +19,8 @@ Game::Game()
     Arena_text.setCharacterSize(50);
 
     
-
+    Actual_screen = nullptr;
+    Actual_adventure_screen = nullptr;
     gameMode = 0;
     standingByDoor = false;
     counter = 0;
@@ -33,7 +34,7 @@ Game::Game()
     displaySmallMap = false;
     displayBigMap = false;
     finishedTutorial = true; //Change later
-    adventureStarted = false; //Change later
+    adventureStarted = false;
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));
@@ -73,14 +74,10 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         remove_all_t_quests();
         add_t_quest(1);
         p.set_NormalMode();
-        p.getHit(40);
         p.hitbox.setPosition(Vector2f(773, 416));
-        
-        delete_all_adventure_screens();
-        adventure_screens = adventure_creator.generate_adventure(window);
+
         map.prepareMap(adventure_screens);
-        Actual_screen = adventure_screens[0];
-        Actual_screen->setVisited(true);
+        Actual_screen = Actual_adventure_screen;
     }
 
     else if (gameMode == 3) //New adventure 
@@ -89,7 +86,6 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         remove_all_t_quests();
         add_t_quest(1);
         p.set_NormalMode();
-        p.getHit(40);
         p.hitbox.setPosition(Vector2f(773, 416));
 
         delete_all_adventure_screens();
@@ -97,6 +93,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         map.prepareMap(adventure_screens);
         Actual_screen = adventure_screens[0];
         Actual_screen->setVisited(true);
+        Actual_adventure_screen = Actual_screen;
         adventureStarted = true;
     }
 
@@ -278,6 +275,11 @@ void Game::Tutorial(RenderWindow &window,Player &p,Items &items,Map &map)
 
     Display_Screens(window);
 
+    if (Actual_screen->check_portal(p.getHitbox()))
+    {
+        Actual_screen->getPortal()->playSound();
+    }
+
     Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
 
     Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
@@ -325,6 +327,11 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map)
     Check_adventure_screen(p.hitbox);
 
     Display_Screens(window);
+
+    if (Actual_screen->check_portal(p.getHitbox()))
+    {
+        //Actual_screen->getPortal()->playSound();
+    }
 
     Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
 

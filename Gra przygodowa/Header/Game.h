@@ -28,7 +28,7 @@ class Game : private Screens, private Quests, private Menu
         Font Arena_font;
         Text Arena_text;
         CircleShape shadows[5];
-        int gameMode; //0 - not chosen, 1 - Tutorial, 2 - New adventure, 3 - Arena normal, 4 - Arena godmode, 5 - Exit
+        int gameMode; //0 - not chosen, 1 - Tutorial, 2 - Continue adventure, 3 - New adventure, 4 - Arena normal, 5 - Arena godmode
         int counter; //FPS counter
         int kills; //Kills counter (arena)
         int movementindicator; // 1-right 2-left

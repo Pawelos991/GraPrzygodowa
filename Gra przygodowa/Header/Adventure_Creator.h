@@ -8,12 +8,13 @@ class Adventure_Creator
 	public:
 		Adventure_Creator(Loading_Screen *loading_screen);
 		~Adventure_Creator();
-		int get_adventure_phase() { return adventure_phase; }
+		int get_floor_type() { return floor_type; }
 		std::vector<Screen*> generate_adventure(RenderWindow &window);
 
 	private:
 		Loading_Screen* loading_screen;
-		int adventure_phase;
+		int floor_type;
+		Portal* portal;
 		void generate_screens(std::vector<Screen*>& screens);
 		void place_screens(std::vector<Screen*>& screens);
 		void generate_connections(std::vector<Screen*>& screens);
@@ -24,6 +25,12 @@ class Adventure_Creator
 		void generate_walls_dungeons(std::vector<Screen*>& screens);
 		void generate_walls_castle(std::vector<Screen*>& screens);
 		void generate_walls_valley(std::vector<Screen*>& screens);
+		float getDistance(Vector2f pos1, Vector2f pos2);
+		std::vector<Screen*> find_two_furthest_screens(std::vector<Screen*>&screens);
+		int generate_door(std::vector<Screen*>& screens, int ID);
+		void generate_chests(std::vector<Screen*>& screens, int ScreenID, int keyID);
+		void generate_enemies(std::vector<Screen*>& screens);
+		void generate_NPCs(std::vector<Screen*>& screens);
 
 };
 

@@ -1,6 +1,11 @@
 #include "Adventure_Creator.h"
 
-Adventure_Creator::Adventure_Creator(Loading_Screen* loading_screen) { this->loading_screen = loading_screen; adventure_phase = 1; }
+Adventure_Creator::Adventure_Creator(Loading_Screen* loading_screen) 
+{ 
+	this->loading_screen = loading_screen; 
+	floor_type = 1; 
+	portal = new Portal();
+}
 
 Adventure_Creator::~Adventure_Creator(){}
 
@@ -18,6 +23,11 @@ std::vector<Screen*> Adventure_Creator::generate_adventure(RenderWindow& window)
 	//generate_walls_castle(adventure_screens);
 	generate_walls_valley(adventure_screens);
 	loading_screen->set_loading(window, float(1), "Generacja zakonczona");
+
+	std::vector<Screen*> furthest_two = find_two_furthest_screens(adventure_screens);
+	furthest_two[0]->setPortal(portal);
+	int keyID = generate_door(adventure_screens, furthest_two[0]->getID());
+	generate_chests(adventure_screens, furthest_two[1]->getID(), keyID);
 
 	return adventure_screens;
 }
@@ -245,4 +255,101 @@ void Adventure_Creator::generate_walls_valley(std::vector<Screen*>& screens)
 
 		screens[i]->setWalls(walls);
 	}
+}
+
+float Adventure_Creator::getDistance(Vector2f pos1, Vector2f pos2)
+{
+	return sqrt(((pos1.x - pos2.x) * (pos1.x - pos2.x)) + ((pos1.y - pos2.y) * (pos1.y - pos2.y)));
+}
+
+std::vector<Screen*> Adventure_Creator::find_two_furthest_screens(std::vector<Screen*>& screens)
+{
+	Screen* furthest_screens[2];
+	furthest_screens[0] = screens[0];
+	furthest_screens[1] = screens[1];
+	for (int i = 0; i < screens.size()-1;i++)
+	{
+		for (int j = i+1; j < screens.size(); j++)
+		{
+			if (getDistance(furthest_screens[0]->getPosition(), furthest_screens[1]->getPosition()) < getDistance(screens[i]->getPosition(), screens[j]->getPosition()))
+			{
+				furthest_screens[0] = screens[i];
+				furthest_screens[1] = screens[j];
+			}
+		}
+	}
+	std::vector<Screen*> furthest;
+	furthest.push_back(furthest_screens[0]);
+	furthest.push_back(furthest_screens[1]);
+	return furthest;
+}
+
+int Adventure_Creator::generate_door(std::vector<Screen*>& screens, int ID)
+{
+	Screen* last = find_screen_by_ID(ID, screens);
+	Screen* temp = nullptr;
+	Wall* wall;
+	Door* door;
+
+	int keyID = rand() % 2 + 2;
+
+	if (last->goLeft() != 0)
+	{
+		temp = find_screen_by_ID(last->goLeft(), screens);
+		wall = new Wall("Textures/Walls/Blank.png", Vector2f(1532,390), Vector2f(60,110));
+		door = new Door("Textures/Door/Door.png", wall, keyID);
+		temp->walls.push_back(wall);
+		temp->doors.push_back(door);
+	}
+
+	if (last->goRight() != 0)
+	{
+		temp = find_screen_by_ID(last->goRight(), screens);
+		wall = new Wall("Textures/Walls/Blank.png", Vector2f(0, 390), Vector2f(60, 110));
+		door = new Door("Textures/Door/Door.png", wall, keyID);
+		temp->walls.push_back(wall);
+		temp->doors.push_back(door);
+	}
+
+	if (last->goUp() != 0)
+	{
+		temp = find_screen_by_ID(last->goUp(), screens);
+		wall = new Wall("Textures/Walls/Blank.png", Vector2f(770, 790), Vector2f(60, 110));
+		door = new Door("Textures/Door/Door.png", wall, keyID);
+		temp->walls.push_back(wall);
+		temp->doors.push_back(door);
+	}
+
+	if (last->goDown() != 0)
+	{
+		temp = find_screen_by_ID(last->goDown(), screens);
+		wall = new Wall("Textures/Walls/Blank.png", Vector2f(770, 0), Vector2f(60, 110));
+		door = new Door("Textures/Door/Door.png", wall, keyID);
+		temp->walls.push_back(wall);
+		temp->doors.push_back(door);
+	}
+
+	return keyID;
+}
+
+void Adventure_Creator::generate_chests(std::vector<Screen*>& screens, int ScreenID, int keyID)
+{
+	std::vector<int> item_ids;
+	item_ids.push_back(keyID);
+	int howManyPotions = rand() % 3 + 1;
+	for(int i=0;i<howManyPotions;i++)
+		item_ids.push_back(1);
+	Chest* chest = new Chest("Textures/Chests/Chest_closed.png", "Textures/Chests/Chest_open.png", Vector2f(772, 422), Vector2f(56, 56), item_ids);
+	Screen* temp = find_screen_by_ID(ScreenID, screens);
+	temp->chests.push_back(chest);
+}
+
+void Adventure_Creator::generate_enemies(std::vector<Screen*>& screens)
+{
+
+}
+
+void Adventure_Creator::generate_NPCs(std::vector<Screen*>& screens)
+{
+
 }

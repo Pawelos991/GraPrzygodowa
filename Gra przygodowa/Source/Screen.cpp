@@ -12,6 +12,7 @@ Screen::Screen(int id)
     position = pos;
     removed = true;
     visited = false;
+    portal = nullptr;
 }
 
 Screen::Screen(std::string info_file)
@@ -104,6 +105,7 @@ Screen::Screen(std::string info_file)
     fp.close();
     removed=false;
     visited = false;
+    portal = nullptr;
 }
 
 Screen::~Screen()
@@ -125,6 +127,8 @@ void Screen::displayScreen(RenderWindow &window)
 {
     displayBackground(window);
     display_CO(window,enemies.is_everyone_dead());
+    if (portal != nullptr)
+        portal->displayPortal(window);
 }
 
 Chest* Screen::check_chests(RectangleShape players_hitbox)
@@ -160,4 +164,14 @@ Door* Screen::check_doors(RectangleShape players_hitbox)
     {
         return nullptr;
     }
+}
+
+bool Screen::check_portal(RectangleShape players_hitbox)
+{
+    if (portal != nullptr)
+    {
+        if (portal->doesPlayerCollide(players_hitbox))
+            return true;
+    }
+    return false;
 }

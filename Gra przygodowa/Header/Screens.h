@@ -8,7 +8,8 @@ class Screens
     public:
 
     protected:
-        Screen *Actual_screen=nullptr;
+        Screen *Actual_screen;
+        Screen *Actual_adventure_screen;
 
         Screen* arena_screen = nullptr;
         std::vector<Screen*> tutorial_screens;

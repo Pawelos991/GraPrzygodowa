@@ -4,6 +4,7 @@
 #include "Background.h"
 #include "C_Objects.h"
 #include "Characters.h"
+#include "Portal.h"
 
 class Screen : public Background,public C_Objects,public Characters
 {
@@ -16,6 +17,7 @@ class Screen : public Background,public C_Objects,public Characters
 
         Chest* check_chests(RectangleShape players_hitbox);
         Door* check_doors(RectangleShape players_hitbox);
+        bool check_portal(RectangleShape players_hitbox);
         Missiles player_missiles;
         Missiles enemies_missiles;
         void clear_space();
@@ -69,10 +71,14 @@ class Screen : public Background,public C_Objects,public Characters
         bool isVisited() { return visited; }
         void setVisited(bool v) { visited = v; }
 
+        Portal* getPortal() { return portal; }
+        void setPortal(Portal* p) { portal = p; }
+
     private:
         int ID,leftID,rightID,upID,downID,howManyConnections,removed;
         bool visited;
         Vector2f position;
+        Portal* portal;
 };
 
 #endif // SCREEN_H
