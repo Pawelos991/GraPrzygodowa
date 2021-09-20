@@ -20,10 +20,11 @@ class Game : private Screens, private Quests, private Menu
         void MaintainChests(Items& items, Player& p);
         void MaintainDoors(RenderWindow& window, Player& p);
         void DisplayShadows(RenderWindow& window, Player& p);
+        void NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator);
 
         void Tutorial(RenderWindow& window, Player& p, Items& items, Map& map);
         void Arena(RenderWindow& window, Player& p);
-        void Adventure(RenderWindow& window, Player& p, Items& items, Map& map);
+        void Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Adventure_Creator& adventure_creator);
 
         Font Arena_font;
         Text Arena_text;

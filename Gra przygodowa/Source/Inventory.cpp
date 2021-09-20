@@ -12,6 +12,11 @@ void Inventory::delete_item_from_inventory(int ID)
     items.delete_item(ID);
 }
 
+void Inventory::clear_items()
+{
+    items.delete_all_items();
+}
+
 void Inventory::LoadBackground()
 {
     texture.loadFromFile("Textures/Inventory/Background.png");
@@ -31,7 +36,7 @@ void Inventory::Display_Inventory(RenderWindow &window)
     {
         temp->displayItem(window,Vector2f(x,y));
         x+=70;
-        if(x>1530)
+        if(x>1532)
         {
             x=902;
             y+=70;

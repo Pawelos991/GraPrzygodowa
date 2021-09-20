@@ -11,6 +11,7 @@ class Inventory
         Items items;
         void add_item_to_inventory(int ID, Items &all_items);
         void delete_item_from_inventory(int ID);
+        void clear_items();
         void LoadBackground();
         void Display_Inventory(RenderWindow &window);
         bool Is_there_an_item(int ID);

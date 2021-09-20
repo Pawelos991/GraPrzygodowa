@@ -19,6 +19,7 @@ class Player : private Character
         void Check_collision_with_enviornment(RenderWindow &window, std::vector<Wall*>& walls);
         void add_item_to_Inventory(int ID, Items &all_items);
         void remove_item_from_Inventory(int ID);
+        void clear_Inventory();
         bool is_item_in_Inventory(int ID);
         void Display_inventory(RenderWindow &window,int open);
         void Check_enemies_missiles(Missiles& enemies_missiles);

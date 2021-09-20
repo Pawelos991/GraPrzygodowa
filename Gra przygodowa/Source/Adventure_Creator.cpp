@@ -3,25 +3,49 @@
 Adventure_Creator::Adventure_Creator(Loading_Screen* loading_screen) 
 { 
 	this->loading_screen = loading_screen; 
-	floor_type = 1; 
+	floor_type = 0;
+	level = 1;
 	portal = new Portal();
+	last_floor_type = 0;
+	srand(time(NULL));
 }
 
 Adventure_Creator::~Adventure_Creator(){}
 
-std::vector<Screen*> Adventure_Creator::generate_adventure(RenderWindow& window)
+std::vector<Screen*> Adventure_Creator::generate_level(RenderWindow& window)
 {
 	std::vector<Screen*> adventure_screens;
 
-	loading_screen->set_loading(window, float(0), "Generowanie przygody");
-	generate_screens(adventure_screens);
-	loading_screen->set_loading(window, float(float(1)/float(4)), "Generowanie przygody");
+	while (floor_type == last_floor_type)
+		floor_type = rand() % 4 + 1;
+	last_floor_type = floor_type;
+
+	int screens_number = 5 + level * 3;
+
+	loading_screen->set_loading(window, float(0), "Generowanie poziomu");
+	generate_screens(adventure_screens,screens_number);
+	loading_screen->set_loading(window, float(float(1)/float(4)), "Generowanie poziomu");
 	place_screens(adventure_screens);
-	loading_screen->set_loading(window, float(float(2)/float(4)), "Generowanie przygody");
+	loading_screen->set_loading(window, float(float(2)/float(4)), "Generowanie poziomu");
 	generate_connections(adventure_screens);
-	loading_screen->set_loading(window, float(float(3) / float(4)), "Generowanie przygody");
-	//generate_walls_castle(adventure_screens);
-	generate_walls_valley(adventure_screens);
+	loading_screen->set_loading(window, float(float(3) / float(4)), "Generowanie poziomu");
+
+	switch (floor_type)
+	{
+		case(1):
+			generate_walls_valley(adventure_screens);
+			break;
+		case(2):
+			generate_walls_castle(adventure_screens);
+			break;
+		case(3):
+			generate_walls_dungeons(adventure_screens);
+			break;
+		case(4):
+			generate_walls_desert(adventure_screens);
+			break;
+	}
+	
 	loading_screen->set_loading(window, float(1), "Generacja zakonczona");
 
 	std::vector<Screen*> furthest_two = find_two_furthest_screens(adventure_screens);
@@ -32,9 +56,22 @@ std::vector<Screen*> Adventure_Creator::generate_adventure(RenderWindow& window)
 	return adventure_screens;
 }
 
-void Adventure_Creator::generate_screens(std::vector<Screen*>& screens)
+std::vector<Screen*> Adventure_Creator::next_lvl(RenderWindow& window)
 {
-	for (int i = 0; i < 10; i++)
+	level++;
+	return generate_level(window);
+}
+
+void Adventure_Creator::reset_creator()
+{
+	level = 1;
+	floor_type = 1;
+	last_floor_type = 0;
+}
+
+void Adventure_Creator::generate_screens(std::vector<Screen*>& screens, int howManyScreens)
+{
+	for (int i = 0; i < howManyScreens; i++)
 		screens.push_back(new Screen(i+1));
 }
 
@@ -147,23 +184,73 @@ Screen* Adventure_Creator::find_screen_by_ID(int id, std::vector<Screen*>& scree
 
 void Adventure_Creator::generate_walls_dungeons(std::vector<Screen*>& screens)
 {
+	std::string pathToBck = "Textures/Backgrounds/Dirt.png";
+	std::string pathToFullHorT = "Textures/Walls/Dirt/DirtWallFullHorTop.png";
+	std::string pathToFullHorB = "Textures/Walls/Dirt/DirtWallFullHorBottom.png";
+	std::string pathToHalfHorLT = "Textures/Walls/Dirt/DirtWallHalfHorLT.png";
+	std::string pathToHalfHorLB = "Textures/Walls/Dirt/DirtWallHalfHorLB.png";
+	std::string pathToHalfHorRT = "Textures/Walls/Dirt/DirtWallHalfHorRT.png";
+	std::string pathToHalfHorRB = "Textures/Walls/Dirt/DirtWallHalfHorRB.png";
+	std::string pathToFullVerL = "Textures/Walls/Dirt/DirtWallFullVerL.png";
+	std::string pathToFullVerR = "Textures/Walls/Dirt/DirtWallFullVerR.png";
+	std::string pathToHalfVerLT = "Textures/Walls/Dirt/DirtWallHalfVerLT.png";
+	std::string pathToHalfVerLB = "Textures/Walls/Dirt/DirtWallHalfVerLB.png";
+	std::string pathToHalfVerRT = "Textures/Walls/Dirt/DirtWallHalfVerRT.png";
+	std::string pathToHalfVerRB = "Textures/Walls/Dirt/DirtWallHalfVerRB.png";
+
 	for (int i = 0; i < screens.size(); i++)
 	{
+		screens[i]->setBck(pathToBck);
 
+		std::vector<Wall*> walls;
+
+		if (screens[i]->goUp() != 0) //There is a way up
+		{
+			walls.push_back(new Wall(pathToHalfHorLT, Vector2f(0, 0), Vector2f(750, 124)));
+			walls.push_back(new Wall(pathToHalfHorRT, Vector2f(850, 0), Vector2f(750, 124)));
+		}
+		else //No way up
+			walls.push_back(new Wall(pathToFullHorT, Vector2f(0, 0), Vector2f(1600, 124)));
+
+		if (screens[i]->goDown() != 0) //There is a way down
+		{
+			walls.push_back(new Wall(pathToHalfHorLB, Vector2f(0, 776), Vector2f(750, 124)));
+			walls.push_back(new Wall(pathToHalfHorRB, Vector2f(850, 776), Vector2f(750, 124)));
+		}
+		else //No way down
+			walls.push_back(new Wall(pathToFullHorB, Vector2f(0, 776), Vector2f(1600, 124)));
+
+		if (screens[i]->goRight() != 0) //There is a way to right
+		{
+			walls.push_back(new Wall(pathToHalfVerRT, Vector2f(1476, 0), Vector2f(124, 400)));
+			walls.push_back(new Wall(pathToHalfVerRB, Vector2f(1476, 500), Vector2f(124, 400)));
+		}
+		else //No way to right
+			walls.push_back(new Wall(pathToFullVerR, Vector2f(1476, 0), Vector2f(124, 900)));
+
+		if (screens[i]->goLeft() != 0) //There is a way to left
+		{
+			walls.push_back(new Wall(pathToHalfVerLT, Vector2f(0, 0), Vector2f(124, 400)));
+			walls.push_back(new Wall(pathToHalfVerLB, Vector2f(0, 500), Vector2f(124, 400)));
+		}
+		else //No way to left
+			walls.push_back(new Wall(pathToFullVerL, Vector2f(0, 0), Vector2f(124, 900)));
+
+		screens[i]->setWalls(walls);
 	}
 }
 
 void Adventure_Creator::generate_walls_castle(std::vector<Screen*>& screens)
 {
 	std::string pathToBck = "Textures/Backgrounds/Stones.png";
-	std::string pathToFullHor = "Textures/Walls/StoneWallFullHor.png";
-	std::string pathToHalfHor = "Textures/Walls/StoneWallHalfHor.png";
-	std::string pathToFullVerL = "Textures/Walls/StoneWallFullVerL.png";
-	std::string pathToFullVerR = "Textures/Walls/StoneWallFullVerR.png";
-	std::string pathToHalfVerLT = "Textures/Walls/StoneWallHalfVerLT.png";
-	std::string pathToHalfVerLB = "Textures/Walls/StoneWallHalfVerLB.png";
-	std::string pathToHalfVerRT = "Textures/Walls/StoneWallHalfVerRT.png";
-	std::string pathToHalfVerRB = "Textures/Walls/StoneWallHalfVerRB.png";
+	std::string pathToFullHor = "Textures/Walls/Stones/StoneWallFullHor.png";
+	std::string pathToHalfHor = "Textures/Walls/Stones/StoneWallHalfHor.png";
+	std::string pathToFullVerL = "Textures/Walls/Stones/StoneWallFullVerL.png";
+	std::string pathToFullVerR = "Textures/Walls/Stones/StoneWallFullVerR.png";
+	std::string pathToHalfVerLT = "Textures/Walls/Stones/StoneWallHalfVerLT.png";
+	std::string pathToHalfVerLB = "Textures/Walls/Stones/StoneWallHalfVerLB.png";
+	std::string pathToHalfVerRT = "Textures/Walls/Stones/StoneWallHalfVerRT.png";
+	std::string pathToHalfVerRB = "Textures/Walls/Stones/StoneWallHalfVerRB.png";
 
 	for (int i = 0; i < screens.size(); i++)
 	{
@@ -210,10 +297,10 @@ void Adventure_Creator::generate_walls_castle(std::vector<Screen*>& screens)
 void Adventure_Creator::generate_walls_valley(std::vector<Screen*>& screens)
 {
 	std::string pathToBck = "Textures/Backgrounds/Grass.png";
-	std::string pathToFullHor = "Textures/Walls/TreeFullHor.png";
-	std::string pathToHalfHor = "Textures/Walls/TreeHalfHor.png";
-	std::string pathToFullVer = "Textures/Walls/TreeFullVer.png";
-	std::string pathToHalfVer = "Textures/Walls/TreeHalfVer.png";
+	std::string pathToFullHor = "Textures/Walls/Trees/TreeFullHor.png";
+	std::string pathToHalfHor = "Textures/Walls/Trees/TreeHalfHor.png";
+	std::string pathToFullVer = "Textures/Walls/Trees/TreeFullVer.png";
+	std::string pathToHalfVer = "Textures/Walls/Trees/TreeHalfVer.png";
 
 	for (int i = 0; i < screens.size(); i++)
 	{
@@ -252,6 +339,64 @@ void Adventure_Creator::generate_walls_valley(std::vector<Screen*>& screens)
 		}
 		else //No way down
 			walls.push_back(new Wall(pathToFullHor, Vector2f(0, 787), Vector2f(1600, 113)));
+
+		screens[i]->setWalls(walls);
+	}
+}
+
+void Adventure_Creator::generate_walls_desert(std::vector<Screen*>& screens)
+{
+	std::string pathToBck = "Textures/Backgrounds/Sand.png";
+	std::string pathToFullHorT = "Textures/Walls/Sand/SandWallFullHorTop.png";
+	std::string pathToFullHorB = "Textures/Walls/Sand/SandWallFullHorBottom.png";
+	std::string pathToHalfHorLT = "Textures/Walls/Sand/SandWallHalfHorLT.png";
+	std::string pathToHalfHorLB = "Textures/Walls/Sand/SandWallHalfHorLB.png";
+	std::string pathToHalfHorRT = "Textures/Walls/Sand/SandWallHalfHorRT.png";
+	std::string pathToHalfHorRB = "Textures/Walls/Sand/SandWallHalfHorRB.png";
+	std::string pathToFullVerL = "Textures/Walls/Sand/SandWallFullVerL.png";
+	std::string pathToFullVerR = "Textures/Walls/Sand/SandWallFullVerR.png";
+	std::string pathToHalfVerLT = "Textures/Walls/Sand/SandWallHalfVerLT.png";
+	std::string pathToHalfVerLB = "Textures/Walls/Sand/SandWallHalfVerLB.png";
+	std::string pathToHalfVerRT = "Textures/Walls/Sand/SandWallHalfVerRT.png";
+	std::string pathToHalfVerRB = "Textures/Walls/Sand/SandWallHalfVerRB.png";
+
+	for (int i = 0; i < screens.size(); i++)
+	{
+		screens[i]->setBck(pathToBck);
+
+		std::vector<Wall*> walls;
+
+		if (screens[i]->goUp() != 0) //There is a way up
+		{
+			walls.push_back(new Wall(pathToHalfHorLT, Vector2f(0, 0), Vector2f(750, 124)));
+			walls.push_back(new Wall(pathToHalfHorRT, Vector2f(850, 0), Vector2f(750, 124)));
+		}
+		else //No way up
+			walls.push_back(new Wall(pathToFullHorT, Vector2f(0, 0), Vector2f(1600, 124)));
+
+		if (screens[i]->goDown() != 0) //There is a way down
+		{
+			walls.push_back(new Wall(pathToHalfHorLB, Vector2f(0, 776), Vector2f(750, 124)));
+			walls.push_back(new Wall(pathToHalfHorRB, Vector2f(850, 776), Vector2f(750, 124)));
+		}
+		else //No way down
+			walls.push_back(new Wall(pathToFullHorB, Vector2f(0, 776), Vector2f(1600, 124)));
+
+		if (screens[i]->goRight() != 0) //There is a way to right
+		{
+			walls.push_back(new Wall(pathToHalfVerRT, Vector2f(1476, 0), Vector2f(124, 400)));
+			walls.push_back(new Wall(pathToHalfVerRB, Vector2f(1476, 500), Vector2f(124, 400)));
+		}
+		else //No way to right
+			walls.push_back(new Wall(pathToFullVerR, Vector2f(1476, 0), Vector2f(124, 900)));
+
+		if (screens[i]->goLeft() != 0) //There is a way to left
+		{
+			walls.push_back(new Wall(pathToHalfVerLT, Vector2f(0, 0), Vector2f(124, 400)));
+			walls.push_back(new Wall(pathToHalfVerLB, Vector2f(0, 500), Vector2f(124, 400)));
+		}
+		else //No way to left
+			walls.push_back(new Wall(pathToFullVerL, Vector2f(0, 0), Vector2f(124, 900)));
 
 		screens[i]->setWalls(walls);
 	}
@@ -334,6 +479,7 @@ int Adventure_Creator::generate_door(std::vector<Screen*>& screens, int ID)
 
 void Adventure_Creator::generate_chests(std::vector<Screen*>& screens, int ScreenID, int keyID)
 {
+	//Generate the chest with key for door
 	std::vector<int> item_ids;
 	item_ids.push_back(keyID);
 	int howManyPotions = rand() % 3 + 1;
@@ -342,6 +488,22 @@ void Adventure_Creator::generate_chests(std::vector<Screen*>& screens, int Scree
 	Chest* chest = new Chest("Textures/Chests/Chest_closed.png", "Textures/Chests/Chest_open.png", Vector2f(772, 422), Vector2f(56, 56), item_ids);
 	Screen* temp = find_screen_by_ID(ScreenID, screens);
 	temp->chests.push_back(chest);
+
+	//Generate other chests
+	int screen_for_chest = screens.size()-1;
+	for (int i = 0; i < (level/2); i++)
+	{
+		screen_for_chest -= 3;
+		if(screen_for_chest==ScreenID)
+			screen_for_chest -= 1;
+		Screen* temp2 = find_screen_by_ID(screen_for_chest,screens);
+		item_ids.erase(item_ids.begin(), item_ids.begin() + item_ids.size() - 1);
+		howManyPotions = rand() % 3 + 1;
+		for (int i = 0; i < howManyPotions; i++)
+			item_ids.push_back(1);
+		chest = new Chest("Textures/Chests/Chest_closed.png", "Textures/Chests/Chest_open.png", Vector2f(772, 422), Vector2f(56, 56), item_ids);
+		temp2->chests.push_back(chest);
+	}
 }
 
 void Adventure_Creator::generate_enemies(std::vector<Screen*>& screens)

@@ -116,7 +116,7 @@ void Player::movement(RenderWindow &window, int counter)
 
 void Player::set_NormalMode()
 {
-    speed_of_movement=10;
+    speed_of_movement=10; //Normally 4
     MaxHP=60;
     HP=60;
     Mana_regen=1;
@@ -245,6 +245,11 @@ void Player::add_item_to_Inventory(int ID, Items &all_items)
 void Player::remove_item_from_Inventory(int ID)
 {
     inventory.delete_item_from_inventory(ID);
+}
+
+void Player::clear_Inventory()
+{
+    inventory.clear_items();
 }
 
 bool Player::is_item_in_Inventory(int ID)

@@ -87,9 +87,11 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         add_t_quest(1);
         p.set_NormalMode();
         p.hitbox.setPosition(Vector2f(773, 416));
+        p.clear_Inventory();
 
         delete_all_adventure_screens();
-        adventure_screens = adventure_creator.generate_adventure(window);
+        //adventure_creator.reset_creator();
+        adventure_screens = adventure_creator.generate_level(window);
         map.prepareMap(adventure_screens);
         Actual_screen = adventure_screens[0];
         Actual_screen->setVisited(true);
@@ -250,6 +252,7 @@ void Game::MaintainDoors(RenderWindow &window,Player& p)
             {
                 p.remove_item_from_Inventory(d->get_key_ID());
                 open_door(d);
+                tryingToOpenDoor = false;
             }
             else
             {
@@ -321,7 +324,7 @@ void Game::Arena(RenderWindow& window, Player& p)
         Display_quests(window);
 }
 
-void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map)
+void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Adventure_Creator& adventure_creator)
 {
     window.clear(Color::White);
     Check_adventure_screen(p.hitbox);
@@ -330,27 +333,50 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map)
 
     if (Actual_screen->check_portal(p.getHitbox()))
     {
-        //Actual_screen->getPortal()->playSound();
+        Actual_screen->getPortal()->playSound();
+        NextLvl(window, p, map, adventure_creator);
     }
+    else
+    {
+        Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
 
-    Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
+        if (adventure_creator.get_floor_type() == 3)
+            DisplayShadows(window, p);
 
-    Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
-        Actual_screen->enemies.Maintenance(window, counter, p.getHitbox(), p.is_player_dead(), Actual_screen->player_missiles, Actual_screen->enemies_missiles), Actual_screen->enemies_missiles);
-    Actual_screen->player_missiles.add_missile(m);
+        Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
+            Actual_screen->enemies.Maintenance(window, counter, p.getHitbox(), p.is_player_dead(), Actual_screen->player_missiles, Actual_screen->enemies_missiles), Actual_screen->enemies_missiles);
+        Actual_screen->player_missiles.add_missile(m);
 
-    Actual_screen->player_missiles.maintenance(window, counter);
-    Actual_screen->enemies_missiles.maintenance(window, counter);
+        Actual_screen->player_missiles.maintenance(window, counter);
+        Actual_screen->enemies_missiles.maintenance(window, counter);
 
-    if (are_quests_displayed)
-        Display_quests(window);
+        if (are_quests_displayed)
+            Display_quests(window);
 
-    MaintainChests(items, p);
-    MaintainDoors(window, p);
-    if (displayBigMap)
-        map.displayBigMap(adventure_screens, window, Actual_screen->getID());
-    else if (displaySmallMap)
-        map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
+        MaintainChests(items, p);
+        MaintainDoors(window, p);
+        if (displayBigMap)
+            map.displayBigMap(adventure_screens, window, Actual_screen->getID());
+        else if (displaySmallMap)
+            map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
+    } 
+}
+
+
+void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator)
+{
+    remove_all_t_quests();
+    add_t_quest(1);
+    p.set_NormalMode();
+    p.hitbox.setPosition(Vector2f(773, 416));
+
+    delete_all_adventure_screens();
+    adventure_screens = adventure_creator.next_lvl(window);
+    map.prepareMap(adventure_screens);
+    Actual_screen = adventure_screens[0];
+    Actual_screen->setVisited(true);
+    Actual_adventure_screen = Actual_screen;
+    adventureStarted = true;
 }
 
 void Game::DisplayShadows(RenderWindow& window, Player& p)
@@ -402,7 +428,7 @@ void Game::run()
             if (gameMode == 1)
                 Tutorial(window, p, items, map);
             else if (gameMode == 2 || gameMode == 3)
-                Adventure(window, p, items, map);
+                Adventure(window, p, items, map,adventure_creator);
             else if (gameMode == 4 || gameMode == 5)
                 Arena(window, p);
         }   
