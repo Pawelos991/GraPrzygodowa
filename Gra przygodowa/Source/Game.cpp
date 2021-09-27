@@ -38,7 +38,7 @@ Game::Game()
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));
-        shadows[i].setRadius((5-i)*100);
+        shadows[i].setRadius((5-i)*150);
         shadows[i].setOutlineColor(Color(0, 0, 0, 150 + (5-i)*10));
         shadows[i].setOutlineThickness(2000-shadows[i].getRadius());
     }
@@ -87,6 +87,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         map.prepareMap(adventure_screens);
         Actual_screen = Actual_adventure_screen;
         counter = 0;
+        quest_counter = 0;
     }
 
     else if (gameMode == 3) //New adventure 
@@ -105,7 +106,12 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
         adventure_creator.reset_creator();
         adventure_screens = adventure_creator.generate_level(window);
         map.prepareMap(adventure_screens);
-        Actual_screen = adventure_screens[0];
+
+        if (adventure_screens[0]->has_portal())
+            Actual_screen = adventure_screens[1];
+        else
+            Actual_screen = adventure_screens[0];
+
         Actual_screen->setVisited(true);
         Actual_adventure_screen = Actual_screen;
         adventureStarted = true;
@@ -409,7 +415,6 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Ad
     } 
 }
 
-
 void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator)
 {
     remove_all_t_quests();
@@ -421,7 +426,12 @@ void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator&
     delete_all_adventure_screens();
     adventure_screens = adventure_creator.next_lvl(window);
     map.prepareMap(adventure_screens);
-    Actual_screen = adventure_screens[0];
+
+    if (adventure_screens[0]->has_portal())
+        Actual_screen = adventure_screens[1];
+    else
+        Actual_screen = adventure_screens[0];
+
     Actual_screen->setVisited(true);
     Actual_adventure_screen = Actual_screen;
     adventureStarted = true;
@@ -431,7 +441,8 @@ void Game::DisplayShadows(RenderWindow& window, Player& p)
 {
     for (int i = 0; i < 5; i++)
     {
-        shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 73 - ((4 - i) * 100), p.getHitbox().getPosition().y - 66 - ((4 - i) * 100)));
+        //shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 73 - ((4 - i) * 200), p.getHitbox().getPosition().y - 66 - ((4 - i) * 200)));
+        shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 123 - ((4 - i) * 150), p.getHitbox().getPosition().y - 116 - ((4 - i) * 150)));
         window.draw(shadows[i]);
     }
 }

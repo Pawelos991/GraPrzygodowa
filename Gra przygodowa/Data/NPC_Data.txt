@@ -3,3 +3,6 @@ Sunbro_2 77 90 Nie_idz_tam! Fonts/00TT.ttf 20 Data/Sunbro_2_Animations.txt Textu
 Sunbro_3 77 90 Gratulacje! Fonts/00TT.ttf 20 Data/Sunbro_1_Animations.txt Textures/NPCs/Sunbro/Cloud_big.png
 Sunbro_4 77 90 To_nie_tu! Fonts/00TT.ttf 20 Data/Sunbro_2_Animations.txt Textures/NPCs/Sunbro/Cloud_small.png
 Sunbro_5 77 90 _____Witaj! Fonts/00TT.ttf 20 Data/Sunbro_1_Animations.txt Textures/NPCs/Sunbro/Cloud_small.png
+Sunbro_Advice_1 77 90 Uratuj_nas Fonts/00TT.ttf 20 Data/Sunbro_1_Animations.txt Textures/NPCs/Sunbro/Cloud_big.png
+Sunbro_Advice_2 77 90 Nie_wygraja Fonts/00TT.ttf 20 Data/Sunbro_2_Animations.txt Textures/NPCs/Sunbro/Cloud_big.png
+Sunbro_Advice_3 77 90 Dasz_rade Fonts/00TT.ttf 20 Data/Sunbro_1_Animations.txt Textures/NPCs/Sunbro/Cloud_small.png

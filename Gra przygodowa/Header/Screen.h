@@ -18,6 +18,7 @@ class Screen : public Background,public C_Objects,public Characters
         Chest* check_chests(RectangleShape players_hitbox);
         Door* check_doors(RectangleShape players_hitbox);
         bool check_portal(RectangleShape players_hitbox);
+        bool has_portal() { return !(portal == nullptr); }
         Missiles player_missiles;
         Missiles enemies_missiles;
         void clear_space();
@@ -58,12 +59,6 @@ class Screen : public Background,public C_Objects,public Characters
 
         std::vector<Chest*> getChests() { return chests; }
         void setChests(std::vector<Chest*>& c) { chests = c; }
-
-        Enemies getEnemies() { return enemies; }
-        void setEnemies(Enemies& e) { enemies = e; }
-
-        NPCs getNPCs() { return npcs; }
-        void setNPCs(NPCs& n) { npcs = n; }
 
         Vector2f getPosition() { return position; }
         void setPosition(Vector2f pos) { position = pos; }

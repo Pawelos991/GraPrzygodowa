@@ -52,6 +52,7 @@ std::vector<Screen*> Adventure_Creator::generate_level(RenderWindow& window)
 	furthest_two[0]->setPortal(portal);
 	int keyID = generate_door(adventure_screens, furthest_two[0]->getID());
 	generate_chests(adventure_screens, furthest_two[1]->getID(), keyID);
+	generate_NPCs(adventure_screens);
 
 	return adventure_screens;
 }
@@ -513,5 +514,27 @@ void Adventure_Creator::generate_enemies(std::vector<Screen*>& screens)
 
 void Adventure_Creator::generate_NPCs(std::vector<Screen*>& screens)
 {
+	int screen = rand() % ((level * 3) + 5);
+	int npc_id = rand() % 3 + 1;
+	NPCs npcs;
+	Vector2f npc_position = Vector2f(600, 400);
+	Vector2f wall_position = Vector2f(605, 404);
+	Vector2f wall_size = Vector2f(69, 80);
+	screens[screen]->walls.push_back(new Wall("Textures/NPCs/Sunbro/WALL.png", wall_position, wall_size));
+	std::string name;
 
+	switch (npc_id)
+	{
+	case(1):
+		name = "Sunbro_Advice_1";
+		break;
+	case(2):
+		name = "Sunbro_Advice_2";
+		break;
+	case(3):
+		name = "Sunbro_Advice_3";
+		break;
+	}
+
+	screens[screen]->npcs.add_npc(name, npc_position);
 }
