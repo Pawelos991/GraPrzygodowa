@@ -25,6 +25,11 @@ void Quests::add_t_quest(int id)
     Taken_Quests::add_t_quest(id,not_taken_quests);
 }
 
+void Quests::add_t_quest_display(int id, RenderWindow& window, int counter)
+{
+    Taken_Quests::add_t_quest_display(window, id, not_taken_quests,counter);
+}
+
  void Quests::Display_quests(RenderWindow &window)
  {
      window.draw(sp);

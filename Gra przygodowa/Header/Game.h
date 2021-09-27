@@ -33,6 +33,7 @@ class Game : private Screens, private Quests, private Menu
         int counter; //FPS counter
         int kills; //Kills counter (arena)
         int movementindicator; // 1-right 2-left
+        int quest_counter; //Counter of frames of display new quest
         bool is_inventory_open; 
         bool are_quests_displayed; 
         bool is_muted; 
@@ -44,6 +45,7 @@ class Game : private Screens, private Quests, private Menu
         bool displayBigMap;
         bool finishedTutorial;
         bool adventureStarted;
+        bool add_new_quest;
 
 };
 

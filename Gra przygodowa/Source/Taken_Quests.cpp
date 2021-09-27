@@ -88,14 +88,13 @@ void Taken_Quests::display_quest(RenderWindow& window,int id)
     window.draw(te);
 }
 
-void Taken_Quests::add_t_quest_display(RenderWindow &window, int id, std::vector<Quest*>& not_taken_quests)
+void Taken_Quests::add_t_quest_display(RenderWindow &window, int id, std::vector<Quest*>& not_taken_quests, int counter)
 {
-    add_t_quest(id, not_taken_quests);
-    sound.play();
-    for (int i = 0; i < 120; i++)
+    if (counter == 0)
     {
+        add_t_quest(id, not_taken_quests);
+        sound.play();
+    }
         window.draw(new_sp);
         Taken_Quests::display_quest(window, id);
-        window.display();
-    }
 }

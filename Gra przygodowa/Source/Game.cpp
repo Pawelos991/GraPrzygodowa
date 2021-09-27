@@ -56,74 +56,92 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
     {
         p.Respawn();
         remove_all_t_quests();
-        add_t_quest(1);
+        add_new_quest = true;
         p.set_NormalMode();
         p.getHit(40);
         p.hitbox.setPosition(Vector2f(400,400));
+
+        displayBigMap = false;
+        displaySmallMap = false;
         
         delete_all_tutorial_screens();
         load_tutorial_Screens(window);
         map.prepareMap(tutorial_screens);
         Actual_screen = get_tutorial_screen_by_ID(1);
-        Actual_screen->setVisited(true);     
+        Actual_screen->setVisited(true);
+        counter = 0;
+        quest_counter = 0;
     }
 
     else if (gameMode == 2) //Continue adventure
     {
         p.Respawn();
         remove_all_t_quests();
-        add_t_quest(1);
+        add_new_quest = true;
         p.set_NormalMode();
         p.hitbox.setPosition(Vector2f(773, 416));
 
+        displayBigMap = false;
+        displaySmallMap = false;
+
         map.prepareMap(adventure_screens);
         Actual_screen = Actual_adventure_screen;
+        counter = 0;
     }
 
     else if (gameMode == 3) //New adventure 
     {
         p.Respawn();
         remove_all_t_quests();
-        add_t_quest(1);
+        add_new_quest = true;
         p.set_NormalMode();
         p.hitbox.setPosition(Vector2f(773, 416));
         p.clear_Inventory();
 
+        displayBigMap = false;
+        displaySmallMap = false;
+
         delete_all_adventure_screens();
-        //adventure_creator.reset_creator();
+        adventure_creator.reset_creator();
         adventure_screens = adventure_creator.generate_level(window);
         map.prepareMap(adventure_screens);
         Actual_screen = adventure_screens[0];
         Actual_screen->setVisited(true);
         Actual_adventure_screen = Actual_screen;
         adventureStarted = true;
+        counter = 0;
+        quest_counter = 0;
     }
 
     else if(gameMode==4) //Arena normal
     {
         p.Respawn();
         remove_all_t_quests();
-        add_t_quest(2);
+        add_new_quest = true;
         p.set_NormalMode();
-        p.hitbox.setPosition(Vector2f(750,420));
+        p.hitbox.setPosition(Vector2f(750,120));
 
         delete_all_tutorial_screens();
         if (arena_screen == nullptr)
             load_arena_Screen();
         Actual_screen = arena_screen;
+        counter = 0;
+        quest_counter = 0;
     }
     else if(gameMode==5) //Arena godmode
     {
         p.Respawn();
         remove_all_t_quests();
-        add_t_quest(2);
+        add_new_quest = true;
         p.set_GodMode();
-        p.hitbox.setPosition(Vector2f(750,420));
+        p.hitbox.setPosition(Vector2f(750,120));
 
         delete_all_tutorial_screens();
         if (arena_screen == nullptr)
             load_arena_Screen();
         Actual_screen = arena_screen;
+        counter = 0;
+        quest_counter = 0;
     }
 }
 
@@ -297,11 +315,20 @@ void Game::Tutorial(RenderWindow &window,Player &p,Items &items,Map &map)
 
     MaintainChests(items, p);
     MaintainDoors(window, p);
-    //DisplayShadows(window, p);
     if(displayBigMap)
         map.displayBigMap(tutorial_screens, window, Actual_screen->getID());
     else if(displaySmallMap)
         map.displaySmallMap(tutorial_screens, window, Actual_screen->getID());
+
+    if (add_new_quest)
+    {
+        add_t_quest_display(1, window,quest_counter);
+        quest_counter++;
+        if (quest_counter == 120)
+        {
+            add_new_quest = false;
+        }
+    }
 }
 
 void Game::Arena(RenderWindow& window, Player& p)
@@ -322,6 +349,16 @@ void Game::Arena(RenderWindow& window, Player& p)
 
     if (are_quests_displayed)
         Display_quests(window);
+
+    if (add_new_quest)
+    {
+        add_t_quest_display(2, window, quest_counter);
+        quest_counter++;
+        if (quest_counter == 120)
+        {
+            add_new_quest = false;
+        }
+    }
 }
 
 void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Adventure_Creator& adventure_creator)
@@ -359,6 +396,16 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Ad
             map.displayBigMap(adventure_screens, window, Actual_screen->getID());
         else if (displaySmallMap)
             map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
+
+        if (add_new_quest)
+        {
+            add_t_quest_display(adventure_creator.get_floor_type()+2, window, quest_counter);
+            quest_counter++;
+            if (quest_counter == 120)
+            {
+                add_new_quest = false;
+            }
+        }
     } 
 }
 
@@ -366,7 +413,8 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Ad
 void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator)
 {
     remove_all_t_quests();
-    add_t_quest(1);
+    add_new_quest = true;
+    quest_counter = 0;
     p.set_NormalMode();
     p.hitbox.setPosition(Vector2f(773, 416));
 

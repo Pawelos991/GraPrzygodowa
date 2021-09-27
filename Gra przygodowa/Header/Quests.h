@@ -14,6 +14,7 @@ class Quests: public Taken_Quests, public Not_Taken_Quests
         void prepare_quests();
         void add_t_quest(int id);
         void Display_quests(RenderWindow &window);
+        void add_t_quest_display(int id, RenderWindow& window, int counter);
 
     private:
         Texture tex;

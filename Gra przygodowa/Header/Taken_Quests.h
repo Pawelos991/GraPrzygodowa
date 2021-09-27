@@ -17,7 +17,7 @@ class Taken_Quests
         void complete_quest(int id);
         void display_active_quests(RenderWindow &window, Vector2f position);
         void display_quest(RenderWindow& window, int id);
-        void add_t_quest_display(RenderWindow& window, int id, std::vector<Quest*>& not_taken_quests);
+        void add_t_quest_display(RenderWindow& window, int id, std::vector<Quest*>& not_taken_quests, int counter);
         Font font;
         Text text;
         void getFont();
