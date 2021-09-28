@@ -1,3 +1,4 @@
 Minotaur 120 10 0 Data/Animations/Minotaur.txt 112 91 54 10 10 40 30 Sounds/Minotaur_Death.wav Sounds/Minotaur_Attack.wav 0 0
 Dwarf 60 10 0 Data/Animations/Dwarf.txt 78 60 48 24 5 10 30 Sounds/Mage_Death.wav Sounds/Minotaur_Attack.wav 0 0
 Archer 40 10 1 Data/Animations/Archer.txt 60 70 48 24 10 25 5 Sounds/Mage_Death.wav Sounds/Arrow.wav 38 10 Sounds/Arrow_hit.wav
+Snake 60 10 0 Data/Animations/Snake.txt 50 52 60 30 10 0 0 Sounds/Snake_Death.wav Sounds/Snake_Attack.wav
