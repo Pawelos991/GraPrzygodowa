@@ -1,0 +1,92 @@
+1 Walk_Right 10 100
+Textures/Enemies/Snake/Move/Right/10.png
+Textures/Enemies/Snake/Move/Right/9.png
+Textures/Enemies/Snake/Move/Right/8.png
+Textures/Enemies/Snake/Move/Right/7.png
+Textures/Enemies/Snake/Move/Right/6.png
+Textures/Enemies/Snake/Move/Right/5.png
+Textures/Enemies/Snake/Move/Right/4.png
+Textures/Enemies/Snake/Move/Right/3.png
+Textures/Enemies/Snake/Move/Right/2.png
+Textures/Enemies/Snake/Move/Right/1.png
+2 Walk_Left 10 100
+Textures/Enemies/Snake/Move/Left/10.png
+Textures/Enemies/Snake/Move/Left/9.png
+Textures/Enemies/Snake/Move/Left/8.png
+Textures/Enemies/Snake/Move/Left/7.png
+Textures/Enemies/Snake/Move/Left/6.png
+Textures/Enemies/Snake/Move/Left/5.png
+Textures/Enemies/Snake/Move/Left/4.png
+Textures/Enemies/Snake/Move/Left/3.png
+Textures/Enemies/Snake/Move/Left/2.png
+Textures/Enemies/Snake/Move/Left/1.png
+3 Death_Right 10 100
+Textures/Enemies/Snake/Death/Right/10.png
+Textures/Enemies/Snake/Death/Right/9.png
+Textures/Enemies/Snake/Death/Right/8.png
+Textures/Enemies/Snake/Death/Right/7.png
+Textures/Enemies/Snake/Death/Right/6.png
+Textures/Enemies/Snake/Death/Right/5.png
+Textures/Enemies/Snake/Death/Right/4.png
+Textures/Enemies/Snake/Death/Right/3.png
+Textures/Enemies/Snake/Death/Right/2.png
+Textures/Enemies/Snake/Death/Right/1.png
+4 Death_Left 10 100
+Textures/Enemies/Snake/Death/Left/10.png
+Textures/Enemies/Snake/Death/Left/9.png
+Textures/Enemies/Snake/Death/Left/8.png
+Textures/Enemies/Snake/Death/Left/7.png
+Textures/Enemies/Snake/Death/Left/6.png
+Textures/Enemies/Snake/Death/Left/5.png
+Textures/Enemies/Snake/Death/Left/4.png
+Textures/Enemies/Snake/Death/Left/3.png
+Textures/Enemies/Snake/Death/Left/2.png
+Textures/Enemies/Snake/Death/Left/1.png
+5 Dead_Right 1 1000
+Textures/Enemies/Snake/Dead/Right/1.png
+6 Dead_Left 1 1000
+Textures/Enemies/Snake/Dead/Left/1.png
+7 Attack_Right 10 100
+Textures/Enemies/Snake/Attack/Right/10.png
+Textures/Enemies/Snake/Attack/Right/9.png
+Textures/Enemies/Snake/Attack/Right/8.png
+Textures/Enemies/Snake/Attack/Right/7.png
+Textures/Enemies/Snake/Attack/Right/6.png
+Textures/Enemies/Snake/Attack/Right/5.png
+Textures/Enemies/Snake/Attack/Right/4.png
+Textures/Enemies/Snake/Attack/Right/3.png
+Textures/Enemies/Snake/Attack/Right/2.png
+Textures/Enemies/Snake/Attack/Right/1.png
+8 Attack_Left 10 100
+Textures/Enemies/Snake/Attack/Left/10.png
+Textures/Enemies/Snake/Attack/Left/9.png
+Textures/Enemies/Snake/Attack/Left/8.png
+Textures/Enemies/Snake/Attack/Left/7.png
+Textures/Enemies/Snake/Attack/Left/6.png
+Textures/Enemies/Snake/Attack/Left/5.png
+Textures/Enemies/Snake/Attack/Left/4.png
+Textures/Enemies/Snake/Attack/Left/3.png
+Textures/Enemies/Snake/Attack/Left/2.png
+Textures/Enemies/Snake/Attack/Left/1.png
+9 Stay_Right 10 100
+Textures/Enemies/Snake/Stay/Right/10.png
+Textures/Enemies/Snake/Stay/Right/9.png
+Textures/Enemies/Snake/Stay/Right/8.png
+Textures/Enemies/Snake/Stay/Right/7.png
+Textures/Enemies/Snake/Stay/Right/6.png
+Textures/Enemies/Snake/Stay/Right/5.png
+Textures/Enemies/Snake/Stay/Right/4.png
+Textures/Enemies/Snake/Stay/Right/3.png
+Textures/Enemies/Snake/Stay/Right/2.png
+Textures/Enemies/Snake/Stay/Right/1.png
+10 Stay_Left 10 100
+Textures/Enemies/Snake/Stay/Left/10.png
+Textures/Enemies/Snake/Stay/Left/9.png
+Textures/Enemies/Snake/Stay/Left/8.png
+Textures/Enemies/Snake/Stay/Left/7.png
+Textures/Enemies/Snake/Stay/Left/6.png
+Textures/Enemies/Snake/Stay/Left/5.png
+Textures/Enemies/Snake/Stay/Left/4.png
+Textures/Enemies/Snake/Stay/Left/3.png
+Textures/Enemies/Snake/Stay/Left/2.png
+Textures/Enemies/Snake/Stay/Left/1.png

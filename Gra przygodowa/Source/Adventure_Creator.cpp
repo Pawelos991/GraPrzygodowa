@@ -53,6 +53,7 @@ std::vector<Screen*> Adventure_Creator::generate_level(RenderWindow& window)
 	int keyID = generate_door(adventure_screens, furthest_two[0]->getID());
 	generate_chests(adventure_screens, furthest_two[1]->getID(), keyID);
 	generate_NPCs(adventure_screens);
+	generate_enemies(adventure_screens);
 
 	return adventure_screens;
 }

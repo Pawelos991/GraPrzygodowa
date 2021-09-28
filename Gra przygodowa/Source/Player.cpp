@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-    animations.LoadAnimationsFromFile("Data/Player_Animations.txt");
+    animations.LoadAnimationsFromFile("Data/Animations/Player.txt");
     HP=60;
     MANA=60;
     MaxHP=60;
