@@ -163,21 +163,25 @@ void Game::ArenaMode(RenderWindow &window)
     if (Actual_screen->enemies.is_everyone_dead())
     {
         kills++;
-        if (counter % 4 == 0)
+        if (counter % 5 == 0)
         {
             Actual_screen->enemies.add_enemy("Minotaur", Vector2f((counter % 12) * 100 + 100, 700));
         }
-        else if (counter % 4 == 1)
+        else if (counter % 5 == 1)
         {
             Actual_screen->enemies.add_enemy("Dwarf", Vector2f((counter % 12) * 100 + 100, 700));
         }
-        else if (counter % 4 == 2)
+        else if (counter % 5 == 2)
         {
             Actual_screen->enemies.add_enemy("Archer", Vector2f((counter % 12) * 100 + 100, 700));
         }
-        else if (counter % 4 == 3)
+        else if (counter % 5 == 3)
         {
             Actual_screen->enemies.add_enemy("Snake", Vector2f((counter % 12) * 100 + 100, 700));
+        }
+        else if (counter % 5 == 4)
+        {
+            Actual_screen->enemies.add_enemy("Scorpion", Vector2f((counter % 12) * 100 + 100, 700));
         }
     }
 }

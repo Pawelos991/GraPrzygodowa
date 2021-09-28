@@ -36,10 +36,12 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
         fp>>attack_shift_up;
         fp>>death_s;
         fp>>attack_s;
-        fp>>Missile_Width;
-        fp>>Missile_Height;
-        if(Range==1)
-            fp>>attack_hit_s;
+        if (Range == 1)
+        {
+            fp >> Missile_Width;
+            fp >> Missile_Height;
+            fp >> attack_hit_s;
+        }
         if(Name==type)
             break;
     }
@@ -64,16 +66,18 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
     Swing_width=swing_w;
     Attack_left=attack_shift_left;
     Attack_up=attack_shift_up;
-    missile_width=Missile_Width;
-    missile_height=Missile_Height;
     Attack_buffer.loadFromFile(attack_s);
     Death_buffer.loadFromFile(death_s);
     Attack_Sound.setBuffer(Attack_buffer);
     Death_sound.setBuffer(Death_buffer);
     Attack_Sound.setVolume(20);
     Death_sound.setVolume(20);
-    if(Range==1)
+    if (Range == 1)
+    {
+        missile_width = Missile_Width;
+        missile_height = Missile_Height;
         Attack_hit.loadFromFile(attack_hit_s);
+    }       
     next=nullptr;
 }
 
