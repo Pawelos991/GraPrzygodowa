@@ -1,4 +1,4 @@
-1 Mage_walk_left 8 80
+1 Mage_walk_left 8 134
 Textures/Player/Mage_movement/Left/8.png
 Textures/Player/Mage_movement/Left/7.png
 Textures/Player/Mage_movement/Left/6.png
@@ -7,7 +7,7 @@ Textures/Player/Mage_movement/Left/4.png
 Textures/Player/Mage_movement/Left/3.png
 Textures/Player/Mage_movement/Left/2.png
 Textures/Player/Mage_movement/Left/1.png
-2 Mage_walk_right 8 80
+2 Mage_walk_right 8 134
 Textures/Player/Mage_movement/Right/8.png
 Textures/Player/Mage_movement/Right/7.png
 Textures/Player/Mage_movement/Right/6.png
@@ -16,7 +16,7 @@ Textures/Player/Mage_movement/Right/4.png
 Textures/Player/Mage_movement/Right/3.png
 Textures/Player/Mage_movement/Right/2.png
 Textures/Player/Mage_movement/Right/1.png
-3 Mage_stay_left 8 125
+3 Mage_stay_left 8 134
 Textures/Player/Mage_stay/Left/8.png
 Textures/Player/Mage_stay/Left/7.png
 Textures/Player/Mage_stay/Left/6.png
@@ -25,7 +25,7 @@ Textures/Player/Mage_stay/Left/4.png
 Textures/Player/Mage_stay/Left/3.png
 Textures/Player/Mage_stay/Left/2.png
 Textures/Player/Mage_stay/Left/1.png
-4 Mage_stay_right 8 125
+4 Mage_stay_right 8 134
 Textures/Player/Mage_stay/Right/8.png
 Textures/Player/Mage_stay/Right/7.png
 Textures/Player/Mage_stay/Right/6.png
@@ -34,7 +34,7 @@ Textures/Player/Mage_stay/Right/4.png
 Textures/Player/Mage_stay/Right/3.png
 Textures/Player/Mage_stay/Right/2.png
 Textures/Player/Mage_stay/Right/1.png
-5 Mage_attack_left 8 80
+5 Mage_attack_left 8 134
 Textures/Player/Mage_attack/Left/8.png
 Textures/Player/Mage_attack/Left/7.png
 Textures/Player/Mage_attack/Left/6.png
@@ -43,7 +43,7 @@ Textures/Player/Mage_attack/Left/4.png
 Textures/Player/Mage_attack/Left/3.png
 Textures/Player/Mage_attack/Left/2.png
 Textures/Player/Mage_attack/Left/1.png
-6 Mage_attack_right 8 80
+6 Mage_attack_right 8 134
 Textures/Player/Mage_attack/Right/8.png
 Textures/Player/Mage_attack/Right/7.png
 Textures/Player/Mage_attack/Right/6.png
@@ -52,7 +52,7 @@ Textures/Player/Mage_attack/Right/4.png
 Textures/Player/Mage_attack/Right/3.png
 Textures/Player/Mage_attack/Right/2.png
 Textures/Player/Mage_attack/Right/1.png
-11 Fireball_left 8 80
+11 Fireball_left 8 134
 Textures/Player/Fireball_left/8.png
 Textures/Player/Fireball_left/7.png
 Textures/Player/Fireball_left/6.png
@@ -61,7 +61,7 @@ Textures/Player/Fireball_left/4.png
 Textures/Player/Fireball_left/3.png
 Textures/Player/Fireball_left/2.png
 Textures/Player/Fireball_left/1.png
-12 Fireball_right 8 80
+12 Fireball_right 8 134
 Textures/Player/Fireball_right/8.png
 Textures/Player/Fireball_right/7.png
 Textures/Player/Fireball_right/6.png
@@ -70,7 +70,7 @@ Textures/Player/Fireball_right/4.png
 Textures/Player/Fireball_right/3.png
 Textures/Player/Fireball_right/2.png
 Textures/Player/Fireball_right/1.png
-9 Fireball_up 8 80
+9 Fireball_up 8 134
 Textures/Player/Fireball_up/8.png
 Textures/Player/Fireball_up/7.png
 Textures/Player/Fireball_up/6.png
@@ -79,7 +79,7 @@ Textures/Player/Fireball_up/4.png
 Textures/Player/Fireball_up/3.png
 Textures/Player/Fireball_up/2.png
 Textures/Player/Fireball_up/1.png
-10 Fireball_down 8 80
+10 Fireball_down 8 134
 Textures/Player/Fireball_down/8.png
 Textures/Player/Fireball_down/7.png
 Textures/Player/Fireball_down/6.png
@@ -88,7 +88,7 @@ Textures/Player/Fireball_down/4.png
 Textures/Player/Fireball_down/3.png
 Textures/Player/Fireball_down/2.png
 Textures/Player/Fireball_down/1.png
-7 Mage_Death_Right 8 100
+7 Mage_Death_Right 8 134
 Textures/Player/Mage_Death/Right/8.png
 Textures/Player/Mage_Death/Right/7.png
 Textures/Player/Mage_Death/Right/6.png
@@ -97,7 +97,7 @@ Textures/Player/Mage_Death/Right/4.png
 Textures/Player/Mage_Death/Right/3.png
 Textures/Player/Mage_Death/Right/2.png
 Textures/Player/Mage_Death/Right/1.png
-8 Mage_Death_Left 8 100
+8 Mage_Death_Left 8 134
 Textures/Player/Mage_Death/Left/8.png
 Textures/Player/Mage_Death/Left/7.png
 Textures/Player/Mage_Death/Left/6.png

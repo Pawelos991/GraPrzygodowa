@@ -1,4 +1,4 @@
-1 Walk_Right 8 160
+1 Walk_Right 8 134
 Textures/Enemies/Dwarf/Move/Right/8.png
 Textures/Enemies/Dwarf/Move/Right/7.png
 Textures/Enemies/Dwarf/Move/Right/6.png
@@ -7,7 +7,7 @@ Textures/Enemies/Dwarf/Move/Right/4.png
 Textures/Enemies/Dwarf/Move/Right/3.png
 Textures/Enemies/Dwarf/Move/Right/2.png
 Textures/Enemies/Dwarf/Move/Right/1.png
-2 Walk_Left 8 160
+2 Walk_Left 8 134
 Textures/Enemies/Dwarf/Move/Left/8.png
 Textures/Enemies/Dwarf/Move/Left/7.png
 Textures/Enemies/Dwarf/Move/Left/6.png
@@ -16,7 +16,7 @@ Textures/Enemies/Dwarf/Move/Left/4.png
 Textures/Enemies/Dwarf/Move/Left/3.png
 Textures/Enemies/Dwarf/Move/Left/2.png
 Textures/Enemies/Dwarf/Move/Left/1.png
-3 Death_Right 8 160
+3 Death_Right 8 134
 Textures/Enemies/Dwarf/Death/Right/8.png
 Textures/Enemies/Dwarf/Death/Right/7.png
 Textures/Enemies/Dwarf/Death/Right/6.png
@@ -25,7 +25,7 @@ Textures/Enemies/Dwarf/Death/Right/4.png
 Textures/Enemies/Dwarf/Death/Right/3.png
 Textures/Enemies/Dwarf/Death/Right/2.png
 Textures/Enemies/Dwarf/Death/Right/1.png
-4 Death_Left 8 160
+4 Death_Left 8 134
 Textures/Enemies/Dwarf/Death/Left/8.png
 Textures/Enemies/Dwarf/Death/Left/7.png
 Textures/Enemies/Dwarf/Death/Left/6.png
@@ -38,7 +38,7 @@ Textures/Enemies/Dwarf/Death/Left/1.png
 Textures/Enemies/Dwarf/Dead/Right/1.png
 6 Dead_Left 1 1000
 Textures/Enemies/Dwarf/Dead/Left/1.png
-7 Attack_Right 8 100
+7 Attack_Right 8 134
 Textures/Enemies/Dwarf/Attack/Right/8.png
 Textures/Enemies/Dwarf/Attack/Right/7.png
 Textures/Enemies/Dwarf/Attack/Right/6.png
@@ -47,7 +47,7 @@ Textures/Enemies/Dwarf/Attack/Right/4.png
 Textures/Enemies/Dwarf/Attack/Right/3.png
 Textures/Enemies/Dwarf/Attack/Right/2.png
 Textures/Enemies/Dwarf/Attack/Right/1.png
-8 Attack_Left 8 100
+8 Attack_Left 8 134
 Textures/Enemies/Dwarf/Attack/Left/8.png
 Textures/Enemies/Dwarf/Attack/Left/7.png
 Textures/Enemies/Dwarf/Attack/Left/6.png
@@ -56,7 +56,7 @@ Textures/Enemies/Dwarf/Attack/Left/4.png
 Textures/Enemies/Dwarf/Attack/Left/3.png
 Textures/Enemies/Dwarf/Attack/Left/2.png
 Textures/Enemies/Dwarf/Attack/Left/1.png
-9 Stay_Right 8 160
+9 Stay_Right 8 134
 Textures/Enemies/Dwarf/Stay/Right/8.png
 Textures/Enemies/Dwarf/Stay/Right/7.png
 Textures/Enemies/Dwarf/Stay/Right/6.png
@@ -65,7 +65,7 @@ Textures/Enemies/Dwarf/Stay/Right/4.png
 Textures/Enemies/Dwarf/Stay/Right/3.png
 Textures/Enemies/Dwarf/Stay/Right/2.png
 Textures/Enemies/Dwarf/Stay/Right/1.png
-10 Stay_Left 8 160
+10 Stay_Left 8 134
 Textures/Enemies/Dwarf/Stay/Left/8.png
 Textures/Enemies/Dwarf/Stay/Left/7.png
 Textures/Enemies/Dwarf/Stay/Left/6.png

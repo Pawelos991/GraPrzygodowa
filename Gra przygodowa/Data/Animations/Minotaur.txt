@@ -1,4 +1,4 @@
-1 Walk_Right 8 160
+1 Walk_Right 8 134
 Textures/Enemies/Minotaur/Move/Right/8.png
 Textures/Enemies/Minotaur/Move/Right/7.png
 Textures/Enemies/Minotaur/Move/Right/6.png
@@ -7,7 +7,7 @@ Textures/Enemies/Minotaur/Move/Right/4.png
 Textures/Enemies/Minotaur/Move/Right/3.png
 Textures/Enemies/Minotaur/Move/Right/2.png
 Textures/Enemies/Minotaur/Move/Right/1.png
-2 Walk_Left 8 160
+2 Walk_Left 8 134
 Textures/Enemies/Minotaur/Move/Left/8.png
 Textures/Enemies/Minotaur/Move/Left/7.png
 Textures/Enemies/Minotaur/Move/Left/6.png
@@ -16,7 +16,7 @@ Textures/Enemies/Minotaur/Move/Left/4.png
 Textures/Enemies/Minotaur/Move/Left/3.png
 Textures/Enemies/Minotaur/Move/Left/2.png
 Textures/Enemies/Minotaur/Move/Left/1.png
-3 Death_Right 9 160
+3 Death_Right 9 117
 Textures/Enemies/Minotaur/Death/Right/9.png
 Textures/Enemies/Minotaur/Death/Right/8.png
 Textures/Enemies/Minotaur/Death/Right/7.png
@@ -26,7 +26,7 @@ Textures/Enemies/Minotaur/Death/Right/4.png
 Textures/Enemies/Minotaur/Death/Right/3.png
 Textures/Enemies/Minotaur/Death/Right/2.png
 Textures/Enemies/Minotaur/Death/Right/1.png
-4 Death_Left 9 160
+4 Death_Left 9 117
 Textures/Enemies/Minotaur/Death/Left/9.png
 Textures/Enemies/Minotaur/Death/Left/8.png
 Textures/Enemies/Minotaur/Death/Left/7.png
@@ -40,7 +40,7 @@ Textures/Enemies/Minotaur/Death/Left/1.png
 Textures/Enemies/Minotaur/Dead/Right/1.png
 6 Dead_Left 1 1000
 Textures/Enemies/Minotaur/Dead/Left/1.png
-7 Attack_Right 9 100
+7 Attack_Right 9 117
 Textures/Enemies/Minotaur/Attack/Right/9.png
 Textures/Enemies/Minotaur/Attack/Right/8.png
 Textures/Enemies/Minotaur/Attack/Right/7.png
@@ -50,7 +50,7 @@ Textures/Enemies/Minotaur/Attack/Right/4.png
 Textures/Enemies/Minotaur/Attack/Right/3.png
 Textures/Enemies/Minotaur/Attack/Right/2.png
 Textures/Enemies/Minotaur/Attack/Right/1.png
-8 Attack_Left 9 100
+8 Attack_Left 9 117
 Textures/Enemies/Minotaur/Attack/Left/9.png
 Textures/Enemies/Minotaur/Attack/Left/8.png
 Textures/Enemies/Minotaur/Attack/Left/7.png
@@ -60,7 +60,7 @@ Textures/Enemies/Minotaur/Attack/Left/4.png
 Textures/Enemies/Minotaur/Attack/Left/3.png
 Textures/Enemies/Minotaur/Attack/Left/2.png
 Textures/Enemies/Minotaur/Attack/Left/1.png
-9 Stay_Right 9 160
+9 Stay_Right 9 117
 Textures/Enemies/Minotaur/Stay/Right/9.png
 Textures/Enemies/Minotaur/Stay/Right/8.png
 Textures/Enemies/Minotaur/Stay/Right/7.png
@@ -70,7 +70,7 @@ Textures/Enemies/Minotaur/Stay/Right/4.png
 Textures/Enemies/Minotaur/Stay/Right/3.png
 Textures/Enemies/Minotaur/Stay/Right/2.png
 Textures/Enemies/Minotaur/Stay/Right/1.png
-10 Stay_Left 9 160
+10 Stay_Left 9 117
 Textures/Enemies/Minotaur/Stay/Left/9.png
 Textures/Enemies/Minotaur/Stay/Left/8.png
 Textures/Enemies/Minotaur/Stay/Left/7.png

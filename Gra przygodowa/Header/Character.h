@@ -13,10 +13,10 @@ class Character
         Animations animations;
         int HP;
         int MaxHP;
-        int is_dead; //0 - No, 1 - Yes
+        bool is_dead;
         int death_counter;
         int movement_indicator; //1 - Right, 2 - Left
-        int is_attacking; //0 - No  1 - Yes
+        bool is_attacking; //0 - No  1 - Yes
         RectangleShape HP_Red;
         SoundBuffer Attack_buffer;
         Sound Attack_Sound;

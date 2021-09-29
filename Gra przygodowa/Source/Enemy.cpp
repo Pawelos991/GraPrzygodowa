@@ -94,60 +94,68 @@ void Enemy::Maintance_Range(RenderWindow &window, int counter, RectangleShape pl
         is_dead=1;
     if(is_dead==0)
     {
-    if(is_attacking==1)
-    {
-        if(Attack_counter<Attack_counter_max)
+        if (is_attacking == false)
         {
-            if(Attack_counter==Attack_frame)
-            {
-                if(movement_indicator==1)
-                    M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(12),10,missile_width,missile_height,Attack_hit);
-                else
-                    M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(11),10,missile_width,missile_height,Attack_hit);
-                enemies_missiles.add_missile(M);
-                Attack_Sound.play();
-            }
-            if(movement_indicator==1)
-                animations.find_animation(7)->Display_animation(window,Vector2f(hitbox.getPosition().x,hitbox.getPosition().y-Attack_up),Attack_counter);
-            else
-                animations.find_animation(8)->Display_animation(window,Vector2f(hitbox.getPosition().x-Attack_left,hitbox.getPosition().y-Attack_up),Attack_counter);
-            Attack_counter++;
+            Range_Attack(players_hitbox, is_player_dead);
         }
-        else if(Attack_counter<2*Attack_counter_max)
+        if(is_attacking==true)
+        {
+            if(Attack_counter<Attack_counter_max)
+            {
+                if(Attack_counter==Attack_frame)
+                {
+                    if(movement_indicator==1)
+                        M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(12),10,missile_width,missile_height,Attack_hit);
+                    else
+                        M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(11),10,missile_width,missile_height,Attack_hit);
+                    enemies_missiles.add_missile(M);
+                    Attack_Sound.play();
+                }
+                if(movement_indicator==1)
+                    animations.find_animation(7)->Display_animation(window,Vector2f(hitbox.getPosition().x,hitbox.getPosition().y-Attack_up),Attack_counter);
+                else
+                    animations.find_animation(8)->Display_animation(window,Vector2f(hitbox.getPosition().x-Attack_left,hitbox.getPosition().y-Attack_up),Attack_counter);
+                Attack_counter++;
+            }
+            else if(Attack_counter<2*Attack_counter_max)
+            {
+                Follow_player(players_hitbox,counter, window);
+                Attack_counter++;
+            }
+            else
+            {
+                if (movement_indicator == 1)
+                    animations.find_animation(7)->Display_animation(window, Vector2f(hitbox.getPosition().x, hitbox.getPosition().y - Attack_up), Attack_counter);
+                else
+                    animations.find_animation(8)->Display_animation(window, Vector2f(hitbox.getPosition().x - Attack_left, hitbox.getPosition().y - Attack_up), Attack_counter);
+
+                is_attacking=0;
+                Attack_counter=0;
+            }
+        }
+        else
         {
             Follow_player(players_hitbox,counter, window);
-            Attack_counter++;
         }
-        else
+        Display_HP(window);
+        }
+        else if(is_dead && death_counter<60)
         {
-            is_attacking=0;
-            Attack_counter=0;
+            if(death_counter==0)
+                Death_sound.play();
+            if(movement_indicator==1)
+                animations.find_animation(3)->Display_animation(window,hitbox.getPosition(),death_counter);
+            else
+                animations.find_animation(4)->Display_animation(window,hitbox.getPosition(),death_counter);
+            death_counter++;
         }
-    }
-    else
-    {
-    Range_Attack(players_hitbox,is_player_dead);
-    Follow_player(players_hitbox,counter, window);
-    }
-    Display_HP(window);
-    }
-    else if(is_dead==1 && death_counter<=60)
-    {
-        if(death_counter==0)
-            Death_sound.play();
-        if(movement_indicator==1)
-            animations.find_animation(3)->Display_animation(window,hitbox.getPosition(),death_counter);
-        else
-            animations.find_animation(4)->Display_animation(window,hitbox.getPosition(),death_counter);
-        death_counter++;
-    }
-    else if(is_dead==1 && death_counter>60)
-    {
-        if(movement_indicator==1)
-            animations.find_animation(5)->Display_animation(window,hitbox.getPosition(),death_counter);
-        else
-            animations.find_animation(6)->Display_animation(window,hitbox.getPosition(),death_counter);
-    }
+        else if(is_dead && death_counter>=60)
+        {
+            if(movement_indicator==1)
+                animations.find_animation(5)->Display_animation(window,hitbox.getPosition(),death_counter);
+            else
+                animations.find_animation(6)->Display_animation(window,hitbox.getPosition(),death_counter);
+        }
 }
 
 RectangleShape* Enemy::Maintance_Melee(RenderWindow &window, int counter, RectangleShape players_hitbox, int is_player_dead)
@@ -158,36 +166,44 @@ RectangleShape* Enemy::Maintance_Melee(RenderWindow &window, int counter, Rectan
         is_dead=1;
     if(is_dead==0)
     {
-    if(is_attacking==1)
-    {
-        if(Attack_counter==0)
-            Attack_Sound.play();
-        if(Attack_counter<Attack_counter_max)
+        if (is_attacking == false)
         {
-            if (Attack_counter == Attack_frame)
+            Check_Swing(players_hitbox, is_player_dead);
+        }
+        if(is_attacking==true)
+        {
+            if(Attack_counter==0)
+                Attack_Sound.play();
+            if(Attack_counter<Attack_counter_max)
             {
-                Hitp = Swing(players_hitbox, is_player_dead);
+                if (Attack_counter == Attack_frame)
+                {
+                    Hitp = Swing(players_hitbox, is_player_dead);
+                }
+                Attack_counter++;
+                if(movement_indicator==1)
+                    animations.find_animation(7)->Display_animation(window,Vector2f(hitbox.getPosition().x,hitbox.getPosition().y-Attack_up),Attack_counter);
+                else
+                    animations.find_animation(8)->Display_animation(window,Vector2f(hitbox.getPosition().x-Attack_left,hitbox.getPosition().y-Attack_up),Attack_counter);
             }
-            Attack_counter++;
-            if(movement_indicator==1)
-                animations.find_animation(7)->Display_animation(window,Vector2f(hitbox.getPosition().x,hitbox.getPosition().y-Attack_up),Attack_counter);
             else
-                animations.find_animation(8)->Display_animation(window,Vector2f(hitbox.getPosition().x-Attack_left,hitbox.getPosition().y-Attack_up),Attack_counter);
+            {
+                if (movement_indicator == 1)
+                    animations.find_animation(7)->Display_animation(window, Vector2f(hitbox.getPosition().x, hitbox.getPosition().y - Attack_up), Attack_counter);
+                else
+                    animations.find_animation(8)->Display_animation(window, Vector2f(hitbox.getPosition().x - Attack_left, hitbox.getPosition().y - Attack_up), Attack_counter);
+
+                is_attacking=0;
+                Attack_counter=0;
+            }
         }
         else
         {
-            is_attacking=0;
-            Attack_counter=0;
-        }
-    }
-    else
-    {
-        Check_Swing(players_hitbox,is_player_dead);
-        Follow_player(players_hitbox,counter, window);
+            Follow_player(players_hitbox,counter, window);
         }
         Display_HP(window);
     }
-    else if(is_dead==1 && death_counter<=60)
+    else if(is_dead && death_counter<60)
     {
         if(death_counter==0)
             Death_sound.play();
@@ -197,7 +213,7 @@ RectangleShape* Enemy::Maintance_Melee(RenderWindow &window, int counter, Rectan
             animations.find_animation(4)->Display_animation(window,hitbox.getPosition(),death_counter);
         death_counter++;
     }
-    else if(is_dead==1 && death_counter>60)
+    else if(is_dead && death_counter>=60)
     {
         if(movement_indicator==1)
             animations.find_animation(5)->Display_animation(window,hitbox.getPosition(),death_counter);
@@ -329,7 +345,7 @@ void Enemy::Check_Swing(RectangleShape players_hitbox, int is_player_dead)
     Hitp->setPosition(hitbox.getPosition().x + hitbox.getGlobalBounds().width, hitbox.getPosition().y);
     if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead == 0)
     {
-        is_attacking = 1;
+        is_attacking = true;
         Attack_counter = 0;
     }
     else
@@ -337,7 +353,7 @@ void Enemy::Check_Swing(RectangleShape players_hitbox, int is_player_dead)
         Hitp->setPosition(hitbox.getPosition().x - Swing_width, hitbox.getPosition().y);
         if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead == 0)
         {
-            is_attacking = 1;
+            is_attacking = true;
             Attack_counter = 0;
         }
     }
@@ -349,7 +365,7 @@ void Enemy::Range_Attack(RectangleShape players_hitbox,int is_player_dead)
     {
         if(hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)> players_hitbox.getPosition().y &&hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)<players_hitbox.getPosition().y+players_hitbox.getGlobalBounds().height)
         {
-            is_attacking=1;
+            is_attacking=true;
             Attack_counter=0;
         }
     }
