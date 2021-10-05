@@ -20,6 +20,8 @@ void Map::prepareMap(std::vector<Screen*>& screens)
 		Vector2f pos = smallStartPos + Vector2f((screens[i]->getPosition().x+5)*37, (-(screens[i]->getPosition().y) + 4) * 18);
 		smallMapPieces[i].setPosition(pos);
 		smallMapPieces[i].setSize(Vector2f(32, 16));
+		smallMapPieces[i].setOutlineThickness(1);
+		smallMapPieces[i].setOutlineColor(Color(125,125,125));
 	}
 	for (int i = 0; i < screens.size(); i++)
 	{
@@ -27,6 +29,8 @@ void Map::prepareMap(std::vector<Screen*>& screens)
 		Vector2f pos = bigStartPos + Vector2f((screens[i]->getPosition().x + 5) * 152, (-(screens[i]->getPosition().y) + 4) * 74);
 		bigMapPieces[i].setPosition(pos);
 		bigMapPieces[i].setSize(Vector2f(132, 66));
+		bigMapPieces[i].setOutlineThickness(2);
+		bigMapPieces[i].setOutlineColor(Color(125, 125, 125));
 	}
 }
 
