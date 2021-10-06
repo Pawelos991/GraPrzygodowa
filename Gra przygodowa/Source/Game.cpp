@@ -35,6 +35,8 @@ Game::Game()
     displayBigMap = false;
     finishedTutorial = true; //Change later
     adventureStarted = false;
+    add_new_quest = false;
+    quest_counter = 0;
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));
@@ -163,25 +165,29 @@ void Game::ArenaMode(RenderWindow &window)
     if (Actual_screen->enemies.is_everyone_dead())
     {
         kills++;
-        if (counter % 5 == 0)
+        if (counter % 6 == 0)
         {
             Actual_screen->enemies.add_enemy("Minotaur", Vector2f((counter % 12) * 100 + 100, 700));
         }
-        else if (counter % 5 == 1)
+        else if (counter % 6 == 1)
         {
             Actual_screen->enemies.add_enemy("Dwarf", Vector2f((counter % 12) * 100 + 100, 700));
         }
-        else if (counter % 5 == 2)
+        else if (counter % 6 == 2)
         {
             Actual_screen->enemies.add_enemy("Archer", Vector2f((counter % 12) * 100 + 100, 700));
         }
-        else if (counter % 5 == 3)
+        else if (counter % 6 == 3)
         {
             Actual_screen->enemies.add_enemy("Snake", Vector2f((counter % 12) * 100 + 100, 700));
         }
-        else if (counter % 5 == 4)
+        else if (counter % 6 == 4)
         {
             Actual_screen->enemies.add_enemy("Scorpion", Vector2f((counter % 12) * 100 + 100, 700));
+        }
+        else if (counter % 6 == 5)
+        {
+            Actual_screen->enemies.add_enemy("Knight", Vector2f((counter % 12) * 100 + 100, 700));
         }
     }
 }
