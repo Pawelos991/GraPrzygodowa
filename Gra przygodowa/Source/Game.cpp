@@ -37,6 +37,7 @@ Game::Game()
     adventureStarted = false;
     add_new_quest = false;
     quest_counter = 0;
+    arena_enemies_loaded = false;
     for (int i = 0; i < 5; i++)
     {
         shadows[i].setFillColor(Color(249, 215, 28, 10));
@@ -123,6 +124,8 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
 
     else if(gameMode==4) //Arena normal
     {
+        if (!arena_enemies_loaded)
+            LoadArenaEnemies();
         p.Respawn();
         remove_all_t_quests();
         add_new_quest = true;
@@ -138,6 +141,8 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
     }
     else if(gameMode==5) //Arena godmode
     {
+        if (!arena_enemies_loaded)
+            LoadArenaEnemies();
         p.Respawn();
         remove_all_t_quests();
         add_new_quest = true;
@@ -167,6 +172,47 @@ void Game::ArenaMode(RenderWindow &window)
         kills++;
         if (counter % 6 == 0)
         {
+            Enemy *temp = arena_enemies.getEnemyByName("Minotaur");
+            Enemy* new_enemy = new Enemy(temp, Vector2f((counter % 12) * 100 + 100, 700));
+            Actual_screen->enemies.add_enemy(new_enemy);
+        }
+        else if (counter % 6 == 1)
+        {
+            Enemy* temp = arena_enemies.getEnemyByName("Dwarf");
+            Enemy* new_enemy = new Enemy(temp, Vector2f((counter % 12) * 100 + 100, 700));
+            Actual_screen->enemies.add_enemy(new_enemy);
+        }
+        else if (counter % 6 == 2)
+        {
+            Enemy* temp = arena_enemies.getEnemyByName("Archer");
+            Enemy* new_enemy = new Enemy(temp, Vector2f((counter % 12) * 100 + 100, 700));
+            Actual_screen->enemies.add_enemy(new_enemy);
+        }
+        else if (counter % 6 == 3)
+        {
+            Enemy* temp = arena_enemies.getEnemyByName("Snake");
+            Enemy* new_enemy = new Enemy(temp, Vector2f((counter % 12) * 100 + 100, 700));
+            Actual_screen->enemies.add_enemy(new_enemy);
+        }
+        else if (counter % 6 == 4)
+        {
+            Enemy* temp = arena_enemies.getEnemyByName("Scorpion");
+            Enemy* new_enemy = new Enemy(temp, Vector2f((counter % 12) * 100 + 100, 700));
+            Actual_screen->enemies.add_enemy(new_enemy);
+        }
+        else if (counter % 6 == 5)
+        {
+            Enemy* temp = arena_enemies.getEnemyByName("Knight");
+            Enemy* new_enemy = new Enemy(temp, Vector2f((counter % 12) * 100 + 100, 700));
+            Actual_screen->enemies.add_enemy(new_enemy);
+        }
+    }
+
+    /*if (Actual_screen->enemies.is_everyone_dead())
+    {
+        kills++;
+        if (counter % 6 == 0)
+        {
             Actual_screen->enemies.add_enemy("Minotaur", Vector2f((counter % 12) * 100 + 100, 700));
         }
         else if (counter % 6 == 1)
@@ -189,7 +235,18 @@ void Game::ArenaMode(RenderWindow &window)
         {
             Actual_screen->enemies.add_enemy("Knight", Vector2f((counter % 12) * 100 + 100, 700));
         }
-    }
+    }*/
+}
+
+void Game::LoadArenaEnemies()
+{
+    arena_enemies.add_enemy("Minotaur", Vector2f(0, 0));
+    arena_enemies.add_enemy("Dwarf", Vector2f(0, 0));
+    arena_enemies.add_enemy("Archer", Vector2f(0, 0));
+    arena_enemies.add_enemy("Snake", Vector2f(0, 0));
+    arena_enemies.add_enemy("Scorpion", Vector2f(0, 0));
+    arena_enemies.add_enemy("Knight", Vector2f(0, 0));
+    arena_enemies_loaded = true;
 }
 
 void Game::GetKeyEvent(RenderWindow& window,Player &p, Adventure_Creator &adventure_creator, Map& map)

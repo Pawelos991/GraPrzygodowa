@@ -81,6 +81,62 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
     next=nullptr;
 }
 
+Enemy::Enemy(Enemy* base,Vector2f position)
+{
+    type = base->getType();
+    range = base->Range();
+    if (range == 0)
+    {
+        for (int i = 1; i < 11; i++)
+        {
+            Animation* tempPtr = base->getAnimations().find_animation(i);
+            Animation* temp = new Animation(tempPtr->getName(), tempPtr->getID(), tempPtr->getFrames(), tempPtr->getDelay());
+            temp->CopyFromAnimation(tempPtr);
+            animations.add_animation(temp);
+        }
+    }
+    else
+    {
+        for (int i = 1; i < 13; i++)
+        {
+            Animation* tempPtr = base->getAnimations().find_animation(i);
+            Animation* temp = new Animation(tempPtr->getName(), tempPtr->getID(), tempPtr->getFrames(), tempPtr->getDelay());
+            temp->CopyFromAnimation(tempPtr);
+            animations.add_animation(temp);
+        }
+    } 
+    hitbox.setSize(Vector2f(base->getHitbox().getSize().x, base->getHitbox().getSize().y));
+    hitbox.setPosition(position);
+    damage = base->getDamage();
+    MaxHP = base->getMaxHp();
+    HP = MaxHP;
+    HP_Red.setSize(Vector2f(MaxHP, 10));
+    HP_Red.setFillColor(Color::Red);
+    is_dead = 0;
+    death_counter = 0;
+    is_attacking = 0;
+    Attack_counter = 0;
+    movement_indicator = 2;
+    Attack_counter_max = base->getAttackCounterMax();
+    Attack_frame = base->getAttackFrame();
+    Swing_width = base->getSwingWidth();
+    Attack_left = base->getAttackLeft();
+    Attack_up = base->getAttackUp();
+    Attack_buffer = base->getAttackBuffer();
+    Death_buffer = base->getDeathBuffer();
+    Attack_Sound.setBuffer(Attack_buffer);
+    Death_sound.setBuffer(Death_buffer);
+    Attack_Sound.setVolume(20);
+    Death_sound.setVolume(20);
+    if (range == 1)
+    {
+        missile_width = base->getMissileWidth();
+        missile_height = base->getMissileHeight();
+        Attack_hit = base->getAttackHit();
+    }
+    next = nullptr;
+}
+
 Enemy::~Enemy()
 {
     //dtor
@@ -311,9 +367,9 @@ void Enemy::Follow_player(RectangleShape players_hitbox, int counter, RenderWind
 
 void Enemy::Display_HP(RenderWindow &window)
 {
-    int maxsize=MaxHP;
-    HP_Red.setSize(Vector2f(HP*(maxsize/MaxHP),10));
-    HP_Red.setPosition(Vector2f(hitbox.getPosition().x,hitbox.getPosition().y-10));
+    HP_Red.setSize(Vector2f(HP,10));
+    //HP_Red.setPosition(Vector2f(hitbox.getPosition().x + (hitbox.getSize().x / 2) - (HP_Red.getSize().x / 2), hitbox.getPosition().y - 10)); //Basing on the centHP_Red.setPosition(Vector2f(hitbox.getPosition().x + (hitbox.getSize().x / 2) - (HP_Red.getSize().x / 2), hitbox.getPosition().y - 10)); //Basing on the center of the hitboxer of the hitbox
+    HP_Red.setPosition(Vector2f(hitbox.getPosition().x , hitbox.getPosition().y - 10)); //Basing on the begining of the hitbox
     window.draw(HP_Red);
 }
 
@@ -336,7 +392,6 @@ RectangleShape* Enemy::Swing(RectangleShape players_hitbox,int is_player_dead) /
     delete Hitp;
     Hitp=nullptr;
     return Hitp;
-
 }
 
 void Enemy::Check_Swing(RectangleShape players_hitbox, int is_player_dead)

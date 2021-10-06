@@ -16,6 +16,7 @@ class Game : private Screens, private Quests, private Menu
     private:
         void Prepare_game(Player &p, RenderWindow& window, Adventure_Creator& adventure_creator,Map& map);
         void ArenaMode(RenderWindow& window);
+        void LoadArenaEnemies();
         void GetKeyEvent(RenderWindow& window, Player& p, Adventure_Creator& adventure_creator, Map& map);
         void MaintainChests(Items& items, Player& p);
         void MaintainDoors(RenderWindow& window, Player& p);
@@ -29,6 +30,7 @@ class Game : private Screens, private Quests, private Menu
         Font Arena_font;
         Text Arena_text;
         CircleShape shadows[5];
+        Enemies arena_enemies;
         int gameMode; //0 - not chosen, 1 - Tutorial, 2 - Continue adventure, 3 - New adventure, 4 - Arena normal, 5 - Arena godmode
         int counter; //FPS counter
         int kills; //Kills counter (arena)
@@ -46,6 +48,7 @@ class Game : private Screens, private Quests, private Menu
         bool finishedTutorial;
         bool adventureStarted;
         bool add_new_quest;
+        bool arena_enemies_loaded;
 
 };
 

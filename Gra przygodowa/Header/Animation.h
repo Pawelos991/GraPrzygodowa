@@ -27,7 +27,7 @@ class Animation
         void CopyFromAnimation(Animation *base);
         void Display_animation(RenderWindow& window, Vector2f location, int counter);
         int getFrames(){return frames;}
-        float getDelay(){return delay;}
+        int getDelay(){return delay;}
 
     private:
         int frames;

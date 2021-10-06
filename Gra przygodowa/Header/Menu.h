@@ -1,3 +1,6 @@
+#ifndef MENU_H
+#define MENU_H
+
 #include "Animations.h"
 
 class Menu 
@@ -54,3 +57,5 @@ class Menu
 
 
 };
+
+#endif // MENU_H

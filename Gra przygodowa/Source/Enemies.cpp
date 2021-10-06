@@ -17,6 +17,22 @@ void Enemies::add_enemy(std::string Type,Vector2f position)
     }
 }
 
+void Enemies::add_enemy(Enemy* enemy)
+{
+    if (head == nullptr)
+    {
+        head = enemy;
+        return;
+    }
+    else
+    {
+        Enemy* temp = head;
+        while (temp->getNext() != nullptr)
+            temp = temp->getNext();
+        temp->setNext(enemy);
+    }
+}
+
 void Enemies::delete_enemy(Enemy* deleted)
 {
     if(deleted==head)
@@ -108,4 +124,16 @@ bool Enemies::is_it_empty()
         return true;
     else
         return false;
+}
+
+Enemy* Enemies::getEnemyByName(std::string name)
+{
+    Enemy* temp = head;
+    while (temp != nullptr)
+    {
+        if (temp->getType() == name)
+            break;
+        temp = temp->getNext();
+    }
+    return temp;
 }
