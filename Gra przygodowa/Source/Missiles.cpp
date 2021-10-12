@@ -26,6 +26,7 @@ void Missiles::delete_all_missiles()
     while(head!=nullptr)
     {
         temp=head->getNext();
+        head->Empty_Memory();
         delete head;
         head=temp;
     }
@@ -36,6 +37,7 @@ void Missiles::delete_missile(Missile* deleted)
     if(head==deleted)
     {
         head=head->getNext();
+        deleted->Empty_Memory();
         delete deleted;
         return;
     }
@@ -45,6 +47,7 @@ void Missiles::delete_missile(Missile* deleted)
         while(temp->getNext()!=deleted)
             temp=temp->getNext();
         temp->setNext(deleted->getNext());
+        deleted->Empty_Memory();
         delete deleted;
         return;
     }

@@ -425,3 +425,8 @@ void Enemy::Range_Attack(RectangleShape players_hitbox,int is_player_dead)
         }
     }
 }
+
+void Enemy::Empty_Memory()
+{
+    animations.delete_all_animations();
+}

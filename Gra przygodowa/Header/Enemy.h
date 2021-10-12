@@ -24,6 +24,8 @@ class Enemy : private Character
         void Range_Attack(RectangleShape players_hitbox,int is_player_dead);
         void getHit(int damage){HP-=damage;}
 
+        void Empty_Memory();
+
         RectangleShape getHitbox(){return hitbox;}
         Animations getAnimations() { return animations; }
         SoundBuffer getAttackBuffer() { return Attack_buffer; }

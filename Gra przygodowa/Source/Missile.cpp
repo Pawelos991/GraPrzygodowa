@@ -52,3 +52,8 @@ void Missile::Display_missile(RenderWindow &window, int counter)
         break;
     }
 }
+
+void Missile::Empty_Memory()
+{
+    animations.delete_all_animations();
+}

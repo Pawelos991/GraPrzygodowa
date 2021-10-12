@@ -19,6 +19,7 @@ class Missile
         void play_sound(){hit.play();}
         Sound getSound(){return hit;}
 
+        void Empty_Memory();
 
     private:
         Animations animations;

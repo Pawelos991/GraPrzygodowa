@@ -38,6 +38,7 @@ void Enemies::delete_enemy(Enemy* deleted)
     if(deleted==head)
     {
         head=head->getNext();
+        deleted->Empty_Memory();
         delete deleted;
         return;
     }
@@ -47,6 +48,7 @@ void Enemies::delete_enemy(Enemy* deleted)
         while(temp->getNext()!=nullptr && temp->getNext()!=deleted)
             temp=temp->getNext();
         temp->setNext(deleted->getNext());
+        deleted->Empty_Memory();
         delete deleted;
     }
 }
@@ -57,6 +59,7 @@ void Enemies::delete_all_enemies()
     while(head!=nullptr)
     {
         temp=head->getNext();
+        head->Empty_Memory();
         delete head;
         head=temp;
     }
@@ -100,7 +103,7 @@ std::vector<RectangleShape*> Enemies::Maintenance(RenderWindow &window, int coun
 
         temp=temp->getNext();
     }
-    if(how_many>70)
+    if(how_many>20)
         delete_enemy(head);
     return Slashes;
 }

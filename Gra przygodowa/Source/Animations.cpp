@@ -30,9 +30,9 @@ void Animations::delete_all_animations()
     Animation *temp=head;
     while(temp!=nullptr)
     {
-        head=temp->getNext();
+        temp=head->getNext();
         delete head;
-        head=temp;
+        head = temp;
     }
 }
 

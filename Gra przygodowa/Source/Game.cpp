@@ -236,6 +236,7 @@ void Game::ArenaMode(RenderWindow &window)
             Actual_screen->enemies.add_enemy("Knight", Vector2f((counter % 12) * 100 + 100, 700));
         }
     }*/
+
 }
 
 void Game::LoadArenaEnemies()
