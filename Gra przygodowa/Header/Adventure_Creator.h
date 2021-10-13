@@ -31,6 +31,9 @@ class Adventure_Creator
 		void generate_walls_castle(std::vector<Screen*>& screens);
 		void generate_walls_valley(std::vector<Screen*>& screens);
 		void generate_walls_desert(std::vector<Screen*>& screens);
+		void generate_enemies_castle(std::vector<Screen*>& screens);
+		void generate_enemies_valley(std::vector<Screen*>& screens);
+		void generate_enemies_desert(std::vector<Screen*>& screens);
 		float getDistance(Vector2f pos1, Vector2f pos2);
 		std::vector<Screen*> find_two_furthest_screens(std::vector<Screen*>&screens);
 		int generate_door(std::vector<Screen*>& screens, int ID);

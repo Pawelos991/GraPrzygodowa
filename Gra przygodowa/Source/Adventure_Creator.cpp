@@ -510,6 +510,34 @@ void Adventure_Creator::generate_chests(std::vector<Screen*>& screens, int Scree
 
 void Adventure_Creator::generate_enemies(std::vector<Screen*>& screens)
 {
+	switch (floor_type)
+	{
+	case(1):
+		generate_enemies_valley(screens);
+		break;
+	case(2): //castle
+		generate_enemies_castle(screens);
+		break;
+	case(3): //dungeons
+		break;
+	case(4): //desert
+		generate_enemies_desert(screens);
+		break;
+	}
+}
+
+void Adventure_Creator::generate_enemies_castle(std::vector<Screen*>& screens)
+{
+
+}
+
+void Adventure_Creator::generate_enemies_valley(std::vector<Screen*>& screens)
+{
+
+}
+
+void Adventure_Creator::generate_enemies_desert(std::vector<Screen*>& screens)
+{
 
 }
 
