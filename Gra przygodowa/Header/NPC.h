@@ -14,6 +14,7 @@ class NPC : private Character
         NPC* getNext(){return next;}
 
         void Maintance(RenderWindow &window, int counter, RectangleShape players_hitbox);
+        void Empty_Memory();
 
     private:
         NPC* next;

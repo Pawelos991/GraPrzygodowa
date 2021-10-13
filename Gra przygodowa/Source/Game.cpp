@@ -492,7 +492,6 @@ void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator&
     remove_all_t_quests();
     add_new_quest = true;
     quest_counter = 0;
-    p.set_NormalMode();
     p.hitbox.setPosition(Vector2f(773, 416));
 
     delete_all_adventure_screens();

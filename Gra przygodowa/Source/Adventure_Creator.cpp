@@ -53,7 +53,7 @@ std::vector<Screen*> Adventure_Creator::generate_level(RenderWindow& window)
 	int keyID = generate_door(adventure_screens, furthest_two[0]->getID());
 	generate_chests(adventure_screens, furthest_two[1]->getID(), keyID);
 	generate_NPCs(adventure_screens);
-	generate_enemies(adventure_screens);
+	generate_enemies(adventure_screens, furthest_two[1]->getID(), furthest_two[0]->getID());
 
 	return adventure_screens;
 }
@@ -508,37 +508,121 @@ void Adventure_Creator::generate_chests(std::vector<Screen*>& screens, int Scree
 	}
 }
 
-void Adventure_Creator::generate_enemies(std::vector<Screen*>& screens)
+void Adventure_Creator::generate_enemies(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID)
 {
 	switch (floor_type)
 	{
 	case(1):
-		generate_enemies_valley(screens);
+		generate_enemies_valley(screens, chestScreenID, lastScreenID);
 		break;
 	case(2): //castle
-		generate_enemies_castle(screens);
+		generate_enemies_castle(screens, chestScreenID, lastScreenID);
 		break;
 	case(3): //dungeons
 		break;
 	case(4): //desert
-		generate_enemies_desert(screens);
+		generate_enemies_desert(screens, chestScreenID, lastScreenID);
 		break;
 	}
 }
 
-void Adventure_Creator::generate_enemies_castle(std::vector<Screen*>& screens)
+void Adventure_Creator::generate_enemies_castle(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID)
 {
-
+	int startingScreenID = screens[0]->getID();
+	for (int i = 0; i < level * 3 + 1; i++)
+	{
+		Screen* temp = screens[0];
+		if (i == 0)
+			temp = screens[chestScreenID-1];
+		else
+			while (temp->getID() == startingScreenID || temp->getID() == lastScreenID || temp->getID() == chestScreenID || !temp->enemies.is_it_empty())
+			{
+				int newID = rand() % (5 + level * 3);
+				temp = screens[newID];
+			}
+		int howManyEnemies = 1;
+		if (level >= 5)
+		{
+			howManyEnemies = rand() % 2 + 1;
+		}
+		for (int i = 0; i < howManyEnemies; i++)
+		{
+			if (temp->goRight() == 0)
+				temp->enemies.add_enemy("Archer", Vector2f(1450, 50 + i * 300));
+			else if (temp->goLeft() == 0)
+				temp->enemies.add_enemy("Archer", Vector2f(80, 50 + i * 300));
+			else 
+				temp->enemies.add_enemy("Knight", Vector2f(760, 350+ i * 100));
+		}
+	}
 }
 
-void Adventure_Creator::generate_enemies_valley(std::vector<Screen*>& screens)
+void Adventure_Creator::generate_enemies_valley(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID)
 {
-
+	int startingScreenID = screens[0]->getID();
+	for (int i = 0; i < level * 3 + 1; i++)
+	{
+		Screen* temp = screens[0];
+		if (i == 0)
+			temp = screens[chestScreenID - 1];
+		else
+			while (temp->getID() == startingScreenID || temp->getID() == lastScreenID || temp->getID() == chestScreenID || !temp->enemies.is_it_empty())
+			{
+				int newID = rand() % (5 + level * 3);
+				temp = screens[newID];
+			}
+		int howManyEnemies = 1;
+		if (level >= 5)
+		{
+			howManyEnemies = rand() % 2 + 1;
+		}
+		for (int i = 0; i < howManyEnemies; i++)
+		{
+			int enemyType = rand() % 2;
+			if (enemyType == 0)
+			{
+				temp->enemies.add_enemy("Minotaur", Vector2f(600 + i * 150, 400));
+			}
+			else
+			{
+				temp->enemies.add_enemy("Dwarf", Vector2f(600 + i * 150,400));
+			}
+		}
+	}
 }
 
-void Adventure_Creator::generate_enemies_desert(std::vector<Screen*>& screens)
+void Adventure_Creator::generate_enemies_desert(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID)
 {
-
+	int startingScreenID = screens[0]->getID();
+	for (int i = 0; i < level * 3 + 1; i++)
+	{
+		Screen* temp = screens[0];
+		if (i == 0)
+			temp = screens[chestScreenID - 1];
+		else
+			while (temp->getID() == startingScreenID || temp->getID() == lastScreenID || temp->getID() == chestScreenID || !temp->enemies.is_it_empty())
+			{
+				int newID = rand() % (5 + level * 3);
+				temp = screens[newID];
+			}
+		int howManyEnemies = 1;
+		if (level >= 5)
+		{
+			howManyEnemies = rand() % 2 + 1;
+		}
+		for (int i = 0; i < howManyEnemies; i++)
+		{
+			int enemyType = rand() % 2;
+			if (enemyType == 0)
+			{
+				temp->enemies.add_enemy("Snake", Vector2f(600 + i * 150, 400));
+			}
+			else
+			{
+				temp->enemies.add_enemy("Scorpion", Vector2f(600 + i * 150, 400));
+			}
+		}
+	}
 }
 
 void Adventure_Creator::generate_NPCs(std::vector<Screen*>& screens)

@@ -57,3 +57,8 @@ void NPC::Maintance(RenderWindow &window, int counter, RectangleShape players_hi
     else
         animations.find_animation(1)->Display_animation(window,hitbox.getPosition(),counter);
 }
+
+void NPC::Empty_Memory()
+{
+    animations.delete_all_animations();
+}

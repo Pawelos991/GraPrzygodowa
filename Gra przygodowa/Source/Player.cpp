@@ -119,7 +119,7 @@ void Player::set_NormalMode()
     speed_of_movement=10; //Normally 4
     MaxHP=60;
     HP=60;
-    Mana_regen=1;
+    Mana_regen=10; //Normally 1
 }
 
 void Player::Check_collision_with_enviornment(RenderWindow &window, std::vector<Wall*>& walls)

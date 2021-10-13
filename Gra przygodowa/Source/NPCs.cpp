@@ -33,13 +33,15 @@ void NPCs::remove_npc(NPC* removed)
     if(removed==head)
     {
         head=head->getNext();
-        delete(removed);
+        removed->Empty_Memory();
+        delete removed;
         return;
     }
     else if(removed==head->getNext())
     {
         head->setNext(head->getNext()->getNext());
-        delete(removed);
+        removed->Empty_Memory();
+        delete removed;
         return;
     }
     else
@@ -49,7 +51,8 @@ void NPCs::remove_npc(NPC* removed)
         while(temp2->getNext()!=removed)
             temp2=temp2->getNext();
         temp2->setNext(temp2->getNext()->getNext());
-        delete(removed);
+        removed->Empty_Memory();
+        delete removed;
     }
 }
 
@@ -59,7 +62,8 @@ void NPCs::remove_all_npcs()
     while(head!=nullptr)
     {
         temp=head->getNext();
-        delete(head);
+        head->Empty_Memory();
+        delete head;
         head=temp;
     }
 }

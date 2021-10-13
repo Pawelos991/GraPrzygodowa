@@ -52,11 +52,11 @@ void C_Objects::display_CO(RenderWindow &window,bool is_everyone_dead)
 {
     for(int i=0;i<walls.size();i++)
         walls[i]->DisplayWall(window);
+    for (int i = 0; i < doors.size(); i++)
+        doors[i]->DisplayDoor(window);
     if (is_everyone_dead)
     {
         for (int i = 0; i < chests.size(); i++)
             chests[i]->DisplayChest(window);
-        for (int i = 0; i < doors.size(); i++)
-            doors[i]->DisplayDoor(window);
     }
 }
