@@ -6,6 +6,7 @@
 #include "Adventure_Creator.h"
 #include "Map.h"
 #include "Menu.h"
+#include "Adventure_Stats.h"
 
 class Game : private Screens, private Quests, private Menu
 {
@@ -31,6 +32,7 @@ class Game : private Screens, private Quests, private Menu
         Text Arena_text;
         CircleShape shadows[5];
         Enemies cache_enemies;
+        Adventure_Stats stats;
         int gameMode; //0 - not chosen, 1 - Tutorial, 2 - Continue adventure, 3 - New adventure, 4 - Arena normal, 5 - Arena godmode
         int counter; //FPS counter
         int kills; //Kills counter (arena)

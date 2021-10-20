@@ -117,8 +117,12 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
             i++;
         Actual_screen = adventure_screens[i];
         Actual_adventure_screen = Actual_screen;
-        adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(-54, player_hitbox.getPosition().y));
+        if (!adventure_screens[i]->isVisited())
+        {
+            adventure_screens[i]->setVisited(true);
+            return true;
+        }    
     }
     else if (player_hitbox.getPosition().x < 0 - player_hitbox.getGlobalBounds().width)
     {
@@ -126,8 +130,12 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
             i++;
         Actual_screen = adventure_screens[i];
         Actual_adventure_screen = Actual_screen;
-        adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(1600, player_hitbox.getPosition().y));
+        if (!adventure_screens[i]->isVisited())
+        {
+            adventure_screens[i]->setVisited(true);
+            return true;
+        }
     }
     else if (player_hitbox.getPosition().y > 900)
     {
@@ -135,8 +143,12 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
             i++;
         Actual_screen = adventure_screens[i];
         Actual_adventure_screen = Actual_screen;
-        adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, -68));
+        if (!adventure_screens[i]->isVisited())
+        {
+            adventure_screens[i]->setVisited(true);
+            return true;
+        }
     }
     else if (player_hitbox.getPosition().y < 0 - player_hitbox.getGlobalBounds().height)
     {
@@ -144,8 +156,12 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
             i++;
         Actual_screen = adventure_screens[i];
         Actual_adventure_screen = Actual_screen;
-        adventure_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, 900));
+        if (!adventure_screens[i]->isVisited())
+        {
+            adventure_screens[i]->setVisited(true);
+            return true;
+        }
     }
     return false;
 }

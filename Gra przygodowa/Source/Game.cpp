@@ -97,6 +97,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
     {
         if (!cache_enemies_loaded)
             LoadCacheEnemies();
+        stats.reset_stats();
         p.Respawn();
         remove_all_t_quests();
         add_new_quest = true;
@@ -118,6 +119,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
             Actual_screen = adventure_screens[0];
 
         Actual_screen->setVisited(true);
+        stats.add_visited_room();
         Actual_adventure_screen = Actual_screen;
         adventureStarted = true;
         counter = 0;
@@ -415,7 +417,9 @@ void Game::Arena(RenderWindow& window, Player& p)
 void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Adventure_Creator& adventure_creator)
 {
     window.clear(Color::White);
-    Check_adventure_screen(p.hitbox);
+    if (Check_adventure_screen(p.hitbox))
+        stats.add_visited_room();
+        
 
     Display_Screens(window);
 
@@ -477,6 +481,7 @@ void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator&
         Actual_screen = adventure_screens[0];
 
     Actual_screen->setVisited(true);
+    stats.add_visited_room();
     Actual_adventure_screen = Actual_screen;
     adventureStarted = true;
 }

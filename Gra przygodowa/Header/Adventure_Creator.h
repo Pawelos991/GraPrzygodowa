@@ -40,7 +40,6 @@ class Adventure_Creator
 		void generate_chests(std::vector<Screen*>& screens, int ScreenID, int keyID);
 		void generate_enemies(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		void generate_NPCs(std::vector<Screen*>& screens);
-
 };
 
 
