@@ -10,8 +10,8 @@ class Adventure_Creator
 		~Adventure_Creator();
 		int get_floor_type() { return floor_type; }
 		int get_level() { return level; }
-		std::vector<Screen*> next_lvl(RenderWindow& window);
-		std::vector<Screen*> generate_level(RenderWindow &window);
+		std::vector<Screen*> next_lvl(RenderWindow& window, Enemies& cache_enemies);
+		std::vector<Screen*> generate_level(RenderWindow &window, Enemies& cache_enemies);
 		void reset_creator();
 
 	private:
@@ -31,14 +31,14 @@ class Adventure_Creator
 		void generate_walls_castle(std::vector<Screen*>& screens);
 		void generate_walls_valley(std::vector<Screen*>& screens);
 		void generate_walls_desert(std::vector<Screen*>& screens);
-		void generate_enemies_castle(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID);
-		void generate_enemies_valley(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID);
-		void generate_enemies_desert(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID);
+		void generate_enemies_castle(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
+		void generate_enemies_valley(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
+		void generate_enemies_desert(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		float getDistance(Vector2f pos1, Vector2f pos2);
 		std::vector<Screen*> find_two_furthest_screens(std::vector<Screen*>&screens);
 		int generate_door(std::vector<Screen*>& screens, int ID);
 		void generate_chests(std::vector<Screen*>& screens, int ScreenID, int keyID);
-		void generate_enemies(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID);
+		void generate_enemies(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		void generate_NPCs(std::vector<Screen*>& screens);
 
 };
