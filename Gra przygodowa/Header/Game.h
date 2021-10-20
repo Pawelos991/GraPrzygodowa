@@ -22,6 +22,7 @@ class Game : private Screens, private Quests, private Menu
         void MaintainChests(Items& items, Player& p);
         void MaintainDoors(RenderWindow& window, Player& p);
         void DisplayShadows(RenderWindow& window, Player& p);
+        void DisplayStats(RenderWindow& window);
         void NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator);
 
         void Tutorial(RenderWindow& window, Player& p, Items& items, Map& map);

@@ -1,11 +1,25 @@
 #ifndef ADVENTURE_STATS_H
 #define ADVENTURE_STATS_H
 
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <fstream>
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+
+using namespace sf;
+
 class Adventure_Stats
 {
 	public:
 		Adventure_Stats();
 		~Adventure_Stats();
+		void display_stats(RenderWindow& window);
+		void prepare_stats();
+		void init_stats();
 		void reset_stats();
 		void update_time();
 		void add_killed_minotaur();
@@ -21,6 +35,8 @@ class Adventure_Stats
 		void add_desert_level();
 		void add_dungeon_level();
 		void add_opened_chest();
+		void add_level();
+		void setStats();
 		int getSeconds();
 		int getMinutes();
 		int getHours();
@@ -38,8 +54,11 @@ class Adventure_Stats
 		int getDesertLevels();
 		int getDungeonLevels();
 		int getOpenedChests();
+		int getLevels();
+		bool getStatsSet();
 
 	private:
+		int levels;
 		int seconds;
 		int minutes;
 		int hours;
@@ -56,6 +75,25 @@ class Adventure_Stats
 		int desert_levels;
 		int dungeon_levels;
 		int opened_chests;
+		bool stats_set;
+		Font font;
+		Text levels_text;
+		Text seconds_text;
+		Text minutes_text;
+		Text hours_text;
+		Text minotaurs_text;
+		Text dwarfs_text;
+		Text archers_text;
+		Text knights_text;
+		Text snakes_text;
+		Text scorpions_text;
+		Text rooms_text;
+		Text potions_text;
+		Text castle_text;
+		Text forest_text;
+		Text desert_text;
+		Text dungeon_text;
+		Text chests_text;
 };
 
 #endif // ADVENTURE_STATS_H

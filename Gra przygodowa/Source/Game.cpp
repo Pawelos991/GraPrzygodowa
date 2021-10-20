@@ -57,6 +57,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
 {
     if(gameMode==1) //Tutorial
     {
+        stats.init_stats();
         p.Respawn();
         remove_all_t_quests();
         add_new_quest = true;
@@ -97,7 +98,7 @@ void Game::Prepare_game(Player &p,RenderWindow &window,Adventure_Creator &advent
     {
         if (!cache_enemies_loaded)
             LoadCacheEnemies();
-        stats.reset_stats();
+        stats.init_stats();
         p.Respawn();
         remove_all_t_quests();
         add_new_quest = true;
@@ -387,6 +388,14 @@ void Game::Tutorial(RenderWindow &window,Player &p,Items &items,Map &map)
             add_new_quest = false;
         }
     }
+
+    if (!stats.getStatsSet())
+    {
+        stats.prepare_stats();
+        stats.setStats();
+    }  
+    stats.display_stats(window);
+
 }
 
 void Game::Arena(RenderWindow& window, Player& p)
@@ -520,6 +529,11 @@ void Game::DisplayShadows(RenderWindow& window, Player& p)
         shadows[i].setPosition(Vector2f(p.getHitbox().getPosition().x - 123 - ((4 - i) * 150), p.getHitbox().getPosition().y - 116 - ((4 - i) * 150)));
         window.draw(shadows[i]);
     }
+}
+
+void Game::DisplayStats(RenderWindow& window)
+{
+    stats.display_stats(window);
 }
 
 void Game::run()
