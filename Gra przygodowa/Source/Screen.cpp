@@ -137,7 +137,7 @@ Chest* Screen::check_chests(RectangleShape players_hitbox)
     {
         for(int i=0;i<chests.size();i++)
         {
-            if(players_hitbox.getGlobalBounds().intersects(chests[i]->box.getGlobalBounds())&& chests[i]->is_open==0)
+            if(players_hitbox.getGlobalBounds().intersects(chests[i]->box.getGlobalBounds())&& chests[i]->is_open==false)
                 return chests[i];
         }
         return nullptr;

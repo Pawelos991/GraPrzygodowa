@@ -72,6 +72,7 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
     Death_sound.setBuffer(Death_buffer);
     Attack_Sound.setVolume(20);
     Death_sound.setVolume(20);
+    reported_death = false;
     if (Range == 1)
     {
         missile_width = Missile_Width;
@@ -128,6 +129,7 @@ Enemy::Enemy(Enemy* base,Vector2f position)
     Death_sound.setBuffer(Death_buffer);
     Attack_Sound.setVolume(20);
     Death_sound.setVolume(20);
+    reported_death = false;
     if (range == 1)
     {
         missile_width = base->getMissileWidth();

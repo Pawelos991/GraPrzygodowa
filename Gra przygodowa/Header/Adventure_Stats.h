@@ -16,6 +16,11 @@ class Adventure_Stats
 		void add_killed_scorpion();
 		void add_visited_room();
 		void add_used_potion();
+		void add_castle_level();
+		void add_forest_level();
+		void add_desert_level();
+		void add_dungeon_level();
+		void add_opened_chest();
 		int getSeconds();
 		int getMinutes();
 		int getHours();
@@ -28,6 +33,11 @@ class Adventure_Stats
 		int getKnightsKilled();
 		int getSnakesKilled();
 		int getScorpionsKilled();
+		int getCastleLevels();
+		int getForestLevels();
+		int getDesertLevels();
+		int getDungeonLevels();
+		int getOpenedChests();
 
 	private:
 		int seconds;
@@ -41,6 +51,11 @@ class Adventure_Stats
 		int scorpions_killed;
 		int rooms_visited;
 		int potions_used;
+		int castle_levels;
+		int forest_levels;
+		int desert_levels;
+		int dungeon_levels;
+		int opened_chests;
 };
 
 #endif // ADVENTURE_STATS_H

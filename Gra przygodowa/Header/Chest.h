@@ -12,7 +12,7 @@ class Chest
         std::vector<int> Items_IDs;
         void DisplayChest(RenderWindow &window);
         void OpenChest();
-        int is_open; //0-no, 1-yes
+        bool is_open;
 
     private:
         Texture pic_open;

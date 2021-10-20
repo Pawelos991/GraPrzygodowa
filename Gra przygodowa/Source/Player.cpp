@@ -224,7 +224,7 @@ void Player::Display_inventory(RenderWindow &window,int open)
     }
 }
 
-void Player::heal()
+bool Player::heal()
 {
     if(inventory.Is_there_an_item(1)==1)
     {
@@ -234,7 +234,9 @@ void Player::heal()
             HP+=20;
         else
             HP=60;
+        return true;
     }
+    return false;
 }
 
 void Player::add_item_to_Inventory(int ID, Items &all_items)

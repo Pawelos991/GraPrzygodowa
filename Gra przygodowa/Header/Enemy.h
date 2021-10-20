@@ -32,7 +32,7 @@ class Enemy : private Character
         SoundBuffer getDeathBuffer() { return Death_buffer; }
         SoundBuffer getAttackHit() { return Attack_hit; }
         std::string getType() { return type; }
-        int is_enemy_dead(){return is_dead;}
+        bool is_enemy_dead(){return is_dead;}
         int Range(){return range;}
         int getSwingWidth() { return Swing_width; }
         int getAttackCounterMax() { return Attack_counter_max; }
@@ -43,6 +43,8 @@ class Enemy : private Character
         int getMissileHeight() { return missile_height; }
         int getDamage() { return damage; }
         int getAttackFrame() { return Attack_frame; }
+        void setReportedDeath() { reported_death = true; }
+        bool getReportedDeath() { return reported_death; }
         
 
     private:
@@ -55,6 +57,7 @@ class Enemy : private Character
         int Attack_left;
         int Attack_up;
         int range; //0 - Melee  1 - Range
+        bool reported_death;
         Enemy *next;
 };
 

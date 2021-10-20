@@ -12,7 +12,7 @@ Chest::Chest(std::string location_closed,std::string location_open,Vector2f Posi
     box.setSize(SizeOfBox);
     opening_buffer.loadFromFile("Sounds/Chest_open.wav");
     opening.setBuffer(opening_buffer);
-    is_open=0;
+    is_open=false;
     Items_IDs=Item_IDs;
 }
 
@@ -23,7 +23,7 @@ Chest::~Chest()
 
 void Chest::DisplayChest(RenderWindow &window)
 {
-    if(is_open==0)
+    if(is_open==false)
         window.draw(sp_closed);
     else
         window.draw(sp_open);
@@ -31,9 +31,9 @@ void Chest::DisplayChest(RenderWindow &window)
 
 void Chest::OpenChest()
 {
-    if(is_open==0)
+    if(is_open==false)
     {
          opening.play();
-         is_open=1;
+         is_open=true;
     }
 }

@@ -29,10 +29,10 @@ class Adventure_Creator
 		Screen* find_screen_by_ID(int id, std::vector<Screen*>& screens);
 		void generate_walls_dungeons(std::vector<Screen*>& screens);
 		void generate_walls_castle(std::vector<Screen*>& screens);
-		void generate_walls_valley(std::vector<Screen*>& screens);
+		void generate_walls_forest(std::vector<Screen*>& screens);
 		void generate_walls_desert(std::vector<Screen*>& screens);
 		void generate_enemies_castle(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
-		void generate_enemies_valley(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
+		void generate_enemies_forest(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		void generate_enemies_desert(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		float getDistance(Vector2f pos1, Vector2f pos2);
 		std::vector<Screen*> find_two_furthest_screens(std::vector<Screen*>&screens);

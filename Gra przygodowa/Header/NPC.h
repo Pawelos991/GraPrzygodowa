@@ -23,8 +23,6 @@ class NPC : private Character
         Texture cloudTex;
         Sprite Cloud;
         RectangleShape hitbox;
-
-
 };
 
 #endif // NPC_H

@@ -26,7 +26,7 @@ class Player : private Character
         RectangleShape getHitbox(){return hitbox;}
         void getHit(int damage){HP-=damage;}
         int is_player_dead(){return is_dead;}
-        void heal();
+        bool heal();
         void set_GodMode();
         void set_NormalMode();
         void Respawn(){is_dead=0;}

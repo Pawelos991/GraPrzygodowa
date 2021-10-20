@@ -2,6 +2,7 @@
 #define ENEMIES_H
 
 #include "Enemy.h"
+#include "Adventure_Stats.h"
 
 class Enemies
 {
@@ -14,6 +15,7 @@ class Enemies
         void delete_all_enemies();
         bool is_everyone_dead();
         bool is_it_empty();
+        void update_adventure_stats(Adventure_Stats& stats);
         Enemy* getEnemyByName(std::string name);
 
         std::vector<RectangleShape*> Maintenance(RenderWindow &window, int counter, RectangleShape players_hitbox, int is_player_dead,Missiles& player_missiles, Missiles& enemies_missiles);

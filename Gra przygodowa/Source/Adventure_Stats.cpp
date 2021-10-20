@@ -13,6 +13,11 @@ Adventure_Stats::Adventure_Stats()
 	scorpions_killed = 0;
 	rooms_visited = 0;
 	potions_used = 0;
+	castle_levels = 0;
+	forest_levels = 0;
+	desert_levels = 0;
+	dungeon_levels = 0;
+	opened_chests = 0;
 }
 
 Adventure_Stats::~Adventure_Stats(){}
@@ -30,6 +35,11 @@ void Adventure_Stats::reset_stats()
 	scorpions_killed = 0;
 	rooms_visited = 0;
 	potions_used = 0;
+	castle_levels = 0;
+	forest_levels = 0;
+	desert_levels = 0;
+	dungeon_levels = 0;
+	opened_chests = 0;
 }
 
 void Adventure_Stats::update_time()
@@ -85,6 +95,32 @@ void Adventure_Stats::add_used_potion()
 {
 	potions_used += 1;
 }
+
+void Adventure_Stats::add_castle_level()
+{
+	castle_levels += 1;
+}
+
+void Adventure_Stats::add_forest_level()
+{
+	forest_levels += 1;
+}
+
+void Adventure_Stats::add_desert_level()
+{
+	desert_levels += 1;
+}
+
+void Adventure_Stats::add_dungeon_level()
+{
+	dungeon_levels += 1;
+}
+
+void Adventure_Stats::add_opened_chest()
+{
+	opened_chests += 1;
+}
+
 
 int Adventure_Stats::getSeconds()
 {
@@ -146,3 +182,27 @@ int Adventure_Stats::getScorpionsKilled()
 	return scorpions_killed;
 }
 
+int Adventure_Stats::getCastleLevels()
+{
+	return castle_levels;
+}
+
+int Adventure_Stats::getForestLevels()
+{
+	return forest_levels;
+}
+
+int Adventure_Stats::getDesertLevels()
+{
+	return desert_levels;
+}
+
+int Adventure_Stats::getDungeonLevels()
+{
+	return dungeon_levels;
+}
+
+int Adventure_Stats::getOpenedChests()
+{
+	return opened_chests;
+}

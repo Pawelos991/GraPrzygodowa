@@ -140,3 +140,29 @@ Enemy* Enemies::getEnemyByName(std::string name)
     }
     return temp;
 }
+
+void Enemies::update_adventure_stats(Adventure_Stats& stats)
+{
+    Enemy* temp = head;
+    while (temp != nullptr)
+    {
+        if (temp->is_enemy_dead() && !temp->getReportedDeath())
+        {
+            std::string enemy_type = temp->getType();
+            if (enemy_type == "Minotaur")
+                stats.add_killed_minotaur();
+            else if (enemy_type == "Dwarf")
+                stats.add_killed_dwarf();
+            else if (enemy_type == "Archer")
+                stats.add_killed_archer();
+            else if (enemy_type == "Knight")
+                stats.add_killed_knight();
+            else if (enemy_type == "Snake")
+                stats.add_killed_snake();
+            else if (enemy_type == "Scorpion")
+                stats.add_killed_scorpion();
+            temp->setReportedDeath();
+        }
+        temp = temp->getNext();
+    }
+}

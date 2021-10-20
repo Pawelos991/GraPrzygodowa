@@ -233,6 +233,10 @@ void Game::GetKeyEvent(RenderWindow& window,Player &p, Adventure_Creator &advent
         if (event.type == Event::Closed)
             window.close();
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::H)
+        {
+            if (p.heal())
+                stats.add_used_potion();
+        }
             p.heal();
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::I)
         {
@@ -302,6 +306,7 @@ void Game::MaintainChests(Items &items, Player &p)
     if (a != nullptr)
     {
         a->OpenChest();
+        stats.add_opened_chest();
         for (int i = 0; i < a->Items_IDs.size(); i++)
             p.add_item_to_Inventory(a->Items_IDs[i], items);
     }
@@ -420,8 +425,10 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Ad
     if (Check_adventure_screen(p.hitbox))
         stats.add_visited_room();
         
-
     Display_Screens(window);
+
+    if (counter == 60)
+        stats.update_time();
 
     if (Actual_screen->check_portal(p.getHitbox()))
     {
@@ -441,6 +448,8 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Ad
 
         Actual_screen->player_missiles.maintenance(window, counter);
         Actual_screen->enemies_missiles.maintenance(window, counter);
+
+        Actual_screen->enemies.update_adventure_stats(stats);
 
         if (are_quests_displayed)
             Display_quests(window);
@@ -466,6 +475,23 @@ void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Ad
 
 void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator)
 {
+    int floor_type = adventure_creator.get_floor_type();
+    switch (floor_type)
+    {
+    case(1):
+        stats.add_forest_level();
+        break;
+    case(2):
+        stats.add_castle_level();
+        break;
+    case(3):
+        stats.add_dungeon_level();
+        break;
+    case(4):
+        stats.add_desert_level();
+        break;
+    }
+
     remove_all_t_quests();
     add_new_quest = true;
     quest_counter = 0;

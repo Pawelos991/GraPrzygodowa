@@ -33,7 +33,7 @@ std::vector<Screen*> Adventure_Creator::generate_level(RenderWindow& window, Ene
 	switch (floor_type)
 	{
 		case(1):
-			generate_walls_valley(adventure_screens);
+			generate_walls_forest(adventure_screens);
 			break;
 		case(2):
 			generate_walls_castle(adventure_screens);
@@ -296,7 +296,7 @@ void Adventure_Creator::generate_walls_castle(std::vector<Screen*>& screens)
 	}
 }
 
-void Adventure_Creator::generate_walls_valley(std::vector<Screen*>& screens)
+void Adventure_Creator::generate_walls_forest(std::vector<Screen*>& screens)
 {
 	std::string pathToBck = "Textures/Backgrounds/Grass.png";
 	std::string pathToFullHor = "Textures/Walls/Trees/TreeFullHor.png";
@@ -513,7 +513,7 @@ void Adventure_Creator::generate_enemies(std::vector<Screen*>& screens, int ches
 	switch (floor_type)
 	{
 	case(1):
-		generate_enemies_valley(screens, chestScreenID, lastScreenID, cache_enemies);
+		generate_enemies_forest(screens, chestScreenID, lastScreenID, cache_enemies);
 		break;
 	case(2): //castle
 		generate_enemies_castle(screens, chestScreenID, lastScreenID, cache_enemies);
@@ -569,7 +569,7 @@ void Adventure_Creator::generate_enemies_castle(std::vector<Screen*>& screens, i
 	}
 }
 
-void Adventure_Creator::generate_enemies_valley(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies)
+void Adventure_Creator::generate_enemies_forest(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies)
 {
 	int startingScreenID = screens[0]->getID();
 	for (int i = 0; i < level * 3 + 1; i++)
