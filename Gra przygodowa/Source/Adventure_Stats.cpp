@@ -19,6 +19,7 @@ Adventure_Stats::Adventure_Stats()
 	dungeon_levels = 0;
 	opened_chests = 0;
 	levels = 0;
+	enemies_killed = 0;
 	stats_set = false;
 }
 
@@ -43,6 +44,7 @@ void Adventure_Stats::reset_stats()
 	dungeon_levels = 0;
 	opened_chests = 0;
 	levels = 0;
+	enemies_killed = 0;
 	stats_set = false;
 }
 
@@ -65,6 +67,7 @@ void Adventure_Stats::display_stats(RenderWindow& window)
 	window.draw(forest_text);
 	window.draw(desert_text);
 	window.draw(dungeon_text);
+	window.draw(all_enemies_text);
 }
 
 void Adventure_Stats::prepare_stats()
@@ -86,6 +89,7 @@ void Adventure_Stats::prepare_stats()
 	forest_text.setString(std::to_string(forest_levels));
 	desert_text.setString(std::to_string(desert_levels));
 	dungeon_text.setString(std::to_string(dungeon_levels));
+	all_enemies_text.setString(std::to_string(enemies_killed));
 }
 
 void Adventure_Stats::init_stats()
@@ -95,87 +99,92 @@ void Adventure_Stats::init_stats()
 	levels_text.setFont(font);
 	levels_text.setCharacterSize(35);
 	levels_text.setFillColor(Color::White);
-	levels_text.setPosition(Vector2f(431,290));
+	levels_text.setPosition(Vector2f(431,275));
 
 	seconds_text.setFont(font);
 	seconds_text.setCharacterSize(35);
 	seconds_text.setFillColor(Color::White);
-	seconds_text.setPosition(Vector2f(681, 224));
+	seconds_text.setPosition(Vector2f(681, 209));
 
 	minutes_text.setFont(font);
 	minutes_text.setCharacterSize(35);
 	minutes_text.setFillColor(Color::White);
-	minutes_text.setPosition(Vector2f(595, 224));
+	minutes_text.setPosition(Vector2f(595, 209));
 
 	hours_text.setFont(font);
 	hours_text.setCharacterSize(35);
 	hours_text.setFillColor(Color::White);
-	hours_text.setPosition(Vector2f(525, 224));
+	hours_text.setPosition(Vector2f(525, 209));
 
 	minotaurs_text.setFont(font);
 	minotaurs_text.setCharacterSize(35);
 	minotaurs_text.setFillColor(Color::White);
-	minotaurs_text.setPosition(Vector2f(1327, 327));
+	minotaurs_text.setPosition(Vector2f(1327, 317));
 
 	dwarfs_text.setFont(font);
 	dwarfs_text.setCharacterSize(35);
 	dwarfs_text.setFillColor(Color::White);
-	dwarfs_text.setPosition(Vector2f(1337, 368));
+	dwarfs_text.setPosition(Vector2f(1337, 358));
 
 	archers_text.setFont(font);
 	archers_text.setCharacterSize(35);
 	archers_text.setFillColor(Color::White);
-	archers_text.setPosition(Vector2f(1297, 411));
+	archers_text.setPosition(Vector2f(1297, 401));
 
 	knights_text.setFont(font);
 	knights_text.setCharacterSize(35);
 	knights_text.setFillColor(Color::White);
-	knights_text.setPosition(Vector2f(1292, 451));
+	knights_text.setPosition(Vector2f(1292, 441));
 
 	snakes_text.setFont(font);
 	snakes_text.setCharacterSize(35);
 	snakes_text.setFillColor(Color::White);
-	snakes_text.setPosition(Vector2f(1269, 494));
+	snakes_text.setPosition(Vector2f(1269, 484));
 
 	scorpions_text.setFont(font);
 	scorpions_text.setCharacterSize(35);
 	scorpions_text.setFillColor(Color::White);
-	scorpions_text.setPosition(Vector2f(1321, 535));
+	scorpions_text.setPosition(Vector2f(1321, 525));
 
 	rooms_text.setFont(font);
 	rooms_text.setCharacterSize(35);
 	rooms_text.setFillColor(Color::White);
-	rooms_text.setPosition(Vector2f(450, 529));
+	rooms_text.setPosition(Vector2f(450, 519));
 
 	potions_text.setFont(font);
 	potions_text.setCharacterSize(35);
 	potions_text.setFillColor(Color::White);
-	potions_text.setPosition(Vector2f(373, 651));
+	potions_text.setPosition(Vector2f(373, 641));
 
 	castle_text.setFont(font);
 	castle_text.setCharacterSize(35);
 	castle_text.setFillColor(Color::White);
-	castle_text.setPosition(Vector2f(459, 325));
+	castle_text.setPosition(Vector2f(459, 315));
 
 	forest_text.setFont(font);
 	forest_text.setCharacterSize(35);
 	forest_text.setFillColor(Color::White);
-	forest_text.setPosition(Vector2f(438, 367));
+	forest_text.setPosition(Vector2f(438, 357));
 
 	desert_text.setFont(font);
 	desert_text.setCharacterSize(35);
 	desert_text.setFillColor(Color::White);
-	desert_text.setPosition(Vector2f(463, 451));
+	desert_text.setPosition(Vector2f(463, 441));
 
 	dungeon_text.setFont(font);
 	dungeon_text.setCharacterSize(35);
 	dungeon_text.setFillColor(Color::White);
-	dungeon_text.setPosition(Vector2f(473, 410));
+	dungeon_text.setPosition(Vector2f(473, 400));
 
 	chests_text.setFont(font);
 	chests_text.setCharacterSize(35);
 	chests_text.setFillColor(Color::White);
-	chests_text.setPosition(Vector2f(406, 593));
+	chests_text.setPosition(Vector2f(406, 583));
+
+	all_enemies_text.setFont(font);
+	all_enemies_text.setCharacterSize(35);
+	all_enemies_text.setFillColor(Color::White);
+	all_enemies_text.setPosition(Vector2f(1264, 274));
 
 }
 
@@ -197,30 +206,36 @@ void Adventure_Stats::update_time()
 void Adventure_Stats::add_killed_minotaur()
 {
 	minotaurs_killed += 1;
+	enemies_killed += 1;
 }
 
 void Adventure_Stats::add_killed_dwarf()
 {
 	dwarfs_killed += 1;
+	enemies_killed += 1;
 }
 void Adventure_Stats::add_killed_archer()
 {
 	archers_killed += 1;
+	enemies_killed += 1;
 }
 
 void Adventure_Stats::add_killed_knight()
 {
 	knights_killed += 1;
+	enemies_killed += 1;
 }
 
 void Adventure_Stats::add_killed_snake()
 {
 	snakes_killed += 1;
+	enemies_killed += 1;
 }
 
 void Adventure_Stats::add_killed_scorpion()
 {
 	scorpions_killed += 1;
+	enemies_killed += 1;
 }
 
 void Adventure_Stats::add_visited_room()

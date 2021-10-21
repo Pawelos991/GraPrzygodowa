@@ -238,7 +238,6 @@ void Game::GetKeyEvent(RenderWindow& window,Player &p, Adventure_Creator &advent
             if (p.heal())
                 stats.add_used_potion();
         }
-            p.heal();
         if (event.type == Event::KeyPressed && event.key.code == Keyboard::I)
         {
             if (!is_inventory_open)
@@ -389,13 +388,6 @@ void Game::Tutorial(RenderWindow &window,Player &p,Items &items,Map &map)
         }
     }
 
-    if (!stats.getStatsSet())
-    {
-        stats.prepare_stats();
-        stats.setStats();
-    }  
-    stats.display_stats(window);
-
 }
 
 void Game::Arena(RenderWindow& window, Player& p)
@@ -431,55 +423,77 @@ void Game::Arena(RenderWindow& window, Player& p)
 void Game::Adventure(RenderWindow& window, Player& p, Items& items, Map& map, Adventure_Creator& adventure_creator)
 {
     window.clear(Color::White);
-    if (Check_adventure_screen(p.hitbox))
-        stats.add_visited_room();
-        
+ 
     Display_Screens(window);
 
-    if (counter == 60)
-        stats.update_time();
-
-    if (Actual_screen->check_portal(p.getHitbox()))
+    if (adventure_creator.get_level() < 11)
     {
-        Actual_screen->getPortal()->playSound();
-        NextLvl(window, p, map, adventure_creator);
+        if (Check_adventure_screen(p.hitbox))
+            stats.add_visited_room();
+
+        if (counter == 60)
+            stats.update_time();
+
+        if (Actual_screen->check_portal(p.getHitbox()))
+        {
+            Actual_screen->getPortal()->playSound();
+            NextLvl(window, p, map, adventure_creator);
+        }
+        else
+        {
+            Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
+
+            if (adventure_creator.get_floor_type() == 3)
+                DisplayShadows(window, p);
+
+            Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
+                Actual_screen->enemies.Maintenance(window, counter, p.getHitbox(), p.is_player_dead(), Actual_screen->player_missiles, Actual_screen->enemies_missiles), Actual_screen->enemies_missiles);
+            Actual_screen->player_missiles.add_missile(m);
+
+            Actual_screen->player_missiles.maintenance(window, counter);
+            Actual_screen->enemies_missiles.maintenance(window, counter);
+
+            Actual_screen->enemies.update_adventure_stats(stats);
+
+            if (are_quests_displayed)
+                Display_quests(window);
+
+            MaintainChests(items, p);
+            MaintainDoors(window, p);
+            if (displayBigMap)
+                map.displayBigMap(adventure_screens, window, Actual_screen->getID());
+            else if (displaySmallMap)
+                map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
+
+            if (add_new_quest)
+            {
+                add_t_quest_display(adventure_creator.get_floor_type() + 2, window, quest_counter);
+                quest_counter++;
+                if (quest_counter == 120)
+                {
+                    add_new_quest = false;
+                }
+            }
+        }
     }
     else
     {
-        Actual_screen->npcs.Maintance(window, counter, p.getHitbox());
-
-        if (adventure_creator.get_floor_type() == 3)
-            DisplayShadows(window, p);
+        DisplayStats(window);
 
         Missile* m = p.Maintenance(window, counter, Actual_screen->walls, is_inventory_open,
             Actual_screen->enemies.Maintenance(window, counter, p.getHitbox(), p.is_player_dead(), Actual_screen->player_missiles, Actual_screen->enemies_missiles), Actual_screen->enemies_missiles);
         Actual_screen->player_missiles.add_missile(m);
 
         Actual_screen->player_missiles.maintenance(window, counter);
-        Actual_screen->enemies_missiles.maintenance(window, counter);
-
-        Actual_screen->enemies.update_adventure_stats(stats);
-
         if (are_quests_displayed)
             Display_quests(window);
 
-        MaintainChests(items, p);
-        MaintainDoors(window, p);
         if (displayBigMap)
             map.displayBigMap(adventure_screens, window, Actual_screen->getID());
         else if (displaySmallMap)
-            map.displaySmallMap(adventure_screens, window, Actual_screen->getID());
-
-        if (add_new_quest)
-        {
-            add_t_quest_display(adventure_creator.get_floor_type()+2, window, quest_counter);
-            quest_counter++;
-            if (quest_counter == 120)
-            {
-                add_new_quest = false;
-            }
-        }
-    } 
+            map.displaySmallMap(adventure_screens, window, Actual_screen->getID());  
+    }
+    
 }
 
 void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator)
@@ -500,25 +514,37 @@ void Game::NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator&
         stats.add_desert_level();
         break;
     }
-
-    remove_all_t_quests();
-    add_new_quest = true;
-    quest_counter = 0;
-    p.hitbox.setPosition(Vector2f(773, 416));
+    stats.add_level();
 
     delete_all_adventure_screens();
     adventure_screens = adventure_creator.next_lvl(window, cache_enemies);
     map.prepareMap(adventure_screens);
 
-    if (adventure_screens[0]->has_portal())
-        Actual_screen = adventure_screens[1];
-    else
-        Actual_screen = adventure_screens[0];
+    if (adventure_creator.get_level() < 11)
+    {
+        remove_all_t_quests();
+        add_new_quest = true;
+        quest_counter = 0;
+        p.hitbox.setPosition(Vector2f(773, 416));
 
-    Actual_screen->setVisited(true);
-    stats.add_visited_room();
-    Actual_adventure_screen = Actual_screen;
-    adventureStarted = true;
+        if (adventure_screens[0]->has_portal())
+            Actual_screen = adventure_screens[1];
+        else
+            Actual_screen = adventure_screens[0];
+
+        Actual_screen->setVisited(true);
+        stats.add_visited_room();
+        Actual_adventure_screen = Actual_screen;
+    }
+    else
+    {
+        remove_all_t_quests();
+        p.hitbox.setPosition(Vector2f(773, 416));
+        Actual_screen = adventure_screens[0];
+        Actual_screen->setVisited(true);
+        Actual_adventure_screen = Actual_screen;
+    }
+    
 }
 
 void Game::DisplayShadows(RenderWindow& window, Player& p)
@@ -533,6 +559,11 @@ void Game::DisplayShadows(RenderWindow& window, Player& p)
 
 void Game::DisplayStats(RenderWindow& window)
 {
+    if (!stats.getStatsSet())
+    {
+        stats.prepare_stats();
+        stats.setStats();
+    }
     stats.display_stats(window);
 }
 

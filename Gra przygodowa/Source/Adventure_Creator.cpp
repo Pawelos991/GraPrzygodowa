@@ -61,7 +61,27 @@ std::vector<Screen*> Adventure_Creator::generate_level(RenderWindow& window, Ene
 std::vector<Screen*> Adventure_Creator::next_lvl(RenderWindow& window, Enemies &cache_enemies)
 {
 	level++;
-	return generate_level(window, cache_enemies);
+	if (level < 11)
+		return generate_level(window, cache_enemies);
+	else
+		return generate_stats_screen(window);
+}
+
+std::vector<Screen*> Adventure_Creator::generate_stats_screen(RenderWindow& window)
+{
+	std::vector<Screen*> adventure_screens;
+	loading_screen->set_loading(window, float(0), "Generowanie wyniku");
+	adventure_screens.push_back(new Screen(1));
+	adventure_screens[0]->setBck("Textures/Backgrounds/Stats_Background.png");
+	place_screens(adventure_screens);
+	std::vector<Wall*> walls;
+	walls.push_back(new Wall("Textures/Walls/Trees/TreeHalfHor.png", Vector2f(0, 0), Vector2f(1600, 113)));
+	walls.push_back(new Wall("Textures/Walls/Trees/TreeFullVer.png", Vector2f(1510, 0), Vector2f(90, 900)));
+	walls.push_back(new Wall("Textures/Walls/Trees/TreeFullVer.png", Vector2f(0, 0), Vector2f(90, 900)));
+	walls.push_back(new Wall("Textures/Walls/Trees/TreeHalfHor.png", Vector2f(0, 787), Vector2f(1600, 113)));
+	adventure_screens[0]->setWalls(walls);
+	loading_screen->set_loading(window, float(1), "Generacja zakonczona");
+	return adventure_screens;
 }
 
 void Adventure_Creator::reset_creator()

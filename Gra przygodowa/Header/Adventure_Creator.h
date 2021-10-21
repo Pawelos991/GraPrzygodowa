@@ -20,6 +20,7 @@ class Adventure_Creator
 		int last_floor_type;
 		int level;
 		Portal* portal;
+		std::vector<Screen*> generate_stats_screen(RenderWindow& window);
 		void generate_screens(std::vector<Screen*>& screens, int howManyScreens);
 		void place_screens(std::vector<Screen*>& screens);
 		void generate_connections(std::vector<Screen*>& screens);

@@ -62,6 +62,7 @@ class Adventure_Stats
 		int seconds;
 		int minutes;
 		int hours;
+		int enemies_killed;
 		int minotaurs_killed;
 		int dwarfs_killed;
 		int archers_killed;
@@ -94,6 +95,7 @@ class Adventure_Stats
 		Text desert_text;
 		Text dungeon_text;
 		Text chests_text;
+		Text all_enemies_text;
 };
 
 #endif // ADVENTURE_STATS_H

@@ -118,7 +118,6 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         Actual_screen = adventure_screens[i];
         Actual_adventure_screen = Actual_screen;
         player_hitbox.setPosition(Vector2f(-54, player_hitbox.getPosition().y));
-        Actual_screen->setVisited(true);
         if (!Actual_screen->isVisited())
         {
             Actual_screen->setVisited(true);
@@ -145,7 +144,6 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         Actual_screen = adventure_screens[i];
         Actual_adventure_screen = Actual_screen;
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, -68));
-        Actual_screen->setVisited(true);
         if (!Actual_screen->isVisited())
         {
             Actual_screen->setVisited(true);
@@ -159,7 +157,6 @@ bool Screens::Check_adventure_screen(RectangleShape& player_hitbox)
         Actual_screen = adventure_screens[i];
         Actual_adventure_screen = Actual_screen;
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x, 900));
-        Actual_screen->setVisited(true);
         if (!Actual_screen->isVisited())
         {
            Actual_screen->setVisited(true);
