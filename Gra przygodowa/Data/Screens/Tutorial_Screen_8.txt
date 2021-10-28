@@ -1,4 +1,4 @@
-8 0 0 0 7 1 3 1
+8 0 0 0 7 1 3 -1
 Textures/Backgrounds/Stones.png
 Wall Textures/Walls/Stones/StoneWallFullHor.png 0 0 1600 219
 Wall Textures/Walls/Stones/StoneWallHalfHor.png 0 681 760 219

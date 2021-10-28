@@ -1,5 +1,5 @@
-11 0 0 12 4 2 0 1
-Textures/Backgrounds/Background_Tutorial_11.png
+11 0 0 3 12 2 -1 -1
+Background_Tutorial_z_zadaniami
 Wall Textures/Walls/Trees/TreeHalfHor.png 0 0 760 113
 Wall Textures/Walls/Trees/TreeHalfHor.png 840 0 760 113
 Wall Textures/Walls/Trees/TreeFullVer.png 0 0 90 900

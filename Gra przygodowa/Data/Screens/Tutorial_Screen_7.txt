@@ -1,4 +1,4 @@
-7 0 6 8 9 3 3 0
+7 0 6 8 9 3 3 -2
 Textures/Backgrounds/Background_Basic.png
 Door Textures/Door/Door.png 770 790 60 110 2
 Wall Textures/Walls/Trees/TreeHalfHor.png 0 0 760 113

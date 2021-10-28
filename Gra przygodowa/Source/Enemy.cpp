@@ -144,7 +144,7 @@ Enemy::~Enemy()
     //dtor
 }
 
-void Enemy::Maintance_Range(RenderWindow &window, int counter, RectangleShape players_hitbox, int is_player_dead,Missiles& enemies_missiles)
+void Enemy::Maintance_Range(RenderWindow &window, int counter, RectangleShape players_hitbox, bool is_player_dead,Missiles& enemies_missiles)
 {
     Missile* M=nullptr;
 
@@ -216,7 +216,7 @@ void Enemy::Maintance_Range(RenderWindow &window, int counter, RectangleShape pl
         }
 }
 
-RectangleShape* Enemy::Maintance_Melee(RenderWindow &window, int counter, RectangleShape players_hitbox, int is_player_dead)
+RectangleShape* Enemy::Maintance_Melee(RenderWindow &window, int counter, RectangleShape players_hitbox, bool is_player_dead)
 {
     RectangleShape* Hitp=nullptr;
 
@@ -375,18 +375,18 @@ void Enemy::Display_HP(RenderWindow &window)
     window.draw(HP_Red);
 }
 
-RectangleShape* Enemy::Swing(RectangleShape players_hitbox,int is_player_dead) //0 - No, 1 - Yes
+RectangleShape* Enemy::Swing(RectangleShape players_hitbox, bool is_player_dead)
 {
     RectangleShape* Hitp=new RectangleShape(Vector2f(3*Swing_width,hitbox.getGlobalBounds().height));
     Hitp->setPosition(hitbox.getPosition().x+hitbox.getGlobalBounds().width,hitbox.getPosition().y);
-    if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead==0)
+    if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && !is_player_dead)
     {
         return Hitp;
     }
     else
     {
         Hitp->setPosition(hitbox.getPosition().x-Swing_width,hitbox.getPosition().y);
-        if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead==0)
+        if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && !is_player_dead)
         {
             return Hitp;
         }
@@ -396,11 +396,11 @@ RectangleShape* Enemy::Swing(RectangleShape players_hitbox,int is_player_dead) /
     return Hitp;
 }
 
-void Enemy::Check_Swing(RectangleShape players_hitbox, int is_player_dead)
+void Enemy::Check_Swing(RectangleShape players_hitbox, bool is_player_dead)
 {
     RectangleShape* Hitp = new RectangleShape(Vector2f(3 * Swing_width, hitbox.getGlobalBounds().height));
     Hitp->setPosition(hitbox.getPosition().x + hitbox.getGlobalBounds().width, hitbox.getPosition().y);
-    if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead == 0)
+    if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && !is_player_dead)
     {
         is_attacking = true;
         Attack_counter = 0;
@@ -408,7 +408,7 @@ void Enemy::Check_Swing(RectangleShape players_hitbox, int is_player_dead)
     else
     {
         Hitp->setPosition(hitbox.getPosition().x - Swing_width, hitbox.getPosition().y);
-        if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && is_player_dead == 0)
+        if (Hitp->getGlobalBounds().intersects(players_hitbox.getGlobalBounds()) && !is_player_dead)
         {
             is_attacking = true;
             Attack_counter = 0;
@@ -416,9 +416,9 @@ void Enemy::Check_Swing(RectangleShape players_hitbox, int is_player_dead)
     }
 }
 
-void Enemy::Range_Attack(RectangleShape players_hitbox,int is_player_dead)
+void Enemy::Range_Attack(RectangleShape players_hitbox,bool is_player_dead)
 {
-    if(is_player_dead==0)
+    if(!is_player_dead)
     {
         if(hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)> players_hitbox.getPosition().y &&hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)<players_hitbox.getPosition().y+players_hitbox.getGlobalBounds().height)
         {

@@ -65,7 +65,7 @@ void Enemies::delete_all_enemies()
     }
 }
 
-std::vector<RectangleShape*> Enemies::Maintenance(RenderWindow &window, int counter, RectangleShape players_hitbox, int is_player_dead, Missiles& player_missiles, Missiles& enemies_missiles)
+std::vector<RectangleShape*> Enemies::Maintenance(RenderWindow &window, int counter, RectangleShape players_hitbox, bool is_player_dead, Missiles& player_missiles, Missiles& enemies_missiles)
 {
     std::vector<RectangleShape*> Slashes;
     Enemy* temp=head;

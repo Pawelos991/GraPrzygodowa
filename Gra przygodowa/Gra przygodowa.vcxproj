@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Header\Map.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Source\Adventure_Creator.cpp" />
     <ClCompile Include="Source\Adventure_Stats.cpp" />
@@ -158,7 +157,6 @@
     <ClCompile Include="Source\Characters.cpp" />
     <ClCompile Include="Source\Chest.cpp" />
     <ClCompile Include="Source\C_Objects.cpp" />
-    <ClCompile Include="Source\Done_Quests.cpp" />
     <ClCompile Include="Source\Door.cpp" />
     <ClCompile Include="Source\Enemies.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
@@ -167,6 +165,7 @@
     <ClCompile Include="Source\Item.cpp" />
     <ClCompile Include="Source\Items.cpp" />
     <ClCompile Include="Source\Loading_Screen.cpp" />
+    <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\Menu.cpp" />
     <ClCompile Include="Source\Missile.cpp" />
     <ClCompile Include="Source\Missiles.cpp" />
@@ -193,7 +192,6 @@
     <ClInclude Include="Header\Characters.h" />
     <ClInclude Include="Header\Chest.h" />
     <ClInclude Include="Header\C_Objects.h" />
-    <ClInclude Include="Header\Done_Quests.h" />
     <ClInclude Include="Header\Door.h" />
     <ClInclude Include="Header\Enemies.h" />
     <ClInclude Include="Header\Enemy.h" />

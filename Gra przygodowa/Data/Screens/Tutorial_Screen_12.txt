@@ -1,10 +1,8 @@
-12 0 0 13 11 2 0 2
-Textures/Backgrounds/Background_Tutorial_12.png
+12 4 0 11 0 2 -1 -2
+Background_Tutorial_z_mapa
 Wall Textures/Walls/Trees/TreeHalfHor.png 0 0 760 113
 Wall Textures/Walls/Trees/TreeHalfHor.png 840 0 760 113
 Wall Textures/Walls/Trees/TreeFullVer.png 0 0 90 900
-Wall Textures/Walls/Trees/TreeFullVer.png 1520 0 90 900
-Wall Textures/Walls/Trees/TreeHalfHor.png 0 787 760 113
-Wall Textures/Walls/Trees/TreeHalfHor.png 840 787 760 113
-Wall Textures/NPCs/Sunbro/WALL.png 805 204 69 80
-NPC Sunbro_2 800 200
+Wall Textures/Walls/Trees/TreeHalfVer.png 1520 0 90 400
+Wall Textures/Walls/Trees/TreeHalfVer.png 1520 500 90 400
+Wall Textures/Walls/Trees/TreeFullHor.png 0 787 1600 113

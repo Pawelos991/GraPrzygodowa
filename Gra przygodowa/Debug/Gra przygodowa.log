@@ -1,9 +1,4 @@
-﻿  Map.cpp
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Header\Map.cpp(17,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Header\Map.cpp(26,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Header\Map.cpp(40,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Header\Map.cpp(56,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  Main.cpp
+﻿  Main.cpp
   Adventure_Creator.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Adventure_Creator.cpp(10,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Adventure_Creator.cpp(103,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
@@ -82,7 +77,6 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(53,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(55,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(59,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  Done_Quests.cpp
   Door.cpp
   Enemies.cpp
   Enemy.cpp
@@ -190,9 +184,20 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
   Items.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Items.cpp(124,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Loading_Screen.cpp
-  Generowanie kodu...
-  Trwa kompilowanie...
+  Map.cpp
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Map.cpp(17,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Map.cpp(26,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Map.cpp(40,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Map.cpp(56,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Menu.cpp
+  Generowanie kodu...
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(559): warning C4715: "Menu::confirmMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(471): warning C4715: "Menu::arenaMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(237): warning C4715: "Menu::mainMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(515): warning C4715: "Menu::inGameMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(322): warning C4715: "Menu::gameModeMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(671): warning C4715: "Menu::adventureMenu”: niewszystkie ścieżki kodu zwracają wartość
+  Trwa kompilowanie...
   Missile.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Missile.cpp(8,47): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
@@ -352,10 +357,4 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Taken_Quests.cpp(59,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Wall.cpp
   Generowanie kodu...
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(237): warning C4715: "Menu::mainMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(322): warning C4715: "Menu::gameModeMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(515): warning C4715: "Menu::inGameMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(471): warning C4715: "Menu::arenaMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(559): warning C4715: "Menu::confirmMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(671): warning C4715: "Menu::adventureMenu”: niewszystkie ścieżki kodu zwracają wartość
   Gra przygodowa.vcxproj -> C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Debug\Gra przygodowa.exe
