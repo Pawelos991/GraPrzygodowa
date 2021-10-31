@@ -40,7 +40,6 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
         {
             fp >> Missile_Width;
             fp >> Missile_Height;
-            fp >> attack_hit_s;
         }
         if(Name==type)
             break;
@@ -77,7 +76,6 @@ Enemy::Enemy(std::string Type,Vector2f position):type(Type)
     {
         missile_width = Missile_Width;
         missile_height = Missile_Height;
-        Attack_hit.loadFromFile(attack_hit_s);
     }       
     next=nullptr;
 }
@@ -134,7 +132,6 @@ Enemy::Enemy(Enemy* base,Vector2f position)
     {
         missile_width = base->getMissileWidth();
         missile_height = base->getMissileHeight();
-        Attack_hit = base->getAttackHit();
     }
     next = nullptr;
 }
@@ -163,9 +160,9 @@ void Enemy::Maintance_Range(RenderWindow &window, int counter, RectangleShape pl
                 if(Attack_counter==Attack_frame)
                 {
                     if(movement_indicator==1)
-                        M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(12),10,missile_width,missile_height,Attack_hit);
+                        M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(12),10,missile_width,missile_height);
                     else
-                        M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(11),10,missile_width,missile_height,Attack_hit);
+                        M= new Missile(movement_indicator,Vector2f(hitbox.getPosition().x-missile_width,hitbox.getPosition().y+(hitbox.getGlobalBounds().height/2)-missile_height),animations.find_animation(11),10,missile_width,missile_height);
                     enemies_missiles.add_missile(M);
                     Attack_Sound.play();
                 }

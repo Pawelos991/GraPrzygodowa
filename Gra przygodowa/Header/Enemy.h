@@ -120,11 +120,6 @@ class Enemy : private Character
         */
         SoundBuffer getDeathBuffer() { return Death_buffer; }
         /**
-        *Funkcja zwracająca bufor dźwięku trafienia pocisku przeciwnika
-        *@return Bufor dźwięku trafienia pocisku przeciwnika
-        */
-        SoundBuffer getAttackHit() { return Attack_hit; }
-        /**
         *Funkcja zwracająca nazwę rodzaju przeciwnika
         *@return Nazwa rodzaju przeciwnika
         */

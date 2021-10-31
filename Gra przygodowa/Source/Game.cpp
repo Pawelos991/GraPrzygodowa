@@ -21,10 +21,10 @@ Game::Game()
     
     Actual_screen = nullptr;
     Actual_adventure_screen = nullptr;
+    arena_screen = nullptr;
     gameMode = 0;
     standingByDoor = false;
     counter = 0;
-    movementindicator = 1;
     is_inventory_open = false;
     are_quests_displayed = false;
     is_muted = false;

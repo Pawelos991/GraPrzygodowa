@@ -43,14 +43,6 @@ void Taken_Quests::remove_all_t_quests()
     taken_quests.erase(taken_quests.begin(),taken_quests.end());
 }
 
-void Taken_Quests::complete_quest(int id)
-{
-    int i=0;
-     while(taken_quests[i]->getID()!=id)
-        i++;
-    taken_quests[i]->complete();
-}
-
 void Taken_Quests::display_active_quests(RenderWindow &window, Vector2f position)
 {
     int x,y;
@@ -76,7 +68,7 @@ void Taken_Quests::display_active_quests(RenderWindow &window, Vector2f position
 
 }
 
-void Taken_Quests::display_quest(RenderWindow& window,int id)
+void Taken_Quests::display_new_quest(RenderWindow& window,int id)
 {
     int i = 0;
     while (taken_quests[i]->getID() != id)
@@ -96,5 +88,5 @@ void Taken_Quests::add_t_quest_display(RenderWindow &window, int id, std::vector
         sound.play();
     }
         window.draw(new_sp);
-        Taken_Quests::display_quest(window, id);
+        Taken_Quests::display_new_quest(window, id);
 }

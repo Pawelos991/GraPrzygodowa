@@ -47,8 +47,6 @@ class Character
         int missile_width;
         /**Wysokość pocisku wystrzeliwanego przez postać (jeśli jest typu zasiegowego)*/
         int missile_height;
-        /**Tego chyba tu nie ma być !!!!!!!!!!!!*/
-        SoundBuffer Attack_hit;
         /**Obrażenia zadawane przez postać w przypadku trafienia innej postaci*/
         int damage;
 

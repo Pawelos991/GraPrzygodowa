@@ -9,10 +9,10 @@ Player::Player()
     MaxMANA=60;
     hitbox.setSize(Vector2f(62,74));
     hitbox.setPosition(Vector2f(400,400));
-    colliders[0]=0;
-    colliders[1]=0;
-    colliders[2]=0;
-    colliders[3]=0;
+    colliders[0]= false;
+    colliders[1]= false;
+    colliders[2]= false;
+    colliders[3]= false;
     is_attacking=0;
     is_inventory_open=false;
     is_dead=0;
@@ -58,21 +58,21 @@ void Player::movement(RenderWindow &window, int counter)
         Speed=0;
     else
         Speed=speed_of_movement;
-    if(Keyboard::isKeyPressed(Keyboard::D)&& colliders[0]==0)
+    if(Keyboard::isKeyPressed(Keyboard::D)&& !colliders[0])
     {
         movement_indicator=1;
         hitbox.move(Speed,0);
     }
-    if(Keyboard::isKeyPressed(Keyboard::A)&& colliders[1]==0)
+    if(Keyboard::isKeyPressed(Keyboard::A)&& !colliders[1])
     {
         movement_indicator=2;
         hitbox.move(-Speed,0);
     }
-    if(Keyboard::isKeyPressed(Keyboard::W)&& colliders[2]==0)
+    if(Keyboard::isKeyPressed(Keyboard::W)&& !colliders[2])
     {
         hitbox.move(0,-Speed);
     }
-    if(Keyboard::isKeyPressed(Keyboard::S)&& colliders[3]==0)
+    if(Keyboard::isKeyPressed(Keyboard::S)&& !colliders[3])
     {
         hitbox.move(0,Speed);
     }
@@ -122,13 +122,13 @@ void Player::set_NormalMode()
     Mana_regen=10; //Normally 1
 }
 
-void Player::Check_collision_with_enviornment(RenderWindow &window, std::vector<Wall*>& walls)
+void Player::Check_collision_with_enviornment(std::vector<Wall*>& walls)
 {
-    int collision_right,collision_left,collision_up,collision_down;
-    collision_right=0;
-    collision_left=0;
-    collision_down=0;
-    collision_up=0;
+    bool collision_right,collision_left,collision_up,collision_down;
+    collision_right= false;
+    collision_left= false;
+    collision_down= false;
+    collision_up= false;
     //Collision with edges of screen
     /*if(hitbox.getPosition().x+hitbox.getSize().x>window.getSize().x)
         collision_right=1;
@@ -152,19 +152,19 @@ void Player::Check_collision_with_enviornment(RenderWindow &window, std::vector<
        if(hitbox.getPosition().x+hitbox.getGlobalBounds().width+3>=walls[i]->box.getPosition().x && hitbox.getPosition().x+hitbox.getGlobalBounds().width<walls[i]->box.getPosition().x +
            walls[i]->box.getGlobalBounds().width && hitbox.getPosition().y+hitbox.getGlobalBounds().height>walls[i]->box.getPosition().y
            && hitbox.getPosition().y<walls[i]->box.getPosition().y+walls[i]->box.getGlobalBounds().height)
-            collision_right=1;
+            collision_right=true;
         if(hitbox.getPosition().x-3<=walls[i]->box.getPosition().x+walls[i]->box.getGlobalBounds().width && hitbox.getPosition().x>walls[i]->box.getPosition().x
            && hitbox.getPosition().y+hitbox.getGlobalBounds().height>walls[i]->box.getPosition().y
            && hitbox.getPosition().y<walls[i]->box.getPosition().y+walls[i]->box.getGlobalBounds().height)
-           collision_left=1;
+           collision_left=true;
         if(hitbox.getPosition().x+hitbox.getGlobalBounds().width>walls[i]->box.getPosition().x && hitbox.getPosition().x<walls[i]->box.getPosition().x+walls[i]->box.getGlobalBounds().width
            && hitbox.getPosition().y>=walls[i]->box.getPosition().y+3
            && hitbox.getPosition().y<=walls[i]->box.getPosition().y+walls[i]->box.getGlobalBounds().height+3)
-               collision_up=1;
+               collision_up=true;
         if(hitbox.getPosition().x+hitbox.getGlobalBounds().width>walls[i]->box.getPosition().x && hitbox.getPosition().x<walls[i]->box.getPosition().x+walls[i]->box.getGlobalBounds().width
            && hitbox.getPosition().y+hitbox.getGlobalBounds().height>=walls[i]->box.getPosition().y-3
            && hitbox.getPosition().y<=walls[i]->box.getPosition().y-3)
-               collision_down=1;
+               collision_down=true;
     }
     colliders[0]=collision_right;
     colliders[1]=collision_left;
@@ -172,7 +172,7 @@ void Player::Check_collision_with_enviornment(RenderWindow &window, std::vector<
     colliders[3]=collision_down;
 }
 
-Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>& walls,bool open,std::vector <RectangleShape*>Slashes,Missiles& enemies_missiles)
+Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>& walls,bool open_inventory,std::vector <RectangleShape*>Slashes,Missiles& enemies_missiles)
 {
     Missile *m=nullptr;
     if(HP<=0)
@@ -181,11 +181,11 @@ Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>
     {
         Check_enemies_missiles(enemies_missiles);
         m=attack(window, counter);
-        Check_collision_with_enviornment(window, walls);
+        Check_collision_with_enviornment(walls);
         movement(window, counter);
         Check_slashes(Slashes);
         Display_HP_and_Mana(window);
-        Display_inventory(window,open);
+        Display_inventory(window, open_inventory);
         if(MANA<60)
             MANA+=Mana_regen;
     }
@@ -209,7 +209,7 @@ Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>
     return m;
 }
 
-void Player::Display_inventory(RenderWindow &window,int open)
+void Player::Display_inventory(RenderWindow &window,bool open)
 {
     if(open && is_inventory_open==false)
     {
@@ -271,7 +271,7 @@ Missile* Player::attack(RenderWindow &window, int counter)
         {
             MANA-=50;
             missile_indicator=1;
-            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x+hitbox.getSize().x,hitbox.getPosition().y+(hitbox.getSize().y/12)),animations.find_animation(12),damage,missile_width,missile_height,Attack_hit);
+            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x+hitbox.getSize().x,hitbox.getPosition().y+(hitbox.getSize().y/12)),animations.find_animation(12),damage,missile_width,missile_height);
         }
     }
     else if(Keyboard::isKeyPressed(Keyboard::Left))
@@ -282,7 +282,7 @@ Missile* Player::attack(RenderWindow &window, int counter)
         {
             MANA-=50;
             missile_indicator=2;
-            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x,hitbox.getPosition().y+(hitbox.getSize().y/12)),animations.find_animation(11),damage, missile_width,missile_height,Attack_hit);
+            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x,hitbox.getPosition().y+(hitbox.getSize().y/12)),animations.find_animation(11),damage, missile_width,missile_height);
         }
     }
     else if(Keyboard::isKeyPressed(Keyboard::Up))
@@ -303,7 +303,7 @@ Missile* Player::attack(RenderWindow &window, int counter)
         {
             MANA-=50;
             missile_indicator=3;
-            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x+(hitbox.getSize().x*k),hitbox.getPosition().y),animations.find_animation(9),damage, missile_width,  missile_height,Attack_hit);
+            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x+(hitbox.getSize().x*k),hitbox.getPosition().y),animations.find_animation(9),damage, missile_width,  missile_height);
         }
     }
     else if(Keyboard::isKeyPressed(Keyboard::Down))
@@ -325,7 +325,7 @@ Missile* Player::attack(RenderWindow &window, int counter)
             MANA-=50;
             missile_indicator=4;
             is_attacking=1;
-            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x+(hitbox.getSize().x*k),hitbox.getPosition().y+hitbox.getSize().y/10),animations.find_animation(10),damage, missile_width,  missile_height,Attack_hit);
+            m = new Missile(missile_indicator,Vector2f(hitbox.getPosition().x+(hitbox.getSize().x*k),hitbox.getPosition().y+hitbox.getSize().y/10),animations.find_animation(10),damage, missile_width,  missile_height);
         }
     }
     if(!Keyboard::isKeyPressed(Keyboard::Up)&&!Keyboard::isKeyPressed(Keyboard::Right)&&!Keyboard::isKeyPressed(Keyboard::Left)&&!Keyboard::isKeyPressed(Keyboard::Down))
@@ -341,7 +341,6 @@ void Player::Check_slashes(std::vector<RectangleShape*>Slashes)
     {
         if(Slashes[i]->getGlobalBounds().intersects(hitbox.getGlobalBounds()))
         {
-            //getHit(10);
             Hit_ptr(this,10);
             Slashes.erase(Slashes.begin()+i);
         }
@@ -357,8 +356,7 @@ void Player::Check_enemies_missiles(Missiles& enemies_missiles)
             {
                 if(temp->getHitbox().getGlobalBounds().intersects(hitbox.getGlobalBounds()))
                 {
-                    getHit(temp->getDamageValue());
-                    temp->play_sound();//??
+                    Hit_ptr(this, temp->getDamageValue());
                     enemies_missiles.delete_missile(temp);
                     temp=nullptr;
                 }

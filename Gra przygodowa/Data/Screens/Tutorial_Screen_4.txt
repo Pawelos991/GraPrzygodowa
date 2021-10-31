@@ -1,7 +1,6 @@
 4 5 12 0 0 3 0 -2
 Textures/Backgrounds/Background_Tutorial_4.png
-Wall Textures/Walls/Trees/TreeHalfHor.png 0 0 760 113
-Wall Textures/Walls/Trees/TreeHalfHor.png 840 0 760 113
+Wall Textures/Walls/Trees/TreeFullHor.png 0 0 1600 113
 Wall Textures/Walls/Trees/TreeHalfVer.png 0 0 90 400
 Wall Textures/Walls/Trees/TreeHalfVer.png 0 500 90 400
 Wall Textures/Walls/Trees/TreeHalfVer.png 1520 0 90 400

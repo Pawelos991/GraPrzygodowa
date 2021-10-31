@@ -1,6 +1,6 @@
 #include "Missile.h"
 
-Missile::Missile(int D, Vector2f P, Animation* animation,int Damage,int missile_width, int missile_height,SoundBuffer& buffer)
+Missile::Missile(int D, Vector2f P, Animation* animation,int Damage,int missile_width, int missile_height)
 {
     Position=P;
     direction=D;
@@ -12,8 +12,6 @@ Missile::Missile(int D, Vector2f P, Animation* animation,int Damage,int missile_
     added->CopyFromAnimation(animation);
     animations.add_animation(added);
     hitbox.setPosition(P);
-    hit.setBuffer(buffer);
-    hit.setVolume(20);
     next=nullptr;
     damage=Damage;
 }

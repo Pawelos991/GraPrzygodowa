@@ -57,7 +57,7 @@ void Screens::load_loading_screen()
 void Screens::Display_Screens(RenderWindow &window)
 {
     Actual_screen->displayScreen(window);
-    if(Actual_screen->is_removed()!=true && Actual_screen->enemies.is_it_empty()==0 && Actual_screen->enemies.is_everyone_dead())
+    if(!Actual_screen->is_removed() && !Actual_screen->enemies.is_it_empty() && Actual_screen->enemies.is_everyone_dead())
     {
         for(int i=0;i<Actual_screen->getNumberOfConnections()-1;i++)
             Actual_screen->walls.pop_back();
