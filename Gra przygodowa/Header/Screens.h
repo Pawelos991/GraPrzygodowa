@@ -4,7 +4,7 @@
 #include "Loading_Screen.h"
 
 /**
-* Klasa reprezentuje zbiór ekranów, do których zaliczaj¹ siê ekrany samouczka, przygody oraz ekran areny
+* Klasa reprezentuje zbiÃ³r ekranÃ³w, do ktÃ³rych zaliczajÄ… siÄ™ ekrany samouczka, przygody oraz ekran areny
 */
 class Screens
 {
@@ -18,76 +18,76 @@ class Screens
         */
         ~Screens(){}
     protected:
-        /**WskaŸnik na aktualny ekran na którym znajduje siê postaæ gracza*/
+        /**WskaÅºnik na aktualny ekran na ktÃ³rym znajduje siÄ™ postaÄ‡ gracza*/
         Screen *Actual_screen;
-        /**WskaŸnik na aktualny ekran przygody zapamiêtywany aby umieœciæ postaæ gracza na dobrym ekranie w przypadku kontynuacji przerwanej przygody*/
+        /**WskaÅºnik na aktualny ekran przygody zapamiÄ™tywany aby umieÅ›ciÄ‡ postaÄ‡ gracza na dobrym ekranie w przypadku kontynuacji przerwanej przygody*/
         Screen *Actual_adventure_screen;
 
-        /**WskaŸnik na ekran areny*/
+        /**WskaÅºnik na ekran areny*/
         Screen* arena_screen;
-        /**Vector ekranów samouczka*/
+        /**Vector ekranÃ³w samouczka*/
         std::vector<Screen*> tutorial_screens;
-        /**Vector ekranów aktualnego poziomu przygody*/
+        /**Vector ekranÃ³w aktualnego poziomu przygody*/
         std::vector<Screen*> adventure_screens;
 
-        /**WskaŸnik na ekran ³adowania*/
+        /**WskaÅºnik na ekran Å‚adowania*/
         Loading_Screen *loading_screen;
 
         /**
-        * Funkcja która zwraca wskaŸnik na ekran samouczka zgodny z podanym argumentem
-        * @param ID ID ekranu samouczka na który ma zostaæ zwrócony wskaŸnik
-        * @return WskaŸnik na ekran samouczka o podanym ID
+        * Funkcja ktÃ³ra zwraca wskaÅºnik na ekran samouczka zgodny z podanym argumentem
+        * @param ID ID ekranu samouczka na ktÃ³ry ma zostaÄ‡ zwrÃ³cony wskaÅºnik
+        * @return WskaÅºnik na ekran samouczka o podanym ID
         */
         Screen* get_tutorial_screen_by_ID(int ID);
         /**
-        * Funkcja wczytuje ekrany samouczka z plików konfiguracyjnych i ³aduje je do Vector-a ekranów samouczka
-        * @param window Okno w którym wyœwietlany jest ekran ³adowania
+        * Funkcja wczytuje ekrany samouczka z plikÃ³w konfiguracyjnych i Å‚aduje je do Vector-a ekranÃ³w samouczka
+        * @param window Okno w ktÃ³rym wyÅ›wietlany jest ekran Å‚adowania
         */
         void load_tutorial_Screens(RenderWindow& window);
         /**
-        * Funkcja wczytuje ekran areny z plików i ustawia atrybut arena_screen na ten ekran
+        * Funkcja wczytuje ekran areny z plikÃ³w i ustawia atrybut arena_screen na ten ekran
         */
         void load_arena_Screen();
         /**
-        * Funkcja tworzy nowy ekran ³adowania i przypisuje jego adres do wskaŸnika loading_screen
+        * Funkcja tworzy nowy ekran Å‚adowania i przypisuje jego adres do wskaÅºnika loading_screen
         */
         void load_loading_screen();
         /**
-        * Funkcja ³aduje informacje o interakcjach z drzwiami
+        * Funkcja Å‚aduje informacje o interakcjach z drzwiami
         */
         void load_door_data();
         /**
-        * Funkcja wyœwietla aktualny ekran w oknie gry
-        * @param window Okno w którym ma zostaæ wyœwietlony ekran
+        * Funkcja wyÅ›wietla aktualny ekran w oknie gry
+        * @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlony ekran
         */
         void Display_Screens(RenderWindow &window);
         /**
-        * Funkcja sprawdza czy postaæ gracza przemieœci³a siê z jednego ekranu samouczka do innego i jeœli tak to wprowadza odpowiednie zmiany w atrybutach
+        * Funkcja sprawdza czy postaÄ‡ gracza przemieÅ›ciÅ‚a siÄ™ z jednego ekranu samouczka do innego i jeÅ›li tak to wprowadza odpowiednie zmiany w atrybutach
         * @param player_hitbox Hitbox postaci gracza
-        * @return true jeœli postaæ gracza dotar³a do ostatniego ekranu samouczka (czyli go ukoñczy³a), false jeœli nie
+        * @return true jeÅ›li postaÄ‡ gracza dotarÅ‚a do ostatniego ekranu samouczka (czyli go ukoÅ„czyÅ‚a), false jeÅ›li nie
         */
         bool Check_tutorial_screen(RectangleShape &player_hitbox);
         /**
-        * Funkcja sprawdza czy postaæ gracza przemieœci³a siê z jednego ekranu przygody do innego i jeœli tak to wprowadza odpowiednie zmiany w atrybutach
+        * Funkcja sprawdza czy postaÄ‡ gracza przemieÅ›ciÅ‚a siÄ™ z jednego ekranu przygody do innego i jeÅ›li tak to wprowadza odpowiednie zmiany w atrybutach
         * @param player_hitbox Hitbox postaci gracza
-        * @return true jeœli zmieni³ siê aktualny ekran i obecny ekran jest odwiedzany po raz pierwszy, false jeœli dowolny z poprzednich warunków nie jest spe³niony
+        * @return true jeÅ›li zmieniÅ‚ siÄ™ aktualny ekran i obecny ekran jest odwiedzany po raz pierwszy, false jeÅ›li dowolny z poprzednich warunkÃ³w nie jest speÅ‚niony
         */
         bool Check_adventure_screen(RectangleShape& player_hitbox);
         /**
-        * Funkcja zwalnia pamiêæ zaalokowan¹ przez wszystkie ekrany 
+        * Funkcja zwalnia pamiÄ™Ä‡ zaalokowanÄ… przez wszystkie ekrany 
         */
         void delete_all_screens();
         /**
-        * Funkcja zwalnia pamiêæ zaalokowan¹ przez wszystkie ekrany samouczka 
+        * Funkcja zwalnia pamiÄ™Ä‡ zaalokowanÄ… przez wszystkie ekrany samouczka 
         */
         void delete_all_tutorial_screens();
         /**
-        * Funkcja zwalnia pamiêæ zaalokowan¹ przez wszystkie ekrany przygody
+        * Funkcja zwalnia pamiÄ™Ä‡ zaalokowanÄ… przez wszystkie ekrany przygody
         */
         void delete_all_adventure_screens();
         /**
-        * Funkcja s³u¿y do odtworzenia dŸwiêku otwarcia drzwi oraz usuniêcia ich z ekranu
-        * @param d WskaŸnik do drzwi które maj¹ zostaæ usuniête
+        * Funkcja sÅ‚uÅ¼y do odtworzenia dÅºwiÄ™ku otwarcia drzwi oraz usuniÄ™cia ich z ekranu
+        * @param d WskaÅºnik do drzwi ktÃ³re majÄ… zostaÄ‡ usuniÄ™te
         */
         void open_door(Door* d);
 
@@ -95,9 +95,9 @@ class Screens
         Texture door_menu_tex[2];
         /**Sprite menu interakcji z drzwiami*/
         Sprite door_menu_sp;
-        /**DŸwiêk otwierania drzwi*/
+        /**DÅºwiÄ™k otwierania drzwi*/
         Sound door_sound;
-        /**Bufor przechowuj¹cy dŸwiêk otwierania drzwi*/
+        /**Bufor przechowujÄ…cy dÅºwiÄ™k otwierania drzwi*/
         SoundBuffer door_sb;
 };
 

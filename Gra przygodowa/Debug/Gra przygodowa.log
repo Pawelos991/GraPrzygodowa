@@ -137,38 +137,38 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
               T=float
           ]
   Game.cpp
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(44,35): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(181,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(69,35): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(206,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(187,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(212,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(193,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(218,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(199,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(224,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(205,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(230,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(211,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(236,78): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(310,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Game.cpp(335,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Inventory.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Inventory.cpp(37,45): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
@@ -192,11 +192,11 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
   Menu.cpp
   Generowanie kodu...
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(237): warning C4715: "Menu::mainMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(559): warning C4715: "Menu::confirmMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(471): warning C4715: "Menu::arenaMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(671): warning C4715: "Menu::adventureMenu”: niewszystkie ścieżki kodu zwracają wartość
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(322): warning C4715: "Menu::gameModeMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(471): warning C4715: "Menu::arenaMenu”: niewszystkie ścieżki kodu zwracają wartość
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(515): warning C4715: "Menu::inGameMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(559): warning C4715: "Menu::confirmMenu”: niewszystkie ścieżki kodu zwracają wartość
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(671): warning C4715: "Menu::adventureMenu”: niewszystkie ścieżki kodu zwracają wartość
   Trwa kompilowanie...
   Missile.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Missile.cpp(8,47): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych

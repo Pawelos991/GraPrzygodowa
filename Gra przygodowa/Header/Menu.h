@@ -4,13 +4,13 @@
 #include "Animations.h"
 
 /**
-* Klasa reprezentujπca interaktywne menu gry
+* Klasa reprezentujƒÖca interaktywne menu gry
 */
 class Menu 
 {
 	public:
 		/**
-		* Konstruktor klasy ustawiajπcy licznik klatek w menu na 0
+		* Konstruktor klasy ustawiajƒÖcy licznik klatek w menu na 0
 		*/
 		Menu() { counter = 0; }
 		/**
@@ -20,134 +20,134 @@ class Menu
 
 	protected:
 		/**
-		* Funkcja wywo≥uje funkcja ≥adowania tekstur i przygotowuje ca≥e menu
+		* Funkcja wywo≈Çuje funkcja ≈Çadowania tekstur i przygotowuje ca≈Çe menu
 		*/
 		void prepareMenu();
 		/**
-		* Funkcja ≥aduje tekstury g≥Ûwnego menu z plikÛw
+		* Funkcja ≈Çaduje tekstury g≈Ç√≥wnego menu z plik√≥w
 		*/
 		void loadMainMenuTextures();
 		/**
-		* Funkcja ≥aduje tekstury menu wywo≥ywanego wewnπtrz gry poprzez Esc z plikÛw
+		* Funkcja ≈Çaduje tekstury menu wywo≈Çywanego wewnƒÖtrz gry poprzez Esc z plik√≥w
 		*/
 		void loadInGameMenuTextures();
 		/**
-		* Funkcja ≥aduje tekstury menu trybu gry z plikÛw
+		* Funkcja ≈Çaduje tekstury menu trybu gry z plik√≥w
 		*/
 		void loadGameModeMenuTextures();
 		/**
-		* Funkcja ≥aduje tekstury menu areny z plikÛw
+		* Funkcja ≈Çaduje tekstury menu areny z plik√≥w
 		*/
 		void loadArenaMenuTextures();
 		/**
-		* Funkcja ≥aduje tekstury menu opcji z plikÛw
+		* Funkcja ≈Çaduje tekstury menu opcji z plik√≥w
 		*/
 		void loadOptionsMenuTextures();
 		/**
-		* Funkcja ≥aduje tekstury menu rozdzielczoúci z plikÛw
+		* Funkcja ≈Çaduje tekstury menu rozdzielczo≈õci z plik√≥w
 		*/
 		void loadResolutionMenuTextures();
 		/**
-		* Funkcja ≥aduje tekstury okna potwierdzenia z plikÛw
+		* Funkcja ≈Çaduje tekstury okna potwierdzenia z plik√≥w
 		*/
 		void loadConfirmMenuTextures();
 		/**
-		* Funkcja ≥aduje tekstury menu przygody z plikÛw
+		* Funkcja ≈Çaduje tekstury menu przygody z plik√≥w
 		*/
 		void loadAdventureMenuTextures();
 
 		/**
-		* Funkcja odpowiada za funkcjonowanie ca≥ego menu, wywo≥uje pomniejsze funkcje odpowiedzialne za podmenu
-		* @param window Okno w ktÛrym wyúwietlane jest menu
-		* @param finishedTutorial Informacja o tym czy samouczek zosta≥ ukoÒczony
-		* @param adventureStarted Informacja o tym czy przygoda zosta≥a rozpoczÍta
-		* @return WybÛr dokonany przez gracza (rozegranie samouczka/przygody/wybÛr areny/wyjúcie z gry)
+		* Funkcja odpowiada za funkcjonowanie ca≈Çego menu, wywo≈Çuje pomniejsze funkcje odpowiedzialne za podmenu
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu
+		* @param finishedTutorial Informacja o tym czy samouczek zosta≈Ç uko≈Ñczony
+		* @param adventureStarted Informacja o tym czy przygoda zosta≈Ça rozpoczƒôta
+		* @return Wyb√≥r dokonany przez gracza (rozegranie samouczka/przygody/wyb√≥r areny/wyj≈õcie z gry)
 		*/
 		int mainMenu(RenderWindow& window, bool finishedTutorial, bool adventureStarted);
 		/**
 		* Funkcja odpowiada za podmenu wyboru trybu gry
-		* @param window Okno w ktÛrym wyúwietlane jest menu
-		* @param finishedTutorial Informacja o tym czy samouczek zosta≥ ukoÒczony
-		* @param adventureStarted Informacja o tym czy przygoda zosta≥a rozpoczÍta
-		* @return WybÛr dokonany przez gracza (tryb gry)
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu
+		* @param finishedTutorial Informacja o tym czy samouczek zosta≈Ç uko≈Ñczony
+		* @param adventureStarted Informacja o tym czy przygoda zosta≈Ça rozpoczƒôta
+		* @return Wyb√≥r dokonany przez gracza (tryb gry)
 		*/
 		int gameModeMenu(RenderWindow& window, bool finishedTutorial, bool adventureStarted);
 		/**
-		* Funkcja odpowiada za podmenu opcji, moøna w nim zmieniÊ rozdzielczoúÊ okna, tryb wyswietlania i wy≥πczyÊ lub w≥πczyÊ muzykÍ w tle
-		* @param window Okno w ktÛrym wyúwietlane jest menu
+		* Funkcja odpowiada za podmenu opcji, mo≈ºna w nim zmieniƒá rozdzielczo≈õƒá okna, tryb wyswietlania i wy≈ÇƒÖczyƒá lub w≈ÇƒÖczyƒá muzykƒô w tle
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu
 		*/
 		void optionsMenu(RenderWindow& window);
 		/**
 		* Funkcja odpowiada za okienko potwierdzenia
-		* @param window Okno w ktÛrym wyúwietlane jest menu
-		* @return Informacja o tym czy gracz zatwierdzi≥ wybÛr czy zrezygnowa≥
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu
+		* @return Informacja o tym czy gracz zatwierdzi≈Ç wyb√≥r czy zrezygnowa≈Ç
 		*/
 		int confirmMenu(RenderWindow& window);
 		/**
-		* Funkcja odpowiada za podmenu wyboru rozdzielczoúci okna
-		* @param window Okno w ktÛrym wyúwietlane jest menu
+		* Funkcja odpowiada za podmenu wyboru rozdzielczo≈õci okna
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu
 		*/
 		void resolutionMenu(RenderWindow& window);
 		/**
-		* Funkcja odpowiada za podmenu wyboru trybu areny. Opcje to arena(normal), arena(godmode) lub powrÛt
-		* @param window Okno w ktÛrym wyúwietlane jest menu
-		* @return Informacja o tym jaki tryb areny zosta≥ wybrany
+		* Funkcja odpowiada za podmenu wyboru trybu areny. Opcje to arena(normal), arena(godmode) lub powr√≥t
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu
+		* @return Informacja o tym jaki tryb areny zosta≈Ç wybrany
 		*/
 		int arenaMenu(RenderWindow& window);
 		/**
-		* Funkcja odpowiada za wyúwietlanie menu wywo≥ywanego z poziomu rozgrywki. Moøliwoúci to powrÛt do menu lub kontynuacja
-		* @param window Okno w ktÛrym wyúwietlane jest menu
-		* @return Infomacja o wyborze podjÍtym przez gracza
+		* Funkcja odpowiada za wy≈õwietlanie menu wywo≈Çywanego z poziomu rozgrywki. Mo≈ºliwo≈õci to powr√≥t do menu lub kontynuacja
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu
+		* @return Infomacja o wyborze podjƒôtym przez gracza
 		*/
 		int inGameMenu(RenderWindow& window);
 		/**
-		* Funkcja odpowiada za wyúwietlenie menu przygody. Opje to kontynuacja przygody (jeúli zosta≥a rozpoczÍta), nowa przygoda lub powrÛt
-		* @param window Okno w ktÛrym wyúwietlane jest menu 
-		* @param adventureStarted Informacja o tym czy przygoda zosta≥a rozpoczÍta
-		* @return Informacja o wyborze podjÍtym przez gracza
+		* Funkcja odpowiada za wy≈õwietlenie menu przygody. Opje to kontynuacja przygody (je≈õli zosta≈Ça rozpoczƒôta), nowa przygoda lub powr√≥t
+		* @param window Okno w kt√≥rym wy≈õwietlane jest menu 
+		* @param adventureStarted Informacja o tym czy przygoda zosta≈Ça rozpoczƒôta
+		* @return Informacja o wyborze podjƒôtym przez gracza
 		*/
 		int adventureMenu(RenderWindow& window, bool adventureStarted);
 
 
 
 	private:
-		/**Animacje wyúwietlane w menu*/
+		/**Animacje wy≈õwietlane w menu*/
 		Animations menu_animations;
 
-		/**Tekstura t≥a menu*/
+		/**Tekstura t≈Ça menu*/
 		Texture background_texture;
-		/**Tekstury kafelkÛw z moøliwym wyborem w g≥Ûwnym menu*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w g≈Ç√≥wnym menu*/
 		Texture main_menu_textures[6];
-		/**Tekstury kafelkÛw z moøliwym wyborem w menu wyboru trybu gry*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w menu wyboru trybu gry*/
 		Texture gameMode_menu_textures[9];
-		/**Tekstury kafelkÛw z moøliwym wyborem w menu trybu areny*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w menu trybu areny*/
 		Texture arena_menu_textures[6];
-		/**Tekstury kafelkÛw z moøliwym wyborem w menu wywo≥ywanym z poziomu rozgrywki*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w menu wywo≈Çywanym z poziomu rozgrywki*/
 		Texture inGame_menu_textures[4];
-		/**Tekstury kafelkÛw z moøliwym wyborem w menu opcji*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w menu opcji*/
 		Texture options_menu_textures[9];
-		/**Tekstury kafelkÛw z moøliwym wyborem w menu wyboru rozdzielczoúci*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w menu wyboru rozdzielczo≈õci*/
 		Texture resolution_menu_textures[8];
-		/**Tekstury kafelkÛw z moøliwym wyborem w oknie potwierdzenia*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w oknie potwierdzenia*/
 		Texture confirm_menu_textures[6];
-		/**Tekstury kafelkÛw z moøliwym wyborem w menu przygody*/
+		/**Tekstury kafelk√≥w z mo≈ºliwym wyborem w menu przygody*/
 		Texture adventure_menu_textures[7];
 
-		/**Sprite s≥uøπcy do wyúwietlania kafelkÛw opcji wyboru gracza*/
+		/**Sprite s≈Çu≈ºƒÖcy do wy≈õwietlania kafelk√≥w opcji wyboru gracza*/
 		Sprite menu_sprite;
-		/**Sprite s≥uøπcy do wyúwietlania t≥a menu*/
+		/**Sprite s≈Çu≈ºƒÖcy do wy≈õwietlania t≈Ça menu*/
 		Sprite menu_background;
 		/**Licznik klatek*/
 		int counter; //Frame counter
 
-		/**Informacja o tym czy okno jest wyúwietlane w trybie pe≥noekranowym*/
+		/**Informacja o tym czy okno jest wy≈õwietlane w trybie pe≈Çnoekranowym*/
 		bool isFullscreen;
-		/**Obecna rozdzielczoúÊ okna*/
+		/**Obecna rozdzielczo≈õƒá okna*/
 		Vector2u resolution;
 
 		/**Muzyka w tle*/
 		Sound music;
-		/**Bufor przechowujπcy utwÛr muzyczny odtwarzany w tle*/
+		/**Bufor przechowujƒÖcy utw√≥r muzyczny odtwarzany w tle*/
 		SoundBuffer musicBuffer;
 		/**Informacja o tym czy muzyka jest odtwarzana*/
 		bool isMusicPlaying;

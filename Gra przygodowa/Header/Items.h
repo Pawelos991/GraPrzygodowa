@@ -4,71 +4,71 @@
 #include "Item.h"
 
 /**
-* Klasa reprezentuj¹ca listê przedmiotów
+* Klasa reprezentujÄ…ca listÄ™ przedmiotÃ³w
 */
 class Items
 {
     public:
         /**
-        * Konsturktor klasy ustawiaj¹cy wskaŸnik na pierwszy element listy na nullptr
+        * Konsturktor klasy ustawiajÄ…cy wskaÅºnik na pierwszy element listy na nullptr
         */
         Items():head(nullptr){};
         /**
-        * Destruktor klasy zwalaniaj¹cy ca³¹ zaalokowan¹ pamiêæ
+        * Destruktor klasy zwalaniajÄ…cy caÅ‚Ä… zaalokowanÄ… pamiÄ™Ä‡
         */
         ~Items(){delete_all_items();};
         /**
-        * Funkcja usuwaj¹ca wszystkie elementy z listy i zwalaniaj¹ca pamiêæ zaalokowan¹ przez te elementy
+        * Funkcja usuwajÄ…ca wszystkie elementy z listy i zwalaniajÄ…ca pamiÄ™Ä‡ zaalokowanÄ… przez te elementy
         */
         void delete_all_items();
         /**
-        * *Funkcja usuwaj¹ca konrektny element z listy i zwalaniaj¹ca pamiêæ zaalokowan¹ przez ten element
-        * @param ID ID przedmiotu który ma zostaæ usuniêty z listy
+        * *Funkcja usuwajÄ…ca konrektny element z listy i zwalaniajÄ…ca pamiÄ™Ä‡ zaalokowanÄ… przez ten element
+        * @param ID ID przedmiotu ktÃ³ry ma zostaÄ‡ usuniÄ™ty z listy
         */
         void delete_item(int ID);
         /**
-        * Funkcja dodaj¹ca istniej¹cy przedmiot do listy 
-        * @param added WskaŸnik do przedmiotu, który ma zostaæ dodany do listy
+        * Funkcja dodajÄ…ca istniejÄ…cy przedmiot do listy 
+        * @param added WskaÅºnik do przedmiotu, ktÃ³ry ma zostaÄ‡ dodany do listy
         */
         void add_item(Item *added);
         /**
-        * Funkcja dodaj¹ca nowy przedmiot do listy
+        * Funkcja dodajÄ…ca nowy przedmiot do listy
         * @param IDc ID przedmiotu
         * @param namec Nazwa przedmiotu
-        * @param location Œcie¿ka do tekstury przedmiotu
+        * @param location ÅšcieÅ¼ka do tekstury przedmiotu
         */
         void add_item(int IDc, std::string namec, std::string location);
         /**
-        * Funkcja zwracaj¹ca wskaŸnik do przedmiotu szukanego po jego ID
+        * Funkcja zwracajÄ…ca wskaÅºnik do przedmiotu szukanego po jego ID
         * @param ID ID szukanego przedmiotu
-        * @return WskaŸnik do przedmiotu jeœli zosta³ znaleziony, nullptr jeœli przedmiot od podanym ID nie zosta³ znaleziony w liœcie
+        * @return WskaÅºnik do przedmiotu jeÅ›li zostaÅ‚ znaleziony, nullptr jeÅ›li przedmiot od podanym ID nie zostaÅ‚ znaleziony w liÅ›cie
         */
         Item* find_item(int ID);
         /**
-        * Funkcja zwracaj¹ca wskaŸnik do pierwszego elementu na liœcie
-        * @return WskaŸnik do pierwszego elementu na liœcie
+        * Funkcja zwracajÄ…ca wskaÅºnik do pierwszego elementu na liÅ›cie
+        * @return WskaÅºnik do pierwszego elementu na liÅ›cie
         */
         Item* get_head(){return head;}
         /**
-        * Funkcja zwracaj¹ca vector wszystkich ID przedmiotów znajduj¹cych siê na liœcie
-        * @return Vector ID przedmiotów znajduj¹cych siê na liœcie
+        * Funkcja zwracajÄ…ca vector wszystkich ID przedmiotÃ³w znajdujÄ…cych siÄ™ na liÅ›cie
+        * @return Vector ID przedmiotÃ³w znajdujÄ…cych siÄ™ na liÅ›cie
         */
         std::vector<int> Item_ids();
 
         /**
-        * Funkcja ³aduje przedmioty z plików konfiguracyjnych i umieszcza na liœcie
+        * Funkcja Å‚aduje przedmioty z plikÃ³w konfiguracyjnych i umieszcza na liÅ›cie
         */
         void LoadItemsFromFile();
 
     private:
-        /**WskaŸnik na pierwszy element listy*/
+        /**WskaÅºnik na pierwszy element listy*/
         Item *head;
 
 };
 
 /**
-* Funkcja zastêpuje znaki '_' w obiektach typu string spacjami
-* @param to_replace Obiekt typu string w którym znaki '_' maj¹ zostaæ zast¹pione spacjami
+* Funkcja zastÄ™puje znaki '_' w obiektach typu string spacjami
+* @param to_replace Obiekt typu string w ktÃ³rym znaki '_' majÄ… zostaÄ‡ zastÄ…pione spacjami
 */
 void Replace_withSpace(std::string &to_replace);
 

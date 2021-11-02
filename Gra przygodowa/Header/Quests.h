@@ -5,7 +5,7 @@
 #include "Not_Taken_Quests.h"
 
 /**
-* Klasa reprezentuje zbiór zadañ z podzia³em na przyjête i nieprzyjête przez postaæ gracza, dziedziczy po klasach Taken_Quests oraz Not_Taken_Quests
+* Klasa reprezentuje zbiÃ³r zadaÅ„ z podziaÅ‚em na przyjÄ™te i nieprzyjÄ™te przez postaÄ‡ gracza, dziedziczy po klasach Taken_Quests oraz Not_Taken_Quests
 */
 class Quests: protected Taken_Quests, protected Not_Taken_Quests
 {
@@ -21,31 +21,31 @@ class Quests: protected Taken_Quests, protected Not_Taken_Quests
 
     protected:
         /**
-        * Funkcja przygotowuj¹ca zadania poprzez wczytanie z plików zadañ nieprzyjêtych i za³adowanie ich do wektora zadañ nieprzyjêtych przez postaæ gracza
+        * Funkcja przygotowujÄ…ca zadania poprzez wczytanie z plikÃ³w zadaÅ„ nieprzyjÄ™tych i zaÅ‚adowanie ich do wektora zadaÅ„ nieprzyjÄ™tych przez postaÄ‡ gracza
         */
         void prepare_quests();
         /**
-        * Funkcja dodaj¹ca zadanie o podanym ID do zadañ przyjêtych przez gracza poprzez skopiowanie go z wektora zadañ nieprzyjêtych przez postaæ gracza
-        * @param id ID zadania które ma zostaæ dodane do zadañ przyjêtych
+        * Funkcja dodajÄ…ca zadanie o podanym ID do zadaÅ„ przyjÄ™tych przez gracza poprzez skopiowanie go z wektora zadaÅ„ nieprzyjÄ™tych przez postaÄ‡ gracza
+        * @param id ID zadania ktÃ³re ma zostaÄ‡ dodane do zadaÅ„ przyjÄ™tych
         */
         void add_t_quest(int id);
         /**
-        * Funkcja wyœwietla obecne zadania w oknie
-        * @param window Okno w którym maj¹ zostaæ wyœwietlone aktualne zadania
+        * Funkcja wyÅ›wietla obecne zadania w oknie
+        * @param window Okno w ktÃ³rym majÄ… zostaÄ‡ wyÅ›wietlone aktualne zadania
         */
         void Display_quests(RenderWindow &window);
         /**
-        * Funkcja dodaje zadanie do listy zadañ przyjêtych i wyœwietla na ekranie informacjê o tym, ¿e zosta³o ono przyjête przez postaæ gracza
+        * Funkcja dodaje zadanie do listy zadaÅ„ przyjÄ™tych i wyÅ›wietla na ekranie informacjÄ™ o tym, Å¼e zostaÅ‚o ono przyjÄ™te przez postaÄ‡ gracza
         * @param id ID dodawanego zadania
-        * @param window Okno w którym wyœwietlone jest powiadomienie o dodaniu nowego zadania do przyjêtych zadañ
-        * @param counter Licznik klatek potrzebny do poprawnego wyœwietlenia powiadomienia o dodaniu nowego zadania do przyjêtych zadañ
+        * @param window Okno w ktÃ³rym wyÅ›wietlone jest powiadomienie o dodaniu nowego zadania do przyjÄ™tych zadaÅ„
+        * @param counter Licznik klatek potrzebny do poprawnego wyÅ›wietlenia powiadomienia o dodaniu nowego zadania do przyjÄ™tych zadaÅ„
         */
         void add_t_quest_display(int id, RenderWindow& window, int counter);
 
     private:
-        /**Tekstura okienka w którym wyœwietlane s¹ przyjête zadania*/
+        /**Tekstura okienka w ktÃ³rym wyÅ›wietlane sÄ… przyjÄ™te zadania*/
         Texture tex;
-        /**Sprite okienka w którym wyœwietlane s¹ przyjête zadania*/
+        /**Sprite okienka w ktÃ³rym wyÅ›wietlane sÄ… przyjÄ™te zadania*/
         Sprite sp;
 };
 

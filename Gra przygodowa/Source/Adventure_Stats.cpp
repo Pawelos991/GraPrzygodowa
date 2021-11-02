@@ -109,7 +109,7 @@ void Adventure_Stats::init_stats()
 	minutes_text.setFont(font);
 	minutes_text.setCharacterSize(35);
 	minutes_text.setFillColor(Color::White);
-	minutes_text.setPosition(Vector2f(595, 209));
+	minutes_text.setPosition(Vector2f(592, 209));
 
 	hours_text.setFont(font);
 	hours_text.setCharacterSize(35);

@@ -13,16 +13,16 @@
 using namespace sf;
 
 /**
-*Klasa reprezentujπca pojedynczy przedmiot uøytkowy przechowywany w skrzyni lub ekwipunku gracza
+*Klasa reprezentujƒÖca pojedynczy przedmiot u≈ºytkowy przechowywany w skrzyni lub ekwipunku gracza
 */
 class Item
 {
     public:
         /**
-        *Konstruktor klasy inicjujπcy obiekt i wczytujπcy dane z plikÛw
+        *Konstruktor klasy inicjujƒÖcy obiekt i wczytujƒÖcy dane z plik√≥w
         * @param IDc ID przedmiotu
         * @param namec Nazwa przedmiotu
-        * @param locations åcieøka do tekstury przedmiotu
+        * @param locations ≈öcie≈ºka do tekstury przedmiotu
         */
         Item(int IDc, std::string namec, std::string locations);
         /**
@@ -30,33 +30,33 @@ class Item
         */
         virtual ~Item();
         /**
-        * Funkcja wyúwietlajπca przedmiot w oknie
-        * @param window Okno w ktÛrym ma zostaÊ wyúwietlony przedmiot
-        * @param location Miejsce w oknie w ktÛrym ma zostaÊ wyúwietlony przedmiot
+        * Funkcja wy≈õwietlajƒÖca przedmiot w oknie
+        * @param window Okno w kt√≥rym ma zostaƒá wy≈õwietlony przedmiot
+        * @param location Miejsce w oknie w kt√≥rym ma zostaƒá wy≈õwietlony przedmiot
         */
         void displayItem(RenderWindow &window, Vector2f location);
         /**
-        * Funkcja zwracajπca wskaünik na kolejny obiekt tej klasy
-        * @return Wskaünik na kolejny obiekt tej klasy
+        * Funkcja zwracajƒÖca wska≈∫nik na kolejny obiekt tej klasy
+        * @return Wska≈∫nik na kolejny obiekt tej klasy
         */
         Item *getNext(){return next;}
         /**
-        * Funkcja ustawiajπca wskaünik na kolejny obiekt tej klasy zgodnie z podanym wskaünikiem
-        * @param pnext Wskaünik na podstawie ktÛrego ma zostaÊ ustawiony wskaünik obiektu
+        * Funkcja ustawiajƒÖca wska≈∫nik na kolejny obiekt tej klasy zgodnie z podanym wska≈∫nikiem
+        * @param pnext Wska≈∫nik na podstawie kt√≥rego ma zostaƒá ustawiony wska≈∫nik obiektu
         */
         void setNext(Item *pnext){next=pnext;}
         /**
-        * Funkcja zwracajπca ID przedmiotu
+        * Funkcja zwracajƒÖca ID przedmiotu
         * @return ID przedmiotu
         */
         int getID(){return ID;}
         /**
-        * Funkcja zwracajπca nazwÍ przedmiotu
+        * Funkcja zwracajƒÖca nazwƒô przedmiotu
         * @return Nazwa przedmiotu
         */
         std::string getName(){return name;}
         /**
-        * Funkcja zwracajπca úcieøkÍ do tekstury przedmiotu
+        * Funkcja zwracajƒÖca ≈õcie≈ºkƒô do tekstury przedmiotu
         */
         std::string getLocation(){return location;}
 
@@ -64,15 +64,15 @@ class Item
     private:
         /**ID przedmiotu*/
         int ID;
-        /**åcieøka do tekstury przedmiotu*/
+        /**≈öcie≈ºka do tekstury przedmiotu*/
         std::string location;
-        /**Tekstura przedmiotu ktÛra ≥adowana jest z pliku*/
+        /**Tekstura przedmiotu kt√≥ra ≈Çadowana jest z pliku*/
         Texture pic;
         /**Nazwa przedmiotu*/
         std::string name;
-        /**Wskaünik na kolejny obiekt tej klasy*/
+        /**Wska≈∫nik na kolejny obiekt tej klasy*/
         Item *next;
-        /**Sprite przedmiotu s≥uøπcy do wyúwietlania go w oknie*/
+        /**Sprite przedmiotu s≈Çu≈ºƒÖcy do wy≈õwietlania go w oknie*/
         Sprite sp;
 
 };

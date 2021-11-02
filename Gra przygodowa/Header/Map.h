@@ -4,7 +4,7 @@
 #include "Screens.h"
 
 /**
-* Klasa reprezentuj¹ca mapê rozk³adu pomieszczeñ na danym poziomie
+* Klasa reprezentujÄ…ca mapÄ™ rozkÅ‚adu pomieszczeÅ„ na danym poziomie
 */
 class Map
 {
@@ -18,37 +18,37 @@ class Map
 		*/
 		~Map();
 		/**
-		* Funkcja s³u¿¹ca do utworzenia mapy bazuj¹c na informacjach o po³o¿eniu pomieszczeñ
-		* @param screens Vector ekranów na danym poziomie
+		* Funkcja sÅ‚uÅ¼Ä…ca do utworzenia mapy bazujÄ…c na informacjach o poÅ‚oÅ¼eniu pomieszczeÅ„
+		* @param screens Vector ekranÃ³w na danym poziomie
 		*/
 		void prepareMap(std::vector<Screen*>& screens);
 		/**
-		* Funkcja wyœwietlaj¹ca mapê w ca³ym oknie
-		* @param screens Vector ekranów na danym poziomie
-		* @param window Okno w którym ma zostaæ wyœwietlona mapa
-		* @param Actual_Screen_ID ID ekranu na którym obecnie znajduje siê postaæ gracza
+		* Funkcja wyÅ›wietlajÄ…ca mapÄ™ w caÅ‚ym oknie
+		* @param screens Vector ekranÃ³w na danym poziomie
+		* @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlona mapa
+		* @param Actual_Screen_ID ID ekranu na ktÃ³rym obecnie znajduje siÄ™ postaÄ‡ gracza
 		*/
 		void displayBigMap(std::vector<Screen*>& screens, RenderWindow& window, int Actual_Screen_ID);
 		/**
-		* Funkcja wyœwietlaj¹ca mapê w prawym górnym rogu okna
-		* @param screens Vector ekranów na danym poziomie
-		* @param window Okno w którym ma zostaæ wyœwietlona mapa
-		* @param Actual_Screen_ID ID ekranu na którym obecnie znajduje siê postaæ gracza
+		* Funkcja wyÅ›wietlajÄ…ca mapÄ™ w prawym gÃ³rnym rogu okna
+		* @param screens Vector ekranÃ³w na danym poziomie
+		* @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlona mapa
+		* @param Actual_Screen_ID ID ekranu na ktÃ³rym obecnie znajduje siÄ™ postaÄ‡ gracza
 		*/
 		void displaySmallMap(std::vector<Screen*>& screens, RenderWindow& window, int Actual_Screen_ID);
 	
 	private:
-		/**Tekstura t³a ma³ej mapy*/
+		/**Tekstura tÅ‚a maÅ‚ej mapy*/
 		Texture smallMapTex;
-		/**Tekstura t³a du¿ej mapy*/
+		/**Tekstura tÅ‚a duÅ¼ej mapy*/
 		Texture bigMapTex;
-		/**Sprite t³a ma³ej mapy*/
+		/**Sprite tÅ‚a maÅ‚ej mapy*/
 		Sprite smallMapSprite;
-		/**Sprite t³a du¿ej mapy*/
+		/**Sprite tÅ‚a duÅ¼ej mapy*/
 		Sprite bigMapSprite;
-		/**Tablica kafelków obrazuj¹cych ekrany ma³ej mapy*/
+		/**Tablica kafelkÃ³w obrazujÄ…cych ekrany maÅ‚ej mapy*/
 		RectangleShape smallMapPieces[100];
-		/**Tablica kafelków obrazuj¹cych ekrany du¿ej mapy*/
+		/**Tablica kafelkÃ³w obrazujÄ…cych ekrany duÅ¼ej mapy*/
 		RectangleShape bigMapPieces[100];
 };
 

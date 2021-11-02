@@ -10,9 +10,9 @@ class Quest
 {
     public:
         /**
-        * Konstruktor klasy ustawiaj¹cy odpowiednie atrybuty zgodnie z argumentami i zastêpuj¹cy znaki '_' przerwami w tytule i opisie zadania
+        * Konstruktor klasy ustawiajÄ…cy odpowiednie atrybuty zgodnie z argumentami i zastÄ™pujÄ…cy znaki '_' przerwami w tytule i opisie zadania
         * @param id ID zadania
-        * @param Name Tytu³ zadania
+        * @param Name TytuÅ‚ zadania
         * @param Desc Opis zadania
         */
         Quest(int id,std::string Name, std::string Desc);
@@ -21,17 +21,17 @@ class Quest
         */
         virtual ~Quest();
         /**
-        * Funkcja zwracaj¹ca tytu³ zadania
-        * @return Tytu³ zadania
+        * Funkcja zwracajÄ…ca tytuÅ‚ zadania
+        * @return TytuÅ‚ zadania
         */
         std::string getName(){return name;}
         /**
-        * Funkcja zwracaj¹ca opis zadania
+        * Funkcja zwracajÄ…ca opis zadania
         * @return Opis zadania
         */
         std::string getDesc(){return description;}
         /**
-        * Funkcja zwracaj¹ca ID zadania
+        * Funkcja zwracajÄ…ca ID zadania
         * @return ID zadania
         */
         int getID(){return ID;}
@@ -39,7 +39,7 @@ class Quest
 
 
     private:
-        /**Tytu³ zadania*/
+        /**TytuÅ‚ zadania*/
         std::string name;
         /**Opis zadania*/
         std::string description;

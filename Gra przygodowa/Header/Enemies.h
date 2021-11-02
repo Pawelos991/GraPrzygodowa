@@ -5,74 +5,74 @@
 #include "Adventure_Stats.h"
 
 /**
-* Klasa reprezentuj¹ca listê przeciwników
+* Klasa reprezentujÄ…ca listÄ™ przeciwnikÃ³w
 */
 class Enemies
 {
     public:
         /**
-        * Konstruktor klasy ustawiaj¹cy wskaŸnik na pierwszy element listy na nullptr
+        * Konstruktor klasy ustawiajÄ…cy wskaÅºnik na pierwszy element listy na nullptr
         */
         Enemies():head(nullptr){}
         /**
-        * Destruktor klasy zwalaniaj¹cy zaalokowan¹ pamiêæ poprzez usuniêcie przeciwników znajduj¹cych siê na liœcie
+        * Destruktor klasy zwalaniajÄ…cy zaalokowanÄ… pamiÄ™Ä‡ poprzez usuniÄ™cie przeciwnikÃ³w znajdujÄ…cych siÄ™ na liÅ›cie
         */
         ~Enemies(){delete_all_enemies();}
         /**
-        * Funkcja dodaj¹ca przeciwnika do listy w oparciu o jego nazwê i pliki konfiguracyjne
+        * Funkcja dodajÄ…ca przeciwnika do listy w oparciu o jego nazwÄ™ i pliki konfiguracyjne
         * @param Type Nazwa typu przeciwnika dodawanego do listy
-        * @param position Pozycja w oknie w której ma zostaæ umieszczony przeciwnik
+        * @param position Pozycja w oknie w ktÃ³rej ma zostaÄ‡ umieszczony przeciwnik
         */
         void add_enemy(std::string Type,Vector2f position);
         /**
-        * Funkcja dodaj¹ca przeciwnika do listy w oparciu o istniej¹cy obiekt przeciwnika
-        * @param enemy WskaŸnik na obiekt klasy Enemy z którego kopiowane bêd¹ dane potrzebne do utworzenia nowego obiektu i dodania go do listy
+        * Funkcja dodajÄ…ca przeciwnika do listy w oparciu o istniejÄ…cy obiekt przeciwnika
+        * @param enemy WskaÅºnik na obiekt klasy Enemy z ktÃ³rego kopiowane bÄ™dÄ… dane potrzebne do utworzenia nowego obiektu i dodania go do listy
         */
         void add_enemy(Enemy* enemy);
         /**
-        * Funkcja usuwaj¹ca przeciwnika z listy przeciwników
-        * @param deleted WskaŸnik na usuwanego przeciwnika
+        * Funkcja usuwajÄ…ca przeciwnika z listy przeciwnikÃ³w
+        * @param deleted WskaÅºnik na usuwanego przeciwnika
         */
         void delete_enemy(Enemy* deleted);
         /**
-        * Funkcja s³u¿¹ca do usuniêcia wszystkich przeciwników z listy
+        * Funkcja sÅ‚uÅ¼Ä…ca do usuniÄ™cia wszystkich przeciwnikÃ³w z listy
         */
         void delete_all_enemies();
         /**
-        * Funkcja zwracaj¹ca informacjê o tym czy wszyscy przeciwnicy z listy zostali pokonani
+        * Funkcja zwracajÄ…ca informacjÄ™ o tym czy wszyscy przeciwnicy z listy zostali pokonani
         * @return Informacja o tym czy wszyscy przeciwnicy z listy zostali pokonani
         */
         bool is_everyone_dead();
         /**
-        * Funkcja zwracaj¹ca informacjê o tym czy lista przeciwników jest pusta
-        * @return Informacja o tym czy lista przeciwników jest pusta
+        * Funkcja zwracajÄ…ca informacjÄ™ o tym czy lista przeciwnikÃ³w jest pusta
+        * @return Informacja o tym czy lista przeciwnikÃ³w jest pusta
         */
         bool is_it_empty();
         /**
-        * Funkcja która aktualizuje statystyki przygody w oparciu o informacje o przeciwnikach znajduj¹cych siê na liœcie
-        * @param stats Statystyki które maj¹ zostaæ zaktualizowane
+        * Funkcja ktÃ³ra aktualizuje statystyki przygody w oparciu o informacje o przeciwnikach znajdujÄ…cych siÄ™ na liÅ›cie
+        * @param stats Statystyki ktÃ³re majÄ… zostaÄ‡ zaktualizowane
         */
         void update_adventure_stats(Adventure_Stats& stats);
         /**
-        * Funkcja zwracaj¹ca wskaŸnik na przeciwnika o podanej nazwie o ile ten znajduje siê na liœcie
+        * Funkcja zwracajÄ…ca wskaÅºnik na przeciwnika o podanej nazwie o ile ten znajduje siÄ™ na liÅ›cie
         * @param name Nazwa szukanego przeciwnika
-        * @return WskaŸnik na znalezionego przeciwnika o ile taki zostanie znaleziony, nullptr jeœli przeciwnik o podanej nazwie nie zostanie znaleziony na liœcie
+        * @return WskaÅºnik na znalezionego przeciwnika o ile taki zostanie znaleziony, nullptr jeÅ›li przeciwnik o podanej nazwie nie zostanie znaleziony na liÅ›cie
         */
         Enemy* getEnemyByName(std::string name);
 
         /**
-        * Funkcja odpowiadaj¹ca za wszystko co robi¹ przeciwnicy. Utrzymanie ruchu przeciwników
-        * @param window Okno w którym wyœwietlani s¹ przeciwnicy
-        * @param counter Licznik klatek potrzebny do poprawnego wyœwietlania przeciwników
+        * Funkcja odpowiadajÄ…ca za wszystko co robiÄ… przeciwnicy. Utrzymanie ruchu przeciwnikÃ³w
+        * @param window Okno w ktÃ³rym wyÅ›wietlani sÄ… przeciwnicy
+        * @param counter Licznik klatek potrzebny do poprawnego wyÅ›wietlania przeciwnikÃ³w
         * @param players_hitbox Hitbox postaci gracza
-        * @param is_player_dead Informacja o tym, czy postaæ gracza jest martwa
-        * @param player_missiles Lista pocisków postaci gracza
-        * @param enemies_missiles Lista pocisków przeciwników 
+        * @param is_player_dead Informacja o tym, czy postaÄ‡ gracza jest martwa
+        * @param player_missiles Lista pociskÃ³w postaci gracza
+        * @param enemies_missiles Lista pociskÃ³w przeciwnikÃ³w 
         */
         std::vector<RectangleShape*> Maintenance(RenderWindow &window, int counter, RectangleShape players_hitbox, bool is_player_dead,Missiles& player_missiles, Missiles& enemies_missiles);
 
     private:
-        /**WskaŸnik na pierwszy element listy*/
+        /**WskaÅºnik na pierwszy element listy*/
         Enemy* head;
 
 };

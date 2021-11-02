@@ -4,13 +4,13 @@
 #include "Quest.h"
 
 /**
-* Klasa reprezentuje zbiór przyjêtych zadañ
+* Klasa reprezentuje zbiÃ³r przyjÄ™tych zadaÅ„
 */
 class Taken_Quests
 {
     public:
         /**
-        * Konsturktor klasy wczytuj¹cy potrzebne dane z plików i ustawiaj¹cy odpowiednie atrybuty
+        * Konsturktor klasy wczytujÄ…cy potrzebne dane z plikÃ³w i ustawiajÄ…cy odpowiednie atrybuty
         */
         Taken_Quests();
         /**
@@ -19,49 +19,49 @@ class Taken_Quests
         virtual ~Taken_Quests();
 
     protected:
-        /**Wektor wskaŸników na przyjête zadania*/
+        /**Wektor wskaÅºnikÃ³w na przyjÄ™te zadania*/
         std::vector<Quest*> taken_quests;
         /**
-        * Funkcja dodaj¹ca przyjête zadanie do wektora wskaŸników na przyjête zadania poprzez skopiowanie go z wektora wskaŸników na zadania nieprzyjête
-        * @param id ID zadania które ma zostaæ dodane do wektora
-        * @param not_taken_quests Wektor wskaŸników na zadania nieprzyjête
+        * Funkcja dodajÄ…ca przyjÄ™te zadanie do wektora wskaÅºnikÃ³w na przyjÄ™te zadania poprzez skopiowanie go z wektora wskaÅºnikÃ³w na zadania nieprzyjÄ™te
+        * @param id ID zadania ktÃ³re ma zostaÄ‡ dodane do wektora
+        * @param not_taken_quests Wektor wskaÅºnikÃ³w na zadania nieprzyjÄ™te
         */
         void add_t_quest(int id, std::vector<Quest*> &not_taken_quests);
         /**
-        * Funkcja usuwaj¹ca zadanie o podanym ID z wektora wskaŸników na zadania przyjête
-        * @param id ID zadania które ma zostaæ usuniête
+        * Funkcja usuwajÄ…ca zadanie o podanym ID z wektora wskaÅºnikÃ³w na zadania przyjÄ™te
+        * @param id ID zadania ktÃ³re ma zostaÄ‡ usuniÄ™te
         */
         void remove_t_quest(int id);
         /**
-        * Funkcja usuwaj¹ca wszystkie zadania z wektora wskaŸników na zadania przyjête
+        * Funkcja usuwajÄ…ca wszystkie zadania z wektora wskaÅºnikÃ³w na zadania przyjÄ™te
         */
         void remove_all_t_quests();
         /**
-        * Funkcja wyœwietlaj¹ca przyjête zadania w oknie
-        * @param window Okno w którym maj¹ zostaæ wyœwietlone przyjête zadania
-        * @param position Pozycja okienka zadañ potrzebna do odpowiedniego umieszczenia tekstów zadañ w oknie
+        * Funkcja wyÅ›wietlajÄ…ca przyjÄ™te zadania w oknie
+        * @param window Okno w ktÃ³rym majÄ… zostaÄ‡ wyÅ›wietlone przyjÄ™te zadania
+        * @param position Pozycja okienka zadaÅ„ potrzebna do odpowiedniego umieszczenia tekstÃ³w zadaÅ„ w oknie
         */
         void display_active_quests(RenderWindow &window, Vector2f position);
         /**
-        * Funkcja wyœwietlaj¹ca nowe zadanie w oknie (dok³adniej jego tytu³)
-        * @param window Okno w którym ma zostaæ wyœwietlone nowe zadanie
-        * @param id ID nowego zadania którego tytu³ ma zostaæ wyœwietlony
+        * Funkcja wyÅ›wietlajÄ…ca nowe zadanie w oknie (dokÅ‚adniej jego tytuÅ‚)
+        * @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlone nowe zadanie
+        * @param id ID nowego zadania ktÃ³rego tytuÅ‚ ma zostaÄ‡ wyÅ›wietlony
         */
         void display_new_quest(RenderWindow& window, int id);
         /**
-        * Funkcja dodaj¹ca nowe zadanie do wektora wskaŸników na przyjête zadania wraz z wyœwietleniem go w oknie
-        * @param window Okno w którym wyœwietlony ma zostaæ tytu³ nowego zadania
-        * @param ID ID zadania które ma zostaæ dodane do wektora wskaŸników zadañ przyjêtych
-        * @param not_taken_quests Wektor wskaŸników na nieprzyjête zadania
-        * @param counter Licznik klatek potrzebny do poprawnego wyœwietlenia powiadomienia o nowym zadniu w oknie
+        * Funkcja dodajÄ…ca nowe zadanie do wektora wskaÅºnikÃ³w na przyjÄ™te zadania wraz z wyÅ›wietleniem go w oknie
+        * @param window Okno w ktÃ³rym wyÅ›wietlony ma zostaÄ‡ tytuÅ‚ nowego zadania
+        * @param id ID zadania ktÃ³re ma zostaÄ‡ dodane do wektora wskaÅºnikÃ³w zadaÅ„ przyjÄ™tych
+        * @param not_taken_quests Wektor wskaÅºnikÃ³w na nieprzyjÄ™te zadania
+        * @param counter Licznik klatek potrzebny do poprawnego wyÅ›wietlenia powiadomienia o nowym zadniu w oknie
         */
         void add_t_quest_display(RenderWindow& window, int id, std::vector<Quest*>& not_taken_quests, int counter);
-        /**Czcionka tekstu wypisuj¹cego przyjête zadania*/
+        /**Czcionka tekstu wypisujÄ…cego przyjÄ™te zadania*/
         Font font;
-        /**Tekst s³u¿¹cy do wypisania przyjêtych zadañ*/
+        /**Tekst sÅ‚uÅ¼Ä…cy do wypisania przyjÄ™tych zadaÅ„*/
         Text text;
         /**
-        * Funkcja ³aduj¹ca czcionkê z pliku i ustawiaj¹ca j¹ w tekœcie powiadomienia o nowym zadaniu
+        * Funkcja Å‚adujÄ…ca czcionkÄ™ z pliku i ustawiajÄ…ca jÄ… w tekÅ›cie powiadomienia o nowym zadaniu
         */
         void getFont();
 
@@ -70,11 +70,11 @@ class Taken_Quests
         Texture new_tex;
         /**Sprite okienka powiadomienia o nowym zadaniu*/
         Sprite new_sp;
-        /**DŸwiêk powiadomienia o przyjêciu nowego zadania*/
+        /**DÅºwiÄ™k powiadomienia o przyjÄ™ciu nowego zadania*/
         Sound sound;
-        /**Bufor przechowuj¹cy dŸwiêk powiadomienia o przyjêciu nowego zadania*/
+        /**Bufor przechowujÄ…cy dÅºwiÄ™k powiadomienia o przyjÄ™ciu nowego zadania*/
         SoundBuffer sb;
-        /**Tekst powiadomienia o nowym zadaniu (ustawiany na tytu³ nowego zadania)*/
+        /**Tekst powiadomienia o nowym zadaniu (ustawiany na tytuÅ‚ nowego zadania)*/
         Text te;
 };
 

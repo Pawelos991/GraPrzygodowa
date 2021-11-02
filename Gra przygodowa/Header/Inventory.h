@@ -4,55 +4,55 @@
 #include "Items.h"
 
 /**
-* Klasa reprezentuj¹ca inwentarz postaci gracza
+* Klasa reprezentujÄ…ca inwentarz postaci gracza
 */
 class Inventory
 {
     public:
         /**
-        * Konstruktor klasy ³aduj¹cy teksturê t³a inwentarza
+        * Konstruktor klasy Å‚adujÄ…cy teksturÄ™ tÅ‚a inwentarza
         */
         Inventory(){LoadBackground();}
         /**
-        * Destruktor klasy zwalniaj¹cy zaalokowan¹ pamiêæ poprzez usuniêcie wszystkich przedmiotów znajduj¹cych siê w inwentarzu
+        * Destruktor klasy zwalniajÄ…cy zaalokowanÄ… pamiÄ™Ä‡ poprzez usuniÄ™cie wszystkich przedmiotÃ³w znajdujÄ…cych siÄ™ w inwentarzu
         */
         virtual ~Inventory(){items.delete_all_items();}
-        /**Lista przedmiotów znajduj¹cych siê w inwentarzu*/
+        /**Lista przedmiotÃ³w znajdujÄ…cych siÄ™ w inwentarzu*/
         Items items;
         /**
-        * Funkcja dodaj¹ca przedmiot do inwentarzu
+        * Funkcja dodajÄ…ca przedmiot do inwentarzu
         * @param ID ID dodawanego przedmiotu
-        * @param all_items Lista wszystkich przedmiotów obecnych w grze 
+        * @param all_items Lista wszystkich przedmiotÃ³w obecnych w grze 
         */
         void add_item_to_inventory(int ID, Items &all_items);
         /**
-        * Funkcja usuwaj¹ca jeden przedmiot o podanym ID z inwentarza
+        * Funkcja usuwajÄ…ca jeden przedmiot o podanym ID z inwentarza
         * @param ID ID usuwanego przedmiotu
         */
         void delete_item_from_inventory(int ID);
         /**
-        * Funkcja zwalniaj¹ca pamiêæ poprzez usuniêcie wszystkich przedmiotów z inwentarza
+        * Funkcja zwalniajÄ…ca pamiÄ™Ä‡ poprzez usuniÄ™cie wszystkich przedmiotÃ³w z inwentarza
         */
         void clear_items();
         /**
-        * Funkcja ³aduj¹ca teksturê t³a inwentarza z pliku
+        * Funkcja Å‚adujÄ…ca teksturÄ™ tÅ‚a inwentarza z pliku
         */
         void LoadBackground();
         /**
-        * Funkcja wyœwietlaj¹ca inwentarz w oknie
-        * @param window Okno w którym ma zostaæ wyœwietlony inwentarz
+        * Funkcja wyÅ›wietlajÄ…ca inwentarz w oknie
+        * @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlony inwentarz
         */
         void Display_Inventory(RenderWindow &window);
         /**
-        * Funkcja zwracaj¹ca informacjê o tym czy w inwentarzu znajduje siê przedmiot o podanym ID
-        * @param ID ID przedmiotu którego obecnoœæ w inwentarzu jest sprawdzana
+        * Funkcja zwracajÄ…ca informacjÄ™ o tym czy w inwentarzu znajduje siÄ™ przedmiot o podanym ID
+        * @param ID ID przedmiotu ktÃ³rego obecnoÅ›Ä‡ w inwentarzu jest sprawdzana
         */
         bool Is_there_an_item(int ID);
 
     private:
-        /**Tekstura t³a inwentarza*/
+        /**Tekstura tÅ‚a inwentarza*/
         Texture texture;
-        /**Sprite t³a inwentarza s³u¿¹cy do wyœwietlania go w oknie*/
+        /**Sprite tÅ‚a inwentarza sÅ‚uÅ¼Ä…cy do wyÅ›wietlania go w oknie*/
         Sprite sp;
 
 };

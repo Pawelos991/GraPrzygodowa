@@ -4,13 +4,13 @@
 #include "NPC.h"
 
 /**
-* Klasa reprezentuje listê postaci niegrywalnych
+* Klasa reprezentuje listÄ™ postaci niegrywalnych
 */
 class NPCs
 {
     public:
         /**
-        * Konstruktor klasy ustawiaj¹cy wskaŸnik na pierwszy element listy na nullptr
+        * Konstruktor klasy ustawiajÄ…cy wskaÅºnik na pierwszy element listy na nullptr
         */
         NPCs():head(nullptr){}
         /**
@@ -18,14 +18,14 @@ class NPCs
         */
         virtual ~NPCs();
         /**
-        * Funkcja dodaj¹ca postaæ niegrywaln¹ do listy
+        * Funkcja dodajÄ…ca postaÄ‡ niegrywalnÄ… do listy
         * @param name Nazwa typu postaci niegrywalnej
-        * @param position Pozycja w której ma zostaæ umieszczona postaæ niegrywalna
+        * @param position Pozycja w ktÃ³rej ma zostaÄ‡ umieszczona postaÄ‡ niegrywalna
         */
         void add_npc(std::string name,Vector2f position);
         /**
-        * Funkcja usuwa postaæ niegrywaln¹ z listy
-        * @param removed WskaŸnik na postaæ niegrywaln¹ która ma zostaæ usuniêta z listy
+        * Funkcja usuwa postaÄ‡ niegrywalnÄ… z listy
+        * @param removed WskaÅºnik na postaÄ‡ niegrywalnÄ… ktÃ³ra ma zostaÄ‡ usuniÄ™ta z listy
         */
         void remove_npc(NPC* removed);
         /**
@@ -34,15 +34,15 @@ class NPCs
         void remove_all_npcs();
 
         /**
-        * Funkcja odpowiadaj¹ca za utrzymanie ruchu wszystkich postaci niegrywalnych znajduj¹cych siê na liœcie
-        * @param window Okno w którym maj¹ byæ wyœwietlone postaci niegrywalne
-        * @param counter Licznik klatek potrzebny do poprawnego wyœwietlania animacji
+        * Funkcja odpowiadajÄ…ca za utrzymanie ruchu wszystkich postaci niegrywalnych znajdujÄ…cych siÄ™ na liÅ›cie
+        * @param window Okno w ktÃ³rym majÄ… byÄ‡ wyÅ›wietlone postaci niegrywalne
+        * @param counter Licznik klatek potrzebny do poprawnego wyÅ›wietlania animacji
         * @param players_hitbox Hitbox postaci gracza
         */
         void Maintance(RenderWindow &window,int counter,RectangleShape players_hitbox);
 
     private:
-        /**WskaŸnik na pierwszy element listy postaci niegrywalnych*/
+        /**WskaÅºnik na pierwszy element listy postaci niegrywalnych*/
         NPC* head;
 };
 

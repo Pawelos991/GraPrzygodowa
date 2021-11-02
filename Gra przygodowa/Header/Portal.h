@@ -4,13 +4,13 @@
 #include "Wall.h"
 
 /**
-* Klasa reprezentuje portal przenosz¹cy postaæ gracza na wy¿szy poziom
+* Klasa reprezentuje portal przenoszÄ…cy postaÄ‡ gracza na wyÅ¼szy poziom
 */
 class Portal 
 {
 	public:
 		/**
-		* Konstruktor klasy ³aduj¹cy dane z plików
+		* Konstruktor klasy Å‚adujÄ…cy dane z plikÃ³w
 		*/
 		Portal();
 		/**
@@ -18,29 +18,29 @@ class Portal
 		*/
 		~Portal(){}
 		/**
-		* Funkcja wyœwietlaj¹ca portal w oknie
-		* @param window Okno w którym ma zostaæ wyœwietlony portal
+		* Funkcja wyÅ›wietlajÄ…ca portal w oknie
+		* @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlony portal
 		*/
 		void displayPortal(RenderWindow& window);
 		/**
-		* Funkcja która odtwarza dŸwiêk wejœcia w portal
+		* Funkcja ktÃ³ra odtwarza dÅºwiÄ™k wejÅ›cia w portal
 		*/
 		void playSound();
 		/**
-		* Funkcja sprawdzaj¹ca czy postaæ gracza koliduje z portalem co jest interpretowane jako wejœcie w portal
+		* Funkcja sprawdzajÄ…ca czy postaÄ‡ gracza koliduje z portalem co jest interpretowane jako wejÅ›cie w portal
 		* @param players_hitbox Hitbox postaci gracza
-		* @return true jeœli postaæ gracza koliduje z portalem, false jeœli postaæ gracza nie koliduje z portalem
+		* @return true jeÅ›li postaÄ‡ gracza koliduje z portalem, false jeÅ›li postaÄ‡ gracza nie koliduje z portalem
 		*/
 		bool doesPlayerCollide(RectangleShape players_hitbox);
 
 	private:
-		/**DŸwiêk wejœcia w portal*/
+		/**DÅºwiÄ™k wejÅ›cia w portal*/
 		Sound sound;
-		/**Bufor przechowuj¹cy dŸwiêk wejœcia w portal*/
+		/**Bufor przechowujÄ…cy dÅºwiÄ™k wejÅ›cia w portal*/
 		SoundBuffer sb;
 		/**Tekstura portala*/
 		Texture tex;
-		/**Sprite potrzebny do poprawnego wyœwietlenia portala*/
+		/**Sprite potrzebny do poprawnego wyÅ›wietlenia portala*/
 		Sprite sp;
 
 };

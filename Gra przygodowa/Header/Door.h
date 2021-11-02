@@ -6,15 +6,15 @@
 using namespace sf;
 
 /**
-* Klasa reprezentuj¹ca pojedyncze drzwi które mog¹ zostaæ otwarte przez gracza za pomoc¹ odpowiedniego klucza, który musi mieæ w ekwipunku
+* Klasa reprezentujÄ…ca pojedyncze drzwi ktÃ³re mogÄ… zostaÄ‡ otwarte przez gracza za pomocÄ… odpowiedniego klucza, ktÃ³ry musi mieÄ‡ w ekwipunku
 */
 class Door
 {
     public:
         /**
-        * Konstruktor klasy ³aduj¹cy teksturê drzwi z pliku, ustawiaj¹cy wskaŸnik na œcianê odpowiadaj¹c¹ drzwiom i ustawiaj¹cy wartoœæ atrybutu odpowiadaj¹cego za ID klucza potrzebnego do otwarcia tych drzwi
-        * @param texture_location Œcie¿ka do tekstury drzwi
-        * @param wall WskaŸnik na œcianê odpowiadaj¹c¹ drzwiom
+        * Konstruktor klasy Å‚adujÄ…cy teksturÄ™ drzwi z pliku, ustawiajÄ…cy wskaÅºnik na Å›cianÄ™ odpowiadajÄ…cÄ… drzwiom i ustawiajÄ…cy wartoÅ›Ä‡ atrybutu odpowiadajÄ…cego za ID klucza potrzebnego do otwarcia tych drzwi
+        * @param texture_location ÅšcieÅ¼ka do tekstury drzwi
+        * @param wall WskaÅºnik na Å›cianÄ™ odpowiadajÄ…cÄ… drzwiom
         * @param key_id ID klucza potrzebnego do otwarcia drzwi
         */
         Door(std::string texture_location,Wall* wall, int key_id);
@@ -23,22 +23,22 @@ class Door
         */
         ~Door(){}
         /**
-        * Funkcja wyœwietlaj¹ca drzwi w oknie
-        * @param window Okno w którym maj¹ zostaæ wyœwietlone drzwi
+        * Funkcja wyÅ›wietlajÄ…ca drzwi w oknie
+        * @param window Okno w ktÃ³rym majÄ… zostaÄ‡ wyÅ›wietlone drzwi
         */
         void DisplayDoor(RenderWindow& window);
         /**
-        * Funkcja zwracaj¹ca ID klucza potrzebnego do otwarcia drzwi
+        * Funkcja zwracajÄ…ca ID klucza potrzebnego do otwarcia drzwi
         * @return ID klucza potrzebnego do otwarcia drzwi
         */
         int get_key_ID() { return key_ID; }
         /**
-        * Funkcja zwracaj¹ca wskaŸnik na œcianê odpowiadaj¹c¹ drzwiom
-        * @return WskaŸnik na œcianê odpowiadaj¹c¹ drzwiom
+        * Funkcja zwracajÄ…ca wskaÅºnik na Å›cianÄ™ odpowiadajÄ…cÄ… drzwiom
+        * @return WskaÅºnik na Å›cianÄ™ odpowiadajÄ…cÄ… drzwiom
         */
         Wall* get_wall() { return wall; }
         /**
-        * Funkcja zwracaj¹ca hitbox drzwi
+        * Funkcja zwracajÄ…ca hitbox drzwi
         * @return Hitbox drzwi
         */
         RectangleShape get_box() { return box; }
@@ -46,11 +46,11 @@ class Door
     private:
         /**Tekstura drzwi*/
         Texture tex;
-        /**Sprite drzwi s³u¿¹cy do wyœwietlenia drzwi w oknie*/
+        /**Sprite drzwi sÅ‚uÅ¼Ä…cy do wyÅ›wietlenia drzwi w oknie*/
         Sprite sp;
         /**ID klucza potrzebnego do otwarcia drzwi*/
         int key_ID;
-        /**WskaŸnik na œcianê odpowiadaj¹c¹ drzwiom*/
+        /**WskaÅºnik na Å›cianÄ™ odpowiadajÄ…cÄ… drzwiom*/
         Wall *wall;
         /**Hitbox drzwi*/
         RectangleShape box;

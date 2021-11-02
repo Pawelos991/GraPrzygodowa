@@ -4,18 +4,18 @@
 #include "Items.h"
 
 /**
-* Klasa reprezentuje pojedyncz¹ skrzyniê, w której znajduj¹ siê przedmioty, które gracz mo¿e zebraæ
+* Klasa reprezentuje pojedynczÄ… skrzyniÄ™, w ktÃ³rej znajdujÄ… siÄ™ przedmioty, ktÃ³re gracz moÅ¼e zebraÄ‡
 */
 class Chest
 {
     public:
         /**
-        * Konstuktor klasy ³aduj¹cy tekstury z plików, ustawiaj¹cy skrzyniê i uzupe³niaj¹cy jej listê przedmiotów
-        * @param location_closed Œcie¿ka do tekstury zamkniêtej skrzyni
-        * @param location_open Œcie¿ka do tekstury otwartej skrzyni
-        * @param Position Pozycja w oknie w której ma zostaæ umieszczona skrzynia
+        * Konstuktor klasy Å‚adujÄ…cy tekstury z plikÃ³w, ustawiajÄ…cy skrzyniÄ™ i uzupeÅ‚niajÄ…cy jej listÄ™ przedmiotÃ³w
+        * @param location_closed ÅšcieÅ¼ka do tekstury zamkniÄ™tej skrzyni
+        * @param location_open ÅšcieÅ¼ka do tekstury otwartej skrzyni
+        * @param Position Pozycja w oknie w ktÃ³rej ma zostaÄ‡ umieszczona skrzynia
         * @param SizeOfBox Rozmiar hitboxa skrzyni
-        * @param Item_IDs Vector ID przedmiotów które maj¹ siê znaleŸæ w skrzyni
+        * @param Item_IDs Vector ID przedmiotÃ³w ktÃ³re majÄ… siÄ™ znaleÅºÄ‡ w skrzyni
         */
         Chest(std::string location_closed,std::string location_open,Vector2f Position, Vector2f SizeOfBox, std::vector<int> Item_IDs);
         /**
@@ -24,15 +24,15 @@ class Chest
         virtual ~Chest();
         /**Hitbox skrzyni*/
         RectangleShape box;
-        /**Lista ID przedmiotów które znajduj¹ siê w skrzyni*/
+        /**Lista ID przedmiotÃ³w ktÃ³re znajdujÄ… siÄ™ w skrzyni*/
         std::vector<int> Items_IDs;
         /**
-        * Funkcja wyœwietlaj¹ca skrzyniê w oknie
-        * @param window Okno w którym ma zostaæ wyœwietlona skrzynia
+        * Funkcja wyÅ›wietlajÄ…ca skrzyniÄ™ w oknie
+        * @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlona skrzynia
         */
         void DisplayChest(RenderWindow &window);
         /**
-        * Funkcja s³u¿¹ca do otwarcia skrzyni. Tekstura skrzyni zmienia siê na otwart¹ i odtwarzany jest dŸwiêk otwarcia skrzyni
+        * Funkcja sÅ‚uÅ¼Ä…ca do otwarcia skrzyni. Tekstura skrzyni zmienia siÄ™ na otwartÄ… i odtwarzany jest dÅºwiÄ™k otwarcia skrzyni
         */
         void OpenChest();
         /**Informacja o tym, czy skrzynia jest otwarta*/
@@ -41,15 +41,15 @@ class Chest
     private:
         /**Tekstura otwartej skrzyni*/
         Texture pic_open;
-        /**Tekstura zamkniêtej skrzyni*/
+        /**Tekstura zamkniÄ™tej skrzyni*/
         Texture pic_closed;
         /**Sprite otwartej skrzyni*/
         Sprite sp_open;
-        /**Sprite zamkniêtej skrzyni*/
+        /**Sprite zamkniÄ™tej skrzyni*/
         Sprite sp_closed;
-        /**DŸwiêk otwierania skrzyni odtwarzany przy otwieraniu skrzyni*/
+        /**DÅºwiÄ™k otwierania skrzyni odtwarzany przy otwieraniu skrzyni*/
         Sound opening;
-        /**Bufor do którego ³adowany jest dŸwiêk otwierania skrzyni*/
+        /**Bufor do ktÃ³rego Å‚adowany jest dÅºwiÄ™k otwierania skrzyni*/
         SoundBuffer opening_buffer;
 
 };

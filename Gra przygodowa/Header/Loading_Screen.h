@@ -4,13 +4,13 @@
 #include "Screen.h"
 
 /**
-* Klasa reprezentuje ekran ³adowania
+* Klasa reprezentuje ekran Å‚adowania
 */
 class Loading_Screen
 {
     public:
         /**
-        * Kontruktor klasy przygotowuj¹cy ekran i ³aduj¹ce dane z plików
+        * Kontruktor klasy przygotowujÄ…cy ekran i Å‚adujÄ…ce dane z plikÃ³w
         */
         Loading_Screen();
         /**
@@ -18,28 +18,28 @@ class Loading_Screen
         */
         virtual ~Loading_Screen();
         /**
-        * Funkcja wyœwietla ekran ³adowania z pustym paskiem ³adowania
-        * @param window Okno w którym ma zostaæ wyœwietlony ekran ³adowania
+        * Funkcja wyÅ›wietla ekran Å‚adowania z pustym paskiem Å‚adowania
+        * @param window Okno w ktÃ³rym ma zostaÄ‡ wyÅ›wietlony ekran Å‚adowania
         */
         void start_loading(RenderWindow &window);
         /**
-        * Funkcja wyœwietla ekran ³adowania z paskiem ³adowania zape³nionym w zale¿noœci od podanego parametru i wiadomoœci¹ pod paskiem
-        * @param window Oknow w którym ma zostaæ wyœwietlony ekran ³adowania
-        * @param perc Informacja jaka czêœæ paska ma zostaæ zape³niona
-        * @param message Wiadomoœæ wyœwietlana pod paskiem informuj¹ca o tym co w danym momencie jest ³adowane
+        * Funkcja wyÅ›wietla ekran Å‚adowania z paskiem Å‚adowania zapeÅ‚nionym w zaleÅ¼noÅ›ci od podanego parametru i wiadomoÅ›ciÄ… pod paskiem
+        * @param window Oknow w ktÃ³rym ma zostaÄ‡ wyÅ›wietlony ekran Å‚adowania
+        * @param perc Informacja jaka czÄ™Å›Ä‡ paska ma zostaÄ‡ zapeÅ‚niona
+        * @param message WiadomoÅ›Ä‡ wyÅ›wietlana pod paskiem informujÄ…ca o tym co w danym momencie jest Å‚adowane
         */
         void set_loading(RenderWindow& window, float perc, std::string message);
 
     private:
-        /**Tekstura t³a ekranu ³adowania*/
+        /**Tekstura tÅ‚a ekranu Å‚adowania*/
         Texture background_texture;
-        /**Sprite s³u¿¹cy do wyœwietlenia t³a ekranu ³adowania*/
+        /**Sprite sÅ‚uÅ¼Ä…cy do wyÅ›wietlenia tÅ‚a ekranu Å‚adowania*/
         Sprite background_sprite;
-        /**Pasek ³adowania*/
+        /**Pasek Å‚adowania*/
         RectangleShape loading_bar;
-        /**Czcionka tekstu wiadomoœci znajduj¹cej siê poni¿ej paska ³adowania*/
+        /**Czcionka tekstu wiadomoÅ›ci znajdujÄ…cej siÄ™ poniÅ¼ej paska Å‚adowania*/
         Font font;
-        /**Wiadomoœæ wyœwietlana pod paskiem ³adowania*/
+        /**WiadomoÅ›Ä‡ wyÅ›wietlana pod paskiem Å‚adowania*/
         Text text;
 };
 

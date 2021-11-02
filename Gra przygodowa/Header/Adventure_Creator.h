@@ -4,14 +4,14 @@
 #include "Loading_Screen.h"
 
 /**
-* Klasa reprezentuje kreator przygody s³u¿¹cy do komputerowej generacji poziomu przygody poprzez losow¹ generacjê uk³adu ekranów, generacjê œcian, przeciwników oraz skrzyñ
+* Klasa reprezentuje kreator przygody sÅ‚uÅ¼Ä…cy do komputerowej generacji poziomu przygody poprzez losowÄ… generacjÄ™ ukÅ‚adu ekranÃ³w, generacjÄ™ Å›cian, przeciwnikÃ³w oraz skrzyÅ„
 */
 class Adventure_Creator 
 {
 	public:
 		/**
-		* Konstruktor klasy ustawiaj¹cy podstawowe atrybuty
-		* @param loading_screen WskaŸnik do ekranu ³adowania na który zostanie ustawiony wskaŸnik obiektu
+		* Konstruktor klasy ustawiajÄ…cy podstawowe atrybuty
+		* @param loading_screen WskaÅºnik do ekranu Å‚adowania na ktÃ³ry zostanie ustawiony wskaÅºnik obiektu
 		*/
 		Adventure_Creator(Loading_Screen *loading_screen);
 		/**
@@ -19,36 +19,36 @@ class Adventure_Creator
 		*/
 		~Adventure_Creator();
 		/**
-		* Funkcja zwraca informacjê o tym, jakiego typu poziom zosta³ wygenerowany
+		* Funkcja zwraca informacjÄ™ o tym, jakiego typu poziom zostaÅ‚ wygenerowany
 		* @return Typ poziomu (1-Las, 2-Zamek, 3-Lochy, 4-Pustynia)
 		*/
 		int get_floor_type() { return floor_type; }
 		/**
-		* Funkcja zwraca informacjê o numerze aktualnego poziomu. Numeracja zaczyna siê od poziomu 1 a koñczy na poziomie 11 (ekran podsumowania)
+		* Funkcja zwraca informacjÄ™ o numerze aktualnego poziomu. Numeracja zaczyna siÄ™ od poziomu 1 a koÅ„czy na poziomie 11 (ekran podsumowania)
 		* @return Numer aktualnego poziomu
 		*/
 		int get_level() { return level; }
 		/**
-		* Funkcja zwraca vector wskaŸników na ekrany przygody wygenerowane jako nowy poziom
-		* @param window Okno w którym wyœwietlana jest gra
-		* @param cache_enemies Przeciwnicy przechowywani w pamiêci podrêcznej wykorzystywani przy generacji poziomu
-		* @return Vector wskaŸników na ekrany wygenerowane jako nowy poziom
+		* Funkcja zwraca vector wskaÅºnikÃ³w na ekrany przygody wygenerowane jako nowy poziom
+		* @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+		* @param cache_enemies Przeciwnicy przechowywani w pamiÄ™ci podrÄ™cznej wykorzystywani przy generacji poziomu
+		* @return Vector wskaÅºnikÃ³w na ekrany wygenerowane jako nowy poziom
 		*/
 		std::vector<Screen*> next_lvl(RenderWindow& window, Enemies& cache_enemies);
 		/**
-		* Funkcja zwraca vector wskaŸników na ekrany przygody wygenerowane jako poziom
-		* @param window Okno w którym wyœwietlana jest gra
-		* @param cache_enemies Przeciwnicy przechowywani w pamiêci podrêcznej wykorzystywani przy generacji poziomu
-		* @return Vector wskaŸników na ekrany wygenerowane jako poziom
+		* Funkcja zwraca vector wskaÅºnikÃ³w na ekrany przygody wygenerowane jako poziom
+		* @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+		* @param cache_enemies Przeciwnicy przechowywani w pamiÄ™ci podrÄ™cznej wykorzystywani przy generacji poziomu
+		* @return Vector wskaÅºnikÃ³w na ekrany wygenerowane jako poziom
 		*/
 		std::vector<Screen*> generate_level(RenderWindow &window, Enemies& cache_enemies);
 		/**
-		* Funkcja s³u¿y do przywrócenia atrybutów obiektu do wartoœci domyœlnych (np. level = 1)
+		* Funkcja sÅ‚uÅ¼y do przywrÃ³cenia atrybutÃ³w obiektu do wartoÅ›ci domyÅ›lnych (np. level = 1)
 		*/
 		void reset_creator();
 
 	private:
-		/**WskaŸnik na ekran ³adowania*/
+		/**WskaÅºnik na ekran Å‚adowania*/
 		Loading_Screen* loading_screen;
 		/**Typ poziomu*/
 		int floor_type; // 1 - Valley, 2 - Castle, 3 - Dungeon, 4 - Desert
@@ -56,137 +56,137 @@ class Adventure_Creator
 		int last_floor_type;
 		/**Numer poziomu*/
 		int level;
-		/**WskaŸnik na portal*/
+		/**WskaÅºnik na portal*/
 		Portal* portal;
 		/**
-		* Funkcja generuj¹ca ekran statystyk (potrzebna przy generacji 11 poziomu - poziomu podsumowania)
-		* @param window Okno w którym wyœwietlana jest gra
-		* @return Vector wskaŸników na ekrany wygenerowane jako poziom
+		* Funkcja generujÄ…ca ekran statystyk (potrzebna przy generacji 11 poziomu - poziomu podsumowania)
+		* @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+		* @return Vector wskaÅºnikÃ³w na ekrany wygenerowane jako poziom
 		*/
 		std::vector<Screen*> generate_stats_screen(RenderWindow& window);
 		/**
-		* Funkcja dodaje do vectora wskaŸników na ekrany tyle nowych ekranów, ile podano jako argument
-		* @param howManyScreens Liczba nowych ekranów na które wskaŸniki maj¹ zostaæ dodane do vectora
+		* Funkcja dodaje do vectora wskaÅºnikÃ³w na ekrany tyle nowych ekranÃ³w, ile podano jako argument
+		* @param howManyScreens Liczba nowych ekranÃ³w na ktÃ³re wskaÅºniki majÄ… zostaÄ‡ dodane do vectora
 		*/
 		void generate_screens(std::vector<Screen*>& screens, int howManyScreens);
 		/**
-		* Funkcja losuje pozycjê dla ka¿dego ekranu tak d³ugo a¿ wylosuje niezajêt¹ pozycjê na której ekran bêdzie mia³ chocia¿ jeden inny ekran w s¹siedztwie a nastêpnie przypisuje mu t¹ pozycjê, tak robi z ka¿dym ekranem w vectorze
-		* @param screen Vector wskaŸników na ekrany przygody
+		* Funkcja losuje pozycjÄ™ dla kaÅ¼dego ekranu tak dÅ‚ugo aÅ¼ wylosuje niezajÄ™tÄ… pozycjÄ™ na ktÃ³rej ekran bÄ™dzie miaÅ‚ chociaÅ¼ jeden inny ekran w sÄ…siedztwie a nastÄ™pnie przypisuje mu tÄ… pozycjÄ™, tak robi z kaÅ¼dym ekranem w vectorze
+		* @param screen Vector wskaÅºnikÃ³w na ekrany przygody
 		*/
 		void place_screens(std::vector<Screen*>& screens);
 		/**
-		* Funkcja s³u¿y do generacji po³¹czeñ miêdzy ekranami le¿¹cymi obok siebie
-		* @param screens Vector wskaŸników na ekrany przygody
+		* Funkcja sÅ‚uÅ¼y do generacji poÅ‚Ä…czeÅ„ miÄ™dzy ekranami leÅ¼Ä…cymi obok siebie
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
 		*/
 		void generate_connections(std::vector<Screen*>& screens);
 		/**
-		* Funkcja sprawdza czy w s¹siedztwie danej pozycji znajduje siê chocia¿ jeden ekran
-		* @param pos Pozycja której s¹siedztwo ma zostaæ sprawdzone
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @return true jeœli w s¹siedztwie pozycji znajduje siê chocia¿ jeden ekran, false jeœli nie
+		* Funkcja sprawdza czy w sÄ…siedztwie danej pozycji znajduje siÄ™ chociaÅ¼ jeden ekran
+		* @param pos Pozycja ktÃ³rej sÄ…siedztwo ma zostaÄ‡ sprawdzone
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @return true jeÅ›li w sÄ…siedztwie pozycji znajduje siÄ™ chociaÅ¼ jeden ekran, false jeÅ›li nie
 		*/
 		bool any_neighbour(Vector2f pos,std::vector<Screen*>& screens);
 		/**
-		* Funkcja zlicza po³aczenia danego ekranu z innymi ekranami, a nastêpnie uzupe³nia odpowiedni atrybut ekranu
-		* @param s WskaŸnik na ekran którego po³¹czenia maj¹ zostaæ zliczone
+		* Funkcja zlicza poÅ‚aczenia danego ekranu z innymi ekranami, a nastÄ™pnie uzupeÅ‚nia odpowiedni atrybut ekranu
+		* @param s WskaÅºnik na ekran ktÃ³rego poÅ‚Ä…czenia majÄ… zostaÄ‡ zliczone
 		*/
 		void count_connections(Screen* s);
 		/**
-		* Funkcja znajduje ekran znajduj¹cy siê na podanej pozycji
-		* @param pos Pozycja na której ma znajdowaæ siê poszukiwany ekran
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @return WskaŸnik na ekran znajduj¹cy siê na danej pozycji, nullptr jeœli na danej pozycji nie znajduje siê ¿aden ekran zawarty w podanym vectorze wskaŸników na ekrany
+		* Funkcja znajduje ekran znajdujÄ…cy siÄ™ na podanej pozycji
+		* @param pos Pozycja na ktÃ³rej ma znajdowaÄ‡ siÄ™ poszukiwany ekran
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @return WskaÅºnik na ekran znajdujÄ…cy siÄ™ na danej pozycji, nullptr jeÅ›li na danej pozycji nie znajduje siÄ™ Å¼aden ekran zawarty w podanym vectorze wskaÅºnikÃ³w na ekrany
 		*/
 		Screen* find_screen_by_position(Vector2f pos, std::vector<Screen*>& screens);
 		/**
 		* Funkcja znajduje ekran o podanym ID
 		* @param id ID poszukiwanego ekranu
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @return WskaŸnik na ekran o podanym ID, nullptr jeœli w podanym vectorze wskaŸników na ekrany nie znajduje siê ¿aden ekran o podanym ID
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @return WskaÅºnik na ekran o podanym ID, nullptr jeÅ›li w podanym vectorze wskaÅºnikÃ³w na ekrany nie znajduje siÄ™ Å¼aden ekran o podanym ID
 		*/
 		Screen* find_screen_by_ID(int id, std::vector<Screen*>& screens);
 		/**
-		* Funkcja ³aduje t³o lochów i generuje œciany lochów w ekranach w zale¿noœci od ich po³¹czeñ z innymi ekranami
-		* @param screens Vector wskaŸników na ekrany przygody
+		* Funkcja Å‚aduje tÅ‚o lochÃ³w i generuje Å›ciany lochÃ³w w ekranach w zaleÅ¼noÅ›ci od ich poÅ‚Ä…czeÅ„ z innymi ekranami
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
 		*/
 		void generate_walls_dungeons(std::vector<Screen*>& screens);
 		/**
-		* Funkcja ³aduje t³o zamku i generuje œciany zamku w ekranach w zale¿noœci od ich po³¹czeñ z innymi ekranami
-		* @param screens Vector wskaŸników na ekrany przygody
+		* Funkcja Å‚aduje tÅ‚o zamku i generuje Å›ciany zamku w ekranach w zaleÅ¼noÅ›ci od ich poÅ‚Ä…czeÅ„ z innymi ekranami
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
 		*/
 		void generate_walls_castle(std::vector<Screen*>& screens);
 		/**
-		* Funkcja ³aduje t³o lasu i generuje œciany lasu w ekranach w zale¿noœci od ich po³¹czeñ z innymi ekranami
-		* @param screens Vector wskaŸników na ekrany przygody
+		* Funkcja Å‚aduje tÅ‚o lasu i generuje Å›ciany lasu w ekranach w zaleÅ¼noÅ›ci od ich poÅ‚Ä…czeÅ„ z innymi ekranami
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
 		*/
 		void generate_walls_forest(std::vector<Screen*>& screens);
 		/**
-		* Funkcja ³aduje t³o pustyni i generuje œciany pustyni w ekranach w zale¿noœci od ich po³¹czeñ z innymi ekranami
-		* @param screens Vector wskaŸników na ekrany przygody
+		* Funkcja Å‚aduje tÅ‚o pustyni i generuje Å›ciany pustyni w ekranach w zaleÅ¼noÅ›ci od ich poÅ‚Ä…czeÅ„ z innymi ekranami
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
 		*/
 		void generate_walls_desert(std::vector<Screen*>& screens);
 		/**
-		* Funkcja generuje przeciwników charakterystycznych dla poziomu zamku w losowych ekranach
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @param chestScreenID ID ekranu w którym znajduje siê skrzynia z kluczem do drzwi
-		* @param lastScreenID ID ekranu w którym znajduje siê portal do nastêpnego poziomu
-		* @param cache_enemies Przeciwnicy trzymani w pamiêci podrêcznej którzy s¹ kopiowani do ekranów
+		* Funkcja generuje przeciwnikÃ³w charakterystycznych dla poziomu zamku w losowych ekranach
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @param chestScreenID ID ekranu w ktÃ³rym znajduje siÄ™ skrzynia z kluczem do drzwi
+		* @param lastScreenID ID ekranu w ktÃ³rym znajduje siÄ™ portal do nastÄ™pnego poziomu
+		* @param cache_enemies Przeciwnicy trzymani w pamiÄ™ci podrÄ™cznej ktÃ³rzy sÄ… kopiowani do ekranÃ³w
 		*/
 		void generate_enemies_castle(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		/**
-		* Funkcja generuje przeciwników charakterystycznych dla poziomu lasu w losowych ekranach
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @param chestScreenID ID ekranu w którym znajduje siê skrzynia z kluczem do drzwi
-		* @param lastScreenID ID ekranu w którym znajduje siê portal do nastêpnego poziomu
-		* @param cache_enemies Przeciwnicy trzymani w pamiêci podrêcznej którzy s¹ kopiowani do ekranów
+		* Funkcja generuje przeciwnikÃ³w charakterystycznych dla poziomu lasu w losowych ekranach
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @param chestScreenID ID ekranu w ktÃ³rym znajduje siÄ™ skrzynia z kluczem do drzwi
+		* @param lastScreenID ID ekranu w ktÃ³rym znajduje siÄ™ portal do nastÄ™pnego poziomu
+		* @param cache_enemies Przeciwnicy trzymani w pamiÄ™ci podrÄ™cznej ktÃ³rzy sÄ… kopiowani do ekranÃ³w
 		*/
 		void generate_enemies_forest(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		/**
-		* Funkcja generuje przeciwników charakterystycznych dla poziomu pustyni w losowych ekranach
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @param chestScreenID ID ekranu na którym znajduje siê skrzynia z kluczem do drzwi
-		* @param lastScreenID ID ekranu na którym znajduje siê portal do nastêpnego poziomu
-		* @param cache_enemies Przeciwnicy trzymani w pamiêci podrêcznej którzy s¹ kopiowani do ekranów
+		* Funkcja generuje przeciwnikÃ³w charakterystycznych dla poziomu pustyni w losowych ekranach
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @param chestScreenID ID ekranu na ktÃ³rym znajduje siÄ™ skrzynia z kluczem do drzwi
+		* @param lastScreenID ID ekranu na ktÃ³rym znajduje siÄ™ portal do nastÄ™pnego poziomu
+		* @param cache_enemies Przeciwnicy trzymani w pamiÄ™ci podrÄ™cznej ktÃ³rzy sÄ… kopiowani do ekranÃ³w
 		*/
 		void generate_enemies_desert(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		/**
-		* Funkcja oblicza dystans w linii prostej w uk³adzie wspó³rzêdnych pomiêdzy dwoma pozycjami
+		* Funkcja oblicza dystans w linii prostej w ukÅ‚adzie wspÃ³Å‚rzÄ™dnych pomiÄ™dzy dwoma pozycjami
 		* @param pos1 Pozycja pierwsza (x,y)
 		* @param pos2 Pozycja druga (x,y)
-		* @return Odleg³oœæ miêdzy pozycjami
+		* @return OdlegÅ‚oÅ›Ä‡ miÄ™dzy pozycjami
 		*/
 		float getDistance(Vector2f pos1, Vector2f pos2);
 		/**
-		* Funkcja analizuje odleg³oœci miêdzy wszystkimi parami ekranów i wyznacza dwa najbardziej oddalone od siebie
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @return Vector wskaŸników na dwa najbardziej oddalone od siebie ekrany
+		* Funkcja analizuje odlegÅ‚oÅ›ci miÄ™dzy wszystkimi parami ekranÃ³w i wyznacza dwa najbardziej oddalone od siebie
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @return Vector wskaÅºnikÃ³w na dwa najbardziej oddalone od siebie ekrany
 		*/
 		std::vector<Screen*> find_two_furthest_screens(std::vector<Screen*>&screens);
 		/**
-		* Funkcja generuj¹ca drzwi na ekranie/-nach s¹siaduj¹cym/-cych z ekranem na którym znajduje siê portal do nastêpnego poziomu
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @param ID ID pierwszego z najbardziej oddalonych od siebie ekranów
+		* Funkcja generujÄ…ca drzwi na ekranie/-nach sÄ…siadujÄ…cym/-cych z ekranem na ktÃ³rym znajduje siÄ™ portal do nastÄ™pnego poziomu
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @param ID ID pierwszego z najbardziej oddalonych od siebie ekranÃ³w
 		* @return ID klucza potrzebnego do otwarcia drzwi
 		*/
 		int generate_door(std::vector<Screen*>& screens, int ID);
 		/**
-		* Funkcja generuj¹ca skrzyniê z kluczem do drzwi na drugim najbardziej oddalonym ekranie oraz skrzynie z miksturami na losowych innych ekranach
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @param ScreenID ID drugiego z najbardziej oddalonych od siebie ekranów
+		* Funkcja generujÄ…ca skrzyniÄ™ z kluczem do drzwi na drugim najbardziej oddalonym ekranie oraz skrzynie z miksturami na losowych innych ekranach
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @param ScreenID ID drugiego z najbardziej oddalonych od siebie ekranÃ³w
 		* @param keyID ID klucza potrzebnego do otwarcia drzwi
 		*/
 		void generate_chests(std::vector<Screen*>& screens, int ScreenID, int keyID);
 		/**
-		* Funkcja generuje przeciwników na ekranie ze skrzyni¹, w której jest klucz do drzwi oraz na innych ekranach. Korzysta z innych funkcji do generacji przeciwników w tej klasie
-		* @param screens Vector wskaŸników na ekrany przygody
-		* @param chestScreenID ID ekranu na którym znajduje siê skrzynia z kluczem do drzwi
-		* @param lastScreenID ID ekranu na którym znajduje siê portal
-		* @param cache_enemies Przeciwnicy trzymani w pamiêci podrêcznej którzy s¹ kopiowani do ekranów
+		* Funkcja generuje przeciwnikÃ³w na ekranie ze skrzyniÄ…, w ktÃ³rej jest klucz do drzwi oraz na innych ekranach. Korzysta z innych funkcji do generacji przeciwnikÃ³w w tej klasie
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
+		* @param chestScreenID ID ekranu na ktÃ³rym znajduje siÄ™ skrzynia z kluczem do drzwi
+		* @param lastScreenID ID ekranu na ktÃ³rym znajduje siÄ™ portal
+		* @param cache_enemies Przeciwnicy trzymani w pamiÄ™ci podrÄ™cznej ktÃ³rzy sÄ… kopiowani do ekranÃ³w
 		*/
 		void generate_enemies(std::vector<Screen*>& screens, int chestScreenID, int lastScreenID, Enemies& cache_enemies);
 		/**
-		* Funkcja generuje postaæ niegrywaln¹ na losowym ekranie ka¿dego generowanego poziomu
-		* @param screens Vector wskaŸników na ekrany przygody
+		* Funkcja generuje postaÄ‡ niegrywalnÄ… na losowym ekranie kaÅ¼dego generowanego poziomu
+		* @param screens Vector wskaÅºnikÃ³w na ekrany przygody
 		*/
 		void generate_NPCs(std::vector<Screen*>& screens);
 };

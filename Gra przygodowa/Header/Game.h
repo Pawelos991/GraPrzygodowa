@@ -9,13 +9,13 @@
 #include "Adventure_Stats.h"
 
 /**
-* Klasa reprezentuje ca³¹ grê, dziedziczy po klasach Screens, Quests oraz Menu
+* Klasa reprezentuje caÅ‚Ä… grÄ™, dziedziczy po klasach Screens, Quests oraz Menu
 */
 class Game : private Screens, private Quests, private Menu
 {
     public:
         /**
-        * Kosturktor klasy ustawiaj¹cy podstawowe atrybuty
+        * Kosturktor klasy ustawiajÄ…cy podstawowe atrybuty
         */
         Game();
         /**
@@ -23,86 +23,86 @@ class Game : private Screens, private Quests, private Menu
         */
         virtual ~Game();
         /**
-        * Jedyna dostêpna publicznie funkcja s³u¿¹ca do w³¹czenia gry. Korzysta ona ze wszystkich innych funkcji dostêpnych w klasie
+        * Jedyna dostÄ™pna publicznie funkcja sÅ‚uÅ¼Ä…ca do wÅ‚Ä…czenia gry. Korzysta ona ze wszystkich innych funkcji dostÄ™pnych w klasie
         */
         void run();
     private:
         /**
-        * Funkcja przygotowuje odpowiednio postaæ gracza, ekrany oraz mapê w zale¿noœci od wybranego trybu gry
-        * @param p Postaæ gracza
-        * @param window Okno w którym wyœwietlana jest gra
+        * Funkcja przygotowuje odpowiednio postaÄ‡ gracza, ekrany oraz mapÄ™ w zaleÅ¼noÅ›ci od wybranego trybu gry
+        * @param p PostaÄ‡ gracza
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
         * @param adventure_creator Kreator przygody
         * @param map Mapa
         */
         void Prepare_game(Player &p, RenderWindow& window, Adventure_Creator& adventure_creator,Map& map);
         /**
-        * Funkcja odpowiedzialna za liczenie punktów postaci gracza oraz dodawanie nowych przeciwników w trybie areny gdy wszyscy obecni zostali pokonani
-        * @param window Okno w którym wyœwietlana jest gra
+        * Funkcja odpowiedzialna za liczenie punktÃ³w postaci gracza oraz dodawanie nowych przeciwnikÃ³w w trybie areny gdy wszyscy obecni zostali pokonani
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
         */
         void ArenaMode(RenderWindow& window);
         /**
-        * Funkcja wczytuje z plików konfiguracyjnych po jednym z ka¿dego rodzaju przeciwnika, aby póŸniej przy dodawaniu przeciwników do ekranów (tryb areny lub generacja poziomu w trybie przygody) korzystaæ z tych w pamiêci podrêcznej
+        * Funkcja wczytuje z plikÃ³w konfiguracyjnych po jednym z kaÅ¼dego rodzaju przeciwnika, aby pÃ³Åºniej przy dodawaniu przeciwnikÃ³w do ekranÃ³w (tryb areny lub generacja poziomu w trybie przygody) korzystaÄ‡ z tych w pamiÄ™ci podrÄ™cznej
         */
         void LoadCacheEnemies();
         /**
-        * Funkcja odpowiada za sprawdzenie, czy gracz wcisn¹³ jakiœ przycisk wywo³uj¹cy jakieœ zdarzenie i jeœli tak to je wywo³uje
-        * @param window Okno w którym wyœwietlana jest gra
-        * @param p Postaæ gracza
+        * Funkcja odpowiada za sprawdzenie, czy gracz wcisnÄ…Å‚ jakiÅ› przycisk wywoÅ‚ujÄ…cy jakieÅ› zdarzenie i jeÅ›li tak to je wywoÅ‚uje
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+        * @param p PostaÄ‡ gracza
         * @param adventure_creator Kreator przygody
         * @param map Mapa
         */
         void GetKeyEvent(RenderWindow& window, Player& p, Adventure_Creator& adventure_creator, Map& map);
         /**
-        * Funkcja odpowiadaj¹ca za interaktywnoœæ skrzyñ. Sprawdza czy postaæ gracza koliduje z jak¹œ nieotwart¹ skrzyni¹ i jeœli tak to j¹ otwiera i umieszcza przedmioty w ekwipunku postaci gracza
-        * @param items Wszystkie przedmioty dostêpne w grze
-        * @param p Postaæ gracza
+        * Funkcja odpowiadajÄ…ca za interaktywnoÅ›Ä‡ skrzyÅ„. Sprawdza czy postaÄ‡ gracza koliduje z jakÄ…Å› nieotwartÄ… skrzyniÄ… i jeÅ›li tak to jÄ… otwiera i umieszcza przedmioty w ekwipunku postaci gracza
+        * @param items Wszystkie przedmioty dostÄ™pne w grze
+        * @param p PostaÄ‡ gracza
         */
         void MaintainChests(Items& items, Player& p);
         /**
-        * Funkcja odpowiadaj¹ca za interaktywnoœæ drzwi. Sprawdzw czy postaæ gracza koliduje z jakimiœ drzwiami i jeœli tak to wyœwietla odpowiedni¹ informacjê (w zale¿noœci od tego czy postaæ gracza ma klucz do tych drzwi, czy nie)
-        * @param window Okno w którym wyœwietlana jest gra
-        * @param p Postaæ gracza
+        * Funkcja odpowiadajÄ…ca za interaktywnoÅ›Ä‡ drzwi. Sprawdzw czy postaÄ‡ gracza koliduje z jakimiÅ› drzwiami i jeÅ›li tak to wyÅ›wietla odpowiedniÄ… informacjÄ™ (w zaleÅ¼noÅ›ci od tego czy postaÄ‡ gracza ma klucz do tych drzwi, czy nie)
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+        * @param p PostaÄ‡ gracza
         */
         void MaintainDoors(RenderWindow& window, Player& p);
         /**
-        * Funkcja odpowiadaj¹ca za wyœwietlanie cieni wokó³ postaci gracza. Funkcja jest u¿ywana w przypadku poziomów lochów
-        * @param window Okno w którym wyœwietlana jest gra
-        * @param p Postaæ gracza
+        * Funkcja odpowiadajÄ…ca za wyÅ›wietlanie cieni wokÃ³Å‚ postaci gracza. Funkcja jest uÅ¼ywana w przypadku poziomÃ³w lochÃ³w
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+        * @param p PostaÄ‡ gracza
         */
         void DisplayShadows(RenderWindow& window, Player& p);
         /**
-        * Funkcja odpowiedzialna za wyœwietlenie statystyk przygody postaci gracza. Wywo³ywana na ekranie zakoñczenia przygody
-        * @param window Okno w którym wyswietlana jest gra
+        * Funkcja odpowiedzialna za wyÅ›wietlenie statystyk przygody postaci gracza. WywoÅ‚ywana na ekranie zakoÅ„czenia przygody
+        * @param window Okno w ktÃ³rym wyswietlana jest gra
         */
         void DisplayStats(RenderWindow& window);
         /**
-        * Funkcja usuwa wszystkie ekrany obecnego poziomu przygody i powoduje stworzenie kolejnego poziomu. Wywo³ywana w przypadku wejœcia postaci gracza w portal na nastêpny poziom
-        * @param window Okno w którym wyœwietlana jest gra
-        * @param p Postaæ gracza
+        * Funkcja usuwa wszystkie ekrany obecnego poziomu przygody i powoduje stworzenie kolejnego poziomu. WywoÅ‚ywana w przypadku wejÅ›cia postaci gracza w portal na nastÄ™pny poziom
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+        * @param p PostaÄ‡ gracza
         * @map Mapa
         * @param adventure_creator Kreator przygody
         */
         void NextLvl(RenderWindow& window, Player& p, Map& map, Adventure_Creator& adventure_creator);
 
         /**
-        * Funkcja odpowiada za ca³¹ rozgrywkê odbywaj¹c¹ siê w trybie samouczka. Korzysta z innych funkcji tej klasy
-        * @param window Okno w którym wyœwietlana jest gra
-        * @param p Postaæ gracza
-        * @param items Wszystkie przedmioty dostêpne w grze
+        * Funkcja odpowiada za caÅ‚Ä… rozgrywkÄ™ odbywajÄ…cÄ… siÄ™ w trybie samouczka. Korzysta z innych funkcji tej klasy
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+        * @param p PostaÄ‡ gracza
+        * @param items Wszystkie przedmioty dostÄ™pne w grze
         * @param map Mapa
         */
         void Tutorial(RenderWindow& window, Player& p, Items& items, Map& map);
         /**
-        * Funkcja odpowiada za ca³¹ rozgrywkê odbywaj¹c¹ siê w trybie areny. Korzysta z innych funkcji tej klasy
-        * @param window Okno w którym wyœwietlana jest gra
-        * @param p Postaæ gracza
+        * Funkcja odpowiada za caÅ‚Ä… rozgrywkÄ™ odbywajÄ…cÄ… siÄ™ w trybie areny. Korzysta z innych funkcji tej klasy
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+        * @param p PostaÄ‡ gracza
         */
         void Arena(RenderWindow& window, Player& p);
         /**
-        * Funkcja odpowiada za ca³¹ rozgrywkê odbywaj¹c¹ siê w trybie przygody. Korzysta z innych funkcji tej klasy
-        * @param window Okno w którym wyœwietlana jest gra
-        * @param p Postaæ gracza
-        * @param items Wszystkie przedmioty dostêpne w grze
+        * Funkcja odpowiada za caÅ‚Ä… rozgrywkÄ™ odbywajÄ…cÄ… siÄ™ w trybie przygody. Korzysta z innych funkcji tej klasy
+        * @param window Okno w ktÃ³rym wyÅ›wietlana jest gra
+        * @param p PostaÄ‡ gracza
+        * @param items Wszystkie przedmioty dostÄ™pne w grze
         * @param map Mapa
         * @param adventure_creator Kreator przygody
         */
@@ -112,45 +112,45 @@ class Game : private Screens, private Quests, private Menu
         Font Arena_font;
         /**Tekst wyniku w trybie areny*/
         Text Arena_text;
-        /**Tablica kó³ s³u¿¹cych jako cienie*/
+        /**Tablica kÃ³Å‚ sÅ‚uÅ¼Ä…cych jako cienie*/
         CircleShape shadows[5];
-        /**Lista przeciwników zawieraj¹ca po jednym z ka¿dego rodzaju, trzymana w pamiêci podrêcznej dla przyspieszenia dzia³ania gry*/
+        /**Lista przeciwnikÃ³w zawierajÄ…ca po jednym z kaÅ¼dego rodzaju, trzymana w pamiÄ™ci podrÄ™cznej dla przyspieszenia dziaÅ‚ania gry*/
         Enemies cache_enemies;
         /**Statystyki przygody*/
         Adventure_Stats stats;
         /**Tryb gry wybrany przez gracza*/
         int gameMode; //0 - not chosen, 1 - Tutorial, 2 - Continue adventure, 3 - New adventure, 4 - Arena normal, 5 - Arena godmode
-        /**Licznik klatek potrzebny do poprawnego wyœwietlania animacji i okreœlania up³ywaj¹cego czasu w grze*/
+        /**Licznik klatek potrzebny do poprawnego wyÅ›wietlania animacji i okreÅ›lania upÅ‚ywajÄ…cego czasu w grze*/
         int counter; //FPS counter
-        /**Licznik zabójstw w trybie areny*/
+        /**Licznik zabÃ³jstw w trybie areny*/
         int kills; //Kills counter (arena)
-        /**Licznik klatek potrzeny do wyœwietlenia powiadomienia o nowym zadaniu*/
+        /**Licznik klatek potrzeny do wyÅ›wietlenia powiadomienia o nowym zadaniu*/
         int quest_counter; //Counter of frames of display new quest
-        /**Informacja o tym czy ekwipunek postaci gracza powinien byæ otwarty*/
+        /**Informacja o tym czy ekwipunek postaci gracza powinien byÄ‡ otwarty*/
         bool is_inventory_open; 
-        /**Informacja o tym czy przyjête zadania s¹ wyœwietlane*/
+        /**Informacja o tym czy przyjÄ™te zadania sÄ… wyÅ›wietlane*/
         bool are_quests_displayed; 
         /**Informacja o tym czy muzyka jest wyciszona*/
         bool is_muted; 
-        /**Informacja o tym czy tryb godmode jest w³¹czony*/
+        /**Informacja o tym czy tryb godmode jest wÅ‚Ä…czony*/
         bool is_godmode_on;
         /**Informacja o tym czy gra jest zatrzymana*/
         bool pause_game;
-        /**Informacja o tym czy postaæ gracza znajduje siê przy drzwiach*/
+        /**Informacja o tym czy postaÄ‡ gracza znajduje siÄ™ przy drzwiach*/
         bool standingByDoor;
-        /**Informacja o tym czy postaæ gracza próbuje otworzyæ drzwi*/
+        /**Informacja o tym czy postaÄ‡ gracza prÃ³buje otworzyÄ‡ drzwi*/
         bool tryingToOpenDoor;
-        /**Informacja o tym czy ma³a mapa powinna byæ wyœwietlona*/
+        /**Informacja o tym czy maÅ‚a mapa powinna byÄ‡ wyÅ›wietlona*/
         bool displaySmallMap;
-        /**Informacja o tym czy du¿a mapa powinna byæ wyœwietlona*/
+        /**Informacja o tym czy duÅ¼a mapa powinna byÄ‡ wyÅ›wietlona*/
         bool displayBigMap;
-        /**Informacja o tym czy samouczek zosta³ ukoñczony*/
+        /**Informacja o tym czy samouczek zostaÅ‚ ukoÅ„czony*/
         bool finishedTutorial;
-        /**Informacja o tym czy przygoda zosta³a zaczêta*/
+        /**Informacja o tym czy przygoda zostaÅ‚a zaczÄ™ta*/
         bool adventureStarted;
-        /**Informacja o tym czy nale¿y dodaæ nowe zadanie do przyjêtych zadañ (wykorzystywane przy zmianie trybu gry)*/
+        /**Informacja o tym czy naleÅ¼y dodaÄ‡ nowe zadanie do przyjÄ™tych zadaÅ„ (wykorzystywane przy zmianie trybu gry)*/
         bool add_new_quest;
-        /**Informacja o tym czy po jednym z ka¿dego rodzaju przeciwników zosta³o za³adowane do pamiêci podrêcznej*/
+        /**Informacja o tym czy po jednym z kaÅ¼dego rodzaju przeciwnikÃ³w zostaÅ‚o zaÅ‚adowane do pamiÄ™ci podrÄ™cznej*/
         bool cache_enemies_loaded;
 
 };

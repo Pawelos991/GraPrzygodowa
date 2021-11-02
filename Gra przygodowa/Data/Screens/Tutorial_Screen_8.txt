@@ -1,10 +1,13 @@
-8 0 0 0 7 1 3 -1
-Textures/Backgrounds/Stones.png
-Wall Textures/Walls/Stones/StoneWallFullHor.png 0 0 1600 219
-Wall Textures/Walls/Stones/StoneWallHalfHor.png 0 681 760 219
-Wall Textures/Walls/Stones/StoneWallHalfHor.png 840 681 760 219
-Wall Textures/Walls/Stones/StoneWallFullVerL.png 0 0 271 900
-Wall Textures/Walls/Stones/StoneWallFullVerR.png 1329 0 271 900
-Enemy Archer 1400 200
-Enemy Archer 100 200
-Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 1000 420 56 56 3 1 1 2
+8 9 7 0 0 2 2 -1
+Textures/Backgrounds/Background_Basic.png
+Wall Textures/Walls/Trees/TreeFullHor.png 0 0 1600 113
+Wall Textures/Walls/Trees/TreeHalfVer.png 0 0 90 400
+Wall Textures/Walls/Trees/TreeHalfVer.png 0 500 90 400
+Wall Textures/Walls/Trees/TreeHalfVer.png 1520 0 90 400
+Wall Textures/Walls/Trees/TreeHalfVer.png 1520 500 90 400
+Wall Textures/Walls/Trees/TreeFullHor.png 0 787 1600 113
+Wall Textures/Walls/Trees/TreeFullVer.png 1520 0 90 900
+Enemy Dwarf 1200 200
+Enemy Dwarf 1200 400
+Enemy Dwarf 1200 600
+Chest Textures/Chests/Chest_closed.png Textures/Chests/Chest_open.png 1000 420 56 56 2 1 1

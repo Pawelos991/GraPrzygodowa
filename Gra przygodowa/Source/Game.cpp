@@ -33,7 +33,32 @@ Game::Game()
     tryingToOpenDoor = false;
     displaySmallMap = false;
     displayBigMap = false;
-    finishedTutorial = true; //Change later
+
+    std::ifstream fp;
+    bool finished_tutorial=false;
+    try
+    {
+        fp.open("Data/Finished_Tutorial.txt");
+        if (fp.good() == false)
+            throw 1;
+    }
+    catch (int x)
+    {
+        if (x == 1)
+            std::cout << "Brak pliku z informacja o ukonczonym samouczku "<< std::endl;
+    }
+
+    while (true)
+    {
+        if (fp.good());
+        else
+            break;
+        fp >> finished_tutorial;
+    }
+    fp.close();
+    finishedTutorial = finished_tutorial;
+    
+    
     adventureStarted = false;
     add_new_quest = false;
     quest_counter = 0;

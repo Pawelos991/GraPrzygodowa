@@ -116,10 +116,10 @@ void Player::movement(RenderWindow &window, int counter)
 
 void Player::set_NormalMode()
 {
-    speed_of_movement=10; //Normally 4
+    speed_of_movement=4; //Debugging 10
     MaxHP=60;
     HP=60;
-    Mana_regen=10; //Normally 1
+    Mana_regen=1; //Debugging 10
 }
 
 void Player::Check_collision_with_enviornment(std::vector<Wall*>& walls)

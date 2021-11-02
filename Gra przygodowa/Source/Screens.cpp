@@ -101,7 +101,7 @@ bool Screens::Check_tutorial_screen(RectangleShape &player_hitbox)
         tutorial_screens[i]->setVisited(true);
         player_hitbox.setPosition(Vector2f(player_hitbox.getPosition().x,900));
     }
-    if (Actual_screen->getID() == 9)
+    if (Actual_screen->getID() == 12)
         return true;
     else
         return false;

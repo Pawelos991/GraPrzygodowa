@@ -4,59 +4,59 @@
 #include "Missile.h"
 
 /**
-* Klasa reprezentuje listê pocisków
+* Klasa reprezentuje listÄ™ pociskÃ³w
 */
 class Missiles
 {
     public:
         /**
-        * Konstruktor klasy ustawiaj¹cy wskaŸnik na pierwszy element listy na nullptr
+        * Konstruktor klasy ustawiajÄ…cy wskaÅºnik na pierwszy element listy na nullptr
         */
         Missiles():head(nullptr){}
         /**
-        * Destruktor klasy zwalaniaj¹cy pamiêæ zaalokowan¹ przez pociski na liœcie
+        * Destruktor klasy zwalaniajÄ…cy pamiÄ™Ä‡ zaalokowanÄ… przez pociski na liÅ›cie
         */
         ~Missiles(){delete_all_missiles();}
         /**
-        * Funkcja dodaj¹ca pocisk do listy
-        * @param added WskaŸnik na pocisk dodawany do listy
+        * Funkcja dodajÄ…ca pocisk do listy
+        * @param added WskaÅºnik na pocisk dodawany do listy
         */
         void add_missile(Missile* added);
         /**
-        * Funkcja usuwaj¹ca pocisk z listy
-        * @param deleted WskaŸnik na pocisk usuwany z listy
+        * Funkcja usuwajÄ…ca pocisk z listy
+        * @param deleted WskaÅºnik na pocisk usuwany z listy
         */
         void delete_missile(Missile* deleted);
         /**
-        * Funkcja usuwaj¹ca wszystkie pociski z listy
+        * Funkcja usuwajÄ…ca wszystkie pociski z listy
         */
         void delete_all_missiles();
         /**
-        * Funkcja zwracaj¹ca wskaŸnik na pierwszy element listy
-        * @return WskaŸnik na pierwszy element listy
+        * Funkcja zwracajÄ…ca wskaÅºnik na pierwszy element listy
+        * @return WskaÅºnik na pierwszy element listy
         */
         Missile* getHead(){return head;}
 
         /**
-        * Funkcja wyœwietla wszystkie pociski znajduj¹ce siê na liœcie na ekranie
-        * @param window Okno w którym wyœwietlane s¹ pociski
-        * @param counter Licznik klatek potrzebny do poprawnego wyœwietlenia animacji pocisków
+        * Funkcja wyÅ›wietla wszystkie pociski znajdujÄ…ce siÄ™ na liÅ›cie na ekranie
+        * @param window Okno w ktÃ³rym wyÅ›wietlane sÄ… pociski
+        * @param counter Licznik klatek potrzebny do poprawnego wyÅ›wietlenia animacji pociskÃ³w
         */
         void Display_all_missiles(RenderWindow &window, int counter);
         /**
-        * Funkcja aktualizuj¹ca pozycje wszystkich pocisków znajduj¹cych siê na liœcie
-        * @param window Okno w którym znajduj¹ siê pociski potrzebne do okreœlenia, czy pocisk dalej znajduje siê w obrêbie okna (jesli nie to jest usuwany)
+        * Funkcja aktualizujÄ…ca pozycje wszystkich pociskÃ³w znajdujÄ…cych siÄ™ na liÅ›cie
+        * @param window Okno w ktÃ³rym znajdujÄ… siÄ™ pociski potrzebne do okreÅ›lenia, czy pocisk dalej znajduje siÄ™ w obrÄ™bie okna (jesli nie to jest usuwany)
         */
         void Update_all_missiles(RenderWindow &window);
         /**
-        * Funkcja odpowiedzialna za utrzymanie ruchu pocisków - wywo³uje inne funkcje tej klasy
-        * @param window Okno w którym znajduj¹ siê i s¹ wyœwietlane pociski
-        * @param counter Licznik klatek potrzebny do poprawnego wyœwietlenia animacji pocisków
+        * Funkcja odpowiedzialna za utrzymanie ruchu pociskÃ³w - wywoÅ‚uje inne funkcje tej klasy
+        * @param window Okno w ktÃ³rym znajdujÄ… siÄ™ i sÄ… wyÅ›wietlane pociski
+        * @param counter Licznik klatek potrzebny do poprawnego wyÅ›wietlenia animacji pociskÃ³w
         */
         void maintenance(RenderWindow&window, int counter);
 
     private:
-        /**WskaŸnik na pierwszy element listy*/
+        /**WskaÅºnik na pierwszy element listy*/
         Missile *head;
 };
 

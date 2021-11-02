@@ -4,7 +4,7 @@
 #include "Quest.h"
 
 /**
-* Klasa reprezentuje zbiór zadañ nieprzyjêtych przez gracza
+* Klasa reprezentuje zbiÃ³r zadaÅ„ nieprzyjÄ™tych przez gracza
 */
 class Not_Taken_Quests
 {
@@ -20,27 +20,27 @@ class Not_Taken_Quests
 
     protected: 
         /**
-        * Funkcja wczytuj¹ca zadania z plików i ³aduj¹ca je do wektora
+        * Funkcja wczytujÄ…ca zadania z plikÃ³w i Å‚adujÄ…ca je do wektora
         */
         void load_quests();
         /**
-        * Funkcja dodaj¹ca zadanie do wektora zadañ nieprzyjêtych przez gracza
+        * Funkcja dodajÄ…ca zadanie do wektora zadaÅ„ nieprzyjÄ™tych przez gracza
         * @param id ID zadania
-        * @param Name Tytu³ zadania
+        * @param Name TytuÅ‚ zadania
         * @param Desc Opis zadania
         */
         void add_nt_quest(int id,std::string Name, std::string Desc);
         /**
-        * Funkcja usuwaj¹ca nieprzyjête zadanie o podanym ID z wektora zadañ nieprzyjêtych
-        * @param id ID zadania które ma zostaæ usuniête
+        * Funkcja usuwajÄ…ca nieprzyjÄ™te zadanie o podanym ID z wektora zadaÅ„ nieprzyjÄ™tych
+        * @param id ID zadania ktÃ³re ma zostaÄ‡ usuniÄ™te
         */
         void remove_nt_quest(int id);
         /**
-        * Funkcja usuwaj¹ca wszystkie nieprzyjête zadania z wektora zadañ nieprzyjêtych
+        * Funkcja usuwajÄ…ca wszystkie nieprzyjÄ™te zadania z wektora zadaÅ„ nieprzyjÄ™tych
         */
         void remove_all_nt_quests();
 
-        /**Wektor zadañ nieprzyjêtych przez gracza*/
+        /**Wektor zadaÅ„ nieprzyjÄ™tych przez gracza*/
         std::vector<Quest*> not_taken_quests;
 
 };

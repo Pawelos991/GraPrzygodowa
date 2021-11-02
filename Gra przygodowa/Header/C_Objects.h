@@ -5,7 +5,7 @@
 #include "Door.h"
 
 /**
-* Klasa reprezentuj¹ca grupê obiektów koliduj¹cych z postaci¹ gracza
+* Klasa reprezentujÄ…ca grupÄ™ obiektÃ³w kolidujÄ…cych z postaciÄ… gracza
 */
 class C_Objects
 {
@@ -19,55 +19,55 @@ class C_Objects
         */
         virtual ~C_Objects(){}
         /**
-        * Vector wskaŸników na œciany znajduj¹ce siê w grupie obiektów koliduj¹cych z postaci¹ gracza
+        * Vector wskaÅºnikÃ³w na Å›ciany znajdujÄ…ce siÄ™ w grupie obiektÃ³w kolidujÄ…cych z postaciÄ… gracza
         */
         std::vector <Wall*> walls;
         /**
-        * Vector wskaŸników na skrzynie znajduj¹ce siê w grupie obiektów koliduj¹cych z postaci¹ gracza
+        * Vector wskaÅºnikÃ³w na skrzynie znajdujÄ…ce siÄ™ w grupie obiektÃ³w kolidujÄ…cych z postaciÄ… gracza
         */
         std::vector <Chest*> chests;
         /**
-        * Vector wskaŸników na drzwi znajduj¹ce siê w grupie obiektów koliduj¹cych z postaci¹ gracza
+        * Vector wskaÅºnikÃ³w na drzwi znajdujÄ…ce siÄ™ w grupie obiektÃ³w kolidujÄ…cych z postaciÄ… gracza
         */
         std::vector <Door*> doors;
         /**
-        * Funkcja s³u¿¹ca do otwarcia drzwi
-        * @param door WskaŸnik na drzwi które maj¹ zostaæ otwarte
+        * Funkcja sÅ‚uÅ¼Ä…ca do otwarcia drzwi
+        * @param door WskaÅºnik na drzwi ktÃ³re majÄ… zostaÄ‡ otwarte
         */
         void open_door(Door* door);
 
     protected:
         /**
-        * Funkcja dodaj¹ca œcianê do grupy obiektów koliduj¹cych z postaci¹ gracza
-        * @param location Œcie¿ka do tekstury dodawanej œciany
-        * @param Position Pozycja w oknie w której ma zostaæ umieszczona dodawana œciana
-        * @param SizeOfBox Rozmiar hitboxa œciany
-        * @return WskaŸnik na dodan¹ do grupy œcianê
+        * Funkcja dodajÄ…ca Å›cianÄ™ do grupy obiektÃ³w kolidujÄ…cych z postaciÄ… gracza
+        * @param location ÅšcieÅ¼ka do tekstury dodawanej Å›ciany
+        * @param Position Pozycja w oknie w ktÃ³rej ma zostaÄ‡ umieszczona dodawana Å›ciana
+        * @param SizeOfBox Rozmiar hitboxa Å›ciany
+        * @return WskaÅºnik na dodanÄ… do grupy Å›cianÄ™
         */
         Wall* add_wall(std::string location,Vector2f Position,Vector2f SizeOfBox);
         /**
-        * Funkcja dodaj¹ca skrzyniê do grupy obiektów koliduj¹cych z postaci¹ gracza
-        * @param location_closed Œcie¿ka do tekstury zamkniêtej skrzyni
-        * @param location_open Œcie¿ka do tekstury otwartej skrzyni
-        * @param Position Pozycja w której skrzynia ma zostaæ umieszczona w oknie
+        * Funkcja dodajÄ…ca skrzyniÄ™ do grupy obiektÃ³w kolidujÄ…cych z postaciÄ… gracza
+        * @param location_closed ÅšcieÅ¼ka do tekstury zamkniÄ™tej skrzyni
+        * @param location_open ÅšcieÅ¼ka do tekstury otwartej skrzyni
+        * @param Position Pozycja w ktÃ³rej skrzynia ma zostaÄ‡ umieszczona w oknie
         * @param SizeOfBox Rozmiar hitboxa skrzyni
-        * @param Item_IDs ID przedmiotów które maj¹ siê znaleŸæ w dodawanej skrzyni
+        * @param Item_IDs ID przedmiotÃ³w ktÃ³re majÄ… siÄ™ znaleÅºÄ‡ w dodawanej skrzyni
         */
         void add_chest(std::string location_closed,std::string location_open,Vector2f Position, Vector2f SizeOfBox, std::vector<int> Item_IDs);
         /**
-        * Funkcja dodaj¹ca drzwi do grupy obiektów koliduj¹cych z postaci¹ gracza
-        * @param texture_location Œcie¿ka do tekstury drzwi
-        * @param wall WskaŸnik na œcianê odpowiadaj¹c¹ drzwiom
+        * Funkcja dodajÄ…ca drzwi do grupy obiektÃ³w kolidujÄ…cych z postaciÄ… gracza
+        * @param texture_location ÅšcieÅ¼ka do tekstury drzwi
+        * @param wall WskaÅºnik na Å›cianÄ™ odpowiadajÄ…cÄ… drzwiom
         * @param key_id ID klucza potrzebnego do otwarcia drzwi
         */
         void add_door(std::string texture_location, Wall* wall, int key_id);
         /**
-        * Funkcja zwalaniaj¹ca pamiêæ zaalokowan¹ przez obiekty znajduj¹ce siê w grupie
+        * Funkcja zwalaniajÄ…ca pamiÄ™Ä‡ zaalokowanÄ… przez obiekty znajdujÄ…ce siÄ™ w grupie
         */
         void clear_data_CO();
         /**
-        * Funkcja wyœwietlaj¹ca obiekty koliduj¹ce z postaci¹ gracza w oknie
-        * @param window Okno w którym wyœwietlone maj¹ zostaæ obiekty
+        * Funkcja wyÅ›wietlajÄ…ca obiekty kolidujÄ…ce z postaciÄ… gracza w oknie
+        * @param window Okno w ktÃ³rym wyÅ›wietlone majÄ… zostaÄ‡ obiekty
         * @param is_everyone_dead Informacja o tym czy wszyscy przeciwnicy zostali pokonani
         */
         void display_CO(RenderWindow &window, bool is_everyone_dead);
