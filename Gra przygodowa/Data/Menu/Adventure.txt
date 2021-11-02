@@ -1,7 +1,0 @@
-Textures/Menu/Adventure/Continue_1.png
-Textures/Menu/Adventure/New_adventure_1.png
-Textures/Menu/Adventure/Back_1.png
-Textures/Menu/Adventure/Continue_2.png
-Textures/Menu/Adventure/New_adventure_2.png
-Textures/Menu/Adventure/Back_2.png
-Textures/Menu/Adventure/Continue_3.png

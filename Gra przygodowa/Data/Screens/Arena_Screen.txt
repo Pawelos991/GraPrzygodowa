@@ -1,6 +1,0 @@
-14 0 0 0 0 0 0 0
-Textures/Backgrounds/Background_Basic.png
-Wall Textures/Walls/Trees/TreeFullHor.png 0 0 1600 113
-Wall Textures/Walls/Trees/TreeFullVer.png 0 0 90 900
-Wall Textures/Walls/Trees/TreeFullVer.png 1520 0 90 900
-Wall Textures/Walls/Trees/TreeFullHor.png 0 787 1600 113

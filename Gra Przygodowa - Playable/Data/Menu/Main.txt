@@ -1,0 +1,6 @@
+Textures/Menu/Main/Play_1.png
+Textures/Menu/Main/Options_1.png
+Textures/Menu/Main/Exit_1.png
+Textures/Menu/Main/Play_2.png
+Textures/Menu/Main/Options_2.png
+Textures/Menu/Main/Exit_2.png

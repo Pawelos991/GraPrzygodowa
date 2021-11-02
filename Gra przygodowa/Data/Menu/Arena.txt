@@ -1,6 +1,0 @@
-Textures/Menu/Arena/Arena_Normal_1.png
-Textures/Menu/Arena/Arena_Godmode_1.png
-Textures/Menu/Arena/Back_1.png
-Textures/Menu/Arena/Arena_Normal_2.png
-Textures/Menu/Arena/Arena_Godmode_2.png
-Textures/Menu/Arena/Back_2.png

@@ -1,0 +1,18 @@
+1 Mage_Stay_Big 8 125
+Textures/Player/Mage_stay/Right_Big/8.png
+Textures/Player/Mage_stay/Right_Big/7.png
+Textures/Player/Mage_stay/Right_Big/6.png
+Textures/Player/Mage_stay/Right_Big/5.png
+Textures/Player/Mage_stay/Right_Big/4.png
+Textures/Player/Mage_stay/Right_Big/3.png
+Textures/Player/Mage_stay/Right_Big/2.png
+Textures/Player/Mage_stay/Right_Big/1.png
+2 Sunbro_Stay_Big 8 100
+Textures/NPCs/Sunbro/Stay_Big/1.png
+Textures/NPCs/Sunbro/Stay_Big/2.png
+Textures/NPCs/Sunbro/Stay_Big/3.png
+Textures/NPCs/Sunbro/Stay_Big/4.png
+Textures/NPCs/Sunbro/Stay_Big/5.png
+Textures/NPCs/Sunbro/Stay_Big/6.png
+Textures/NPCs/Sunbro/Stay_Big/7.png
+Textures/NPCs/Sunbro/Stay_Big/8.png

@@ -1,6 +1,0 @@
-1 Ukoncz_samouczek Ukoncz_samouczek_korzystajac_z_instrukcji
-2 Baw_sie_dobrze! Baw_sie_dobrze_na_arenie!
-3 Poziom_-_Las Znajdz_wyjscie_z_lasu
-4 Poziom_-_Zamek Znajdz_wyjscie_z_zamku
-5 Poziom_-_Lochy Znajdz_wyjscie_z_lochow
-6 Poziom_-_Pustynia Znajdz_wyjscie_z_putyni

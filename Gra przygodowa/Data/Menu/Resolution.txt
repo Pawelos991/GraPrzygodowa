@@ -1,8 +1,0 @@
-Textures/Menu/Resolution/fHD_1.png
-Textures/Menu/Resolution/HDp_1.png
-Textures/Menu/Resolution/HD_1.png
-Textures/Menu/Resolution/Back_1.png
-Textures/Menu/Resolution/fHD_2.png
-Textures/Menu/Resolution/HDp_2.png
-Textures/Menu/Resolution/HD_2.png
-Textures/Menu/Resolution/Back_2.png

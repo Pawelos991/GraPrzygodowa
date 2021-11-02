@@ -1,0 +1,12 @@
+Data/Screens/Tutorial_Screen_1.txt
+Data/Screens/Tutorial_Screen_2.txt
+Data/Screens/Tutorial_Screen_3.txt
+Data/Screens/Tutorial_Screen_4.txt
+Data/Screens/Tutorial_Screen_5.txt
+Data/Screens/Tutorial_Screen_6.txt
+Data/Screens/Tutorial_Screen_7.txt
+Data/Screens/Tutorial_Screen_8.txt
+Data/Screens/Tutorial_Screen_9.txt
+Data/Screens/Tutorial_Screen_10.txt
+Data/Screens/Tutorial_Screen_11.txt
+Data/Screens/Tutorial_Screen_12.txt

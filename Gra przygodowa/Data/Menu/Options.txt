@@ -1,9 +1,0 @@
-Textures/Menu/Options/Resolution_1.png
-Textures/Menu/Options/Fullscreen_1.png
-Textures/Menu/Options/Music_1.png
-Textures/Menu/Options/Back_1.png
-Textures/Menu/Options/Resolution_2.png
-Textures/Menu/Options/Fullscreen_2.png
-Textures/Menu/Options/Music_2.png
-Textures/Menu/Options/Back_2.png
-Textures/Menu/Options/Resolution_3.png

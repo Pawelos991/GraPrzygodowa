@@ -1,6 +1,0 @@
-Textures/Menu/Options/On_1.png
-Textures/Menu/Options/Off_1.png
-Textures/Menu/Options/Back_1.png
-Textures/Menu/Options/On_2.png
-Textures/Menu/Options/Off_2.png
-Textures/Menu/Options/Back_2.png

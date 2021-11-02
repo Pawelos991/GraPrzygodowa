@@ -1,0 +1,13 @@
+9 0 8 10 11 3 3 -1
+Textures/Backgrounds/Background_Basic.png
+Door Textures/Door/Door.png 770 790 60 110 2
+Wall Textures/Walls/Trees/TreeHalfHor.png 0 0 760 113
+Wall Textures/Walls/Trees/TreeHalfHor.png 840 0 760 113
+Wall Textures/Walls/Trees/TreeHalfVer.png 0 0 90 400
+Wall Textures/Walls/Trees/TreeHalfVer.png 0 500 90 400
+Wall Textures/Walls/Trees/TreeHalfHor.png 0 787 760 113
+Wall Textures/Walls/Trees/TreeHalfHor.png 840 787 760 113
+Wall Textures/Walls/Stones/StoneWallFullVer.png 1329 0 271 900
+Wall Textures/Walls/Trees/TreeAlmFullHor.png 0 0 900 113
+Wall Textures/Walls/Trees/TreeAlmFullHor.png 0 787 900 113
+Enemy Archer 1400 200
