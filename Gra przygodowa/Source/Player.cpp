@@ -112,6 +112,7 @@ void Player::movement(RenderWindow &window, int counter)
      MaxHP=100000;
      HP=100000;
      Mana_regen=10;
+     death_counter = 0;
  }
 
 void Player::set_NormalMode()
@@ -120,6 +121,7 @@ void Player::set_NormalMode()
     MaxHP=60;
     HP=60;
     Mana_regen=1; //Debugging 10
+    death_counter = 0;
 }
 
 void Player::Check_collision_with_enviornment(std::vector<Wall*>& walls)
@@ -175,8 +177,10 @@ void Player::Check_collision_with_enviornment(std::vector<Wall*>& walls)
 Missile* Player::Maintenance(RenderWindow &window,int counter,std::vector<Wall*>& walls,bool open_inventory,std::vector <RectangleShape*>Slashes,Missiles& enemies_missiles)
 {
     Missile *m=nullptr;
-    if(HP<=0)
-        is_dead=1;
+    if (HP <= 0)
+    {
+        is_dead = 1;
+    }     
     if(is_dead!=1)
     {
         Check_enemies_missiles(enemies_missiles);
