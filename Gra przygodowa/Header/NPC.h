@@ -3,7 +3,6 @@
 
 #include "Items.h"
 #include "Character.h"
-#include "Quest.h"
 
 /**
 * Klasa reprezentuje pojedynczą postać niegrywalną, dziedziczy prywatnie po klasie Character

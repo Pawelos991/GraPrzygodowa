@@ -75,7 +75,7 @@ std::vector<Screen*> Adventure_Creator::generate_stats_screen(RenderWindow& wind
 	adventure_screens[0]->setBck("Textures/Backgrounds/Stats_Background.png");
 	place_screens(adventure_screens);
 	std::vector<Wall*> walls;
-	walls.push_back(new Wall("Textures/Walls/Trees/TreeFullfHor.png", Vector2f(0, 0), Vector2f(1600, 113)));
+	walls.push_back(new Wall("Textures/Walls/Trees/TreeFullHor.png", Vector2f(0, 0), Vector2f(1600, 113)));
 	walls.push_back(new Wall("Textures/Walls/Trees/TreeFullVer.png", Vector2f(1510, 0), Vector2f(90, 900)));
 	walls.push_back(new Wall("Textures/Walls/Trees/TreeFullVer.png", Vector2f(0, 0), Vector2f(90, 900)));
 	walls.push_back(new Wall("Textures/Walls/Trees/TreeFullHor.png", Vector2f(0, 787), Vector2f(1600, 113)));
@@ -87,7 +87,7 @@ std::vector<Screen*> Adventure_Creator::generate_stats_screen(RenderWindow& wind
 void Adventure_Creator::reset_creator()
 {
 	level = 1;
-	floor_type = 1;
+	floor_type = 0;
 	last_floor_type = 0;
 }
 

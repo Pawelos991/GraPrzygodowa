@@ -1,9 +1,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "Items.h"
 #include "Character.h"
-#include "C_Objects.h"
 #include "Missiles.h"
 #include <math.h>
 
