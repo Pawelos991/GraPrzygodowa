@@ -67,9 +67,6 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
   Background.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Background.cpp(6,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Background.cpp(12,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  Character.cpp
-  Characters.cpp
-  Chest.cpp
   C_Objects.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(41,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(44,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
@@ -77,6 +74,9 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(53,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(55,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\C_Objects.cpp(59,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Character.cpp
+  Characters.cpp
+  Chest.cpp
   Door.cpp
   Enemies.cpp
   Enemy.cpp
@@ -214,8 +214,6 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
           ]
   Missiles.cpp
   NC_Object.cpp
-  Not_Taken_Quests.cpp
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Not_Taken_Quests.cpp(50,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   NPC.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\NPC.cpp(30,35): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
@@ -228,6 +226,8 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
               T=float
           ]
   NPCs.cpp
+  Not_Taken_Quests.cpp
+C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Not_Taken_Quests.cpp(50,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Player.cpp
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Player.cpp(64,21): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Player.cpp(69,21): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
@@ -349,13 +349,8 @@ C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Sou
 C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Taken_Quests.cpp(51,18): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   Wall.cpp
   Trwa generowanie kodu
-  Previous IPDB not found, fall back to full compilation.
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(671): warning C4715: "Menu::adventureMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(515): warning C4715: "Menu::inGameMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(559): warning C4715: "Menu::confirmMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(471): warning C4715: "Menu::arenaMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(322): warning C4715: "Menu::gameModeMenu”: niewszystkie ścieżki kodu zwracają wartość
-C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Source\Menu.cpp(237): warning C4715: "Menu::mainMenu”: niewszystkie ścieżki kodu zwracają wartość
-  All 1066 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  3 of 1066 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    4 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Gra przygodowa.vcxproj -> C:\Wszio\Studia\Praca inżynierska\Projekt - VS\GraPrzygodowa\Gra przygodowa\Release\Gra przygodowa.exe
